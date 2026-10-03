@@ -88,6 +88,7 @@
     },
     "summary": {
       "text": "তৈরি হবে: {videos} · {ayat} · প্রায় {duration}",
+      "textTafsir": "তৈরি হবে: {videos} · {ayat} তাফসীর কার্ডসহ · প্রায় {duration}",
       "videos": {
         "one": "{count}টি ভিডিও",
         "other": "{count}টি ভিডিও"
@@ -118,6 +119,18 @@
       "loading": "অনুবাদ লোড হচ্ছে…",
       "unavailable": "এই মুহূর্তে অনুবাদ পাওয়া যাচ্ছে না",
       "hint": "QuranEnc.com থেকে কুরআনের অর্থের অনুবাদ।"
+    },
+    "tafsir": {
+      "label": "তাফসীর (ব্যাখ্যা)",
+      "none": "নেই",
+      "hint": "তাফসীর QuranEnc.com থেকে। বেছে নেওয়া তাফসীর “লেখা যাচাই করুন” অংশে প্রতিটি আয়াতের নিচেও দেখানো হয়।",
+      "addCards": "ভিডিওতে তাফসীর কার্ড যোগ করুন",
+      "addCardsHint": "প্রতিটি আয়াতের পরে একটি সংক্ষিপ্ত ব্যাখ্যা দেখায়। এতে ভিডিও দীর্ঘ হয়।",
+      "blockLabel": "তাফসীর",
+      "covers": "আয়াত {from}–{to}-এর তাফসীর",
+      "loadingText": "তাফসীর লোড হচ্ছে…",
+      "error": "তাফসীর লোড করা যায়নি।",
+      "empty": "এই আয়াতের জন্য কোনো তাফসীর নেই।"
     },
     "backgrounds": {
       "title": "ব্যাকগ্রাউন্ড ফুটেজ",
@@ -165,7 +178,10 @@
       "more": {
         "one": "…এবং আরও {count}টি আয়াত",
         "other": "…এবং আরও {count}টি আয়াত"
-      }
+      },
+      "viewLabel": "প্রিভিউয়ের ধরন",
+      "viewAyah": "আয়াত",
+      "viewTafsir": "তাফসীর কার্ড"
     },
     "submit": {
       "one": "{count}টি ভিডিও তৈরি করুন",
@@ -219,6 +235,8 @@
     },
     "ayahSingle": "আয়াত {ayah}",
     "ayahRange": "আয়াত {from}–{to}",
+    "tafsirBadge": "তাফসীর",
+    "tafsirTitle": "তাফসীর কার্ডসহ: {title}",
     "play": "{title} চালান",
     "progressLabel": "তৈরির অগ্রগতি",
     "cancelJob": "বাতিল",
@@ -283,6 +301,7 @@
     "credits": "তথ্যসূত্র ও কৃতজ্ঞতা",
     "creditQuran": "কুরআনের পাঠ: {source}",
     "creditTranslation": "অনুবাদ: {title}",
+    "creditTafsir": "তাফসীর: {title} ({source})",
     "creditAudio": "তিলাওয়াতের অডিও: {source}",
     "creditFootage": "ফুটেজ: {list}",
     "openStudio": "নিজের ভিডিও তৈরি করুন"
@@ -376,6 +395,7 @@
     "surah_not_found": "সূরাটি খুঁজে পাওয়া যায়নি।",
     "reciter_not_found": "এই কারী উপলব্ধ নেই।",
     "translation_not_found": "এই অনুবাদটি উপলব্ধ নেই।",
+    "tafsir_not_found": "এই তাফসীরটি উপলব্ধ নেই।",
     "video_not_found": "এই ভিডিওটি আর নেই।",
     "clip_not_found": "এই ক্লিপটি আর নেই।",
     "too_many_videos": "এক ব্যাচে অনেক বেশি ভিডিও।",

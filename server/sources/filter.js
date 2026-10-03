@@ -23,7 +23,9 @@ const INAPPROPRIATE = [
   'cigarette', 'cigar', 'vape', 'hookah', 'shisha', 'kiss', 'kissing', 'romance', 'romantic',
   'wedding', 'casino', 'gambling', 'poker', 'tattoo', 'halloween', 'pig', 'pork', 'dog', 'puppy',
   'ufo', 'alien', 'zombie', 'horror', 'skull', 'ghost', 'demon', 'devil', 'witch', 'blood', 'gun',
-  'weapon', 'soldier', 'military', 'army', 'war',
+  'weapon', 'soldier', 'military', 'army', 'war', 'spaceship', 'starship', 'star trek', 'star wars',
+  'starwars', 'death star', 'science fiction', 'sci fi', 'meditation', 'mindfulness', 'yoga', 'chakra',
+  'eiffel', 'castle', 'logo', 'intro', 'typography', 'inscription',
 ];
 
 const OTHER_RELIGION = [
@@ -32,6 +34,7 @@ const OTHER_RELIGION = [
   'temple', 'buddha', 'buddhist', 'buddhism', 'hindu', 'hinduism', 'ganesh', 'ganesha', 'shiva',
   'krishna', 'diwali', 'synagogue', 'menorah', 'hanukkah', 'pagoda', 'torii', 'shinto', 'statue',
   'idol', 'sculpture', 'easter', 'santa', 'zodiac', 'astrology', 'horoscope', 'tarot', 'pentagram',
+  'mary', 'virgin mary', 'mother mary', 'madonna', 'holy spirit', 'shrine',
 ];
 
 // Free-text descriptions (NASA) mention music credits, "cross sections", "third party"

@@ -52,7 +52,10 @@ export const getAyahs = ({ surah, from, to, translation }) => {
   const tr = translation || 'none';
   return cached(`ayahs:${surah}:${from}:${to}:${tr}`, () => api(`/api/ayahs?${qs({ surah, from, to, translation: tr })}`));
 };
-export const audioUrl = (reciter, surah, ayah) => `/api/reciters/${enc(reciter)}/audio/${surah}/${ayah}`;
+export const getTafsirs = () => cached('tafsirs', () => api('/api/tafsirs'));
+export const getTafsir = ({ surah, from, to, edition }) =>
+  cached(`tafsir:${surah}:${from}:${to}:${edition}`, () => api(`/api/tafsir?${qs({ surah, from, to, edition })}`));
+export const audioUrl =(reciter, surah, ayah) => `/api/reciters/${enc(reciter)}/audio/${surah}/${ayah}`;
 
 // Rendering & videos
 export const startRender = (request) => api('/api/render', { method: 'POST', body: request });

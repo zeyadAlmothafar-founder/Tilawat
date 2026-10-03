@@ -35,17 +35,19 @@ const METRICS = {
 const metricsFor = (key) => METRICS[key] || { charEm: 0.33, factor: 1.15 };
 
 // Fractions of the frame kept free of text (social-app UI overlays on 9:16).
+// tafsir / tafLines: tafsir card text size and the most lines one card may hold.
 const SAFE = {
-  '9:16': { top: 0.12, bottom: 0.18, side: 0.075, maxWrap: 1, arabic: 0.15, trans: 0.043, arLines: 5, trLines: 7 },
-  '16:9': { top: 0.085, bottom: 0.1, side: 0.08, maxWrap: 0.76, arabic: 0.13, trans: 0.045, arLines: 3, trLines: 4 },
-  '1:1': { top: 0.08, bottom: 0.1, side: 0.08, maxWrap: 1, arabic: 0.125, trans: 0.04, arLines: 4, trLines: 5 },
+  '9:16': { top: 0.12, bottom: 0.18, side: 0.075, maxWrap: 1, arabic: 0.15, trans: 0.043, arLines: 5, trLines: 7, tafsir: 0.046, tafLines: 10 },
+  '16:9': { top: 0.085, bottom: 0.1, side: 0.08, maxWrap: 0.76, arabic: 0.13, trans: 0.045, arLines: 3, trLines: 4, tafsir: 0.046, tafLines: 7 },
+  '1:1': { top: 0.08, bottom: 0.1, side: 0.08, maxWrap: 1, arabic: 0.125, trans: 0.04, arLines: 4, trLines: 5, tafsir: 0.042, tafLines: 8 },
 };
 
 /**
  * Compute every position/size the subtitle builder needs.
- * `fonts` = { arabic: fontKey, translation: fontKey|null }.
+ * `fonts` = { arabic: fontKey, translation: fontKey|null, tafsir?: fontKey|null,
+ * tafsirLabelArabic?: boolean }. `creditLines` = lines of the footer credit.
  */
-export function buildLayout({ width, height, aspect, style, fonts, showHeader, showFooter }) {
+export function buildLayout({ width, height, aspect, style, fonts, showHeader, showFooter, creditLines = 1 }) {
   const s = SAFE[aspect];
   const unit = Math.min(width, height);
   const scale = style.textScale;
@@ -66,7 +68,7 @@ export function buildLayout({ width, height, aspect, style, fonts, showHeader, s
     size: Math.round(unit * 0.026),
     creditSize: Math.round(unit * 0.017),
   };
-  footer.height = showFooter ? Math.round(footer.size * 1.1 + footer.creditSize * 1.2) : Math.round(footer.creditSize * 1.2);
+  footer.height = Math.round((showFooter ? footer.size * 1.1 : 0) + footer.creditSize * 1.2 * Math.max(1, creditLines));
 
   const gapAround = Math.round(unit * 0.035);
   const mainTop = safeTop + (showHeader ? header.height + gapAround : 0);
@@ -76,6 +78,25 @@ export function buildLayout({ width, height, aspect, style, fonts, showHeader, s
   const arabicSize = Math.round(unit * s.arabic * scale * arM.factor * (hasTranslation ? 1 : 1.18));
   const trM = hasTranslation ? metricsFor(fonts.translation) : null;
   const transSize = hasTranslation ? Math.round(unit * s.trans * scale * trM.factor) : 0;
+
+  let tafsir = null;
+  if (fonts.tafsir) {
+    const m = metricsFor(fonts.tafsir);
+    const size = Math.round(unit * s.tafsir * scale * m.factor);
+    // Gold book name above the commentary: Amiri for Arabic-script labels, spaced caps otherwise.
+    const labelSize = Math.round(unit * (fonts.tafsirLabelArabic ? 0.068 : 0.027) * Math.min(scale, 1.2));
+    const labelGap = Math.round(unit * 0.022);
+    const textHeight = mainBottom - mainTop - labelSize - labelGap;
+    tafsir = {
+      size,
+      charPx: size * m.charEm,
+      lineHeight: size,
+      maxLines: Math.max(3, Math.min(s.tafLines, Math.floor(textHeight / size))),
+      labelSize,
+      labelGap,
+      labelArabic: Boolean(fonts.tafsirLabelArabic),
+    };
+  }
 
   return {
     width,
@@ -96,6 +117,7 @@ export function buildLayout({ width, height, aspect, style, fonts, showHeader, s
     translation: hasTranslation
       ? { size: transSize, charPx: transSize * trM.charEm, maxLines: s.trLines, lineHeight: transSize }
       : null,
+    tafsir,
   };
 }
 
@@ -229,4 +251,150 @@ export function chunkAyah(layout, arabic, translation, markerLen = 3) {
       .map((g) => g.join('').trim());
   }
   return groups.map((g, i) => ({ arabic: g.join(' '), translation: trChunks[i], weight: lens[i] / sum }));
+}
+
+// ---------------------------------------------------------------------------------
+// Tafsir cards
+
+// Word wrapping wastes more space in long paragraphs than in short translations.
+const PARAGRAPH_WASTE = 1.12;
+const BREAK_PENALTY = { sentence: 0, clause: 0.6, word: 2.5 };
+const SENTENCE_BREAK = /(?:[.!?؟۔।…]+["'”’»)\]]*\s+)|(?:[。！？]+["'”’」』)）]*\s*)|(?:\n\s*)/gu;
+const CLAUSE_BREAK = /(?:[,،;؛:、，；：]["'”’»)\]]*\s*)|(?:\s[—–-]\s)/gu;
+
+/** Lines a paragraph of `len` base characters needs on a tafsir card. */
+export function tafsirLines(layout, len) {
+  const t = layout.tafsir;
+  return len ? Math.max(1, Math.ceil((len * t.charPx * PARAGRAPH_WASTE) / layout.wrapWidth)) : 0;
+}
+
+/** Estimated pixel height of a tafsir card (label + text). */
+export function tafsirCardHeight(layout, text) {
+  const t = layout.tafsir;
+  return t.labelSize + t.labelGap + tafsirLines(layout, baseLength(text)) * t.lineHeight;
+}
+
+/**
+ * Split a tafsir text into cards that each fit the text area (≤ layout.tafsir.maxLines).
+ * Cuts prefer sentence ends, then clause punctuation, then plain word gaps, and the cards
+ * are balanced in length. Returns [string] (one entry when the whole text fits).
+ */
+export function splitTafsir(layout, text) {
+  text = String(text || '').trim();
+  if (!text) return [];
+  const maxLines = layout.tafsir.maxLines;
+  const fitsLen = (len) => tafsirLines(layout, len) <= maxLines;
+
+  // Candidate cut positions (index where the next card would start) and their kind.
+  const kinds = new Map();
+  const mark = (re, kind) => {
+    for (const m of text.matchAll(re)) {
+      const at = m.index + m[0].length;
+      if (at > 0 && at < text.length && !kinds.has(at)) kinds.set(at, kind);
+    }
+  };
+  mark(SENTENCE_BREAK, 'sentence');
+  mark(CLAUSE_BREAK, 'clause');
+  mark(/\s+/gu, 'word');
+  const spaced = (text.match(/\s/g) || []).length;
+  if (spaced < text.length / 25) {
+    // Scripts written without spaces (Chinese, Japanese, Thai): any character boundary.
+    const chars = [...text];
+    let at = 0;
+    chars.forEach((ch, i) => {
+      at += ch.length;
+      const next = chars[i + 1];
+      if (next && !kinds.has(at) && !MARK_RE.test(next)) kinds.set(at, 'word'); // never split a mark from its base
+    });
+  }
+  const cuts = [0, ...[...kinds.keys()].sort((a, b) => a - b), text.length];
+  // Prefix base lengths at each cut.
+  const pre = [0];
+  for (let i = 1; i < cuts.length; i++) pre.push(pre[i - 1] + baseLength(text.slice(cuts[i - 1], cuts[i])));
+  const total = pre[pre.length - 1];
+  if (fitsLen(total)) return [text];
+  const n = cuts.length - 1; // units
+
+  // Fewest cards (greedy is optimal for a monotone fit test).
+  let minCards = 0;
+  for (let i = 0; i < n; ) {
+    let j = i + 1;
+    while (j < n && fitsLen(pre[j + 1] - pre[i])) j++;
+    i = j;
+    minCards++;
+  }
+
+  let best = null;
+  for (let k = minCards; k <= minCards + 1; k++) {
+    const avg = total / k;
+    // cost[c][j]: best cost of putting units [0, j) into c cards.
+    const cost = Array.from({ length: k + 1 }, () => new Float64Array(n + 1).fill(Infinity));
+    const from = Array.from({ length: k + 1 }, () => new Int32Array(n + 1).fill(-1));
+    cost[0][0] = 0;
+    for (let c = 1; c <= k; c++) {
+      for (let j = 1; j <= n; j++) {
+        for (let i = j - 1; i >= 0; i--) {
+          const len = pre[j] - pre[i];
+          if (!fitsLen(len)) break;
+          if (cost[c - 1][i] === Infinity) continue;
+          const dev = (len - avg) / avg;
+          const penalty = j < n ? BREAK_PENALTY[kinds.get(cuts[j])] : 0;
+          const value = cost[c - 1][i] + dev * dev + penalty;
+          if (value < cost[c][j]) [cost[c][j], from[c][j]] = [value, i];
+        }
+      }
+    }
+    const value = cost[k][n] + 0.8 * k;
+    if (cost[k][n] < Infinity && (!best || value < best.value)) {
+      const ends = [];
+      for (let c = k, j = n; c > 0; j = from[c][j], c--) ends.unshift(j);
+      best = { value, ends };
+    }
+  }
+  if (!best) return [text]; // unreachable: a single unit always fits
+  const cards = [];
+  let start = 0;
+  for (const end of best.ends) {
+    cards.push(text.slice(cuts[start], cuts[end]).trim());
+    start = end;
+  }
+  return cards.filter(Boolean);
+}
+
+const NO_BREAK_BEFORE = /[、。，．,.!?！？：；:;）)」』》〉】”’…・ー々〜]/u;
+
+/**
+ * libass only wraps at spaces, so text in scripts written without them (Chinese,
+ * Japanese, Thai...) gets explicit line breaks ("\n") at character boundaries, never
+ * before closing punctuation or a combining mark. Spaced text is returned unchanged.
+ */
+export function wrapTafsirText(layout, text) {
+  return wrapUnspaced(text, layout.tafsir.charPx, layout.wrapWidth);
+}
+
+/** Same for a translation under the ayah (`scale` = the cue's translation font scale). */
+export function wrapTranslationText(layout, text, scale = 1) {
+  if (!text || !layout.translation) return text;
+  return wrapUnspaced(text, layout.translation.charPx * scale, layout.wrapWidth);
+}
+
+function wrapUnspaced(text, charPx, wrapWidth) {
+  const spaced = (text.match(/\s/g) || []).length;
+  if (spaced >= text.length / 25) return text;
+  const capacity = Math.max(4, Math.floor(wrapWidth / charPx) - 1);
+  const lines = [];
+  let line = '';
+  let len = 0;
+  for (const ch of text.replace(/\s+/g, ' ').trim()) {
+    const base = !MARK_RE.test(ch);
+    if (base && len >= capacity && !NO_BREAK_BEFORE.test(ch)) {
+      lines.push(line.trim());
+      line = '';
+      len = 0;
+    }
+    line += ch;
+    if (base) len++;
+  }
+  if (line.trim()) lines.push(line.trim());
+  return lines.join('\n');
 }

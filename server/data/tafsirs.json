@@ -1,0 +1,240 @@
+[
+  {
+    "key": "arabic_mokhtasar",
+    "languageIso": "ar",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran (Arabic)",
+    "book": "mokhtasar",
+    "direction": "rtl"
+  },
+  {
+    "key": "arabic_moyassar",
+    "languageIso": "ar",
+    "title": "At-Tafsir al-Muyassar (Arabic)",
+    "book": "moyassar",
+    "direction": "rtl"
+  },
+  {
+    "key": "assamese_mokhtasar",
+    "languageIso": "as",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Assamese",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "azeri_mokhtasar",
+    "languageIso": "az",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Azerbaijani",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "bengali_mokhtasar",
+    "languageIso": "bn",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Bengali",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "bosnian_mokhtasar",
+    "languageIso": "bs",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Bosnian",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "chinese_mokhtasar",
+    "languageIso": "zh",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Chinese",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "english_mokhtasar",
+    "languageIso": "en",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — English",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "french_mokhtasar",
+    "languageIso": "fr",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — French",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "fulani_mokhtasar",
+    "languageIso": "ff",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Fulani",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "hindi_mokhtasar",
+    "languageIso": "hi",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Hindi",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "indonesian_mokhtasar",
+    "languageIso": "id",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Indonesian",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "italian_mokhtasar",
+    "languageIso": "it",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Italian",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "japanese_mokhtasar",
+    "languageIso": "ja",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Japanese",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "khmer_mokhtasar",
+    "languageIso": "km",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Khmer",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "kurdish_mokhtasar",
+    "languageIso": "ku",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Kurdish",
+    "book": "mokhtasar",
+    "direction": "rtl"
+  },
+  {
+    "key": "kyrgyz_mokhtasar",
+    "languageIso": "ky",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Kyrgyz",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "malayalam_mokhtasar",
+    "languageIso": "ml",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Malayalam",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "pashto_mokhtasar",
+    "languageIso": "ps",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Pashto",
+    "book": "mokhtasar",
+    "direction": "rtl"
+  },
+  {
+    "key": "persian_mokhtasar",
+    "languageIso": "fa",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Persian",
+    "book": "mokhtasar",
+    "direction": "rtl"
+  },
+  {
+    "key": "persian_saadi",
+    "languageIso": "fa",
+    "title": "Tafsir As-Sa'di — Persian",
+    "book": "saadi",
+    "direction": "rtl"
+  },
+  {
+    "key": "russian_mokhtasar",
+    "languageIso": "ru",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Russian",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "serbian_mokhtasar",
+    "languageIso": "sr",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Serbian",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "sinhalese_mokhtasar",
+    "languageIso": "si",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Sinhala",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "spanish_mokhtasar",
+    "languageIso": "es",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Spanish",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "tagalog_mokhtasar",
+    "languageIso": "tl",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Tagalog",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "tamil_mokhtasar",
+    "languageIso": "ta",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Tamil",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "telugu_mokhtasar",
+    "languageIso": "te",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Telugu",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "thai_mokhtasar",
+    "languageIso": "th",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Thai",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "turkish_mokhtasar",
+    "languageIso": "tr",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Turkish",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "uyghur_mokhtasar",
+    "languageIso": "ug",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Uyghur",
+    "book": "mokhtasar",
+    "direction": "rtl"
+  },
+  {
+    "key": "uzbek_mokhtasar",
+    "languageIso": "uz",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Uzbek",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  },
+  {
+    "key": "uzbek_moyassar",
+    "languageIso": "uz",
+    "title": "At-Tafsir al-Muyassar — Uzbek",
+    "book": "moyassar",
+    "direction": "ltr"
+  },
+  {
+    "key": "vietnamese_mokhtasar",
+    "languageIso": "vi",
+    "title": "Al-Mukhtasar fi Tafsir al-Quran — Vietnamese",
+    "book": "mokhtasar",
+    "direction": "ltr"
+  }
+]

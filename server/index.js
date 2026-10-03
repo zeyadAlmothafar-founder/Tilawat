@@ -13,7 +13,7 @@ app.use(express.json({ limit: '1mb' }));
 // Each feature module exports an express `router` (mounted at /api) and optionally
 // an async `init()`. A module that fails to load is logged and skipped so the rest
 // of the app keeps working.
-const MODULES = ['./quran.js', './reciters.js', './sources/index.js', './render/index.js', './share.js'];
+const MODULES = ['./quran.js', './tafsir.js', './reciters.js', './sources/index.js', './render/index.js', './share.js'];
 for (const file of MODULES) {
   try {
     const mod = await import(file);

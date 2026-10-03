@@ -6,8 +6,9 @@ import { planBackground, renderPieces, gradientInput, FPS } from './background.j
 import {
   ARABIC_FONTS, FONTS, translationFont, prepareJobFonts, missingChars, splitByCoverage, normalizePresentationForms,
 } from './fonts.js';
-import { buildLayout, chunkAyah, estimateBlockHeight } from './layout.js';
+import { buildLayout, chunkAyah, estimateBlockHeight, tafsirCardHeight, wrapTafsirText, wrapTranslationText } from './layout.js';
 import { buildAss, quranDisplayText } from './subtitles.js';
+import { planCards, gapSeconds, placeCards } from './cards.js';
 
 // Fonts tried (in order) for translation characters the main translation font lacks.
 const TRANSLATION_FALLBACKS = ['notoSans', 'naskh', 'amiri'];
@@ -35,7 +36,7 @@ export function footageCredit(clips) {
   return parts.join(' · ');
 }
 
-function buildCues(items, timeline, layout, duration, withTranslation) {
+function buildCues(items, timeline, layout, duration, withTranslation, endsWithCard = false) {
   const cues = [];
   items.forEach((item, i) => {
     const { start, end } = timeline[i];
@@ -52,7 +53,7 @@ function buildCues(items, timeline, layout, duration, withTranslation) {
         start: t,
         end: cEnd,
         arabic: c.arabic,
-        translation: c.translation,
+        translation: wrapTranslationText(layout, c.translation, translationScale),
         translationScale,
         marker: last && !item.isBismillah ? item.ayah : null,
         ayah: item.isBismillah ? 0 : item.ayah,
@@ -60,12 +61,26 @@ function buildCues(items, timeline, layout, duration, withTranslation) {
       t = cEnd;
     });
   });
-  // Show the first text right away and keep the last one through the audio tail.
+  // Show the first text right away and keep the last one through the audio tail (unless
+  // a tafsir card follows the last ayah — then the card stays through the tail).
   if (cues.length) {
     cues[0].start = Math.min(cues[0].start, 0.15);
-    cues[cues.length - 1].end = Math.max(cues[cues.length - 1].end, duration - 0.25);
+    if (!endsWithCard) cues[cues.length - 1].end = Math.max(cues[cues.length - 1].end, duration - 0.25);
   }
   return cues;
+}
+
+const EASTERN_DIGITS = '۰۱۲۳۴۵۶۷۸۹';
+const ARABIC_DIGITS = '٠١٢٣٤٥٦٧٨٩';
+const DIGITS_BY_LANGUAGE = { ar: ARABIC_DIGITS, ku: ARABIC_DIGITS, fa: EASTERN_DIGITS, ur: EASTERN_DIGITS, ps: EASTERN_DIGITS, prs: EASTERN_DIGITS };
+
+/** "AT-TAFSIR AL-MUYASSAR · 2:255" / "التفسير الميسر (٢٥٥)" — the label above a card. */
+function cardLabel(tafsir, surah, from, to, arabicScript) {
+  const range = from === to ? String(from) : `${from}–${to}`;
+  if (!arabicScript) return `${tafsir.label.toUpperCase()}  ·  ${surah}:${range}`;
+  const digits = DIGITS_BY_LANGUAGE[tafsir.languageIso];
+  const local = digits ? range.replace(/\d/g, (d) => digits[d]) : range;
+  return `${tafsir.label} (${local})`;
 }
 
 /**
@@ -103,30 +118,63 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
   await fsp.mkdir(workDir, { recursive: true });
   onProgress('audio', 0);
 
-  // 1. Audio: (Bismillah) + ayat, exact timeline.
+  // 1. Fonts and layout first: the tafsir cards' reading time decides the silent pauses
+  // in the audio track.
   const items = [...(spec.bismillah ? [{ ...spec.bismillah, isBismillah: true }] : []), ...spec.ayahs];
-  const audio = await buildAudioTrack(items.map((it) => it.audio), { cwd: workDir, signal });
-
-  // 2. Text: fonts, layout, chunked cues → subs.ass
-  stage('text');
   const arabicKey = await pickArabicFont(style.arabicFont, items);
   const sample = spec.ayahs.map((a) => a.translation || '').join(' ').trim();
   const trFont = spec.translation && sample ? translationFont(sample, spec.translation.languageIso) : null;
+  const tafsirSample = spec.ayahs.map((a) => a.tafsir?.text || '').join(' ').trim();
+  const tafsirOn = Boolean(spec.tafsir && tafsirSample);
+  const tafFont = tafsirOn ? translationFont(tafsirSample, spec.tafsir.languageIso) : null;
+  const labelArabic = tafsirOn && tafFont.script === 'arabic';
+  let labelFont = null;
+  if (tafsirOn) {
+    if (!labelArabic) labelFont = { key: 'notoSansSemiBold', bold: false };
+    else if ((await missingChars('amiriBold', spec.tafsir.label)).length) labelFont = { key: 'naskh', bold: false };
+    else labelFont = { key: 'amiriBold', bold: true };
+  }
   await prepareJobFonts(
-    [arabicKey, 'amiri', 'amiriBold', 'notoSans', 'notoSansMedium', ...TRANSLATION_FALLBACKS, ...(trFont ? [trFont.key] : [])],
+    [
+      arabicKey, 'amiri', 'amiriBold', 'notoSans', 'notoSansMedium', ...TRANSLATION_FALLBACKS,
+      ...(trFont ? [trFont.key] : []), ...(tafFont ? [tafFont.key, labelFont.key] : []),
+    ],
     path.join(workDir, 'fonts'),
   );
   const showFooterReciter = style.showReciter && Boolean(spec.reciter);
   const layout = buildLayout({
     width, height, aspect: spec.aspect, style,
-    fonts: { arabic: arabicKey, translation: trFont?.key || null },
+    fonts: { arabic: arabicKey, translation: trFont?.key || null, tafsir: tafFont?.key || null, tafsirLabelArabic: labelArabic },
     showHeader: style.showSurahTitle,
     showFooter: showFooterReciter,
+    // The tafsir credit gets its own line; on narrow 9:16 the main credit usually wraps too.
+    creditLines: tafsirOn ? (spec.aspect === '9:16' ? 3 : 2) : 1,
   });
-  const cues = buildCues(items, audio.timeline, layout, audio.duration, Boolean(trFont));
+  for (const item of items) item.cards = tafsirOn && item.tafsir ? planCards(layout, item.tafsir.text) : [];
+
+  // 2. Audio: (Bismillah) + ayat (+ silence while tafsir cards show), exact timeline.
+  const audio = await buildAudioTrack(items.map((it) => it.audio), {
+    cwd: workDir, signal, gaps: items.map((it) => gapSeconds(it.cards)),
+  });
+
+  // 3. Text: chunked cues + tafsir cards → subs.ass
+  stage('text');
+  const endsWithCard = items[items.length - 1].cards.length > 0;
+  const cues = buildCues(items, audio.timeline, layout, audio.duration, Boolean(trFont), endsWithCard);
   if (trFont) {
     const rtl = spec.translation.direction ? spec.translation.direction === 'rtl' : trFont.rtl;
     await addTranslationRuns(cues, trFont.key, rtl);
+  }
+  const cards = [];
+  items.forEach((item, i) => {
+    if (!item.cards.length) return;
+    const label = cardLabel(spec.tafsir, spec.surah.number, item.tafsir.groupStart, item.tafsir.groupEnd, labelArabic);
+    for (const c of placeCards(item.cards, audio.timeline[i].end)) cards.push({ ...c, text: wrapTafsirText(layout, c.text), ayah: item.ayah, label });
+  });
+  if (endsWithCard) cards[cards.length - 1].end = Math.max(cards[cards.length - 1].end, audio.duration - 0.25);
+  if (tafsirOn) {
+    const rtl = spec.tafsir.direction ? spec.tafsir.direction === 'rtl' : tafFont.rtl;
+    await addTranslationRuns(cards, tafFont.key, rtl, 'text');
   }
 
   // 3. Background pieces (clips) — drop clips that fail to decode and retry.
@@ -139,7 +187,7 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
     if (!plan) break;
     try {
       const list = await renderPieces(plan, {
-        width, height, overlay: style.overlay, band: textBand(layout, cues, style), cwd: workDir, signal, onProgress: progress,
+        width, height, overlay: style.overlay, band: textBand(layout, cues, cards, style), cwd: workDir, signal, onProgress: progress,
       });
       bgArgs = ['-f', 'concat', '-safe', '0', '-i', list];
       break;
@@ -161,11 +209,12 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
   const footage = footageCredit(usedClips);
   // QuranEnc's terms ask for the source and the translation's version number.
   const translationCredit = trFont && spec.translation.version ? ` (translation v${spec.translation.version})` : '';
-  const credit = [
+  let credit = [
     `Quran text${trFont ? ' & translation' : ''}: QuranEnc.com${translationCredit}`,
     'Recitation: EveryAyah.com',
     ...(footage ? [`Footage: ${footage}`] : []),
   ].join('  ·  ');
+  if (tafsirOn) credit += `\nTafsir: ${spec.tafsir.title} (QuranEnc.com)`;
   const header = style.showSurahTitle
     ? { nameAr: /^سورة/.test(spec.surah.nameAr) ? spec.surah.nameAr : `سورة ${spec.surah.nameAr}`, nameEn: spec.surah.nameEn }
     : null;
@@ -174,18 +223,23 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
     fonts: {
       arabic: FONTS[arabicKey].family,
       translation: trFont?.family,
+      tafsir: tafFont?.family,
+      tafsirLabel: labelFont && FONTS[labelFont.key].family,
+      tafsirLabelBold: Boolean(labelFont?.bold),
       arabicUi: 'Amiri',
       ui: 'Noto Sans',
       uiMedium: 'Noto Sans Medium',
     },
     position: style.position,
     cues,
+    cards,
     header,
     footer: { reciter: showFooterReciter ? spec.reciter : null, credit },
     duration: audio.duration,
   });
   await fsp.writeFile(path.join(workDir, 'subs.ass'), ass);
   await fsp.writeFile(path.join(workDir, 'cues.json'), JSON.stringify(cues, null, 1));
+  if (cards.length) await fsp.writeFile(path.join(workDir, 'cards.json'), JSON.stringify(cards, null, 1));
 
   // 4. Final pass: background + text + audio → H.264/AAC.
   stage('render');
@@ -235,16 +289,19 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
     seen.add(key);
     credits.push({ provider: c.provider, author: c.author || null, sourceUrl: c.sourceUrl || null });
   }
-  return { duration: info.duration, sizeBytes: size, credits, timings, cues };
+  return { duration: info.duration, sizeBytes: size, credits, timings, cues, cards };
 }
 
 /**
  * Extra-dark band behind the tallest text block, so text stays legible over bright
  * footage (sky, snow, clouds). Strength follows the user's overlay setting.
  */
-function textBand(layout, cues, style) {
+function textBand(layout, cues, cards, style) {
   if (style.overlay <= 0) return null;
-  const tallest = Math.max(...cues.map((c) => estimateBlockHeight(layout, c.arabic, c.translation)));
+  const tallest = Math.max(
+    ...cues.map((c) => estimateBlockHeight(layout, c.arabic, c.translation)),
+    ...cards.map((c) => tafsirCardHeight(layout, c.text)),
+  );
   const pad = layout.height * 0.03;
   const half = Math.min(tallest, layout.main.height) / 2 + pad;
   const [top, bottom] = style.position === 'lower'
@@ -272,13 +329,15 @@ async function pickArabicFont(choice, items) {
  * translation font routed to a fallback font, and a direction mark so libass picks the
  * right paragraph direction.
  */
-async function addTranslationRuns(cues, fontKey, rtl) {
+async function addTranslationRuns(cues, fontKey, rtl, field = 'translation') {
   const fallbacks = TRANSLATION_FALLBACKS.filter((k) => k !== fontKey);
   const mark = rtl ? '\u200F' : '\u200E';
   for (const cue of cues) {
-    if (!cue.translation) continue;
-    const runs = await splitByCoverage(mark + normalizePresentationForms(cue.translation), fontKey, fallbacks);
-    cue.translationRuns = runs.map((r) => ({ text: r.text, family: r.key ? FONTS[r.key].family : null }));
+    if (!cue[field]) continue;
+    // libass resolves direction per line ("\N"), so every line gets the mark.
+    const text = mark + normalizePresentationForms(cue[field]).replace(/\n/g, `\n${mark}`);
+    const runs = await splitByCoverage(text, fontKey, fallbacks);
+    cue[`${field}Runs`] = runs.map((r) => ({ text: r.text, family: r.key ? FONTS[r.key].family : null }));
   }
 }
 

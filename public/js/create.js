@@ -4,7 +4,7 @@ import { t, getLang, getLocale, isRtl, fmtNumber, fmtPercent, fmtApproxDuration,
 import { h, debounce, clamp, toast, showError, errorBlock, loadingBlock, nextId } from './ui.js';
 import { icon } from './icons.js';
 import { createSurahPicker } from './surah-picker.js';
-import { renderDevicePreview, renderAyahList } from './preview.js';
+import { renderDevicePreview, renderAyahList, indexTafsir } from './preview.js';
 
 const MAX_VIDEOS = 50;
 const MAX_AYAT_PER_VIDEO = 50;
@@ -13,6 +13,11 @@ const MAX_LISTED_AYAT = 300;
 const CATEGORIES = ['nature', 'space', 'mosque', 'islamic'];
 const NO_BISMILLAH = new Set([1, 9]);
 const STORE_KEY = 'qvs.create.v1';
+// Tafsir cards add reading time to the video (mirrors the renderer): words / 2.8 + 1.5 s, min 4 s.
+const TAFSIR_WORDS_PER_SECOND = 2.8;
+const TAFSIR_CARD_PADDING = 1.5;
+const TAFSIR_CARD_MIN = 4;
+const TAFSIR_FALLBACK_SECONDS = 20; // per ayah, until the tafsir text is loaded
 
 const PRESETS = [
   { id: 'fatiha', items: [{ surah: 1, from: 1, to: 7 }] },
@@ -30,6 +35,8 @@ const DEFAULT_STATE = {
   reciter: 'Alafasy_128kbps',
   translation: null,
   translationTouched: false,
+  tafsir: null,
+  tafsirCards: false,
   categories: ['nature'],
   approvedOnly: false,
   aspect: '9:16',
@@ -53,11 +60,14 @@ let rows = []; // [{ item, li, from, to, msg, meta }]
 let ayahGroups = [];
 let textToken = 0;
 let audio = null;
+let previewView = 'ayah'; // 'ayah' | 'tafsir'
 const bgCache = new Map(); // category -> thumb URL | null
+const tafsirCache = new Map(); // "surah:from:to:edition" -> { status, entries }
 const data = {
   surahs: null, surahMap: new Map(), surahsError: null,
   reciters: null, recitersError: null,
   translations: null, translationsError: null,
+  tafsirs: null, tafsirsError: null,
   status: null, bismillah: null,
 };
 
@@ -81,6 +91,8 @@ function loadState() {
     s.translationTouched = true;
     s.translation = typeof saved.translation === 'string' ? saved.translation : null;
   }
+  if (typeof saved.tafsir === 'string' && saved.tafsir) s.tafsir = saved.tafsir;
+  s.tafsirCards = Boolean(s.tafsir && saved.tafsirCards === true);
   const cats = Array.isArray(saved.categories) ? saved.categories.filter((c) => CATEGORIES.includes(c)) : [];
   if (cats.length) s.categories = cats;
   if (typeof saved.approvedOnly === 'boolean') s.approvedOnly = saved.approvedOnly;
@@ -106,11 +118,57 @@ export const currentAspect = () => (state || loadState()).aspect;
 function counts() {
   const ayat = state.items.reduce((n, i) => n + Math.max(0, i.to - i.from + 1), 0);
   const videos = state.mode === 'perAyah' ? ayat : state.items.length;
-  return { ayat, videos, seconds: ayat * SECONDS_PER_AYAH };
+  return { ayat, videos, seconds: ayat * SECONDS_PER_AYAH + (tafsirCardsOn() ? tafsirSeconds() : 0) };
 }
 
 const currentTranslation = () =>
   state.translation ? data.translations?.translations?.find((tr) => tr.key === state.translation) || null : null;
+
+/** The chosen tafsir edition (null when none, or when the server has no tafsir support). */
+const currentTafsir = () =>
+  state.tafsir ? data.tafsirs?.tafsirs?.find((tf) => tf.key === state.tafsir) || null : null;
+const tafsirCardsOn = () => Boolean(state.tafsirCards && currentTafsir());
+
+function tafsirInfo() {
+  const tf = currentTafsir();
+  if (!tf) return null;
+  return { key: tf.key, title: tafsirName(tf), label: tf.label || tf.title || tf.key, iso: tf.languageIso || null, dir: tf.direction || dirForLang(tf.languageIso) };
+}
+
+/** Last ayah fetched for a selection (lists and tafsir requests are capped). */
+const listedTo = (item) => Math.min(item.to, item.from + MAX_LISTED_AYAT - 1);
+const tafsirKey = (item, edition) => `${item.surah}:${item.from}:${listedTo(item)}:${edition}`;
+const tafsirStateFor = (item) => (state.tafsir ? tafsirCache.get(tafsirKey(item, state.tafsir)) || null : null);
+
+const cardSeconds = (text) => {
+  const words = String(text || '').trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(TAFSIR_CARD_MIN, words / TAFSIR_WORDS_PER_SECOND + TAFSIR_CARD_PADDING);
+};
+
+/** Extra reading time for tafsir cards: from the loaded texts, else ~20 s per ayah. */
+function tafsirSeconds() {
+  let total = 0;
+  for (const item of state.items) {
+    const count = Math.max(0, item.to - item.from + 1);
+    const ts = tafsirStateFor(item);
+    if (ts?.status !== 'ready') { total += count * TAFSIR_FALLBACK_SECONDS; continue; }
+    const index = indexTafsir(ts.entries);
+    const end = listedTo(item);
+    const seen = new Set();
+    for (let a = item.from; a <= end; a++) {
+      const entry = index.get(a);
+      if (!entry) continue;
+      // One card per explanation in a combined video; every per-ayah video gets its own card.
+      if (state.mode !== 'perAyah') {
+        if (seen.has(entry)) continue;
+        seen.add(entry);
+      }
+      total += cardSeconds(entry.text);
+    }
+    total += Math.max(0, item.to - end) * TAFSIR_FALLBACK_SECONDS;
+  }
+  return total;
+}
 
 /** Language and text direction of the selected translation (null iso = Arabic only). */
 function translationInfo() {
@@ -132,6 +190,10 @@ export function init(section) {
     reciter: $('#reciter-select'),
     reciterPreview: $('#reciter-preview'),
     translation: $('#translation-select'),
+    tafsirField: $('#tafsir-field'),
+    tafsir: $('#tafsir-select'),
+    tafsirCards: $('#tafsir-cards'),
+    previewView: $('#preview-view'),
     categories: $('#category-chips'),
     approvedOnly: $('#approved-only'),
     approvedNote: $('#approved-note'),
@@ -158,6 +220,7 @@ export function init(section) {
   renderSelections();
   renderReciters();
   renderTranslations();
+  renderTafsirs();
   onChange();
   loadData();
 
@@ -168,9 +231,10 @@ export function init(section) {
     renderSelections();
     renderReciters();
     renderTranslations();
+    renderTafsirs();
     syncOutputs();
     onChange({ texts: before !== state.translation });
-    if (before === state.translation) renderAyahList(els.ayahList, ayahGroups, { maxAyat: MAX_LISTED_AYAT });
+    if (before === state.translation) renderTextList();
     setAudioUi(audio ? 'playing' : 'idle');
   });
 }
@@ -199,6 +263,18 @@ function loadData() {
       .then((res) => { data.translations = { defaults: res?.defaults || {}, translations: res?.translations || [] }; data.translationsError = null; })
       .catch((err) => { data.translationsError = err; })
       .finally(() => { renderTranslations(); onChange({ texts: true }); });
+  }
+  if (!data.tafsirs && !data.tafsirsLoading) {
+    // Optional feature: if the server has no tafsir support (404) the controls stay hidden.
+    data.tafsirsLoading = true;
+    api.getTafsirs()
+      .then((res) => {
+        const list = Array.isArray(res?.tafsirs) ? res.tafsirs.filter((tf) => tf && typeof tf.key === 'string') : [];
+        data.tafsirs = { defaults: res?.defaults || {}, tafsirs: list };
+        data.tafsirsError = null;
+      })
+      .catch((err) => { data.tafsirsError = err; })
+      .finally(() => { data.tafsirsLoading = false; renderTafsirs(); onChange({ texts: true }); });
   }
   if (!data.bismillah) {
     api.getAyahs({ surah: 1, from: 1, to: 1, translation: null })
@@ -240,7 +316,32 @@ function bindEvents() {
     state.translationTouched = true;
     onChange({ texts: true });
   });
+  els.tafsir.addEventListener('change', () => {
+    state.tafsir = els.tafsir.value === 'none' ? null : els.tafsir.value;
+    if (!state.tafsir) state.tafsirCards = false;
+    syncTafsirControls();
+    onChange({ texts: true });
+  });
+  els.previewView.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-view]');
+    if (!btn) return;
+    previewView = btn.dataset.view === 'tafsir' ? 'tafsir' : 'ayah';
+    updatePreview();
+  });
   els.reciterPreview.addEventListener('click', toggleAudio);
+}
+
+/** Turning tafsir cards on without an edition picks the default for the UI language. */
+function setTafsirCards(on) {
+  state.tafsirCards = on;
+  let texts = false;
+  if (on && !currentTafsir()) {
+    state.tafsir = defaultTafsir();
+    state.tafsirCards = Boolean(state.tafsir);
+    texts = true;
+  }
+  syncTafsirControls();
+  onChange({ texts });
 }
 
 function onFormChange(e) {
@@ -255,6 +356,7 @@ function onFormChange(e) {
     case 'showSurahTitle': state.style.showSurahTitle = checked; break;
     case 'showReciter': state.style.showReciter = checked; break;
     case 'bismillah': state.bismillah = checked; break;
+    case 'tafsirCards': setTafsirCards(checked); return;
     default: return;
   }
   onChange();
@@ -488,11 +590,20 @@ function renderTranslations() {
     return;
   }
   const { translations } = data.translations;
+  fillGroupedSelect(sel, translations, t('create.translation.none'));
+  if (!state.translationTouched) state.translation = defaultTranslation();
+  if (state.translation && !translations.some((tr) => tr.key === state.translation)) state.translation = defaultTranslation();
+  sel.value = state.translation || 'none';
+  sel.disabled = false;
+}
+
+/** "None" + editions grouped by language (UI language first, then English, then A–Z). */
+function fillGroupedSelect(sel, list, noneLabel, nameOf = (item) => item.title || item.key) {
   const byLang = new Map();
-  for (const tr of translations) {
-    const iso = tr.languageIso || 'und';
+  for (const item of list) {
+    const iso = item.languageIso || 'und';
     if (!byLang.has(iso)) byLang.set(iso, []);
-    byLang.get(iso).push(tr);
+    byLang.get(iso).push(item);
   }
   const lang = getLang();
   const collator = new Intl.Collator(getLocale());
@@ -500,18 +611,90 @@ function renderTranslations() {
     (a, b) => (b === lang) - (a === lang) || (b === 'en') - (a === 'en') || collator.compare(languageName(a), languageName(b)),
   );
   sel.replaceChildren(
-    new Option(t('create.translation.none'), 'none'),
+    new Option(noneLabel, 'none'),
     ...order.map((iso) => {
       const group = document.createElement('optgroup');
       group.label = languageName(iso);
-      group.append(...byLang.get(iso).map((tr) => new Option(tr.title || tr.key, tr.key)));
+      group.append(...byLang.get(iso).map((item) => new Option(nameOf(item), item.key)));
       return group;
     }),
   );
-  if (!state.translationTouched) state.translation = defaultTranslation();
-  if (state.translation && !translations.some((tr) => tr.key === state.translation)) state.translation = defaultTranslation();
-  sel.value = state.translation || 'none';
-  sel.disabled = false;
+}
+
+// ---------- tafsir ----------
+
+/** Native-language name (e.g. 'التفسير الميسر') for editions in the UI language, else the full title. */
+const tafsirName = (tf) => (tf.languageIso === getLang() && tf.label) || tf.title || tf.key;
+
+const tafsirAvailable = () => Boolean(data.tafsirs?.tafsirs?.length);
+
+/** defaults[uiLang], else the first edition offered in the list. */
+function defaultTafsir() {
+  if (!tafsirAvailable()) return null;
+  const { defaults, tafsirs } = data.tafsirs;
+  const preferred = defaults?.[getLang()];
+  if (preferred && tafsirs.some((tf) => tf.key === preferred)) return preferred;
+  return [...els.tafsir.options].find((o) => o.value !== 'none')?.value || tafsirs[0].key;
+}
+
+function renderTafsirs() {
+  const available = tafsirAvailable();
+  els.tafsirField.hidden = !available;
+  if (!available) return; // still loading, or no tafsir support on this server
+  fillGroupedSelect(els.tafsir, data.tafsirs.tafsirs, t('create.tafsir.none'), tafsirName);
+  if (state.tafsir && !currentTafsir()) {
+    state.tafsir = null;
+    state.tafsirCards = false;
+  }
+  syncTafsirControls();
+}
+
+function syncTafsirControls() {
+  els.tafsir.value = state.tafsir || 'none';
+  els.tafsirCards.checked = tafsirCardsOn();
+}
+
+function tafsirListOptions() {
+  const info = tafsirInfo();
+  if (!info) return null;
+  return {
+    ...info,
+    stateFor: (g) => tafsirCache.get(tafsirKey({ surah: g.surahNumber, from: g.from, to: g.to }, info.key)) || null,
+    onRetry: (g) => {
+      tafsirCache.delete(tafsirKey({ surah: g.surahNumber, from: g.from, to: g.to }, info.key));
+      loadTafsirs();
+    },
+  };
+}
+
+/** Lazily fetch the chosen edition's tafsir for every selection (responses are cached). */
+function loadTafsirs() {
+  const edition = currentTafsir()?.key;
+  if (!edition || !data.surahs) return;
+  let started = false;
+  for (const item of state.items) {
+    const key = tafsirKey(item, edition);
+    if (tafsirCache.has(key)) continue;
+    const entry = { status: 'loading', entries: [] };
+    tafsirCache.set(key, entry);
+    started = true;
+    api.getTafsir({ surah: item.surah, from: item.from, to: listedTo(item), edition })
+      .then((res) => {
+        entry.entries = Array.isArray(res?.ayahs) ? res.ayahs : [];
+        entry.status = 'ready';
+      })
+      .catch(() => { entry.status = 'error'; }) // shown with a retry button
+      .finally(() => {
+        if (tafsirCache.get(key) !== entry || state.tafsir !== edition) return;
+        renderTextList();
+        updateSummary();
+        updatePreview();
+      });
+  }
+  if (started) {
+    renderTextList();
+    updatePreview();
+  }
 }
 
 function setAudioUi(mode) {
@@ -626,7 +809,7 @@ async function loadBackground() {
 
 function updateSummary() {
   const { videos, ayat, seconds } = counts();
-  els.summary.textContent = t('create.summary.text', {
+  els.summary.textContent = t(tafsirCardsOn() ? 'create.summary.textTafsir' : 'create.summary.text', {
     videos: t('create.summary.videos', { count: videos }),
     ayat: t('create.summary.ayat', { count: ayat }),
     duration: fmtApproxDuration(seconds),
@@ -688,10 +871,11 @@ async function loadTexts() {
   });
   const redraw = () => {
     if (token !== textToken) return;
-    renderAyahList(els.ayahList, ayahGroups, { maxAyat: MAX_LISTED_AYAT });
+    renderTextList();
     updatePreview();
   };
   redraw();
+  loadTafsirs();
   await Promise.all(
     ayahGroups.map(async (g) => {
       if (g.status === 'ready') return;
@@ -707,13 +891,46 @@ async function loadTexts() {
   );
 }
 
+function renderTextList() {
+  if (!els.ayahList) return;
+  renderAyahList(els.ayahList, ayahGroups, { maxAyat: MAX_LISTED_AYAT, tafsir: tafsirListOptions() });
+}
+
+/** The "Ayah | Tafsir card" switch above the preview (only when an edition is chosen). */
+function syncPreviewView(info) {
+  if (!info) previewView = 'ayah';
+  els.previewView.hidden = !info;
+  for (const btn of els.previewView.querySelectorAll('button[data-view]')) {
+    btn.setAttribute('aria-pressed', String(btn.dataset.view === previewView));
+  }
+}
+
+/** Tafsir card model for the first selected ayah. */
+function previewTafsir(info, first) {
+  if (!info || !first) return null;
+  const ts = tafsirStateFor(first);
+  const entry = ts?.status === 'ready' ? indexTafsir(ts.entries).get(first.from) : null;
+  return {
+    status: ts?.status || 'loading',
+    title: info.label, // the short label the video card shows
+    iso: info.iso,
+    dir: info.dir,
+    text: entry ? entry.text.trim() : '',
+    ref: `${fmtNumber(first.surah)}:${fmtNumber(first.from)}`,
+  };
+}
+
 function updatePreview() {
   if (!els.frame) return;
   const first = state.items[0];
   const group = ayahGroups[0];
   const matches = group && first && group.surahNumber === first.surah && group.from === first.from;
   const reciter = data.reciters?.find((r) => r.id === state.reciter) || null;
+  const tafsir = tafsirInfo();
+  syncPreviewView(tafsir);
   renderDevicePreview(els.frame, {
+    view: previewView,
+    tafsir: previewTafsir(tafsir, first),
     aspect: state.aspect,
     style: state.style,
     category: state.categories[0],
@@ -738,6 +955,7 @@ function buildRequest() {
     mode: state.mode,
     reciter: state.reciter,
     translation: state.translation || null,
+    tafsir: tafsirCardsOn() ? state.tafsir : null,
     categories: [...state.categories],
     aspect: state.aspect,
     quality: state.quality,

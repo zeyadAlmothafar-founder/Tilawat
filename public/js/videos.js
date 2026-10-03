@@ -4,7 +4,7 @@ import { t, fmtDuration, fmtBytes, fmtDate, fmtPercent, fmtNumber, onLanguageCha
 import { h, toast, showError, confirmDialog, openModal, stateBlock, loadingBlock, errorBlock } from './ui.js';
 import { icon } from './icons.js';
 import { openShareModal, openQrModal } from './share.js';
-import { isActive, surahNames, rangeLabel, reciterName, videoTitle, videoFileName, videoFileUrl } from './video-meta.js';
+import { isActive, surahNames, rangeLabel, reciterName, videoTitle, videoFileName, videoFileUrl, tafsirBadge } from './video-meta.js';
 
 const POLL_MS = 1500;
 
@@ -223,7 +223,13 @@ function createCard(video) {
         ar && h('span', { class: 'ar-name', lang: 'ar', dir: 'rtl', text: ar }),
         latin && h('span', { class: 'vc-latin', text: latin }),
       ),
-      h('p', { class: 'vc-range' }, h('span', { text: rangeLabel(v) }), v.translation?.languageIso && h('span', { class: 'pill', text: v.translation.languageIso.toUpperCase() })),
+      h(
+        'p',
+        { class: 'vc-range' },
+        h('span', { text: rangeLabel(v) }),
+        v.translation?.languageIso && h('span', { class: 'pill', text: v.translation.languageIso.toUpperCase() }),
+        tafsirBadge(v),
+      ),
       h('p', { class: 'vc-meta', text: meta.join(' · ') }),
       v.createdAt && h('p', { class: 'vc-date' }, h('time', { datetime: v.createdAt, text: fmtDate(v.createdAt) })),
     );

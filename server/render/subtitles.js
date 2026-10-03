@@ -3,6 +3,8 @@
 // which breaks Arabic joining. `Kerning: yes` is required for the end-of-ayah ornament
 // (U+06DD) to enclose its digits.
 
+import { CARD_FADE_MS } from './cards.js';
+
 const ARABIC_DIGITS = '٠١٢٣٤٥٦٧٨٩';
 const END_OF_AYAH = '\u06DD';
 const NBSP = '\u00A0';
@@ -80,7 +82,7 @@ function styleLine(name, o) {
  * cues: [{ start, end, arabic, translation|null, translationRuns?, marker: ayah number|null }]
  * fonts: { arabic, translation, ui, uiMedium, arabicUi } — family names
  */
-export function buildAss({ layout, fonts, position, cues, header, footer, duration }) {
+export function buildAss({ layout, fonts, position, cues, cards = [], header, footer, duration }) {
   const L = layout;
   const ar = L.arabic;
   const tr = L.translation;
@@ -158,6 +160,33 @@ export function buildAss({ layout, fonts, position, cues, header, footer, durati
     );
   }
 
+  const tf = L.tafsir;
+  if (tf && cards.length) {
+    styles.push(
+      styleLine('Tafsir', {
+        font: fonts.tafsir,
+        size: tf.size,
+        color: COLORS.translation,
+        alpha: 0.02,
+        outline: Math.max(2, Math.round(tf.size * 0.055)),
+        shadow: 1,
+        outlineAlpha: 0.4,
+        margin,
+      }),
+      styleLine('TafsirLabel', {
+        font: fonts.tafsirLabel,
+        bold: fonts.tafsirLabelBold,
+        size: tf.labelSize,
+        color: COLORS.gold,
+        spacing: tf.labelArabic ? 0 : Math.round(tf.labelSize * 0.1),
+        outline: 2,
+        shadow: 1,
+        outlineAlpha: 0.55,
+        margin,
+      }),
+    );
+  }
+
   const events = [];
   const ev = (start, end, style, text, layer = 0) =>
     events.push(`Dialogue: ${layer},${assTime(start)},${assTime(end)},${style},,0,0,0,,${text}`);
@@ -173,6 +202,17 @@ export function buildAss({ layout, fonts, position, cues, header, footer, durati
       text += `\\N{\\fs${L.gap}}\\h\\N{\\rTranslation\\blur2${fs}}${renderRuns(cue.translationRuns || cue.translation, fonts.translation)}`;
     }
     ev(cue.start, cue.end, 'Arabic', text, 1);
+  }
+
+  // Tafsir cards: gold book label + commentary, between ayat (the ayah text is not shown).
+  if (tf) {
+    const blur = Math.max(1, Math.round(tf.size * 0.03));
+    for (const card of cards) {
+      const text =
+        `{${anchor}\\fad(${CARD_FADE_MS},${CARD_FADE_MS})\\blur1}${escapeAss(card.label)}` +
+        `\\N{\\fs${tf.labelGap}}\\h\\N{\\rTafsir\\blur${blur}}${renderRuns(card.textRuns || card.text, fonts.tafsir)}`;
+      ev(card.start, card.end, 'TafsirLabel', text, 1);
+    }
   }
 
   if (header) {

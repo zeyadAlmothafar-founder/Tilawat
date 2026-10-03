@@ -87,6 +87,7 @@
     },
     "summary": {
       "text": "Ini akan mencipta {videos} · {ayat} · ~{duration}",
+      "textTafsir": "Ini akan mencipta {videos} · {ayat} dengan kad tafsir · ~{duration}",
       "videos": {
         "other": "{count} video"
       },
@@ -115,6 +116,18 @@
       "loading": "Memuatkan terjemahan…",
       "unavailable": "Terjemahan tidak tersedia buat masa ini",
       "hint": "Terjemahan makna daripada QuranEnc.com."
+    },
+    "tafsir": {
+      "label": "Tafsir (penjelasan)",
+      "none": "Tiada",
+      "hint": "Tafsir daripada QuranEnc.com. Tafsir yang dipilih juga dipaparkan di bawah setiap ayat dalam “Semak teks”.",
+      "addCards": "Tambah kad tafsir pada video",
+      "addCardsHint": "Memaparkan penjelasan ringkas selepas setiap ayat. Video akan menjadi lebih panjang.",
+      "blockLabel": "Tafsir",
+      "covers": "Tafsir ayat {from}–{to}",
+      "loadingText": "Memuatkan tafsir…",
+      "error": "Tafsir tidak dapat dimuatkan.",
+      "empty": "Tiada tafsir untuk ayat ini."
     },
     "backgrounds": {
       "title": "Rakaman latar",
@@ -160,7 +173,10 @@
       "textError": "Teks untuk pilihan ini tidak dapat dimuatkan.",
       "more": {
         "other": "…dan {count} ayat lagi"
-      }
+      },
+      "viewLabel": "Jenis pratonton",
+      "viewAyah": "Ayat",
+      "viewTafsir": "Kad tafsir"
     },
     "submit": {
       "other": "Cipta {count} video"
@@ -211,6 +227,8 @@
     },
     "ayahSingle": "Ayat {ayah}",
     "ayahRange": "Ayat {from}–{to}",
+    "tafsirBadge": "Tafsir",
+    "tafsirTitle": "Dengan kad tafsir: {title}",
     "play": "Main {title}",
     "progressLabel": "Kemajuan penghasilan",
     "cancelJob": "Batal",
@@ -275,6 +293,7 @@
     "credits": "Penghargaan",
     "creditQuran": "Teks al-Quran: {source}",
     "creditTranslation": "Terjemahan: {title}",
+    "creditTafsir": "Tafsir: {title} ({source})",
     "creditAudio": "Audio bacaan: {source}",
     "creditFootage": "Rakaman: {list}",
     "openStudio": "Cipta video anda sendiri"
@@ -368,6 +387,7 @@
     "surah_not_found": "Surah itu tidak ditemui.",
     "reciter_not_found": "Qari itu tidak tersedia.",
     "translation_not_found": "Terjemahan itu tidak tersedia.",
+    "tafsir_not_found": "Tafsir itu tidak tersedia.",
     "video_not_found": "Video itu sudah tiada.",
     "clip_not_found": "Klip itu sudah tiada.",
     "too_many_videos": "Terlalu banyak video dalam satu kumpulan.",

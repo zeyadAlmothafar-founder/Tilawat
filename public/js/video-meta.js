@@ -47,4 +47,18 @@ export function shareText(video) {
   return t(video.from === video.to ? 'share.textSingle' : 'share.textRange', vars);
 }
 
-export const videoFileUrl = (video) => video.url || `/output/${encodeURIComponent(video.id)}.mp4`;
+/** Tafsir edition burned into the video ({ key, title, languageIso, direction }) or null. */
+export const videoTafsir = (video) => (video?.tafsir && typeof video.tafsir === 'object' && video.tafsir.key ? video.tafsir : null);
+
+/** Small "Tafsir" pill for videos rendered with tafsir cards (null otherwise). */
+export function tafsirBadge(video) {
+  const tf = videoTafsir(video);
+  if (!tf) return null;
+  const el = document.createElement('span');
+  el.className = 'pill pill-tafsir';
+  el.textContent = t('videos.tafsirBadge');
+  el.title = t('videos.tafsirTitle', { title: tf.title || tf.key });
+  return el;
+}
+
+export const videoFileUrl =(video) => video.url || `/output/${encodeURIComponent(video.id)}.mp4`;

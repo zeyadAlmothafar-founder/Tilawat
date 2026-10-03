@@ -90,6 +90,7 @@
     },
     "summary": {
       "text": "Будет создано: {videos} · {ayat} · ~{duration}",
+      "textTafsir": "Будет создано: {videos} · {ayat} с карточками тафсира · ~{duration}",
       "videos": {
         "one": "{count} видео",
         "few": "{count} видео",
@@ -124,6 +125,18 @@
       "loading": "Загрузка переводов…",
       "unavailable": "Переводы сейчас недоступны",
       "hint": "Переводы смыслов с сайта QuranEnc.com."
+    },
+    "tafsir": {
+      "label": "Тафсир (толкование)",
+      "none": "Без тафсира",
+      "hint": "Тафсир с сайта QuranEnc.com. Выбранный тафсир также показывается под каждым аятом в разделе «Проверьте текст».",
+      "addCards": "Добавить в видео карточки тафсира",
+      "addCardsHint": "После каждого аята показывается краткое толкование. Видео станет длиннее.",
+      "blockLabel": "Тафсир",
+      "covers": "Толкование аятов {from}–{to}",
+      "loadingText": "Загрузка тафсира…",
+      "error": "Не удалось загрузить тафсир.",
+      "empty": "Для этого аята нет тафсира."
     },
     "backgrounds": {
       "title": "Фоновые видео",
@@ -175,7 +188,10 @@
         "few": "…и ещё {count} аята",
         "many": "…и ещё {count} аятов",
         "other": "…и ещё {count} аята"
-      }
+      },
+      "viewLabel": "Вид предпросмотра",
+      "viewAyah": "Аят",
+      "viewTafsir": "Карточка тафсира"
     },
     "submit": {
       "one": "Создать {count} видео",
@@ -235,6 +251,8 @@
     },
     "ayahSingle": "Аят {ayah}",
     "ayahRange": "Аяты {from}–{to}",
+    "tafsirBadge": "Тафсир",
+    "tafsirTitle": "С карточками тафсира: {title}",
     "play": "Воспроизвести: {title}",
     "progressLabel": "Ход обработки",
     "cancelJob": "Отменить",
@@ -299,6 +317,7 @@
     "credits": "Источники",
     "creditQuran": "Текст Корана: {source}",
     "creditTranslation": "Перевод: {title}",
+    "creditTafsir": "Тафсир: {title} ({source})",
     "creditAudio": "Аудио чтения: {source}",
     "creditFootage": "Видеоматериалы: {list}",
     "openStudio": "Создать своё видео"
@@ -392,6 +411,7 @@
     "surah_not_found": "Сура не найдена.",
     "reciter_not_found": "Этот чтец недоступен.",
     "translation_not_found": "Этот перевод недоступен.",
+    "tafsir_not_found": "Этот тафсир недоступен.",
     "video_not_found": "Это видео больше не существует.",
     "clip_not_found": "Этот ролик больше не существует.",
     "too_many_videos": "Слишком много видео в одной серии.",

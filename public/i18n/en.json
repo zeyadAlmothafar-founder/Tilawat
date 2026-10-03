@@ -88,6 +88,7 @@
     },
     "summary": {
       "text": "This will create {videos} · {ayat} · ~{duration}",
+      "textTafsir": "This will create {videos} · {ayat} with tafsir cards · ~{duration}",
       "videos": {
         "one": "{count} video",
         "other": "{count} videos"
@@ -118,6 +119,18 @@
       "loading": "Loading translations…",
       "unavailable": "Translations are unavailable right now",
       "hint": "Translations of the meanings from QuranEnc.com."
+    },
+    "tafsir": {
+      "label": "Tafsir (explanation)",
+      "none": "None",
+      "hint": "Tafsir from QuranEnc.com. The chosen tafsir is also shown under each ayah in “Check the text”.",
+      "addCards": "Add tafsir cards to the video",
+      "addCardsHint": "Shows a short explanation after each ayah. Makes the video longer.",
+      "blockLabel": "Tafsir",
+      "covers": "Explains ayat {from}–{to}",
+      "loadingText": "Loading the tafsir…",
+      "error": "Couldn't load the tafsir.",
+      "empty": "No tafsir is available for this ayah."
     },
     "backgrounds": {
       "title": "Background footage",
@@ -165,7 +178,10 @@
       "more": {
         "one": "…and {count} more ayah",
         "other": "…and {count} more ayat"
-      }
+      },
+      "viewLabel": "Preview type",
+      "viewAyah": "Ayah",
+      "viewTafsir": "Tafsir card"
     },
     "submit": {
       "one": "Create {count} video",
@@ -219,6 +235,8 @@
     },
     "ayahSingle": "Ayah {ayah}",
     "ayahRange": "Ayat {from}–{to}",
+    "tafsirBadge": "Tafsir",
+    "tafsirTitle": "Includes tafsir cards: {title}",
     "play": "Play {title}",
     "progressLabel": "Rendering progress",
     "cancelJob": "Cancel",
@@ -283,6 +301,7 @@
     "credits": "Credits",
     "creditQuran": "Quran text: {source}",
     "creditTranslation": "Translation: {title}",
+    "creditTafsir": "Tafsir: {title} ({source})",
     "creditAudio": "Recitation audio: {source}",
     "creditFootage": "Footage: {list}",
     "openStudio": "Make your own video"
@@ -376,6 +395,7 @@
     "surah_not_found": "That surah couldn't be found.",
     "reciter_not_found": "That reciter isn't available.",
     "translation_not_found": "That translation isn't available.",
+    "tafsir_not_found": "That tafsir isn't available.",
     "video_not_found": "That video no longer exists.",
     "clip_not_found": "That clip no longer exists.",
     "too_many_videos": "Too many videos in one batch.",

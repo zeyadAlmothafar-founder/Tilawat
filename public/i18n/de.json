@@ -88,6 +88,7 @@
     },
     "summary": {
       "text": "Das ergibt {videos} · {ayat} · ~{duration}",
+      "textTafsir": "Das ergibt {videos} · {ayat} mit Tafsir-Karten · ~{duration}",
       "videos": {
         "one": "{count} Video",
         "other": "{count} Videos"
@@ -118,6 +119,18 @@
       "loading": "Übersetzungen werden geladen…",
       "unavailable": "Übersetzungen sind gerade nicht verfügbar",
       "hint": "Übersetzungen der Bedeutungen von QuranEnc.com."
+    },
+    "tafsir": {
+      "label": "Tafsir (Koranexegese)",
+      "none": "Keiner",
+      "hint": "Tafsir von QuranEnc.com. Der gewählte Tafsir erscheint auch unter jedem Vers in „Text prüfen“.",
+      "addCards": "Tafsir-Karten zum Video hinzufügen",
+      "addCardsHint": "Zeigt nach jedem Vers eine kurze Erläuterung. Das Video wird dadurch länger.",
+      "blockLabel": "Tafsir",
+      "covers": "Erläutert die Verse {from}–{to}",
+      "loadingText": "Tafsir wird geladen…",
+      "error": "Der Tafsir konnte nicht geladen werden.",
+      "empty": "Für diesen Vers ist kein Tafsir verfügbar."
     },
     "backgrounds": {
       "title": "Hintergrundvideos",
@@ -165,7 +178,10 @@
       "more": {
         "one": "…und {count} weiterer Vers",
         "other": "…und {count} weitere Verse"
-      }
+      },
+      "viewLabel": "Vorschauart",
+      "viewAyah": "Vers",
+      "viewTafsir": "Tafsir-Karte"
     },
     "submit": {
       "one": "{count} Video erstellen",
@@ -219,6 +235,8 @@
     },
     "ayahSingle": "Vers {ayah}",
     "ayahRange": "Verse {from}–{to}",
+    "tafsirBadge": "Tafsir",
+    "tafsirTitle": "Mit Tafsir-Karten: {title}",
     "play": "{title} abspielen",
     "progressLabel": "Renderfortschritt",
     "cancelJob": "Abbrechen",
@@ -283,6 +301,7 @@
     "credits": "Quellenangaben",
     "creditQuran": "Korantext: {source}",
     "creditTranslation": "Übersetzung: {title}",
+    "creditTafsir": "Tafsir: {title} ({source})",
     "creditAudio": "Rezitation (Audio): {source}",
     "creditFootage": "Videomaterial: {list}",
     "openStudio": "Eigenes Video erstellen"
@@ -376,6 +395,7 @@
     "surah_not_found": "Diese Sure wurde nicht gefunden.",
     "reciter_not_found": "Dieser Rezitator ist nicht verfügbar.",
     "translation_not_found": "Diese Übersetzung ist nicht verfügbar.",
+    "tafsir_not_found": "Dieser Tafsir ist nicht verfügbar.",
     "video_not_found": "Dieses Video existiert nicht mehr.",
     "clip_not_found": "Dieser Clip existiert nicht mehr.",
     "too_many_videos": "Zu viele Videos in einem Stapel.",

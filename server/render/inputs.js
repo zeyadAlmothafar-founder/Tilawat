@@ -6,6 +6,7 @@ import { OUTPUT_DIR, TMP_DIR } from '../paths.js';
 import { outputSize, orientationOf } from './layout.js';
 import { LEAD_IN, TAIL } from './audio.js';
 import { mapLimit } from './util.js';
+import { estimateTafsirSeconds } from './cards.js';
 
 const lazy = (file) => {
   let mod;
@@ -14,6 +15,7 @@ const lazy = (file) => {
 export const quranModule = lazy('../quran.js');
 export const recitersModule = lazy('../reciters.js');
 export const sourcesModule = lazy('../sources/index.js');
+export const tafsirModule = lazy('../tafsir.js');
 
 /** Bismillah is recited before ayah 1 of every surah except Al-Fatihah (where it is ayah 1) and At-Tawbah. */
 export const wantsBismillah = (req) => req.bismillah && req.from === 1 && req.surah !== 1 && req.surah !== 9;
@@ -27,9 +29,10 @@ export async function buildSpec(record, { signal, onProgress = () => {} } = {}) 
   const quran = await quranModule();
   const reciters = await recitersModule();
 
-  const [ayahRows, reciter] = await Promise.all([
+  const [ayahRows, reciter, tafsirRows] = await Promise.all([
     quran.getAyahs(req.surah, req.from, req.to, req.translation),
     reciters.getReciter(req.reciter),
+    req.tafsir ? tafsirModule().then((m) => m.getTafsir(req.surah, req.from, req.to, req.tafsir)) : null,
   ]);
   let done = 0;
   const total = ayahRows.length + (wantsBismillah(req) ? 1 : 0);
@@ -42,6 +45,19 @@ export async function buildSpec(record, { signal, onProgress = () => {} } = {}) 
   const audios = await mapLimit(ayahRows, 4, (row) => fetchAudio(row.surah, row.ayah));
   const ayahs = ayahRows.map((row, i) => ({ ayah: row.ayah, arabic: row.arabic, translation: row.translation, audio: audios[i] }));
 
+  // Tafsir: a group's commentary is shown once, after its last ayah (or after the last ayah
+  // of the video when the group runs past it). Empty texts never become a card.
+  let tafsir = null;
+  if (tafsirRows) {
+    const edition = (await tafsirModule()).getTafsirEdition(req.tafsir);
+    tafsir = { key: edition.key, title: edition.title, languageIso: edition.languageIso, direction: edition.direction, book: edition.book, label: edition.label };
+    tafsirRows.forEach((row, i) => {
+      if (row.text && (row.ayah === row.groupEnd || row.ayah === req.to)) {
+        ayahs[i].tafsir = { text: row.text, groupStart: Math.max(row.groupStart, req.from), groupEnd: Math.min(row.groupEnd, req.to) };
+      }
+    });
+  }
+
   let bismillah = null;
   if (wantsBismillah(req)) {
     const [arabic, first, audio] = await Promise.all([
@@ -53,7 +69,8 @@ export async function buildSpec(record, { signal, onProgress = () => {} } = {}) 
   }
 
   // Footage: never fatal — the renderer falls back to a generated background.
-  const audioSeconds = [...ayahs, ...(bismillah ? [bismillah] : [])].reduce((s, a) => s + (a.audio.duration || 0), 0);
+  const audioSeconds = [...ayahs, ...(bismillah ? [bismillah] : [])].reduce((s, a) => s + (a.audio.duration || 0), 0)
+    + ayahs.reduce((s, a) => s + (a.tafsir ? estimateTafsirSeconds(a.tafsir.text) : 0), 0);
   let clips = [];
   onProgress('clips', 0);
   try {
@@ -82,6 +99,7 @@ export async function buildSpec(record, { signal, onProgress = () => {} } = {}) 
     surah: record.surah,
     reciter: { nameEn: reciter.nameEn, nameAr: reciter.nameAr },
     translation: record.translation,
+    tafsir,
     ayahs,
     bismillah,
     clips: Array.isArray(clips) ? clips : [],

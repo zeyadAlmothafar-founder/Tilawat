@@ -21,7 +21,7 @@ Run: `npm start` → http://localhost:4700 (PORT env). Keys come from `.env` (se
 | Path | Contents |
 |---|---|
 | `server/index.js`, `server/paths.js`, `server/lib/*` | App entry, paths, shared helpers |
-| `server/quran.js`, `server/reciters.js`, `server/data/*` | Quran text, translations, reciters |
+| `server/quran.js`, `server/tafsir.js`, `server/reciters.js`, `server/data/*` | Quran text, translations, tafsir, reciters |
 | `server/sources/**` | Background footage providers, content filter, clip library |
 | `server/render/**`, `assets/fonts/**` | FFmpeg render pipeline, job queue, fonts |
 | `server/share.js`, `public/**` | Sharing endpoints, frontend, UI translations |
@@ -42,7 +42,7 @@ Run: `npm start` → http://localhost:4700 (PORT env). Keys come from `.env` (se
 
 ## Module loading
 
-`server/index.js` dynamically imports, in order: `./quran.js`, `./reciters.js`,
+`server/index.js` dynamically imports, in order: `./quran.js`, `./tafsir.js`, `./reciters.js`,
 `./sources/index.js`, `./render/index.js`, `./share.js`. Each may export:
 - `router` — an `express.Router()` mounted at **`/api`** (so define routes like `router.get('/surahs', …)`)
 - `init()` — optional async startup hook (keep it fast; no network calls that block startup).
@@ -66,6 +66,24 @@ export async function getAyahs(surah, from, to, translationKey /* string|null */
 //      translationRaw /* exactly as QuranEnc returns it, or null */, footnotes /* string|null */ }]
 // Arabic text is QuranEnc's `arabic_text`, verbatim. Validates ranges (httpError 400 'invalid_range').
 export async function getBismillahText()          // → Arabic text of 1:1, verbatim from QuranEnc
+```
+
+### `server/tafsir.js`
+Tafsir (commentary) editions come from QuranEnc through the translation endpoints; most are not
+in `/translations/list`, so the verified list is `server/data/tafsirs.json`, written by
+`node scripts/check-tafsirs.js` (probes `<language>_mokhtasar|_moyassar|_saadi`, keeps editions whose
+surahs 1 and 2 are complete). Texts are cached in `cache/quran/tafsir-<key>/<surah>.json`.
+```js
+export async function getTafsirs()
+// → [{ key: 'english_mokhtasar', languageIso: 'en', title: 'Al-Mukhtasar fi Tafsir al-Quran — English',
+//      book: 'mokhtasar'|'moyassar'|'saadi', direction: 'ltr'|'rtl', label: 'Al-Mukhtasar' /* short name in the edition's script */ }]
+export function getTafsirEdition(key)              // one of the above, or throws httpError(400,'unknown_tafsir')
+export function defaultTafsirFor(uiLang)           // → key or null (Al-Mukhtasar preferred; 'ar' → 'arabic_mokhtasar')
+export async function getTafsir(surah, from, to, key)
+// → [{ ayah, text /* ayah-number prefix and footnote markers removed */, textRaw, groupStart, groupEnd }]
+// Some editions explain several ayat in one text (QuranEnc repeats it or leaves later entries
+// empty): those ayat form one group and share the same text. Errors: 400 'unknown_tafsir',
+// 400 'invalid_range', 502 'upstream_unavailable'.
 ```
 
 ### `server/reciters.js`
@@ -105,6 +123,11 @@ export function listVideos()                      // records, newest first
 - `GET /api/ayahs?surah=1&from=1&to=7&translation=english_saheeh` (translation optional / `none`)
   → `{ surah: {…getSurah}, from, to, translation: {key,languageIso,title}|null, ayahs: [...getAyahs] }`
   (max 300 ayat per request)
+- `GET /api/tafsirs` → `{ defaults: { en: 'english_mokhtasar', ar: 'arabic_mokhtasar', de: null, ... }, tafsirs: [...getTafsirs] }`
+- `GET /api/tafsir?surah=2&from=255&to=255&edition=english_mokhtasar` (from/to optional, max 300 ayat)
+  → `{ edition: { key, languageIso, title, direction, book, label }, surah, from, to,
+  ayahs: [{ ayah, text, groupStart, groupEnd }] }` (ayat of one group repeat the group's text — show it once).
+  Errors: 400 `unknown_tafsir` (missing/unknown edition), 400 `invalid_range`, 502 `upstream_unavailable`.
 - `GET /api/reciters` → array from `getReciters()`
 - `GET /api/reciters/:id/audio/:surah/:ayah` → `audio/mpeg` (the cached mp3; used for preview)
 
@@ -138,6 +161,7 @@ Render request:
   "mode": "combined",            // "combined" = one video per item; "perAyah" = one video per ayah
   "reciter": "Alafasy_128kbps",
   "translation": "english_saheeh", // or null for Arabic only
+  "tafsir": "english_mokhtasar",   // optional; null/absent = no tafsir. Unknown key → 400 invalid_tafsir
   "categories": ["nature", "space"],
   "aspect": "9:16",              // "9:16" | "16:9" | "1:1"
   "quality": "1080",             // "1080" | "720"
@@ -155,6 +179,16 @@ Render request:
 ```
 Limits: ≤ 50 videos per request, ≤ 50 ayat per video. Unknown/missing fields get defaults.
 
+Tafsir cards: with `tafsir` set, after each ayah's recitation (after the last ayah of a tafsir group,
+or the last ayah of the video if the group runs past it) the ayah text fades out and one or more
+cards show a gold label (book short name + ayah, e.g. `AL-MUKHTASAR · 2:255` / `التفسير الميسر (٢٥٥)`)
+and the commentary in the translation-style font of its language (RTL for Arabic-script editions).
+The background keeps playing and the audio is silent meanwhile (the recitation timing is unchanged;
+the pause is spliced in after loudness normalization). Each card shows for max(4 s, words / 2.8 + 1.5 s);
+long texts are split at sentence (then clause, then word) boundaries into balanced cards that fit the
+text area. Header and footer stay; the credit adds `Tafsir: <title> — QuranEnc.com`. Translation and
+tafsir are independent. The video duration includes the cards.
+
 Video record (one per output video; also used as the job status):
 ```json
 { "id": "v8f3k2a1", "batchId": "b1x9…", "status": "queued|running|done|error|canceled",
@@ -163,6 +197,7 @@ Video record (one per output video; also used as the job status):
   "surah": { "number": 1, "nameAr": "الفاتحة", "nameEn": "Al-Fatihah" }, "from": 1, "to": 7,
   "reciter": { "id": "Alafasy_128kbps", "nameEn": "Mishary Alafasy", "nameAr": "مشاري العفاسي" },
   "translation": { "key": "english_saheeh", "languageIso": "en", "title": "…" },
+  "tafsir": { "key": "english_mokhtasar", "title": "…", "languageIso": "en", "direction": "ltr" },  // or null
   "aspect": "9:16", "width": 1080, "height": 1920, "duration": 41.2, "sizeBytes": 5123456,
   "url": "/output/v8f3k2a1.mp4", "thumbUrl": "/output/v8f3k2a1.jpg",
   "credits": [{ "provider": "pexels", "author": "…", "sourceUrl": "…" }],

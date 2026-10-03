@@ -30,9 +30,55 @@ async function prepareClip(input, index, { cwd, signal }) {
 
 /**
  * Concatenate recitation files into one loudness-normalized track and return the exact
- * timeline: parts [{ path }] → { file, duration, timeline: [{ start, end }] }.
+ * timeline: parts [{ path }] → { file, duration, timeline: [{ start, end, gapEnd }] }.
+ * `gaps[i]` (seconds, optional) inserts that much silence right after part i (tafsir
+ * cards); the silence spans [end, gapEnd] in the timeline.
  */
-export async function buildAudioTrack(parts, { cwd, signal, out = 'audio.flac' }) {
+export async function buildAudioTrack(parts, { cwd, signal, out = 'audio.flac', gaps = [] }) {
+  if (!gaps.some((g) => g > 0)) return buildSpeechTrack(parts, { cwd, signal, out });
+  // Normalize the recitation alone (silence would skew loudnorm's gain), then splice the
+  // pauses in at exact sample positions.
+  const speech = await buildSpeechTrack(parts, { cwd, signal, out: 'speech.flac' });
+  const cutAt = (seconds) => Math.round(seconds * RATE);
+  const totalSpeech = cutAt(speech.duration);
+  const chains = [];
+  const labels = [];
+  const segments = [];
+  let prev = 0;
+  speech.timeline.forEach((t, i) => {
+    const gap = Math.round((gaps[i] || 0) * RATE);
+    if (gap <= 0) return;
+    segments.push([prev, cutAt(t.end)]);
+    segments.push(gap);
+    prev = cutAt(t.end);
+  });
+  segments.push([prev, totalSpeech]);
+  const speechParts = segments.filter((s) => Array.isArray(s)).length;
+  chains.push(`[0:a]asplit=${speechParts}${Array.from({ length: speechParts }, (_, k) => `[s${k}]`).join('')}`);
+  let k = 0;
+  segments.forEach((seg, j) => {
+    if (Array.isArray(seg)) {
+      chains.push(`[s${k++}]atrim=start_sample=${seg[0]}:end_sample=${seg[1]},asetpts=PTS-STARTPTS,aformat=sample_fmts=fltp:channel_layouts=stereo[p${j}]`);
+    } else {
+      chains.push(`anullsrc=r=${RATE}:cl=stereo,atrim=end_sample=${seg},aformat=sample_fmts=fltp:channel_layouts=stereo[p${j}]`);
+    }
+    labels.push(`[p${j}]`);
+  });
+  const total = totalSpeech + segments.reduce((s, seg) => s + (Array.isArray(seg) ? 0 : seg), 0);
+  chains.push(`${labels.join('')}concat=n=${labels.length}:v=0:a=1,apad=whole_len=${total},atrim=end_sample=${total}[out]`);
+  await runFfmpeg(['-i', path.basename(speech.file), '-filter_complex', chains.join(';'), '-map', '[out]', '-c:a', 'flac', out], { cwd, signal });
+
+  let shift = 0;
+  const timeline = speech.timeline.map((t, i) => {
+    const gap = Math.round((gaps[i] || 0) * RATE) / RATE;
+    const entry = { start: t.start + shift, end: t.end + shift, gapEnd: t.end + shift + gap };
+    shift += gap;
+    return entry;
+  });
+  return { file: path.join(cwd, out), duration: total / RATE, timeline };
+}
+
+async function buildSpeechTrack(parts, { cwd, signal, out }) {
   const clips = await mapLimit(parts, 4, (part, i) => prepareClip(part.path, i, { cwd, signal }));
   const lead = Math.round(LEAD_IN * RATE);
   const tail = Math.round(TAIL * RATE);

@@ -92,6 +92,7 @@
     },
     "summary": {
       "text": "سيتم إنشاء {videos} · {ayat} · نحو {duration}",
+      "textTafsir": "سيتم إنشاء {videos} · {ayat} مع بطاقات التفسير · نحو {duration}",
       "videos": {
         "zero": "لا فيديوهات",
         "one": "فيديو واحد",
@@ -130,6 +131,18 @@
       "loading": "جارٍ تحميل الترجمات…",
       "unavailable": "الترجمات غير متاحة حاليًا",
       "hint": "ترجمات معاني القرآن الكريم من موقع QuranEnc.com."
+    },
+    "tafsir": {
+      "label": "التفسير (بيان المعاني)",
+      "none": "بدون تفسير",
+      "hint": "التفسير من موقع QuranEnc.com، ويظهر التفسير المختار أيضًا تحت كل آية في «راجِع النص».",
+      "addCards": "إضافة بطاقات التفسير إلى الفيديو",
+      "addCardsHint": "تعرض شرحًا موجزًا بعد كل آية، وتجعل الفيديو أطول.",
+      "blockLabel": "التفسير",
+      "covers": "تفسير الآيات {from}–{to}",
+      "loadingText": "جارٍ تحميل التفسير…",
+      "error": "تعذّر تحميل التفسير.",
+      "empty": "لا يتوفر تفسير لهذه الآية."
     },
     "backgrounds": {
       "title": "مقاطع الخلفية",
@@ -185,7 +198,10 @@
         "few": "…و{count} آيات أخرى",
         "many": "…و{count} آية أخرى",
         "other": "…و{count} آية أخرى"
-      }
+      },
+      "viewLabel": "نوع المعاينة",
+      "viewAyah": "الآية",
+      "viewTafsir": "بطاقة التفسير"
     },
     "submit": {
       "zero": "إنشاء الفيديوهات",
@@ -251,6 +267,8 @@
     },
     "ayahSingle": "الآية {ayah}",
     "ayahRange": "الآيات {from}–{to}",
+    "tafsirBadge": "تفسير",
+    "tafsirTitle": "يتضمن بطاقات التفسير: {title}",
     "play": "تشغيل {title}",
     "progressLabel": "تقدّم الإنشاء",
     "cancelJob": "إلغاء",
@@ -315,6 +333,7 @@
     "credits": "المصادر والشكر",
     "creditQuran": "نص القرآن: {source}",
     "creditTranslation": "الترجمة: {title}",
+    "creditTafsir": "التفسير: {title} ({source})",
     "creditAudio": "التلاوة: {source}",
     "creditFootage": "المقاطع المرئية: {list}",
     "openStudio": "أنشئ فيديو خاصًا بك"
@@ -408,6 +427,7 @@
     "surah_not_found": "تعذّر العثور على هذه السورة.",
     "reciter_not_found": "هذا القارئ غير متاح.",
     "translation_not_found": "هذه الترجمة غير متاحة.",
+    "tafsir_not_found": "هذا التفسير غير متاح.",
     "video_not_found": "هذا الفيديو لم يعد موجودًا.",
     "clip_not_found": "هذا المقطع لم يعد موجودًا.",
     "too_many_videos": "عدد الفيديوهات في الدفعة الواحدة كبير جدًا.",

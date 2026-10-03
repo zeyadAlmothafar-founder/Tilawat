@@ -124,6 +124,18 @@
               <select id="translation-select" class="select"></select>
               <p class="field-hint" data-i18n="create.translation.hint"></p>
             </div>
+            <div class="field tafsir-field" id="tafsir-field" hidden>
+              <label class="field-label" for="tafsir-select">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>
+                <span data-i18n="create.tafsir.label"></span>
+              </label>
+              <select id="tafsir-select" class="select" aria-describedby="tafsir-hint"></select>
+              <p class="field-hint" id="tafsir-hint" data-i18n="create.tafsir.hint"></p>
+              <label class="switch-row tafsir-switch">
+                <input type="checkbox" class="switch" name="tafsirCards" id="tafsir-cards" aria-describedby="tafsir-cards-hint">
+                <span><span data-i18n="create.tafsir.addCards"></span><small class="field-hint" id="tafsir-cards-hint" data-i18n="create.tafsir.addCardsHint"></small></span>
+              </label>
+            </div>
           </section>
 
           <section class="card form-section" aria-labelledby="sec-backgrounds">
@@ -220,6 +232,10 @@
               <h2 id="preview-title" class="card-title" data-i18n="create.preview.title"></h2>
               <span class="muted small" data-i18n="create.preview.hint"></span>
             </div>
+            <div id="preview-view" class="toggle-group preview-view" role="group" data-i18n-attr="aria-label:create.preview.viewLabel" hidden>
+              <button type="button" class="toggle" data-view="ayah" aria-pressed="true" data-i18n="create.preview.viewAyah"></button>
+              <button type="button" class="toggle" data-view="tafsir" aria-pressed="false" data-i18n="create.preview.viewTafsir"></button>
+            </div>
             <div class="preview-stage">
               <div id="preview-frame" class="device-frame" data-aspect="9:16" data-position="center">
                 <div class="device-screen">
@@ -232,6 +248,10 @@
                       <p class="pv-bismillah" lang="ar" dir="rtl" hidden></p>
                       <p class="pv-arabic" lang="ar" dir="rtl"></p>
                       <p class="pv-translation" dir="auto"></p>
+                      <div class="pv-tafsir" hidden>
+                        <p class="pv-tafsir-label"></p>
+                        <p class="pv-tafsir-text"></p>
+                      </div>
                     </div>
                     <div class="pv-foot">
                       <span class="pv-reciter"></span>

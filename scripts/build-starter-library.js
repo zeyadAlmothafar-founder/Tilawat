@@ -3,7 +3,9 @@
 //
 //   node --env-file=.env scripts/build-starter-library.js collect
 //     → searches Pixabay (needs PIXABAY_API_KEY), filters, writes tmp/starter/candidates.json
-//       and numbered contact sheets (tmp/starter/sheet-<orientation>-<n>.png) for review
+//   node scripts/build-starter-library.js sheets [perGroup=24]
+//     → numbered contact sheets of the most popular candidates per orientation and category
+//       (tmp/starter/sheet-<orientation>-<category>.png) for visual review
 //   node --env-file=.env scripts/build-starter-library.js write <n,n,...>
 //     → writes the chosen candidate numbers to server/data/starter-library.json
 import fs from 'node:fs';
@@ -54,10 +56,30 @@ async function collect() {
   list.forEach((c, i) => { c.n = i + 1; });
   fs.mkdirSync(OUT, { recursive: true });
   fs.writeFileSync(CANDIDATES, JSON.stringify(list, null, 2));
+  for (const o of ['portrait', 'landscape']) console.log(`${o}: ${list.filter((c) => orientation(c) === o).length} candidates`);
+}
+
+/** Round-robin across the search queries so one subject (e.g. ocean waves) doesn't dominate. */
+function varied(clips) {
+  const byQuery = new Map();
+  for (const c of clips) {
+    const key = c.query.replace(/ vertical$/, '');
+    byQuery.set(key, [...(byQuery.get(key) || []), c]);
+  }
+  const lists = [...byQuery.values()];
+  const out = [];
+  for (let i = 0; lists.some((l) => i < l.length); i++) for (const l of lists) if (i < l.length) out.push(l[i]);
+  return out;
+}
+
+/** Search results come back most-popular first, so the first per group are the best bets. */
+async function sheets(perGroup) {
+  const list = JSON.parse(fs.readFileSync(CANDIDATES, 'utf8'));
   for (const o of ['portrait', 'landscape']) {
-    const subset = list.filter((c) => orientation(c) === o);
-    console.log(`${o}: ${subset.length} candidates`);
-    for (let s = 0; s * PER_SHEET < subset.length; s++) await sheet(subset.slice(s * PER_SHEET, (s + 1) * PER_SHEET), `${o}-${s + 1}`);
+    for (const category of CATEGORY_IDS) {
+      const group = varied(list.filter((c) => orientation(c) === o && c.category === category)).slice(0, perGroup);
+      if (group.length) await sheet(group, `${o}-${category}`);
+    }
   }
 }
 
@@ -100,5 +122,6 @@ function write(numbers) {
 
 const [mode, arg] = process.argv.slice(2);
 if (mode === 'collect') await collect();
+else if (mode === 'sheets') await sheets(Number(arg) || PER_SHEET);
 else if (mode === 'write' && arg) write(arg);
-else console.log('usage: build-starter-library.js collect | write <n,n,...>');
+else console.log('usage: build-starter-library.js collect | sheets [perGroup] | write <n,n,...>');

@@ -88,6 +88,7 @@
     },
     "summary": {
       "text": "کل: {videos} · {ayat} · تقریباً {duration}",
+      "textTafsir": "کل: {videos} · {ayat} مع تفسیر کارڈ · تقریباً {duration}",
       "videos": {
         "one": "{count} ویڈیو",
         "other": "{count} ویڈیوز"
@@ -118,6 +119,18 @@
       "loading": "تراجم لوڈ ہو رہے ہیں…",
       "unavailable": "تراجم اس وقت دستیاب نہیں",
       "hint": "QuranEnc.com سے قرآن کے معانی کے تراجم۔"
+    },
+    "tafsir": {
+      "label": "تفسیر (وضاحت)",
+      "none": "کوئی نہیں",
+      "hint": "تفسیر QuranEnc.com سے۔ منتخب تفسیر “متن کی جانچ کریں” میں ہر آیت کے نیچے بھی دکھائی جاتی ہے۔",
+      "addCards": "ویڈیو میں تفسیر کارڈ شامل کریں",
+      "addCardsHint": "ہر آیت کے بعد ایک مختصر وضاحت دکھاتا ہے۔ اس سے ویڈیو لمبی ہو جاتی ہے۔",
+      "blockLabel": "تفسیر",
+      "covers": "آیات {from}–{to} کی تفسیر",
+      "loadingText": "تفسیر لوڈ ہو رہی ہے…",
+      "error": "تفسیر لوڈ نہیں ہو سکی۔",
+      "empty": "اس آیت کی تفسیر دستیاب نہیں۔"
     },
     "backgrounds": {
       "title": "پس منظر کے مناظر",
@@ -165,7 +178,10 @@
       "more": {
         "one": "…اور {count} مزید آیت",
         "other": "…اور {count} مزید آیات"
-      }
+      },
+      "viewLabel": "پیش منظر کی قسم",
+      "viewAyah": "آیت",
+      "viewTafsir": "تفسیر کارڈ"
     },
     "submit": {
       "one": "{count} ویڈیو بنائیں",
@@ -219,6 +235,8 @@
     },
     "ayahSingle": "آیت {ayah}",
     "ayahRange": "آیات {from}–{to}",
+    "tafsirBadge": "تفسیر",
+    "tafsirTitle": "تفسیر کارڈ شامل ہیں: {title}",
     "play": "{title} چلائیں",
     "progressLabel": "تیاری کی پیش رفت",
     "cancelJob": "منسوخ کریں",
@@ -283,6 +301,7 @@
     "credits": "ماخذ و اعتراف",
     "creditQuran": "قرآن کا متن: {source}",
     "creditTranslation": "ترجمہ: {title}",
+    "creditTafsir": "تفسیر: {title} ({source})",
     "creditAudio": "تلاوت کی آڈیو: {source}",
     "creditFootage": "ویڈیو مناظر: {list}",
     "openStudio": "اپنی ویڈیو خود بنائیں"
@@ -376,6 +395,7 @@
     "surah_not_found": "یہ سورت نہیں ملی۔",
     "reciter_not_found": "یہ قاری دستیاب نہیں۔",
     "translation_not_found": "یہ ترجمہ دستیاب نہیں۔",
+    "tafsir_not_found": "یہ تفسیر دستیاب نہیں۔",
     "video_not_found": "یہ ویڈیو اب موجود نہیں۔",
     "clip_not_found": "یہ کلپ اب موجود نہیں۔",
     "too_many_videos": "ایک بیچ میں بہت زیادہ ویڈیوز ہیں۔",

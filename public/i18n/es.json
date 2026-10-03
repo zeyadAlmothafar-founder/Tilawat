@@ -89,6 +89,7 @@
     },
     "summary": {
       "text": "Se crearán {videos} · {ayat} · ~{duration}",
+      "textTafsir": "Se crearán {videos} · {ayat} con tarjetas de tafsir · ~{duration}",
       "videos": {
         "one": "{count} video",
         "many": "{count} videos",
@@ -121,6 +122,18 @@
       "loading": "Cargando traducciones…",
       "unavailable": "Las traducciones no están disponibles ahora",
       "hint": "Traducciones de los significados de QuranEnc.com."
+    },
+    "tafsir": {
+      "label": "Tafsir (exégesis)",
+      "none": "Ninguno",
+      "hint": "Tafsir de QuranEnc.com. El tafsir elegido también aparece debajo de cada aleya en «Revisa el texto».",
+      "addCards": "Añadir tarjetas de tafsir al video",
+      "addCardsHint": "Muestra una breve explicación después de cada aleya. El video será más largo.",
+      "blockLabel": "Tafsir",
+      "covers": "Explica las aleyas {from}–{to}",
+      "loadingText": "Cargando el tafsir…",
+      "error": "No se pudo cargar el tafsir.",
+      "empty": "No hay tafsir disponible para esta aleya."
     },
     "backgrounds": {
       "title": "Videos de fondo",
@@ -170,7 +183,10 @@
         "one": "…y {count} aleya más",
         "many": "…y {count} aleyas más",
         "other": "…y {count} aleyas más"
-      }
+      },
+      "viewLabel": "Tipo de vista previa",
+      "viewAyah": "Aleya",
+      "viewTafsir": "Tarjeta de tafsir"
     },
     "submit": {
       "one": "Crear {count} video",
@@ -227,6 +243,8 @@
     },
     "ayahSingle": "Aleya {ayah}",
     "ayahRange": "Aleyas {from}–{to}",
+    "tafsirBadge": "Tafsir",
+    "tafsirTitle": "Incluye tarjetas de tafsir: {title}",
     "play": "Reproducir {title}",
     "progressLabel": "Progreso de la generación",
     "cancelJob": "Cancelar",
@@ -291,6 +309,7 @@
     "credits": "Créditos",
     "creditQuran": "Texto del Corán: {source}",
     "creditTranslation": "Traducción: {title}",
+    "creditTafsir": "Tafsir: {title} ({source})",
     "creditAudio": "Audio de la recitación: {source}",
     "creditFootage": "Imágenes: {list}",
     "openStudio": "Crea tu propio video"
@@ -384,6 +403,7 @@
     "surah_not_found": "No se encontró esa sura.",
     "reciter_not_found": "Ese recitador no está disponible.",
     "translation_not_found": "Esa traducción no está disponible.",
+    "tafsir_not_found": "Ese tafsir no está disponible.",
     "video_not_found": "Ese video ya no existe.",
     "clip_not_found": "Ese clip ya no existe.",
     "too_many_videos": "Demasiados videos en una sola tanda.",

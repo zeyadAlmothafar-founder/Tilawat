@@ -7,7 +7,7 @@ import { getVideo } from './api.js';
 import { h, fill, stateBlock, loadingBlock, errorBlock, externalLink, showError } from './ui.js';
 import { icon } from './icons.js';
 import { linkTargets, canShareFiles, wireNativeShare, copyLinkWithToast } from './share-links.js';
-import { isActive, surahNames, rangeLabel, reciterName, videoFileName, videoFileUrl, shareText, videoTitle } from './video-meta.js';
+import { isActive, surahNames, rangeLabel, reciterName, videoFileName, videoFileUrl, shareText, videoTitle, videoTafsir, tafsirBadge } from './video-meta.js';
 
 const REFRESH_MS = 3000;
 let root;
@@ -85,7 +85,12 @@ function titleBlock(v) {
       ar && h('span', { class: 'ar-name sp-title-ar', lang: 'ar', dir: 'rtl', text: ar }),
       h('span', { class: 'sp-title-sub', text: [latin, rangeLabel(v)].filter(Boolean).join(' · ') }),
     ),
-    h('p', { class: 'muted', text: [reciterName(v), v.duration ? fmtDuration(v.duration) : null].filter(Boolean).join(' · ') }),
+    h(
+      'p',
+      { class: 'muted sp-meta' },
+      h('span', { text: [reciterName(v), v.duration ? fmtDuration(v.duration) : null].filter(Boolean).join(' · ') }),
+      tafsirBadge(v),
+    ),
   );
 }
 
@@ -183,6 +188,12 @@ function credits(v) {
       {},
       h('li', {}, tNodes('sharePage.creditQuran', { source: externalLink('https://quranenc.com', 'QuranEnc.com') })),
       v.translation?.title ? h('li', {}, tNodes('sharePage.creditTranslation', { title: h('span', { dir: 'auto', text: v.translation.title }) })) : null,
+      videoTafsir(v)
+        ? h('li', {}, tNodes('sharePage.creditTafsir', {
+            title: h('span', { dir: 'auto', text: videoTafsir(v).title || videoTafsir(v).key }),
+            source: externalLink('https://quranenc.com', 'QuranEnc.com'),
+          }))
+        : null,
       h('li', {}, tNodes('sharePage.creditAudio', { source: externalLink('https://everyayah.com', 'EveryAyah.com') })),
       footage.length ? h('li', {}, tNodes('sharePage.creditFootage', { list })) : null,
     ),

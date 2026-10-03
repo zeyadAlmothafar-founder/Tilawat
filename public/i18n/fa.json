@@ -88,6 +88,7 @@
     },
     "summary": {
       "text": "ساخته می‌شود: {videos} · {ayat} · حدود {duration}",
+      "textTafsir": "ساخته می‌شود: {videos} · {ayat} همراه با کارت‌های تفسیر · حدود {duration}",
       "videos": {
         "one": "{count} ویدیو",
         "other": "{count} ویدیو"
@@ -118,6 +119,18 @@
       "loading": "در حال بارگذاری ترجمه‌ها…",
       "unavailable": "ترجمه‌ها فعلاً در دسترس نیستند",
       "hint": "ترجمه‌های معانی قرآن از QuranEnc.com."
+    },
+    "tafsir": {
+      "label": "تفسیر (شرح معانی)",
+      "none": "بدون تفسیر",
+      "hint": "تفسیر از QuranEnc.com. تفسیر انتخاب‌شده در «بررسی متن» نیز زیر هر آیه نمایش داده می‌شود.",
+      "addCards": "افزودن کارت‌های تفسیر به ویدیو",
+      "addCardsHint": "پس از هر آیه توضیحی کوتاه نشان می‌دهد. ویدیو طولانی‌تر می‌شود.",
+      "blockLabel": "تفسیر",
+      "covers": "تفسیر آیات {from}–{to}",
+      "loadingText": "در حال بارگذاری تفسیر…",
+      "error": "تفسیر بارگذاری نشد.",
+      "empty": "برای این آیه تفسیری در دسترس نیست."
     },
     "backgrounds": {
       "title": "ویدیوی پس‌زمینه",
@@ -165,7 +178,10 @@
       "more": {
         "one": "…و {count} آیه دیگر",
         "other": "…و {count} آیه دیگر"
-      }
+      },
+      "viewLabel": "نوع پیش‌نمایش",
+      "viewAyah": "آیه",
+      "viewTafsir": "کارت تفسیر"
     },
     "submit": {
       "one": "ساخت {count} ویدیو",
@@ -219,6 +235,8 @@
     },
     "ayahSingle": "آیه {ayah}",
     "ayahRange": "آیات {from}–{to}",
+    "tafsirBadge": "تفسیر",
+    "tafsirTitle": "همراه با کارت‌های تفسیر: {title}",
     "play": "پخش {title}",
     "progressLabel": "پیشرفت ساخت",
     "cancelJob": "لغو",
@@ -283,6 +301,7 @@
     "credits": "منابع و قدردانی",
     "creditQuran": "متن قرآن: {source}",
     "creditTranslation": "ترجمه: {title}",
+    "creditTafsir": "تفسیر: {title} ({source})",
     "creditAudio": "صوت تلاوت: {source}",
     "creditFootage": "تصاویر ویدیویی: {list}",
     "openStudio": "ویدیوی خودتان را بسازید"
@@ -376,6 +395,7 @@
     "surah_not_found": "این سوره پیدا نشد.",
     "reciter_not_found": "این قاری در دسترس نیست.",
     "translation_not_found": "این ترجمه در دسترس نیست.",
+    "tafsir_not_found": "این تفسیر در دسترس نیست.",
     "video_not_found": "این ویدیو دیگر وجود ندارد.",
     "clip_not_found": "این کلیپ دیگر وجود ندارد.",
     "too_many_videos": "تعداد ویدیوهای این دسته بیش از حد مجاز است.",

@@ -1,6 +1,6 @@
 // Validation and normalization of POST /api/render bodies.
 import { httpError } from '../lib/errors.js';
-import { quranModule, recitersModule, sourcesModule } from './inputs.js';
+import { quranModule, recitersModule, sourcesModule, tafsirModule } from './inputs.js';
 import { clamp } from './util.js';
 
 export const MAX_VIDEOS = 50;
@@ -44,6 +44,15 @@ async function resolveTranslation(value) {
   const t = list.find((x) => x.key === key);
   if (!t) throw httpError(400, 'invalid_translation', `Unknown translation "${key}"`);
   return { key: t.key, languageIso: t.languageIso, title: t.title, version: t.version || null, direction: t.direction || null };
+}
+
+async function resolveTafsir(value) {
+  if (value === undefined || value === null || value === false || value === '' || value === 'none' || value === 'null') return null;
+  const key = String(value);
+  const list = await (await tafsirModule()).getTafsirs();
+  const t = list.find((x) => x.key === key);
+  if (!t) throw httpError(400, 'invalid_tafsir', `Unknown tafsir "${key}"`);
+  return { key: t.key, title: t.title, languageIso: t.languageIso, direction: t.direction };
 }
 
 async function resolveReciter(value) {
@@ -106,6 +115,7 @@ export async function normalizeRequest(body) {
     mode,
     reciter: await resolveReciter(body.reciter),
     translation: await resolveTranslation(body.translation),
+    tafsir: await resolveTafsir(body.tafsir),
     categories: categories.length ? categories : DEFAULT_CATEGORIES,
     aspect: ASPECTS.includes(body.aspect) ? body.aspect : '9:16',
     quality,

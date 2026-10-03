@@ -10,6 +10,11 @@ const slug = (s) => clip('', { sourceUrl: `https://www.pexels.com/video/${s}/` }
 // [clip, category, expected ok?, note]
 const cases = [
   [clip('Aerial view of ocean waves'), 'nature', true, '"aerial" must not match "man"'],
+  [clip('Mother Mary in a garden', { tags: ['mother mary', 'faith'] }), 'islamic', false, 'other religion (found in Pixabay results)'],
+  [clip('Spaceship over clouds', { tags: ['star trek', 'science fiction'] }), 'space', false, 'sci-fi footage'],
+  [clip('Eiffel tower by the river'), 'mosque', false, 'landmark returned for "minaret"'],
+  [clip('Allah calligraphy', { tags: ['logo', 'background'] }), 'islamic', false, 'animated logo would clash with Quran text'],
+  [clip('Milky way over mountains', { tags: ['night', 'sky', 'stars'] }), 'space', true, ''],
   [clip('Church dome at sunset'), 'mosque', false, 'other religion'],
   [clip('Woman praying in mosque'), 'mosque', false, 'person'],
   [clip('Men praying in mosque'), 'mosque', false, 'plural people'],

@@ -88,6 +88,7 @@
     },
     "summary": {
       "text": "Oluşturulacak: {videos} · {ayat} · ~{duration}",
+      "textTafsir": "Oluşturulacak: {videos} · {ayat} + tefsir kartları · ~{duration}",
       "videos": {
         "one": "{count} video",
         "other": "{count} video"
@@ -118,6 +119,18 @@
       "loading": "Mealler yükleniyor…",
       "unavailable": "Mealler şu anda kullanılamıyor",
       "hint": "Kur'an mealleri QuranEnc.com'dan alınmıştır."
+    },
+    "tafsir": {
+      "label": "Tefsir (açıklama)",
+      "none": "Yok",
+      "hint": "Tefsir QuranEnc.com'dan alınmıştır. Seçilen tefsir, “Metni kontrol edin” bölümünde her ayetin altında da gösterilir.",
+      "addCards": "Videoya tefsir kartları ekle",
+      "addCardsHint": "Her ayetten sonra kısa bir açıklama gösterir. Video daha uzun olur.",
+      "blockLabel": "Tefsir",
+      "covers": "Ayet {from}–{to} tefsiri",
+      "loadingText": "Tefsir yükleniyor…",
+      "error": "Tefsir yüklenemedi.",
+      "empty": "Bu ayet için tefsir bulunmuyor."
     },
     "backgrounds": {
       "title": "Arka plan görüntüleri",
@@ -165,7 +178,10 @@
       "more": {
         "one": "…ve {count} ayet daha",
         "other": "…ve {count} ayet daha"
-      }
+      },
+      "viewLabel": "Önizleme türü",
+      "viewAyah": "Ayet",
+      "viewTafsir": "Tefsir kartı"
     },
     "submit": {
       "one": "{count} video oluştur",
@@ -219,6 +235,8 @@
     },
     "ayahSingle": "Ayet {ayah}",
     "ayahRange": "Ayet {from}–{to}",
+    "tafsirBadge": "Tefsir",
+    "tafsirTitle": "Tefsir kartları içerir: {title}",
     "play": "Oynat: {title}",
     "progressLabel": "Oluşturma ilerlemesi",
     "cancelJob": "İptal",
@@ -283,6 +301,7 @@
     "credits": "Kaynaklar",
     "creditQuran": "Kur'an metni: {source}",
     "creditTranslation": "Meal: {title}",
+    "creditTafsir": "Tefsir: {title} ({source})",
     "creditAudio": "Tilavet sesi: {source}",
     "creditFootage": "Görüntüler: {list}",
     "openStudio": "Kendi videonuzu oluşturun"
@@ -376,6 +395,7 @@
     "surah_not_found": "Bu sure bulunamadı.",
     "reciter_not_found": "Bu kâri kullanılamıyor.",
     "translation_not_found": "Bu meal kullanılamıyor.",
+    "tafsir_not_found": "Bu tefsir kullanılamıyor.",
     "video_not_found": "Bu video artık mevcut değil.",
     "clip_not_found": "Bu klip artık mevcut değil.",
     "too_many_videos": "Tek seferde çok fazla video var.",

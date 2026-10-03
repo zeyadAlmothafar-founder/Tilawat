@@ -1,4 +1,4 @@
-// Live test of pickClips(): node scripts/b-pick-test.js
+// Live test of pickClips(): node scripts/test-pick-clips.js
 // Downloads real clips (NASA needs no key) and checks they are playable local mp4s.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';

@@ -7,7 +7,10 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node --env-file-if-exists=.env server/index.js",
-    "dev": "node --watch --env-file-if-exists=.env server/index.js"
+    "dev": "node --watch --env-file-if-exists=.env server/index.js",
+    "test": "node scripts/test-filter.js && node scripts/test-provider-shapes.js && node scripts/check-i18n.js --strict",
+    "test:online": "node scripts/test-quran.js && node scripts/test-pick-clips.js",
+    "smoke": "node scripts/smoke-test.js"
   },
   "engines": {
     "node": ">=22.9"
@@ -15,5 +18,16 @@
   "dependencies": {
     "express": "^5.2.1",
     "qrcode": "^1.5.4"
-  }
+  },
+  "license": "MIT",
+  "keywords": [
+    "quran",
+    "islam",
+    "video",
+    "ffmpeg",
+    "arabic",
+    "recitation",
+    "i18n",
+    "rtl"
+  ]
 }

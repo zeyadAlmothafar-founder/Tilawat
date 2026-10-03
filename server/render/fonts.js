@@ -5,7 +5,7 @@ import { download } from '../lib/http.js';
 
 // All fonts are SIL OFL. `family` is the exact name-table family libass matches against
 // (verified with readFontFamilies + test renders). Base fonts are fetched by
-// scripts/c-fetch-fonts.js; script-specific Noto fonts are downloaded on first use
+// scripts/fetch-fonts.js; script-specific Noto fonts are downloaded on first use
 // (into cache/fonts).
 const GF = 'https://raw.githubusercontent.com/google/fonts/main/ofl';
 const NOTO = 'https://raw.githubusercontent.com/notofonts/notofonts.github.io/main/fonts';

@@ -132,8 +132,17 @@ function defaultsByLanguage() {
 
 const surahMemo = new Map(); // `${key}/${surah}` → Promise<Map<ayah, row>>
 
+// Cached texts live in a folder per translation version, so a new QuranEnc release is
+// fetched fresh (their terms ask re-publishers to follow the latest version).
+async function cacheDirFor(key) {
+  const version = await getTranslations()
+    .then((list) => list.find((t) => t.key === key)?.version)
+    .catch(() => null);
+  return path.join(QURAN_CACHE_DIR, version ? `${key}@${version}` : key);
+}
+
 async function fetchSurahText(key, surah) {
-  const cacheFile = path.join(QURAN_CACHE_DIR, key, `${String(surah).padStart(3, '0')}.json`);
+  const cacheFile = path.join(await cacheDirFor(key), `${String(surah).padStart(3, '0')}.json`);
   let data;
   try {
     data = await fetchJson(`${API}/translation/sura/${encodeURIComponent(key)}/${surah}`, { cacheFile, timeoutMs: 60000 });

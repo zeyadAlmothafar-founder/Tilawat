@@ -1,4 +1,4 @@
-// Unit test for the background-footage content filter: node scripts/b-filter-test.js
+// Unit test for the background-footage content filter: node scripts/test-filter.js
 import assert from 'node:assert/strict';
 import { checkClip } from '../server/sources/filter.js';
 import { screenItem } from '../server/sources/providers/nasa.js';

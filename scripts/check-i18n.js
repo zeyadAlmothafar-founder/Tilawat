@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // Checks the UI translations in public/i18n against en.json (the source of truth).
 //
-//   node scripts/d-i18n-check.js          # every language file present
-//   node scripts/d-i18n-check.js fr de    # only these languages
-//   node scripts/d-i18n-check.js --strict # also fail when a language file is missing
+//   node scripts/check-i18n.js          # every language file present
+//   node scripts/check-i18n.js fr de    # only these languages
+//   node scripts/check-i18n.js --strict # also fail when a language file is missing
 //
 // Reports per language: JSON errors, missing / extra keys, string-vs-plural mismatches,
 // missing CLDR plural categories (via Intl.PluralRules), placeholder differences and

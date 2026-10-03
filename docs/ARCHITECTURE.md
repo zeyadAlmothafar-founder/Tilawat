@@ -1,7 +1,6 @@
-# Quran Video Studio — build contract
+# Architecture
 
-Working title "Quran Video Studio" (final name TBD — keep the name in ONE place per layer:
-`public/i18n/*.json` key `app.name`, and `APP_NAME` in `server/lib/brand.js` if the server needs it).
+The product name lives in `public/i18n/*.json` (`app.name`) and `server/lib/brand.js`.
 
 A local web tool: the user picks surah + ayah ranges, a reciter, a translation, background
 categories and a format; the server fetches verified Quran text (QuranEnc), per-ayah
@@ -13,26 +12,23 @@ Facebook, email, link) and get a QR code to open the video on their phone.
 Stack: Node 22 (ESM, `"type": "module"`), Express **5** (async handlers may throw — errors
 propagate to the error handler), FFmpeg 6 on PATH (libass + fribidi + harfbuzz-capable),
 vanilla HTML/CSS/JS frontend with **no build step and no frontend dependencies**.
-Installed npm deps: `express`, `qrcode`. **Do not add dependencies or run `npm install`.**
-If you truly need one, say so in your final report instead.
+Runtime npm dependencies: `express`, `qrcode`.
 
 Run: `npm start` → http://localhost:4700 (PORT env). Keys come from `.env` (see `.env.example`).
 
-## Directory layout & ownership
+## Directory layout
 
-| Path | Owner | Notes |
-|---|---|---|
-| `server/index.js`, `server/paths.js`, `server/lib/*` | lead (shared) | **Do not edit.** Ask in your report if you need a change. |
-| `server/quran.js`, `server/reciters.js`, `server/data/*` | Agent A (Quran data) | |
-| `server/sources/**` | Agent B (video sources & library) | |
-| `server/render/**`, `assets/fonts/**`, `scripts/render-test.js` | Agent C (renderer) | |
-| `server/share.js`, `public/**` | Agent D (frontend & sharing) | |
-| `scripts/<your-prefix>-*.js` | each agent | own test scripts |
-| `data/`, `cache/`, `output/`, `tmp/` | runtime | gitignored |
+| Path | Contents |
+|---|---|
+| `server/index.js`, `server/paths.js`, `server/lib/*` | App entry, paths, shared helpers |
+| `server/quran.js`, `server/reciters.js`, `server/data/*` | Quran text, translations, reciters |
+| `server/sources/**` | Background footage providers, content filter, clip library |
+| `server/render/**`, `assets/fonts/**` | FFmpeg render pipeline, job queue, fonts |
+| `server/share.js`, `public/**` | Sharing endpoints, frontend, UI translations |
+| `scripts/*.js` | Tests and maintenance scripts |
+| `data/`, `cache/`, `output/`, `tmp/` | Runtime state (git-ignored) |
 
-Never edit files you don't own. Never `git commit` (the lead commits).
-
-## Shared helpers (already written — use them)
+## Shared helpers
 
 - `server/paths.js`: `ROOT, PUBLIC_DIR, FONTS_DIR, DATA_DIR, CACHE_DIR, QURAN_CACHE_DIR,
   AUDIO_CACHE_DIR, CLIP_CACHE_DIR, THUMB_CACHE_DIR, OUTPUT_DIR, TMP_DIR, ensureDirs()`
@@ -55,9 +51,9 @@ A module that throws on import is skipped with a warning, so the server still bo
 Static: `/` → `public/`, `/output/*` → finished videos/thumbnails, `/fonts/*` → `assets/fonts/`,
 `/v/:id` → `public/share.html` (mobile share page).
 
-## JS interfaces between modules (exact names)
+## JS interfaces between modules
 
-### `server/quran.js` (Agent A)
+### `server/quran.js`
 ```js
 export async function getSurahs()
 // → [{ number, nameAr: 'الفاتحة', nameEn: 'Al-Fatihah', meaningEn: 'The Opener',
@@ -72,7 +68,7 @@ export async function getAyahs(surah, from, to, translationKey /* string|null */
 export async function getBismillahText()          // → Arabic text of 1:1, verbatim from QuranEnc
 ```
 
-### `server/reciters.js` (Agent A)
+### `server/reciters.js`
 ```js
 export async function getReciters()               // → [{ id, nameEn, nameAr, style /* 'murattal'|'mujawwad'|'muallim'|null */, bitrate }]
 export async function getReciter(id)              // → one, or throws httpError(404,'reciter_not_found')
@@ -81,7 +77,7 @@ export async function getAyahAudio(reciterId, surah, ayah)
 // `id` is the EveryAyah folder name (e.g. 'Alafasy_128kbps'); only allow-listed ids are accepted.
 ```
 
-### `server/sources/index.js` (Agent B)
+### `server/sources/index.js`
 ```js
 export const CATEGORY_IDS = ['nature', 'space', 'mosque', 'islamic'];
 export async function pickClips({ categories, totalDuration, orientation /* 'portrait'|'landscape'|'square' */, approvedOnly = false })
@@ -93,7 +89,7 @@ export async function pickClips({ categories, totalDuration, orientation /* 'por
 // Never throws because a provider is unconfigured/down — it just uses what it can.
 ```
 
-### `server/render/index.js` (Agent C)
+### `server/render/index.js`
 ```js
 export async function init()                      // load data/videos.json, re-queue unfinished jobs
 export const router
@@ -103,7 +99,7 @@ export function listVideos()                      // records, newest first
 
 ## REST API (all JSON unless noted; errors: `{ error: { code, message } }`)
 
-### Quran — Agent A
+### Quran
 - `GET /api/surahs` → array from `getSurahs()`
 - `GET /api/translations` → `{ defaults: { en: 'english_saheeh', ar: null, ... }, translations: [...] }`
 - `GET /api/ayahs?surah=1&from=1&to=7&translation=english_saheeh` (translation optional / `none`)
@@ -112,7 +108,7 @@ export function listVideos()                      // records, newest first
 - `GET /api/reciters` → array from `getReciters()`
 - `GET /api/reciters/:id/audio/:surah/:ayah` → `audio/mpeg` (the cached mp3; used for preview)
 
-### Video sources & library — Agent B
+### Video sources & library
 Clip object (candidate or library entry):
 ```json
 { "id": "pexels:123", "provider": "pexels|pixabay|nasa|upload", "providerId": "123",
@@ -134,7 +130,7 @@ Clip object (candidate or library entry):
   header `X-Filename`), max 500 MB → saved (approved) clip entry
 - `GET /api/library/thumb/:file`, `GET /api/library/clip/:id` → local thumbnail / clip file for uploads
 
-### Rendering & videos — Agent C
+### Rendering & videos
 Render request:
 ```json
 {
@@ -177,18 +173,14 @@ Video record (one per output video; also used as the job status):
 - `GET /api/videos/:id` → record
 - `DELETE /api/videos/:id` → cancels if queued/running, deletes files → `{ ok: true }`
 
-### Sharing — Agent D
+### Sharing
 - `GET /api/server-info` → `{ port, lanUrls: ['http://192.168.1.5:4700'], publicBaseUrl: string|null, shareBaseUrl }`
   (`shareBaseUrl` = `PUBLIC_BASE_URL` || first LAN URL || `http://localhost:PORT`)
 - `GET /api/qr.svg?text=<url>` → `image/svg+xml` QR code (text ≤ 1000 chars)
 - Share page URL for a video: `${shareBaseUrl}/v/${id}`; file URL: `${shareBaseUrl}/output/${id}.mp4`
 
-## Product rules (everyone)
+## Product rules
 - Quran Arabic text is shown/burned **verbatim** from QuranEnc. Never generate, retype or "fix" it.
 - Credit sources: QuranEnc.com (required by its terms), EveryAyah, and the footage provider/author.
 - Background clips: nature, space, mosques, general Islamic imagery only. Strip clip audio. No music.
 - UI languages (12): ar, ur, fa (RTL); en, fr, tr, id, ms, bn, es, de, ru (LTR).
-
-## Testing ports (so agents don't collide)
-Lead 4700 · A 4701 · B 4702 · C 4703 · D 4704 — e.g. `PORT=4701 node --env-file-if-exists=.env server/index.js`.
-Stop any server you start before finishing.

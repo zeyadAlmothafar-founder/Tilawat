@@ -1,5 +1,5 @@
 // Downloads the renderer's base fonts into assets/fonts/ and prints their family names.
-// Usage: node scripts/c-fetch-fonts.js [--all]   (--all also fetches the on-demand script fonts)
+// Usage: node scripts/fetch-fonts.js [--all]   (--all also fetches the on-demand script fonts)
 import { FONTS, ensureFont, fontPath, readFontFamilies } from '../server/render/fonts.js';
 
 const all = process.argv.includes('--all');

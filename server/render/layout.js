@@ -2,7 +2,7 @@
 //
 // libass sizes a font so that its line height equals Fontsize, so all metrics below are
 // in "Fontsize units": average advance per base character (marks excluded) measured
-// with scripts/c-calibrate.js, line advance = 1.0.
+// with a libass bounding-box calibration, line advance = 1.0.
 
 export const OUTPUT_SIZES = {
   '9:16': { 1080: [1080, 1920], 720: [720, 1280] },

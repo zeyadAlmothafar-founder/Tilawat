@@ -8,6 +8,7 @@ import { DOWNLOAD_HOSTS, isAllowedUrl, safeStem } from './util.js';
 import { loadLibrary } from './library.js';
 import { knownClipByStem } from './search.js';
 import * as nasa from './providers/nasa.js';
+import * as pixabay from './providers/pixabay.js';
 import { uploadPath } from './providers/upload.js';
 
 export const THUMB_FILE_RE = /^[A-Za-z0-9_-]{1,160}\.jpg$/;
@@ -26,7 +27,15 @@ async function obtain(clip) {
   }
   if (clip.provider === 'nasa') return nasa.fetchClip(clip, dest);
   if (!isAllowedUrl(clip.downloadUrl, DOWNLOAD_HOSTS[clip.provider])) throw new Error('download host not allowed');
-  return download(clip.downloadUrl, dest, { timeoutMs: 300000 });
+  try {
+    return await download(clip.downloadUrl, dest, { timeoutMs: 300000 });
+  } catch (err) {
+    // Stored Pixabay links (e.g. starter clips) can go stale; look the video up again by id.
+    if (clip.provider !== 'pixabay') throw err;
+    const fresh = await pixabay.lookup(clip.providerId, clip.category).catch(() => null);
+    if (!fresh?.downloadUrl || fresh.downloadUrl === clip.downloadUrl) throw err;
+    return download(fresh.downloadUrl, dest, { timeoutMs: 300000 });
+  }
 }
 
 /**

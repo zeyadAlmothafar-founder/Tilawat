@@ -21,16 +21,20 @@ npm start
 Open http://localhost:4700. The terminal also prints a `Network:` address that phones on the
 same Wi-Fi can open (Windows may ask to allow Node through the firewall the first time).
 
-### Background footage keys (free, optional)
+### Background footage
 
-Space footage (NASA) and your own uploaded clips work without any keys. For nature, mosque and
-Islamic footage, copy `.env.example` to `.env` and add:
+Out of the box the app includes a **starter library** of hand-picked Pixabay clips in both
+vertical and horizontal formats (links and credits only — the clips download on first use),
+plus NASA Earth-from-space footage. You can also upload your own clips under **Backgrounds**.
 
-- `PEXELS_API_KEY` — https://www.pexels.com/api/
-- `PIXABAY_API_KEY` — https://pixabay.com/api/docs/
+To search for more footage, copy `.env.example` to `.env` and add a free API key:
 
-Then restart. Review clips under **Backgrounds**: approved clips are used first, and you can
-choose "Only use my approved clips" when creating videos.
+- `PIXABAY_API_KEY` — https://pixabay.com/api/docs/ (recommended)
+- `PEXELS_API_KEY` — https://www.pexels.com/api/ (optional; Pexels may not be issuing new keys)
+
+Then restart and review clips under **Backgrounds**: approved clips are used first, clips that
+match the video's format (vertical or horizontal) are preferred, and you can choose "Only use my
+approved clips" when creating videos.
 
 ## Features
 
@@ -65,11 +69,12 @@ server/
   index.js          app entry (Express)
   quran.js          surahs, translations, ayah text (QuranEnc)
   reciters.js       reciter list and per-ayah audio (EveryAyah)
-  sources/          background footage: Pexels, Pixabay, NASA, uploads, filter, library
+  sources/          background footage: Pixabay, Pexels, NASA, uploads, filter, library
   render/           FFmpeg pipeline, subtitles, layout, fonts, job queue
   share.js          server info for share links, QR codes
 public/             frontend (vanilla JS, no build step), i18n/*.json
 assets/fonts/       bundled OFL fonts
+docs/               architecture and API reference
 scripts/            test and maintenance scripts (see below)
 data/ cache/ output/ tmp/   runtime state (git-ignored)
 ```
@@ -77,15 +82,30 @@ data/ cache/ output/ tmp/   runtime state (git-ignored)
 Useful scripts:
 
 ```bash
+npm test                                  # offline checks: content filter, provider parsing, all 12 UI translations
+npm run test:online                       # Quran data, reciters and clip downloads (uses the network)
 node scripts/render-test.js --surah 1 --from 1 --to 7 --reciter Alafasy_128kbps --translation english_saheeh --aspect 9:16 --categories space
-node scripts/d-i18n-check.js --strict      # verify all 12 translation files
-node scripts/a-check-reciters.js           # re-verify reciter audio folders
+node scripts/check-reciters.js            # re-verify the reciter audio folders
+node scripts/fetch-fonts.js               # re-download the bundled fonts
+node --env-file=.env scripts/build-starter-library.js collect   # refresh the starter footage list
 ```
 
-## Credits & licenses
+Architecture, module interfaces and the REST API are documented in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-- Quran text and translations: [QuranEnc.com](https://quranenc.com) — shown without modification, with attribution.
+## Contributing
+
+Issues and pull requests are welcome. Please run `npm test` before opening a PR. When adding a UI
+language, copy `public/i18n/en.json`, add the language to `public/i18n/languages.js`, and run
+`node scripts/check-i18n.js <code> --strict`. Quran text must always come verbatim from QuranEnc.
+
+## License & credits
+
+The source code is MIT-licensed (see [LICENSE](LICENSE)).
+
+- Quran text and translations: [QuranEnc.com](https://quranenc.com) — shown without modification, credited
+  with the translation's version number, and refreshed when QuranEnc publishes a new version.
 - Recitations: [EveryAyah.com](https://everyayah.com).
-- Footage: [Pexels](https://www.pexels.com), [Pixabay](https://pixabay.com), [NASA](https://images.nasa.gov) — credited in each video.
+- Footage: [Pixabay](https://pixabay.com), [Pexels](https://www.pexels.com), [NASA](https://images.nasa.gov) — credited in each video.
+  The repository never contains the footage itself, only links to it.
 - Fonts (SIL Open Font License): Amiri Quran, Amiri, Scheherazade New, Noto Sans, Noto Naskh Arabic,
   Noto Nastaliq Urdu, Noto Sans Bengali.

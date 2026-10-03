@@ -7,11 +7,14 @@ import { DATA_DIR } from '../paths.js';
 import { CATEGORY_IDS } from './categories.js';
 
 const FILE = path.join(DATA_DIR, 'library.json');
+// Curated clips shipped with the app (metadata and links only — no video files), merged
+// into the library on load unless the user already reviewed or removed them.
+const STARTER_FILE = new URL('../data/starter-library.json', import.meta.url);
 
 // Fields kept on a library entry (the Clip object + what's needed to fetch it again).
 const FIELDS = [
   'id', 'provider', 'providerId', 'category', 'title', 'tags', 'author', 'authorUrl', 'sourceUrl', 'thumbUrl',
-  'previewUrl', 'width', 'height', 'duration', 'orientation', 'downloadUrl', 'file', 'status', 'addedAt',
+  'previewUrl', 'width', 'height', 'duration', 'orientation', 'downloadUrl', 'file', 'status', 'addedAt', 'starter',
 ];
 
 let entries = null;
@@ -23,23 +26,34 @@ function pick(obj) {
   return out;
 }
 
-export function loadLibrary() {
-  if (entries) return entries;
-  entries = new Map();
+function readClips(file, label) {
   let text;
   try {
-    text = fs.readFileSync(FILE, 'utf8');
+    text = fs.readFileSync(file, 'utf8');
   } catch (err) {
-    if (err.code !== 'ENOENT') console.warn(`[sources] cannot read library.json: ${err.message}`);
-    return entries;
+    if (err.code !== 'ENOENT') console.warn(`[sources] cannot read ${label}: ${err.message}`);
+    return [];
   }
   try {
-    for (const e of JSON.parse(text).clips || []) if (e && typeof e.id === 'string') entries.set(e.id, e);
+    return (JSON.parse(text).clips || []).filter((e) => e && typeof e.id === 'string');
   } catch (err) {
-    // Keep the unreadable file for inspection instead of overwriting it on the next save.
-    const backup = `${FILE}.corrupt-${Date.now()}`;
-    fs.renameSync(FILE, backup);
-    console.warn(`[sources] library.json was invalid (${err.message}); moved to ${path.basename(backup)}`);
+    if (file === FILE) {
+      // Keep the unreadable file for inspection instead of overwriting it on the next save.
+      const backup = `${FILE}.corrupt-${Date.now()}`;
+      fs.renameSync(FILE, backup);
+      console.warn(`[sources] library.json was invalid (${err.message}); moved to ${path.basename(backup)}`);
+    } else {
+      console.warn(`[sources] ${label} is invalid: ${err.message}`);
+    }
+    return [];
+  }
+}
+
+export function loadLibrary() {
+  if (entries) return entries;
+  entries = new Map(readClips(FILE, 'library.json').map((e) => [e.id, e]));
+  for (const e of readClips(STARTER_FILE, 'starter-library.json')) {
+    if (!entries.has(e.id)) entries.set(e.id, { ...e, status: 'approved', starter: true });
   }
   return entries;
 }
@@ -114,7 +128,9 @@ export async function reject(clip) {
 export async function remove(id) {
   const entry = getEntry(id);
   if (!entry) return null;
-  loadLibrary().delete(id);
+  // A removed starter clip is remembered as rejected so it isn't merged back in.
+  if (entry.starter) loadLibrary().set(id, { ...entry, status: 'rejected' });
+  else loadLibrary().delete(id);
   await save();
   return entry;
 }

@@ -96,3 +96,15 @@ export async function search({ category, query, index = 0, providerPage = 1, per
     throw new Error(`Pixabay ${err.httpStatus ? `HTTP ${err.httpStatus}` : 'request failed'} for "${query}"`);
   }
 }
+
+/** Fresh metadata (and download URL) for one video id, or null. Cached like searches. */
+export async function lookup(id, category) {
+  if (!enabled() || !/^\d+$/.test(String(id))) return null;
+  const publicUrl = `${API}?id=${id}`;
+  const json = await fetchJson(`${publicUrl}&key=${encodeURIComponent(apiKey())}`, {
+    timeoutMs: 15000,
+    cacheFile: searchCacheFile('pixabay', publicUrl),
+    maxAgeMs: SEARCH_MAX_AGE,
+  });
+  return parseHit(json?.hits?.[0], category);
+}

@@ -43,7 +43,7 @@ async function resolveTranslation(value) {
   const list = await (await quranModule()).getTranslations();
   const t = list.find((x) => x.key === key);
   if (!t) throw httpError(400, 'invalid_translation', `Unknown translation "${key}"`);
-  return { key: t.key, languageIso: t.languageIso, title: t.title, direction: t.direction || null };
+  return { key: t.key, languageIso: t.languageIso, title: t.title, version: t.version || null, direction: t.direction || null };
 }
 
 async function resolveReciter(value) {

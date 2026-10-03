@@ -1,7 +1,7 @@
 // Verifies the curated EveryAyah reciter candidates and writes the allow-list to
 // server/data/reciters.json (only folders whose sample files all return 200 audio/mpeg).
-// Usage: node scripts/a-check-reciters.js            → check + write reciters.json
-//        node scripts/a-check-reciters.js --bismillah → also compare ayah-1 durations
+// Usage: node scripts/check-reciters.js            → check + write reciters.json
+//        node scripts/check-reciters.js --bismillah → also compare ayah-1 durations
 import { spawn } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';

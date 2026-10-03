@@ -1,5 +1,5 @@
 // Module-level checks for server/quran.js and server/reciters.js (uses the network on first run).
-// Usage: node scripts/a-test-quran.js
+// Usage: node scripts/test-quran.js
 import assert from 'node:assert/strict';
 import {
   getSurahs, getSurah, getTranslations, defaultTranslationFor, getAyahs, getBismillahText, cleanTranslation,

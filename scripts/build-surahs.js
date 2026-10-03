@@ -1,6 +1,6 @@
 // Builds server/data/surahs.json from quran.com chapter metadata (one-off; the app never
 // calls quran.com at runtime). Ayah counts are cross-checked against EveryAyah.
-// Usage: node scripts/a-build-surahs.js
+// Usage: node scripts/build-surahs.js
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { ROOT } from '../server/paths.js';

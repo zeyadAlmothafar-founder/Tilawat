@@ -159,8 +159,10 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
   }
 
   const footage = footageCredit(usedClips);
+  // QuranEnc's terms ask for the source and the translation's version number.
+  const translationCredit = trFont && spec.translation.version ? ` (translation v${spec.translation.version})` : '';
   const credit = [
-    `Quran text${trFont ? ' & translation' : ''}: QuranEnc.com`,
+    `Quran text${trFont ? ' & translation' : ''}: QuranEnc.com${translationCredit}`,
     'Recitation: EveryAyah.com',
     ...(footage ? [`Footage: ${footage}`] : []),
   ].join('  ·  ');

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 // Smoke test for the sharing endpoints and the frontend's static assets.
-//   node scripts/d-smoke.js [baseUrl]     (default http://localhost:4704)
+//   node scripts/smoke-test.js [baseUrl]     (default http://localhost:4700)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const BASE = (process.argv[2] || 'http://localhost:4704').replace(/\/$/, '');
+const BASE = (process.argv[2] || 'http://localhost:4700').replace(/\/$/, '');
 const PUBLIC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
 
 let failures = 0;

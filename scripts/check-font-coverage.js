@@ -1,8 +1,8 @@
 // Checks glyph coverage of the renderer fonts against real QuranEnc text.
-// Usage: node scripts/c-coverage.js   (uses tmp/c-fixtures/*.json and cache/quran if present)
+// Usage: node scripts/check-font-coverage.js   (scans the Quran texts cached under cache/quran)
 import fs from 'node:fs';
 import path from 'node:path';
-import { CACHE_DIR, TMP_DIR } from '../server/paths.js';
+import { CACHE_DIR } from '../server/paths.js';
 import { fontCoverage } from '../server/render/fonts.js';
 
 const files = [];
@@ -14,7 +14,6 @@ const walk = (dir) => {
     else if (f.endsWith('.json')) files.push(p);
   }
 };
-walk(path.join(TMP_DIR, 'c-fixtures'));
 walk(path.join(CACHE_DIR, 'quran'));
 
 const arabic = new Set();

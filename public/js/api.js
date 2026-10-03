@@ -1,4 +1,4 @@
-// Thin client for the REST API described in CONTRACT.md.
+// Thin client for the REST API described in docs/ARCHITECTURE.md.
 
 export class ApiError extends Error {
   constructor(status, code, message) {

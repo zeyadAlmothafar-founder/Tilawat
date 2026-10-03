@@ -1,5 +1,5 @@
 // Offline test of provider response parsing against hand-written samples that follow the
-// documented response shapes: node scripts/b-provider-shape-test.js
+// documented response shapes: node scripts/test-provider-shapes.js
 import assert from 'node:assert/strict';
 import * as pexels from '../server/sources/providers/pexels.js';
 import * as pixabay from '../server/sources/providers/pixabay.js';

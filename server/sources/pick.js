@@ -40,6 +40,13 @@ async function fetchSome(list, need) {
   return got.sort((a, b) => a.index - b.index).map((g) => g.clip);
 }
 
+/** Shuffled, with clips matching the output orientation first (square output takes any). */
+function byOrientation(list, orientation) {
+  if (orientation === 'square') return shuffle(list);
+  const fits = (c) => (c.orientation || (c.height > c.width ? 'portrait' : 'landscape')) === orientation;
+  return [...shuffle(list.filter(fits)), ...shuffle(list.filter((c) => !fits(c)))];
+}
+
 export function targetCount(totalDuration) {
   const n = Math.ceil((Number(totalDuration) || 0) / SECONDS_PER_CLIP);
   return Math.min(MAX_CLIPS, Math.max(1, n));
@@ -57,7 +64,7 @@ export async function pickClips({ categories, totalDuration, orientation = 'land
   const chosen = [];
   let fromLibrary = 0;
   try {
-    const approved = roundRobin(cats.map((c) => shuffle(listApproved(c))));
+    const approved = roundRobin(cats.map((c) => byOrientation(listApproved(c), orientation)));
     chosen.push(...(await fetchSome(approved, need)));
     fromLibrary = chosen.length;
     if (chosen.length < need && !approvedOnly) {

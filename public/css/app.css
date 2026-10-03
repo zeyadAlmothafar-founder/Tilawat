@@ -640,8 +640,9 @@ input[type="range"] { inline-size: 100%; accent-color: var(--primary); block-siz
   min-inline-size: 0;
 }
 .create-aside .card { padding: 16px; }
-.text-check { flex: 1 1 auto; min-block-size: 150px; display: flex; flex-direction: column; overflow: hidden; }
-.ayah-list { flex: 1; min-block-size: 0; overflow-y: auto; margin-inline: -6px; padding-inline: 6px; overscroll-behavior: contain; }
+/* "Check the text" sits in the form column under Passages; long selections scroll inside it. */
+.text-check { display: flex; flex-direction: column; }
+.ayah-list { max-block-size: min(70vh, 640px); overflow-y: auto; margin-inline: -6px; padding-inline: 6px; overscroll-behavior: contain; }
 
 .presets { display: flex; flex-direction: column; gap: 8px; margin-block-end: 16px; }
 .presets-label { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }

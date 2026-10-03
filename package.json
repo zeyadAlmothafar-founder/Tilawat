@@ -1,0 +1,19 @@
+{
+  "name": "quran-video-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Create short Quran recitation videos with Arabic text and translations over nature, space and mosque footage.",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "dev": "node --watch --env-file-if-exists=.env server/index.js"
+  },
+  "engines": {
+    "node": ">=22.9"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "qrcode": "^1.5.4"
+  }
+}

@@ -124,6 +124,10 @@ export function renderDevicePreview(frame, m) {
     frame.style.setProperty('--pv-scale', String(m.style.textScale * fit));
   }
 
+  const creditEl = $('.pv-credit');
+  creditEl.hidden = !m.credit;
+  creditEl.textContent = m.credit || '';
+
   const reciterEl = $('.pv-reciter');
   reciterEl.hidden = !m.style.showReciter || !m.reciter;
   if (m.reciter) {

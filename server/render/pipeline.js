@@ -39,6 +39,17 @@ function encodeArgs(fileSize, hd) {
   ];
 }
 
+/**
+ * The one credit QuranEnc's terms ask for: the source, plus the translation's version.
+ * "Translation & tafsir: QuranEnc.com (v1.1.2)", "Translation: …", "Tafsir: …" or "Quran text: …".
+ * Mirrored in public/js/create.js (minimalCredit) for the live preview.
+ */
+export function minimalCredit(translation, tafsirOn) {
+  const label = translation && tafsirOn ? 'Translation & tafsir' : translation ? 'Translation' : tafsirOn ? 'Tafsir' : 'Quran text';
+  const version = translation?.version ? ` (v${translation.version})` : '';
+  return `${label}: QuranEnc.com${version}`;
+}
+
 /** "Pexels – Jane Doe, John Roe · NASA" from the clips actually used (uploads need no credit). */
 export function footageCredit(clips) {
   const byProvider = new Map();
@@ -238,11 +249,7 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
     ].join('  ·  ');
     if (tafsirOn) credit += `\nTafsir: ${spec.tafsir.title} (QuranEnc.com)`;
   } else if (style.credits === 'minimal') {
-    credit = [
-      'QuranEnc.com',
-      ...(trFont && spec.translation.version ? [`translation v${spec.translation.version}`] : []),
-      ...(tafsirOn ? [`tafsir: ${spec.tafsir.title.split(' — ')[0]}`] : []),
-    ].join('  ·  ');
+    credit = minimalCredit(trFont ? spec.translation : null, tafsirOn);
   }
   const header = style.showSurahTitle
     ? { nameAr: /^سورة/.test(spec.surah.nameAr) ? spec.surah.nameAr : `سورة ${spec.surah.nameAr}`, nameEn: spec.surah.nameEn }

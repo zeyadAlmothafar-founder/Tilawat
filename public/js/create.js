@@ -176,6 +176,16 @@ function tafsirSeconds() {
 }
 
 /** Language and text direction of the selected translation (null iso = Arabic only). */
+/** Footer credit as the video will show it (mirrors minimalCredit() in server/render/pipeline.js). */
+function previewCredit() {
+  const tr = currentTranslation();
+  const tafsirOn = tafsirCardsOn();
+  if (state.style.credits === 'none') return '';
+  const label = tr && tafsirOn ? 'Translation & tafsir' : tr ? 'Translation' : tafsirOn ? 'Tafsir' : 'Quran text';
+  const minimal = `${label}: QuranEnc.com${tr?.version ? ` (v${tr.version})` : ''}`;
+  return state.style.credits === 'full' ? `${minimal} · Recitation: EveryAyah.com · Footage credits` : minimal;
+}
+
 function translationInfo() {
   const tr = currentTranslation();
   if (!tr) return { iso: null, dir: 'auto' };
@@ -951,6 +961,7 @@ function updatePreview() {
     translationIso: translationInfo().iso,
     translationDir: translationInfo().dir,
     reciter,
+    credit: previewCredit(),
     showBismillah: Boolean(state.bismillah && first && first.from === 1 && !NO_BISMILLAH.has(first.surah)),
     bismillahText: data.bismillah,
   });

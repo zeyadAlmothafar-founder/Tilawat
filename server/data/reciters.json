@@ -1,0 +1,205 @@
+[
+  {
+    "id": "Alafasy_128kbps",
+    "nameEn": "Mishary Rashid Alafasy",
+    "nameAr": "مشاري راشد العفاسي",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Abdul_Basit_Murattal_192kbps",
+    "nameEn": "Abdul Basit Abdul Samad",
+    "nameAr": "عبد الباسط عبد الصمد",
+    "style": "murattal",
+    "bitrate": 192
+  },
+  {
+    "id": "Abdul_Basit_Mujawwad_128kbps",
+    "nameEn": "Abdul Basit Abdul Samad",
+    "nameAr": "عبد الباسط عبد الصمد",
+    "style": "mujawwad",
+    "bitrate": 128
+  },
+  {
+    "id": "Husary_128kbps",
+    "nameEn": "Mahmoud Khalil Al-Husary",
+    "nameAr": "محمود خليل الحصري",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Husary_128kbps_Mujawwad",
+    "nameEn": "Mahmoud Khalil Al-Husary",
+    "nameAr": "محمود خليل الحصري",
+    "style": "mujawwad",
+    "bitrate": 128
+  },
+  {
+    "id": "Husary_Muallim_128kbps",
+    "nameEn": "Mahmoud Khalil Al-Husary",
+    "nameAr": "محمود خليل الحصري",
+    "style": "muallim",
+    "bitrate": 128
+  },
+  {
+    "id": "Minshawy_Murattal_128kbps",
+    "nameEn": "Mohamed Siddiq Al-Minshawi",
+    "nameAr": "محمد صديق المنشاوي",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Minshawy_Mujawwad_192kbps",
+    "nameEn": "Mohamed Siddiq Al-Minshawi",
+    "nameAr": "محمد صديق المنشاوي",
+    "style": "mujawwad",
+    "bitrate": 192
+  },
+  {
+    "id": "Abdurrahmaan_As-Sudais_192kbps",
+    "nameEn": "Abdul Rahman Al-Sudais",
+    "nameAr": "عبد الرحمن السديس",
+    "style": "murattal",
+    "bitrate": 192
+  },
+  {
+    "id": "Saood_ash-Shuraym_128kbps",
+    "nameEn": "Saud Al-Shuraim",
+    "nameAr": "سعود الشريم",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "MaherAlMuaiqly128kbps",
+    "nameEn": "Maher Al-Muaiqly",
+    "nameAr": "ماهر المعيقلي",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Yasser_Ad-Dussary_128kbps",
+    "nameEn": "Yasser Al-Dosari",
+    "nameAr": "ياسر الدوسري",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Ghamadi_40kbps",
+    "nameEn": "Saad Al-Ghamdi",
+    "nameAr": "سعد الغامدي",
+    "style": "murattal",
+    "bitrate": 40
+  },
+  {
+    "id": "Abu_Bakr_Ash-Shaatree_128kbps",
+    "nameEn": "Abu Bakr Al-Shatri",
+    "nameAr": "أبو بكر الشاطري",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Hani_Rifai_192kbps",
+    "nameEn": "Hani Ar-Rifai",
+    "nameAr": "هاني الرفاعي",
+    "style": "murattal",
+    "bitrate": 192
+  },
+  {
+    "id": "Nasser_Alqatami_128kbps",
+    "nameEn": "Nasser Al-Qatami",
+    "nameAr": "ناصر القطامي",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "ahmed_ibn_ali_al_ajamy_128kbps",
+    "nameEn": "Ahmed Al-Ajmi",
+    "nameAr": "أحمد بن علي العجمي",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Muhammad_Ayyoub_128kbps",
+    "nameEn": "Muhammad Ayyub",
+    "nameAr": "محمد أيوب",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Abdullah_Basfar_192kbps",
+    "nameEn": "Abdullah Basfar",
+    "nameAr": "عبد الله بصفر",
+    "style": "murattal",
+    "bitrate": 192
+  },
+  {
+    "id": "Hudhaify_128kbps",
+    "nameEn": "Ali Al-Hudhaifi",
+    "nameAr": "علي الحذيفي",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Fares_Abbad_64kbps",
+    "nameEn": "Fares Abbad",
+    "nameAr": "فارس عباد",
+    "style": "murattal",
+    "bitrate": 64
+  },
+  {
+    "id": "Muhammad_Jibreel_128kbps",
+    "nameEn": "Muhammad Jibreel",
+    "nameAr": "محمد جبريل",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Khaalid_Abdullaah_al-Qahtaanee_192kbps",
+    "nameEn": "Khalid Al-Qahtani",
+    "nameAr": "خالد القحطاني",
+    "style": "murattal",
+    "bitrate": 192
+  },
+  {
+    "id": "Ibrahim_Akhdar_32kbps",
+    "nameEn": "Ibrahim Al-Akhdar",
+    "nameAr": "إبراهيم الأخضر",
+    "style": "murattal",
+    "bitrate": 32
+  },
+  {
+    "id": "Salaah_AbdulRahman_Bukhatir_128kbps",
+    "nameEn": "Salah Bukhatir",
+    "nameAr": "صلاح بو خاطر",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Salah_Al_Budair_128kbps",
+    "nameEn": "Salah Al-Budair",
+    "nameAr": "صلاح البدير",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Abdullaah_3awwaad_Al-Juhaynee_128kbps",
+    "nameEn": "Abdullah Awad Al-Juhani",
+    "nameAr": "عبد الله عواد الجهني",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Mohammad_al_Tablaway_128kbps",
+    "nameEn": "Mohammad Al-Tablawi",
+    "nameAr": "محمد محمود الطبلاوي",
+    "style": "murattal",
+    "bitrate": 128
+  },
+  {
+    "id": "Muhsin_Al_Qasim_192kbps",
+    "nameEn": "Abdul Muhsin Al-Qasim",
+    "nameAr": "عبد المحسن القاسم",
+    "style": "murattal",
+    "bitrate": 192
+  }
+]

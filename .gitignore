@@ -6,3 +6,4 @@ data/*.json
 !data/.gitkeep
 tmp/
 *.log
+.claude/

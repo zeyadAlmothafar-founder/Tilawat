@@ -1,0 +1,393 @@
+{
+  "app": {
+    "name": "Quran Video Studio",
+    "tagline": "Recitation videos to reflect on and share",
+    "skipToContent": "Skip to content"
+  },
+  "nav": {
+    "label": "Main",
+    "create": "Create",
+    "videos": "My Videos",
+    "library": "Backgrounds",
+    "about": "About",
+    "activeJobs": {
+      "one": "{count} video rendering",
+      "other": "{count} videos rendering"
+    }
+  },
+  "header": {
+    "language": "Language",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme"
+  },
+  "common": {
+    "loading": "Loading…",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "remove": "Remove",
+    "download": "Download",
+    "share": "Share",
+    "qr": "QR code",
+    "copy": "Copy",
+    "loadMore": "Load more",
+    "newTab": "(opens in a new tab)"
+  },
+  "categories": {
+    "nature": "Nature",
+    "space": "Space",
+    "mosque": "Mosques",
+    "islamic": "Islamic art"
+  },
+  "providers": {
+    "pexels": "Pexels",
+    "pixabay": "Pixabay",
+    "nasa": "NASA",
+    "upload": "Your upload"
+  },
+  "create": {
+    "title": "Create videos",
+    "subtitle": "Choose the passages, a reciter and a look — then make a single video or a whole batch at once.",
+    "passages": {
+      "title": "Passages",
+      "hint": "Add as many selections as you like. Each one becomes its own video.",
+      "presets": "Quick picks",
+      "selection": "Selection {n}",
+      "surah": "Surah",
+      "from": "From ayah",
+      "to": "To ayah",
+      "remove": "Remove selection {n}",
+      "add": "Add another selection",
+      "loadError": "Couldn't load the list of surahs.",
+      "meta": "{ayat} · {revelation}"
+    },
+    "presets": {
+      "fatiha": "Al-Fatiha",
+      "kursi": "Ayat al-Kursi",
+      "baqarahEnd": "Last 2 ayat of Al-Baqarah",
+      "ikhlas": "Al-Ikhlas",
+      "falaq": "Al-Falaq",
+      "nas": "An-Nas",
+      "quls": "The three Quls"
+    },
+    "picker": {
+      "choose": "Choose a surah",
+      "search": "Search by name, number or meaning",
+      "noResults": "No surah matches “{query}”",
+      "meccan": "Meccan",
+      "medinan": "Medinan"
+    },
+    "output": {
+      "title": "Videos to create",
+      "combined": "One video per selection",
+      "combinedHint": "Each selection becomes one video",
+      "perAyah": "One video per ayah",
+      "perAyahHint": "Every ayah becomes its own short clip"
+    },
+    "summary": {
+      "text": "This will create {videos} · {ayat} · ~{duration}",
+      "videos": {
+        "one": "{count} video",
+        "other": "{count} videos"
+      },
+      "ayat": {
+        "one": "{count} ayah",
+        "other": "{count} ayat"
+      }
+    },
+    "recitation": {
+      "title": "Recitation & translation"
+    },
+    "reciter": {
+      "label": "Reciter",
+      "preview": "Listen to a preview",
+      "stop": "Stop preview",
+      "loading": "Loading reciters…",
+      "unavailable": "Reciters are unavailable right now",
+      "style": {
+        "murattal": "Murattal",
+        "mujawwad": "Mujawwad",
+        "muallim": "Teaching"
+      }
+    },
+    "translation": {
+      "label": "Translation",
+      "none": "None (Arabic only)",
+      "loading": "Loading translations…",
+      "unavailable": "Translations are unavailable right now",
+      "hint": "Translations of the meanings from QuranEnc.com."
+    },
+    "backgrounds": {
+      "title": "Background footage",
+      "hint": "Choose one or more themes. Clips are silent — music is never added.",
+      "approvedOnly": "Only use clips I've approved",
+      "approvedOnlyHint": "Manage your approved clips in Backgrounds",
+      "approvedCount": {
+        "one": "{count} approved clip",
+        "other": "{count} approved clips"
+      },
+      "atLeastOne": "Keep at least one theme selected.",
+      "noApproved": "You haven't approved any clips in these themes yet, so a calm generated background will be used."
+    },
+    "format": {
+      "title": "Format",
+      "aspect": "Aspect ratio",
+      "portraitHint": "Reels · TikTok · Shorts · Status",
+      "landscapeHint": "YouTube",
+      "squareHint": "Feed posts",
+      "quality": "Quality",
+      "q1080": "1080p · Full HD",
+      "q720": "720p · faster"
+    },
+    "style": {
+      "title": "Style",
+      "font": "Arabic font",
+      "size": "Text size",
+      "position": "Text position",
+      "center": "Center",
+      "lower": "Lower third",
+      "darkness": "Background darkness",
+      "showTitle": "Show the surah name",
+      "showReciter": "Show the reciter's name",
+      "bismillah": "Begin with the Bismillah",
+      "bismillahHint": "Added when a passage starts at ayah 1 (except Al-Fatiha and At-Tawbah)."
+    },
+    "preview": {
+      "title": "Live preview",
+      "hint": "An approximation of the final video",
+      "placeholder": "Choose a passage to see it here",
+      "textTitle": "Check the text",
+      "textHint": "The ayat that will appear in your videos",
+      "loadingText": "Loading the text…",
+      "textError": "Couldn't load the text for this selection.",
+      "more": {
+        "one": "…and {count} more ayah",
+        "other": "…and {count} more ayat"
+      }
+    },
+    "submit": {
+      "one": "Create {count} video",
+      "other": "Create {count} videos"
+    },
+    "submitting": "Starting…",
+    "queued": {
+      "one": "{count} video added to the queue",
+      "other": "{count} videos added to the queue"
+    },
+    "validation": {
+      "loading": "Still loading the list of surahs…",
+      "noItems": "Add at least one selection.",
+      "range": "Selection {n}: please check the ayah numbers.",
+      "tooManyAyat": "Selection {n} has {count} ayat, but one video can hold up to {max}. Shorten it, split it into two selections, or choose “One video per ayah”.",
+      "tooManyVideos": "That would be {count} videos — up to {max} can be created at once.",
+      "noReciter": "Choose a reciter.",
+      "noCategory": "Choose at least one background theme."
+    }
+  },
+  "videos": {
+    "title": "My Videos",
+    "subtitle": "Your videos — watch, download and share them.",
+    "new": "New video",
+    "count": {
+      "one": "{count} video",
+      "other": "{count} videos"
+    },
+    "loadError": "Couldn't load your videos.",
+    "empty": {
+      "title": "No videos yet",
+      "text": "Create your first recitation video — it will appear here while it renders.",
+      "action": "Create a video"
+    },
+    "downloadAll": "Download all",
+    "status": {
+      "queued": "Waiting in queue",
+      "running": "Rendering",
+      "done": "Ready",
+      "error": "Rendering failed",
+      "canceled": "Canceled"
+    },
+    "stage": {
+      "queued": "Waiting in queue…",
+      "audio": "Fetching the recitation…",
+      "text": "Preparing the text…",
+      "clips": "Choosing background footage…",
+      "render": "Rendering the video…",
+      "finalize": "Finishing up…",
+      "done": "Done"
+    },
+    "ayahSingle": "Ayah {ayah}",
+    "ayahRange": "Ayat {from}–{to}",
+    "play": "Play {title}",
+    "progressLabel": "Rendering progress",
+    "cancelJob": "Cancel",
+    "deleteTitle": "Delete video",
+    "deleteConfirm": "Delete this video? This can't be undone.",
+    "deleted": "Video deleted",
+    "canceled": "Rendering canceled",
+    "readyLive": "{title} is ready",
+    "failedLive": "{title} could not be rendered"
+  },
+  "share": {
+    "title": "Share video",
+    "native": "Share video…",
+    "nativeHint": "Opens your device's share menu so you can send the video file to WhatsApp, Instagram, TikTok, Telegram, Snapchat and more.",
+    "preparing": "Preparing video…",
+    "tapAgain": "Video ready — tap again to share",
+    "unsupported": "This browser can't share video files directly. Download the video, or scan the QR code to open it on your phone and share it from there.",
+    "linksTitle": "Share a link",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "x": "X",
+    "facebook": "Facebook",
+    "email": "Email",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied",
+    "copyFailed": "Couldn't copy automatically — select the link and copy it.",
+    "linkLabel": "Link to this video",
+    "socialNote": "Instagram, TikTok and Snapchat don't accept links shared from a browser — use “Share video…” on your phone, or download the video and post it from the app.",
+    "textSingle": "{surah} {number}:{ayah} — recited by {reciter}",
+    "textRange": "{surah} {number}:{from}–{to} — recited by {reciter}",
+    "emailSubject": "{surah} — {app}",
+    "localhostWarning": "No network address was found, so this link only works on this computer.",
+    "qr": {
+      "title": "Open on your phone",
+      "alt": "QR code for {url}",
+      "captionLan": "Scan with your phone's camera to open the video, then save or share it from your phone. Your phone needs to be on the same Wi-Fi network as this computer.",
+      "captionPublic": "Scan with your phone's camera to open the video, then save or share it from your phone."
+    }
+  },
+  "sharePage": {
+    "loading": "Loading video…",
+    "loadError": "Couldn't load this video. Check your connection and try again.",
+    "notFound": {
+      "title": "Video not found",
+      "text": "This video may have been deleted, or the link is incomplete."
+    },
+    "rendering": {
+      "title": "Still rendering…",
+      "text": "This page refreshes automatically when the video is ready."
+    },
+    "failed": {
+      "title": "This video couldn't be created",
+      "text": "Something went wrong while rendering it. Please try creating it again."
+    },
+    "canceled": {
+      "title": "This video was canceled",
+      "text": "Its rendering was stopped before it finished."
+    },
+    "save": "Download / Save",
+    "saveHint": "On iPhone: tap Download, open the file, then choose Share → Save Video to add it to Photos.",
+    "httpNote": "Sharing the file directly needs a secure (https) connection. Download the video first, then share it from your gallery or Files app.",
+    "credits": "Credits",
+    "creditQuran": "Quran text: {source}",
+    "creditTranslation": "Translation: {title}",
+    "creditAudio": "Recitation audio: {source}",
+    "creditFootage": "Footage: {list}",
+    "openStudio": "Make your own video"
+  },
+  "library": {
+    "title": "Background library",
+    "subtitle": "Approve the clips you like — your videos will use them first.",
+    "statusError": "Couldn't load the library status.",
+    "loadError": "Couldn't load clips.",
+    "providers": {
+      "title": "Footage sources",
+      "enabled": "Connected",
+      "disabled": "No API key",
+      "alwaysOn": "Always available"
+    },
+    "keys": {
+      "title": "Add free API keys to find more footage",
+      "step1": "Get a free key from {pexels} and/or {pixabay}.",
+      "step2": "In the project folder, copy {example} to {file} and paste in your keys:",
+      "step3": "Restart the server, then come back to this page.",
+      "nasaNote": "NASA space footage and your own uploads work without a key.",
+      "show": "Show me how"
+    },
+    "tabsLabel": "Background themes",
+    "approvedTab": "Approved",
+    "findTab": "Find more",
+    "orientation": {
+      "label": "Shape",
+      "any": "Any shape",
+      "portrait": "Portrait",
+      "landscape": "Landscape",
+      "square": "Square"
+    },
+    "approvedEmpty": {
+      "title": "No approved clips yet",
+      "text": "Pick footage you like under “Find more”, or upload your own clip."
+    },
+    "candidatesEmpty": "No more clips found for this theme.",
+    "candidatesNoKeys": "Add a Pexels or Pixabay key to search for more footage.",
+    "candidatesNoKeysText": "Without an API key only NASA space footage can be searched. Keys are free and take a minute to set up.",
+    "warnings": "Some footage sources didn't respond:",
+    "preview": "Preview clip",
+    "credit": "{author} · {provider}",
+    "approve": "Approve",
+    "reject": "Hide",
+    "approved": "Added to your approved clips",
+    "rejected": "Clip hidden",
+    "removed": "Clip removed",
+    "removeConfirm": "Remove this clip from your approved backgrounds?",
+    "upload": {
+      "button": "Upload a clip",
+      "hint": "MP4, WebM or MOV, up to 500 MB. Your uploads are approved automatically.",
+      "uploading": "Uploading {name} to {category}…",
+      "done": "Clip uploaded",
+      "canceled": "Upload canceled",
+      "tooLarge": "This file is larger than 500 MB.",
+      "badType": "Please choose an MP4, WebM or MOV video."
+    }
+  },
+  "about": {
+    "title": "About",
+    "intro": "This studio turns Quran recitations into calm, shareable videos: the Arabic text and a translation of your choice appear over nature, space or mosque footage, ayah by ayah, in time with the recitation.",
+    "howTitle": "How it works",
+    "how1": "Choose one or more passages, a reciter and a translation.",
+    "how2": "Pick background themes, a format and a style, then create your videos.",
+    "how3": "Download them, or share them straight to WhatsApp, Instagram, TikTok and more.",
+    "textTitle": "About the Quran text",
+    "textBody": "The Arabic text and the translations are shown exactly as published by QuranEnc.com — nothing is retyped or altered. A translation conveys the meanings; the Arabic text alone is the Quran.",
+    "sourcesTitle": "Sources & credits",
+    "sourceQuranEnc": "Quran text and translations of the meanings",
+    "sourceEveryAyah": "Ayah-by-ayah recitation audio",
+    "sourcePexels": "Free stock footage",
+    "sourcePixabay": "Free stock footage",
+    "sourceNasa": "Space imagery",
+    "footageNote": "Background clips are silent footage of nature, space, mosques and Islamic art. Every video credits its footage authors, and music is never added.",
+    "phoneTitle": "Use it on your phone",
+    "phoneText": "Scan to open the studio on a phone connected to the same Wi-Fi network as this computer.",
+    "phonePublic": "Scan to open the studio on your phone.",
+    "phoneNone": "No network address was found. Connect this computer to Wi-Fi to open the studio from your phone."
+  },
+  "footer": {
+    "text": "Sources:"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Can't reach the server. Is it still running?",
+    "not_found": "Not found — this part of the server may not be available yet.",
+    "internal_error": "Something went wrong on the server.",
+    "invalid_request": "Some settings aren't valid. Please check them and try again.",
+    "invalid_range": "That ayah range isn't valid.",
+    "surah_not_found": "That surah couldn't be found.",
+    "reciter_not_found": "That reciter isn't available.",
+    "translation_not_found": "That translation isn't available.",
+    "video_not_found": "That video no longer exists.",
+    "clip_not_found": "That clip no longer exists.",
+    "too_many_videos": "Too many videos in one batch.",
+    "too_many_ayat": "Too many ayat for one video.",
+    "invalid_category": "Unknown background theme.",
+    "invalid_text": "That link can't be turned into a QR code.",
+    "unsupported_type": "That file type isn't supported.",
+    "file_too_large": "That file is too large.",
+    "upload_failed": "The upload failed.",
+    "provider_error": "The footage provider didn't respond. Please try again later.",
+    "audio_failed": "Couldn't play the recitation preview.",
+    "share_failed": "Sharing didn't work. Try downloading the video instead.",
+    "download_failed": "Couldn't download the video."
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "app": {
+    "name": "Quran Video Studio",
+    "tagline": "Video tilawah untuk direnungkan dan dibagikan",
+    "skipToContent": "Langsung ke konten"
+  },
+  "nav": {
+    "label": "Navigasi utama",
+    "create": "Buat",
+    "videos": "Video Saya",
+    "library": "Latar",
+    "about": "Tentang",
+    "activeJobs": {
+      "other": "{count} video sedang dibuat"
+    }
+  },
+  "header": {
+    "language": "Bahasa",
+    "themeToLight": "Beralih ke tema terang",
+    "themeToDark": "Beralih ke tema gelap"
+  },
+  "common": {
+    "loading": "Memuat…",
+    "retry": "Coba lagi",
+    "cancel": "Batal",
+    "close": "Tutup",
+    "confirm": "Konfirmasi",
+    "delete": "Hapus",
+    "remove": "Hapus",
+    "download": "Unduh",
+    "share": "Bagikan",
+    "qr": "Kode QR",
+    "copy": "Salin",
+    "loadMore": "Muat lebih banyak",
+    "newTab": "(terbuka di tab baru)"
+  },
+  "categories": {
+    "nature": "Alam",
+    "space": "Luar angkasa",
+    "mosque": "Masjid",
+    "islamic": "Seni Islami"
+  },
+  "providers": {
+    "pexels": "Pexels",
+    "pixabay": "Pixabay",
+    "nasa": "NASA",
+    "upload": "Unggahan Anda"
+  },
+  "create": {
+    "title": "Buat video",
+    "subtitle": "Pilih ayat, qari, dan tampilan — lalu buat satu video atau banyak video sekaligus.",
+    "passages": {
+      "title": "Pilihan ayat",
+      "hint": "Tambahkan pilihan sebanyak yang Anda mau. Setiap pilihan menjadi video tersendiri.",
+      "presets": "Pilihan cepat",
+      "selection": "Pilihan {n}",
+      "surah": "Surah",
+      "from": "Dari ayat",
+      "to": "Sampai ayat",
+      "remove": "Hapus pilihan {n}",
+      "add": "Tambah pilihan lain",
+      "loadError": "Daftar surah tidak dapat dimuat.",
+      "meta": "{ayat} · {revelation}"
+    },
+    "presets": {
+      "fatiha": "Al-Fatihah",
+      "kursi": "Ayat Kursi",
+      "baqarahEnd": "Dua ayat terakhir Al-Baqarah",
+      "ikhlas": "Al-Ikhlas",
+      "falaq": "Al-Falaq",
+      "nas": "An-Nas",
+      "quls": "Tiga Qul"
+    },
+    "picker": {
+      "choose": "Pilih surah",
+      "search": "Cari berdasarkan nama, nomor, atau arti",
+      "noResults": "Tidak ada surah yang cocok dengan “{query}”",
+      "meccan": "Makkiyah",
+      "medinan": "Madaniyah"
+    },
+    "output": {
+      "title": "Video yang akan dibuat",
+      "combined": "Satu video per pilihan",
+      "combinedHint": "Setiap pilihan menjadi satu video",
+      "perAyah": "Satu video per ayat",
+      "perAyahHint": "Setiap ayat menjadi klip pendek tersendiri"
+    },
+    "summary": {
+      "text": "Akan dibuat {videos} · {ayat} · ~{duration}",
+      "videos": {
+        "other": "{count} video"
+      },
+      "ayat": {
+        "other": "{count} ayat"
+      }
+    },
+    "recitation": {
+      "title": "Tilawah & terjemahan"
+    },
+    "reciter": {
+      "label": "Qari",
+      "preview": "Dengarkan cuplikan",
+      "stop": "Hentikan cuplikan",
+      "loading": "Memuat daftar qari…",
+      "unavailable": "Daftar qari sedang tidak tersedia",
+      "style": {
+        "murattal": "Murattal",
+        "mujawwad": "Mujawwad",
+        "muallim": "Pengajaran"
+      }
+    },
+    "translation": {
+      "label": "Terjemahan",
+      "none": "Tanpa terjemahan (hanya teks Arab)",
+      "loading": "Memuat terjemahan…",
+      "unavailable": "Terjemahan sedang tidak tersedia",
+      "hint": "Terjemahan makna Al-Qur'an dari QuranEnc.com."
+    },
+    "backgrounds": {
+      "title": "Video latar",
+      "hint": "Pilih satu tema atau lebih. Klip tidak bersuara — musik tidak pernah ditambahkan.",
+      "approvedOnly": "Hanya gunakan klip yang sudah saya setujui",
+      "approvedOnlyHint": "Kelola klip yang disetujui di menu Latar",
+      "approvedCount": {
+        "other": "{count} klip disetujui"
+      },
+      "atLeastOne": "Biarkan minimal satu tema tetap dipilih.",
+      "noApproved": "Anda belum menyetujui klip apa pun di tema ini, jadi latar tenang yang dibuat otomatis akan digunakan."
+    },
+    "format": {
+      "title": "Format",
+      "aspect": "Rasio aspek",
+      "portraitHint": "Reels · TikTok · Shorts · Status",
+      "landscapeHint": "YouTube",
+      "squareHint": "Postingan feed",
+      "quality": "Kualitas",
+      "q1080": "1080p · Full HD",
+      "q720": "720p · lebih cepat"
+    },
+    "style": {
+      "title": "Gaya",
+      "font": "Font Arab",
+      "size": "Ukuran teks",
+      "position": "Posisi teks",
+      "center": "Tengah",
+      "lower": "Sepertiga bawah",
+      "darkness": "Kegelapan latar",
+      "showTitle": "Tampilkan nama surah",
+      "showReciter": "Tampilkan nama qari",
+      "bismillah": "Awali dengan basmalah",
+      "bismillahHint": "Ditambahkan jika pilihan dimulai dari ayat pertama (kecuali Al-Fatihah dan At-Taubah)."
+    },
+    "preview": {
+      "title": "Pratinjau langsung",
+      "hint": "Perkiraan tampilan video akhir",
+      "placeholder": "Pilih ayat untuk melihatnya di sini",
+      "textTitle": "Periksa teks",
+      "textHint": "Ayat-ayat yang akan muncul di video Anda",
+      "loadingText": "Memuat teks…",
+      "textError": "Teks untuk pilihan ini tidak dapat dimuat.",
+      "more": {
+        "other": "…dan {count} ayat lagi"
+      }
+    },
+    "submit": {
+      "other": "Buat {count} video"
+    },
+    "submitting": "Memulai…",
+    "queued": {
+      "other": "{count} video ditambahkan ke antrean"
+    },
+    "validation": {
+      "loading": "Daftar surah masih dimuat…",
+      "noItems": "Tambahkan minimal satu pilihan.",
+      "range": "Pilihan {n}: periksa kembali nomor ayatnya.",
+      "tooManyAyat": "Pilihan {n} berisi {count} ayat, padahal satu video maksimal memuat {max} ayat. Persingkat, bagi menjadi dua pilihan, atau pilih “Satu video per ayat”.",
+      "tooManyVideos": "Itu berarti {count} video — maksimal {max} video dapat dibuat sekaligus.",
+      "noReciter": "Pilih qari.",
+      "noCategory": "Pilih minimal satu tema latar."
+    }
+  },
+  "videos": {
+    "title": "Video Saya",
+    "subtitle": "Video Anda — tonton, unduh, dan bagikan.",
+    "new": "Video baru",
+    "count": {
+      "other": "{count} video"
+    },
+    "loadError": "Video Anda tidak dapat dimuat.",
+    "empty": {
+      "title": "Belum ada video",
+      "text": "Buat video tilawah pertama Anda — video akan muncul di sini selama diproses.",
+      "action": "Buat video"
+    },
+    "downloadAll": "Unduh semua",
+    "status": {
+      "queued": "Dalam antrean",
+      "running": "Sedang diproses",
+      "done": "Siap",
+      "error": "Gagal diproses",
+      "canceled": "Dibatalkan"
+    },
+    "stage": {
+      "queued": "Menunggu dalam antrean…",
+      "audio": "Mengambil tilawah…",
+      "text": "Menyiapkan teks…",
+      "clips": "Memilih video latar…",
+      "render": "Membuat video…",
+      "finalize": "Menyelesaikan…",
+      "done": "Selesai"
+    },
+    "ayahSingle": "Ayat {ayah}",
+    "ayahRange": "Ayat {from}–{to}",
+    "play": "Putar {title}",
+    "progressLabel": "Progres pembuatan",
+    "cancelJob": "Batal",
+    "deleteTitle": "Hapus video",
+    "deleteConfirm": "Hapus video ini? Tindakan ini tidak dapat dibatalkan.",
+    "deleted": "Video dihapus",
+    "canceled": "Pembuatan dibatalkan",
+    "readyLive": "{title} sudah siap",
+    "failedLive": "{title} gagal dibuat"
+  },
+  "share": {
+    "title": "Bagikan video",
+    "native": "Bagikan video…",
+    "nativeHint": "Membuka menu berbagi di perangkat Anda agar file video bisa dikirim ke WhatsApp, Instagram, TikTok, Telegram, Snapchat, dan lainnya.",
+    "preparing": "Menyiapkan video…",
+    "tapAgain": "Video siap — ketuk lagi untuk membagikan",
+    "unsupported": "Browser ini tidak dapat membagikan file video secara langsung. Unduh videonya, atau pindai kode QR untuk membukanya di ponsel dan bagikan dari sana.",
+    "linksTitle": "Bagikan tautan",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "x": "X",
+    "facebook": "Facebook",
+    "email": "Email",
+    "copyLink": "Salin tautan",
+    "linkCopied": "Tautan disalin",
+    "copyFailed": "Tidak dapat menyalin otomatis — pilih tautannya lalu salin.",
+    "linkLabel": "Tautan ke video ini",
+    "socialNote": "Instagram, TikTok, dan Snapchat tidak menerima tautan yang dibagikan dari browser — gunakan “Bagikan video…” di ponsel Anda, atau unduh videonya lalu unggah dari aplikasinya.",
+    "textSingle": "QS {surah} {number}:{ayah} — dilantunkan oleh {reciter}",
+    "textRange": "QS {surah} {number}:{from}–{to} — dilantunkan oleh {reciter}",
+    "emailSubject": "{surah} — {app}",
+    "localhostWarning": "Alamat jaringan tidak ditemukan, jadi tautan ini hanya berfungsi di komputer ini.",
+    "qr": {
+      "title": "Buka di ponsel",
+      "alt": "Kode QR untuk {url}",
+      "captionLan": "Pindai dengan kamera ponsel untuk membuka video, lalu simpan atau bagikan dari ponsel. Ponsel Anda harus terhubung ke jaringan Wi-Fi yang sama dengan komputer ini.",
+      "captionPublic": "Pindai dengan kamera ponsel untuk membuka video, lalu simpan atau bagikan dari ponsel."
+    }
+  },
+  "sharePage": {
+    "loading": "Memuat video…",
+    "loadError": "Video ini tidak dapat dimuat. Periksa koneksi Anda dan coba lagi.",
+    "notFound": {
+      "title": "Video tidak ditemukan",
+      "text": "Video ini mungkin sudah dihapus, atau tautannya tidak lengkap."
+    },
+    "rendering": {
+      "title": "Masih diproses…",
+      "text": "Halaman ini akan diperbarui otomatis saat video sudah siap."
+    },
+    "failed": {
+      "title": "Video ini gagal dibuat",
+      "text": "Terjadi kesalahan saat memprosesnya. Silakan coba buat lagi."
+    },
+    "canceled": {
+      "title": "Video ini dibatalkan",
+      "text": "Pembuatannya dihentikan sebelum selesai."
+    },
+    "save": "Unduh / Simpan",
+    "saveHint": "Di iPhone: ketuk Unduh, buka filenya, lalu pilih Bagikan → Simpan Video untuk menambahkannya ke Foto.",
+    "httpNote": "Berbagi file secara langsung memerlukan koneksi aman (https). Unduh dulu videonya, lalu bagikan dari galeri atau aplikasi File.",
+    "credits": "Kredit",
+    "creditQuran": "Teks Al-Qur'an: {source}",
+    "creditTranslation": "Terjemahan: {title}",
+    "creditAudio": "Audio tilawah: {source}",
+    "creditFootage": "Rekaman video: {list}",
+    "openStudio": "Buat video Anda sendiri"
+  },
+  "library": {
+    "title": "Pustaka latar",
+    "subtitle": "Setujui klip yang Anda suka — video Anda akan menggunakannya lebih dulu.",
+    "statusError": "Status pustaka tidak dapat dimuat.",
+    "loadError": "Klip tidak dapat dimuat.",
+    "providers": {
+      "title": "Sumber video",
+      "enabled": "Terhubung",
+      "disabled": "Tanpa kunci API",
+      "alwaysOn": "Selalu tersedia"
+    },
+    "keys": {
+      "title": "Tambahkan kunci API gratis untuk menemukan lebih banyak video",
+      "step1": "Dapatkan kunci gratis dari {pexels} dan/atau {pixabay}.",
+      "step2": "Di folder proyek, salin {example} menjadi {file} lalu tempelkan kunci Anda:",
+      "step3": "Mulai ulang server, lalu kembali ke halaman ini.",
+      "nasaNote": "Video luar angkasa NASA dan unggahan Anda sendiri bisa digunakan tanpa kunci.",
+      "show": "Tunjukkan caranya"
+    },
+    "tabsLabel": "Tema latar",
+    "approvedTab": "Disetujui",
+    "findTab": "Cari lagi",
+    "orientation": {
+      "label": "Bentuk",
+      "any": "Semua bentuk",
+      "portrait": "Potret",
+      "landscape": "Lanskap",
+      "square": "Persegi"
+    },
+    "approvedEmpty": {
+      "title": "Belum ada klip yang disetujui",
+      "text": "Pilih video yang Anda suka di “Cari lagi”, atau unggah klip Anda sendiri."
+    },
+    "candidatesEmpty": "Tidak ada klip lain untuk tema ini.",
+    "candidatesNoKeys": "Tambahkan kunci Pexels atau Pixabay untuk mencari lebih banyak video.",
+    "candidatesNoKeysText": "Tanpa kunci API, hanya video luar angkasa NASA yang bisa dicari. Kuncinya gratis dan hanya perlu semenit untuk disiapkan.",
+    "warnings": "Beberapa sumber video tidak merespons:",
+    "preview": "Pratinjau klip",
+    "credit": "{author} · {provider}",
+    "approve": "Setujui",
+    "reject": "Sembunyikan",
+    "approved": "Ditambahkan ke klip yang Anda setujui",
+    "rejected": "Klip disembunyikan",
+    "removed": "Klip dihapus",
+    "removeConfirm": "Hapus klip ini dari latar yang Anda setujui?",
+    "upload": {
+      "button": "Unggah klip",
+      "hint": "MP4, WebM, atau MOV, maksimal 500 MB. Unggahan Anda otomatis disetujui.",
+      "uploading": "Mengunggah {name} ke {category}…",
+      "done": "Klip berhasil diunggah",
+      "canceled": "Unggahan dibatalkan",
+      "tooLarge": "File ini lebih dari 500 MB.",
+      "badType": "Pilih video MP4, WebM, atau MOV."
+    }
+  },
+  "about": {
+    "title": "Tentang",
+    "intro": "Studio ini mengubah tilawah Al-Qur'an menjadi video yang menenangkan dan mudah dibagikan: teks Arab beserta terjemahan pilihan Anda tampil di atas pemandangan alam, luar angkasa, atau masjid, ayat demi ayat, selaras dengan tilawahnya.",
+    "howTitle": "Cara kerjanya",
+    "how1": "Pilih satu atau beberapa bagian ayat, qari, dan terjemahan.",
+    "how2": "Pilih tema latar, format, dan gaya, lalu buat video Anda.",
+    "how3": "Unduh, atau bagikan langsung ke WhatsApp, Instagram, TikTok, dan lainnya.",
+    "textTitle": "Tentang teks Al-Qur'an",
+    "textBody": "Teks Arab dan terjemahannya ditampilkan persis seperti yang diterbitkan QuranEnc.com — tidak ada yang diketik ulang atau diubah. Terjemahan menyampaikan makna; Al-Qur'an itu sendiri hanyalah teks Arabnya.",
+    "sourcesTitle": "Sumber & kredit",
+    "sourceQuranEnc": "Teks Al-Qur'an dan terjemahan maknanya",
+    "sourceEveryAyah": "Audio tilawah per ayat",
+    "sourcePexels": "Video stok gratis",
+    "sourcePixabay": "Video stok gratis",
+    "sourceNasa": "Citra luar angkasa",
+    "footageNote": "Klip latar berupa rekaman tanpa suara tentang alam, luar angkasa, masjid, dan seni Islami. Setiap video mencantumkan pembuat rekamannya, dan musik tidak pernah ditambahkan.",
+    "phoneTitle": "Gunakan di ponsel",
+    "phoneText": "Pindai untuk membuka studio di ponsel yang terhubung ke jaringan Wi-Fi yang sama dengan komputer ini.",
+    "phonePublic": "Pindai untuk membuka studio di ponsel Anda.",
+    "phoneNone": "Alamat jaringan tidak ditemukan. Hubungkan komputer ini ke Wi-Fi untuk membuka studio dari ponsel."
+  },
+  "footer": {
+    "text": "Sumber:"
+  },
+  "errors": {
+    "generic": "Terjadi kesalahan. Silakan coba lagi.",
+    "network": "Tidak dapat terhubung ke server. Apakah server masih berjalan?",
+    "not_found": "Tidak ditemukan — bagian server ini mungkin belum tersedia.",
+    "internal_error": "Terjadi kesalahan di server.",
+    "invalid_request": "Beberapa pengaturan tidak valid. Periksa lalu coba lagi.",
+    "invalid_range": "Rentang ayat tersebut tidak valid.",
+    "surah_not_found": "Surah tersebut tidak ditemukan.",
+    "reciter_not_found": "Qari tersebut tidak tersedia.",
+    "translation_not_found": "Terjemahan tersebut tidak tersedia.",
+    "video_not_found": "Video tersebut sudah tidak ada.",
+    "clip_not_found": "Klip tersebut sudah tidak ada.",
+    "too_many_videos": "Terlalu banyak video dalam satu kali pembuatan.",
+    "too_many_ayat": "Terlalu banyak ayat untuk satu video.",
+    "invalid_category": "Tema latar tidak dikenal.",
+    "invalid_text": "Tautan tersebut tidak dapat diubah menjadi kode QR.",
+    "unsupported_type": "Jenis file tersebut tidak didukung.",
+    "file_too_large": "File terlalu besar.",
+    "upload_failed": "Unggahan gagal.",
+    "provider_error": "Penyedia video tidak merespons. Silakan coba lagi nanti.",
+    "audio_failed": "Cuplikan tilawah tidak dapat diputar.",
+    "share_failed": "Gagal membagikan. Coba unduh videonya saja.",
+    "download_failed": "Video tidak dapat diunduh."
+  }
+}

@@ -1,0 +1,393 @@
+{
+  "app": {
+    "name": "Quran Video Studio",
+    "tagline": "Tefekkür etmek ve paylaşmak için tilavet videoları",
+    "skipToContent": "İçeriğe atla"
+  },
+  "nav": {
+    "label": "Ana menü",
+    "create": "Oluştur",
+    "videos": "Videolarım",
+    "library": "Arka planlar",
+    "about": "Hakkında",
+    "activeJobs": {
+      "one": "{count} video hazırlanıyor",
+      "other": "{count} video hazırlanıyor"
+    }
+  },
+  "header": {
+    "language": "Dil",
+    "themeToLight": "Açık temaya geç",
+    "themeToDark": "Koyu temaya geç"
+  },
+  "common": {
+    "loading": "Yükleniyor…",
+    "retry": "Tekrar dene",
+    "cancel": "İptal",
+    "close": "Kapat",
+    "confirm": "Onayla",
+    "delete": "Sil",
+    "remove": "Kaldır",
+    "download": "İndir",
+    "share": "Paylaş",
+    "qr": "QR kodu",
+    "copy": "Kopyala",
+    "loadMore": "Daha fazla yükle",
+    "newTab": "(yeni sekmede açılır)"
+  },
+  "categories": {
+    "nature": "Doğa",
+    "space": "Uzay",
+    "mosque": "Camiler",
+    "islamic": "İslam sanatı"
+  },
+  "providers": {
+    "pexels": "Pexels",
+    "pixabay": "Pixabay",
+    "nasa": "NASA",
+    "upload": "Yüklemeniz"
+  },
+  "create": {
+    "title": "Video oluştur",
+    "subtitle": "Bölümleri, kâriyi ve görünümü seçin; ardından tek bir video ya da tek seferde birçok video oluşturun.",
+    "passages": {
+      "title": "Bölümler",
+      "hint": "İstediğiniz kadar seçim ekleyin. Her seçim ayrı bir video olur.",
+      "presets": "Hızlı seçimler",
+      "selection": "Seçim {n}",
+      "surah": "Sure",
+      "from": "Başlangıç ayeti",
+      "to": "Bitiş ayeti",
+      "remove": "{n}. seçimi kaldır",
+      "add": "Başka bir seçim ekle",
+      "loadError": "Sure listesi yüklenemedi.",
+      "meta": "{ayat} · {revelation}"
+    },
+    "presets": {
+      "fatiha": "Fâtiha",
+      "kursi": "Âyetü'l-Kürsî",
+      "baqarahEnd": "Bakara'nın son iki ayeti",
+      "ikhlas": "İhlâs",
+      "falaq": "Felak",
+      "nas": "Nâs",
+      "quls": "İhlâs ve Muavvizeteyn"
+    },
+    "picker": {
+      "choose": "Sure seçin",
+      "search": "Ad, numara veya anlama göre ara",
+      "noResults": "“{query}” ile eşleşen sure yok",
+      "meccan": "Mekkî",
+      "medinan": "Medenî"
+    },
+    "output": {
+      "title": "Oluşturulacak videolar",
+      "combined": "Her seçim için bir video",
+      "combinedHint": "Her seçim tek bir video olur",
+      "perAyah": "Her ayet için bir video",
+      "perAyahHint": "Her ayet ayrı bir kısa klip olur"
+    },
+    "summary": {
+      "text": "Oluşturulacak: {videos} · {ayat} · ~{duration}",
+      "videos": {
+        "one": "{count} video",
+        "other": "{count} video"
+      },
+      "ayat": {
+        "one": "{count} ayet",
+        "other": "{count} ayet"
+      }
+    },
+    "recitation": {
+      "title": "Tilavet ve meal"
+    },
+    "reciter": {
+      "label": "Kâri",
+      "preview": "Önizlemeyi dinle",
+      "stop": "Önizlemeyi durdur",
+      "loading": "Kâriler yükleniyor…",
+      "unavailable": "Kâriler şu anda kullanılamıyor",
+      "style": {
+        "murattal": "Murattal",
+        "mujawwad": "Mücevved",
+        "muallim": "Öğretici"
+      }
+    },
+    "translation": {
+      "label": "Meal",
+      "none": "Yok (yalnızca Arapça)",
+      "loading": "Mealler yükleniyor…",
+      "unavailable": "Mealler şu anda kullanılamıyor",
+      "hint": "Kur'an mealleri QuranEnc.com'dan alınmıştır."
+    },
+    "backgrounds": {
+      "title": "Arka plan görüntüleri",
+      "hint": "Bir veya daha fazla tema seçin. Klipler sessizdir — asla müzik eklenmez.",
+      "approvedOnly": "Yalnızca onayladığım klipleri kullan",
+      "approvedOnlyHint": "Onaylı kliplerinizi Arka planlar bölümünden yönetin",
+      "approvedCount": {
+        "one": "{count} onaylı klip",
+        "other": "{count} onaylı klip"
+      },
+      "atLeastOne": "En az bir tema seçili kalmalı.",
+      "noApproved": "Bu temalarda henüz klip onaylamadınız; bu yüzden sakin, otomatik oluşturulmuş bir arka plan kullanılacak."
+    },
+    "format": {
+      "title": "Biçim",
+      "aspect": "En-boy oranı",
+      "portraitHint": "Reels · TikTok · Shorts · Durum",
+      "landscapeHint": "YouTube",
+      "squareHint": "Akış gönderileri",
+      "quality": "Kalite",
+      "q1080": "1080p · Full HD",
+      "q720": "720p · daha hızlı"
+    },
+    "style": {
+      "title": "Stil",
+      "font": "Arapça yazı tipi",
+      "size": "Metin boyutu",
+      "position": "Metin konumu",
+      "center": "Orta",
+      "lower": "Alt üçte bir",
+      "darkness": "Arka plan koyuluğu",
+      "showTitle": "Sure adını göster",
+      "showReciter": "Kârinin adını göster",
+      "bismillah": "Besmeleyle başla",
+      "bismillahHint": "Bölüm ilk ayetten başladığında eklenir (Fâtiha ve Tevbe sureleri hariç)."
+    },
+    "preview": {
+      "title": "Canlı önizleme",
+      "hint": "Son videonun yaklaşık görünümü",
+      "placeholder": "Burada görmek için bir bölüm seçin",
+      "textTitle": "Metni kontrol edin",
+      "textHint": "Videolarınızda görünecek ayetler",
+      "loadingText": "Metin yükleniyor…",
+      "textError": "Bu seçimin metni yüklenemedi.",
+      "more": {
+        "one": "…ve {count} ayet daha",
+        "other": "…ve {count} ayet daha"
+      }
+    },
+    "submit": {
+      "one": "{count} video oluştur",
+      "other": "{count} video oluştur"
+    },
+    "submitting": "Başlatılıyor…",
+    "queued": {
+      "one": "{count} video kuyruğa eklendi",
+      "other": "{count} video kuyruğa eklendi"
+    },
+    "validation": {
+      "loading": "Sure listesi hâlâ yükleniyor…",
+      "noItems": "En az bir seçim ekleyin.",
+      "range": "Seçim {n}: Lütfen ayet numaralarını kontrol edin.",
+      "tooManyAyat": "{n}. seçimde {count} ayet var, ancak bir videoya en fazla {max} ayet sığar. Seçimi kısaltın, iki seçime bölün ya da “Her ayet için bir video” seçeneğini kullanın.",
+      "tooManyVideos": "Bu, {count} video demek — tek seferde en fazla {max} video oluşturulabilir.",
+      "noReciter": "Bir kâri seçin.",
+      "noCategory": "En az bir arka plan teması seçin."
+    }
+  },
+  "videos": {
+    "title": "Videolarım",
+    "subtitle": "Videolarınız — izleyin, indirin ve paylaşın.",
+    "new": "Yeni video",
+    "count": {
+      "one": "{count} video",
+      "other": "{count} video"
+    },
+    "loadError": "Videolarınız yüklenemedi.",
+    "empty": {
+      "title": "Henüz video yok",
+      "text": "İlk tilavet videonuzu oluşturun — hazırlanırken burada görünecek.",
+      "action": "Video oluştur"
+    },
+    "downloadAll": "Tümünü indir",
+    "status": {
+      "queued": "Sırada bekliyor",
+      "running": "Hazırlanıyor",
+      "done": "Hazır",
+      "error": "Oluşturulamadı",
+      "canceled": "İptal edildi"
+    },
+    "stage": {
+      "queued": "Sırada bekliyor…",
+      "audio": "Tilavet alınıyor…",
+      "text": "Metin hazırlanıyor…",
+      "clips": "Arka plan görüntüleri seçiliyor…",
+      "render": "Video oluşturuluyor…",
+      "finalize": "Son dokunuşlar yapılıyor…",
+      "done": "Tamamlandı"
+    },
+    "ayahSingle": "Ayet {ayah}",
+    "ayahRange": "Ayet {from}–{to}",
+    "play": "Oynat: {title}",
+    "progressLabel": "Oluşturma ilerlemesi",
+    "cancelJob": "İptal",
+    "deleteTitle": "Videoyu sil",
+    "deleteConfirm": "Bu video silinsin mi? Bu işlem geri alınamaz.",
+    "deleted": "Video silindi",
+    "canceled": "Oluşturma iptal edildi",
+    "readyLive": "{title} hazır",
+    "failedLive": "{title} oluşturulamadı"
+  },
+  "share": {
+    "title": "Videoyu paylaş",
+    "native": "Videoyu paylaş…",
+    "nativeHint": "Cihazınızın paylaşım menüsünü açar; böylece video dosyasını WhatsApp, Instagram, TikTok, Telegram, Snapchat ve diğer uygulamalara gönderebilirsiniz.",
+    "preparing": "Video hazırlanıyor…",
+    "tapAgain": "Video hazır — paylaşmak için tekrar dokunun",
+    "unsupported": "Bu tarayıcı video dosyalarını doğrudan paylaşamıyor. Videoyu indirin ya da QR kodunu tarayıp telefonunuzda açın ve oradan paylaşın.",
+    "linksTitle": "Bağlantı paylaş",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "x": "X",
+    "facebook": "Facebook",
+    "email": "E-posta",
+    "copyLink": "Bağlantıyı kopyala",
+    "linkCopied": "Bağlantı kopyalandı",
+    "copyFailed": "Otomatik kopyalanamadı — bağlantıyı seçip kopyalayın.",
+    "linkLabel": "Bu videonun bağlantısı",
+    "socialNote": "Instagram, TikTok ve Snapchat tarayıcıdan paylaşılan bağlantıları kabul etmez — telefonunuzda “Videoyu paylaş…” seçeneğini kullanın ya da videoyu indirip uygulamadan paylaşın.",
+    "textSingle": "{surah} Suresi {number}:{ayah} — Okuyan: {reciter}",
+    "textRange": "{surah} Suresi {number}:{from}–{to} — Okuyan: {reciter}",
+    "emailSubject": "{surah} Suresi — {app}",
+    "localhostWarning": "Ağ adresi bulunamadı; bu bağlantı yalnızca bu bilgisayarda çalışır.",
+    "qr": {
+      "title": "Telefonunuzda açın",
+      "alt": "{url} için QR kodu",
+      "captionLan": "Videoyu açmak için telefonunuzun kamerasıyla tarayın, ardından telefonunuzdan kaydedin veya paylaşın. Telefonunuz bu bilgisayarla aynı Wi-Fi ağına bağlı olmalıdır.",
+      "captionPublic": "Videoyu açmak için telefonunuzun kamerasıyla tarayın, ardından telefonunuzdan kaydedin veya paylaşın."
+    }
+  },
+  "sharePage": {
+    "loading": "Video yükleniyor…",
+    "loadError": "Bu video yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.",
+    "notFound": {
+      "title": "Video bulunamadı",
+      "text": "Bu video silinmiş ya da bağlantı eksik olabilir."
+    },
+    "rendering": {
+      "title": "Hâlâ hazırlanıyor…",
+      "text": "Video hazır olduğunda bu sayfa otomatik olarak yenilenir."
+    },
+    "failed": {
+      "title": "Bu video oluşturulamadı",
+      "text": "Oluşturulurken bir sorun çıktı. Lütfen yeniden oluşturmayı deneyin."
+    },
+    "canceled": {
+      "title": "Bu video iptal edildi",
+      "text": "Oluşturma işlemi tamamlanmadan durduruldu."
+    },
+    "save": "İndir / Kaydet",
+    "saveHint": "iPhone'da: İndir'e dokunun, dosyayı açın, ardından Paylaş → Videoyu Kaydet'i seçerek Fotoğraflar'a ekleyin.",
+    "httpNote": "Dosyayı doğrudan paylaşmak için güvenli (https) bağlantı gerekir. Önce videoyu indirin, ardından galerinizden veya Dosyalar uygulamasından paylaşın.",
+    "credits": "Kaynaklar",
+    "creditQuran": "Kur'an metni: {source}",
+    "creditTranslation": "Meal: {title}",
+    "creditAudio": "Tilavet sesi: {source}",
+    "creditFootage": "Görüntüler: {list}",
+    "openStudio": "Kendi videonuzu oluşturun"
+  },
+  "library": {
+    "title": "Arka plan kitaplığı",
+    "subtitle": "Beğendiğiniz klipleri onaylayın — videolarınız önce bunları kullanır.",
+    "statusError": "Kitaplık durumu yüklenemedi.",
+    "loadError": "Klipler yüklenemedi.",
+    "providers": {
+      "title": "Görüntü kaynakları",
+      "enabled": "Bağlı",
+      "disabled": "API anahtarı yok",
+      "alwaysOn": "Her zaman kullanılabilir"
+    },
+    "keys": {
+      "title": "Daha fazla görüntü bulmak için ücretsiz API anahtarları ekleyin",
+      "step1": "{pexels} ve/veya {pixabay} üzerinden ücretsiz bir anahtar alın.",
+      "step2": "Proje klasöründe {example} dosyasını {file} adıyla kopyalayın ve anahtarlarınızı yapıştırın:",
+      "step3": "Sunucuyu yeniden başlatın, ardından bu sayfaya dönün.",
+      "nasaNote": "NASA uzay görüntüleri ve kendi yüklemeleriniz anahtar olmadan da çalışır.",
+      "show": "Nasıl yapılacağını göster"
+    },
+    "tabsLabel": "Arka plan temaları",
+    "approvedTab": "Onaylananlar",
+    "findTab": "Daha fazla bul",
+    "orientation": {
+      "label": "Şekil",
+      "any": "Tüm şekiller",
+      "portrait": "Dikey",
+      "landscape": "Yatay",
+      "square": "Kare"
+    },
+    "approvedEmpty": {
+      "title": "Henüz onaylı klip yok",
+      "text": "“Daha fazla bul” bölümünden beğendiğiniz görüntüleri seçin ya da kendi klibinizi yükleyin."
+    },
+    "candidatesEmpty": "Bu tema için başka klip bulunamadı.",
+    "candidatesNoKeys": "Daha fazla görüntü aramak için bir Pexels veya Pixabay anahtarı ekleyin.",
+    "candidatesNoKeysText": "API anahtarı olmadan yalnızca NASA uzay görüntülerinde arama yapılabilir. Anahtarlar ücretsizdir ve kurulumu bir dakika sürer.",
+    "warnings": "Bazı görüntü kaynakları yanıt vermedi:",
+    "preview": "Klibi önizle",
+    "credit": "{author} · {provider}",
+    "approve": "Onayla",
+    "reject": "Gizle",
+    "approved": "Onaylı kliplerinize eklendi",
+    "rejected": "Klip gizlendi",
+    "removed": "Klip kaldırıldı",
+    "removeConfirm": "Bu klip onaylı arka planlarınızdan kaldırılsın mı?",
+    "upload": {
+      "button": "Klip yükle",
+      "hint": "MP4, WebM veya MOV, en fazla 500 MB. Yüklemeleriniz otomatik olarak onaylanır.",
+      "uploading": "{name}, {category} temasına yükleniyor…",
+      "done": "Klip yüklendi",
+      "canceled": "Yükleme iptal edildi",
+      "tooLarge": "Bu dosya 500 MB'tan büyük.",
+      "badType": "Lütfen MP4, WebM veya MOV biçiminde bir video seçin."
+    }
+  },
+  "about": {
+    "title": "Hakkında",
+    "intro": "Bu stüdyo, Kur'an tilavetlerini sakin ve paylaşılabilir videolara dönüştürür: Arapça metin ve seçtiğiniz meal; doğa, uzay veya cami görüntüleri üzerinde ayet ayet, tilavetle eş zamanlı olarak görünür.",
+    "howTitle": "Nasıl çalışır?",
+    "how1": "Bir veya daha fazla bölüm, bir kâri ve bir meal seçin.",
+    "how2": "Arka plan temalarını, biçimi ve stili belirleyin, ardından videolarınızı oluşturun.",
+    "how3": "Videoları indirin ya da doğrudan WhatsApp, Instagram, TikTok ve diğer platformlarda paylaşın.",
+    "textTitle": "Kur'an metni hakkında",
+    "textBody": "Arapça metin ve mealler, QuranEnc.com'un yayımladığı şekliyle birebir gösterilir — hiçbir şey yeniden yazılmaz veya değiştirilmez. Meal, anlamları aktarır; Kur'an ise yalnızca Arapça metnin kendisidir.",
+    "sourcesTitle": "Kaynaklar ve teşekkür",
+    "sourceQuranEnc": "Kur'an metni ve mealleri",
+    "sourceEveryAyah": "Ayet ayet tilavet kayıtları",
+    "sourcePexels": "Ücretsiz stok görüntüler",
+    "sourcePixabay": "Ücretsiz stok görüntüler",
+    "sourceNasa": "Uzay görüntüleri",
+    "footageNote": "Arka plan klipleri doğa, uzay, cami ve İslam sanatına ait sessiz görüntülerdir. Her videoda görüntülerin sahipleri belirtilir ve asla müzik eklenmez.",
+    "phoneTitle": "Telefonunuzda kullanın",
+    "phoneText": "Stüdyoyu bu bilgisayarla aynı Wi-Fi ağına bağlı bir telefonda açmak için tarayın.",
+    "phonePublic": "Stüdyoyu telefonunuzda açmak için tarayın.",
+    "phoneNone": "Ağ adresi bulunamadı. Stüdyoyu telefonunuzdan açmak için bu bilgisayarı Wi-Fi ağına bağlayın."
+  },
+  "footer": {
+    "text": "Kaynaklar:"
+  },
+  "errors": {
+    "generic": "Bir sorun oluştu. Lütfen tekrar deneyin.",
+    "network": "Sunucuya ulaşılamıyor. Hâlâ çalışıyor mu?",
+    "not_found": "Bulunamadı — sunucunun bu bölümü henüz kullanılamıyor olabilir.",
+    "internal_error": "Sunucuda bir sorun oluştu.",
+    "invalid_request": "Bazı ayarlar geçersiz. Lütfen kontrol edip tekrar deneyin.",
+    "invalid_range": "Bu ayet aralığı geçersiz.",
+    "surah_not_found": "Bu sure bulunamadı.",
+    "reciter_not_found": "Bu kâri kullanılamıyor.",
+    "translation_not_found": "Bu meal kullanılamıyor.",
+    "video_not_found": "Bu video artık mevcut değil.",
+    "clip_not_found": "Bu klip artık mevcut değil.",
+    "too_many_videos": "Tek seferde çok fazla video var.",
+    "too_many_ayat": "Bir video için çok fazla ayet var.",
+    "invalid_category": "Bilinmeyen arka plan teması.",
+    "invalid_text": "Bu bağlantı QR koduna dönüştürülemiyor.",
+    "unsupported_type": "Bu dosya türü desteklenmiyor.",
+    "file_too_large": "Dosya çok büyük.",
+    "upload_failed": "Yükleme başarısız oldu.",
+    "provider_error": "Görüntü sağlayıcısı yanıt vermedi. Lütfen daha sonra tekrar deneyin.",
+    "audio_failed": "Tilavet önizlemesi oynatılamadı.",
+    "share_failed": "Paylaşım başarısız oldu. Bunun yerine videoyu indirmeyi deneyin.",
+    "download_failed": "Video indirilemedi."
+  }
+}

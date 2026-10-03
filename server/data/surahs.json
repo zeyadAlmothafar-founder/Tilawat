@@ -1,0 +1,2168 @@
+[
+ {
+  "number": 1,
+  "nameAr": "الفاتحة",
+  "nameEn": "Al-Fatihah",
+  "meaningEn": "The Opener",
+  "meanings": {
+   "en": "The Opener",
+   "ur": "کھولنے والی",
+   "fr": "L'ouverture",
+   "tr": "Fâtiha",
+   "id": "Pembukaan",
+   "ms": "Pembukaan",
+   "bn": "সূচনা",
+   "es": "La Apertura",
+   "ru": "Открывающая Коран"
+  },
+  "ayahCount": 7,
+  "revelation": "meccan"
+ },
+ {
+  "number": 2,
+  "nameAr": "البقرة",
+  "nameEn": "Al-Baqarah",
+  "meaningEn": "The Cow",
+  "meanings": {
+   "en": "The Cow",
+   "ur": "گائے",
+   "fr": "La vache",
+   "tr": "Bakara",
+   "id": "Sapi Betina",
+   "ms": "Lembu Betina",
+   "bn": "বকনা-বাছুর",
+   "es": "La Vaca",
+   "ru": "Корова"
+  },
+  "ayahCount": 286,
+  "revelation": "medinan"
+ },
+ {
+  "number": 3,
+  "nameAr": "آل عمران",
+  "nameEn": "Ali 'Imran",
+  "meaningEn": "Family of Imran",
+  "meanings": {
+   "en": "Family of Imran",
+   "ur": "عمران کا خاندان",
+   "fr": "La famille de 'imran",
+   "tr": "Âl-i İmrân",
+   "id": "Keluarga Imran",
+   "ms": "Keluarga Imran",
+   "bn": "ইমরানের পরিবার",
+   "es": "La Familia de Imran",
+   "ru": "Семейство Имрана"
+  },
+  "ayahCount": 200,
+  "revelation": "medinan"
+ },
+ {
+  "number": 4,
+  "nameAr": "النساء",
+  "nameEn": "An-Nisa",
+  "meaningEn": "The Women",
+  "meanings": {
+   "en": "The Women",
+   "ur": "عورت",
+   "fr": "Les femmes",
+   "tr": "Nisâ",
+   "id": "Wanita",
+   "ms": "Wanita",
+   "bn": "নারী",
+   "es": "Las Mujeres",
+   "ru": "Женщины"
+  },
+  "ayahCount": 176,
+  "revelation": "medinan"
+ },
+ {
+  "number": 5,
+  "nameAr": "المائدة",
+  "nameEn": "Al-Ma'idah",
+  "meaningEn": "The Table Spread",
+  "meanings": {
+   "en": "The Table Spread",
+   "ur": "دسترخوان",
+   "fr": "La table servie",
+   "tr": "Mâide",
+   "id": "Jamuan (Hidangan Makanan)",
+   "ms": "Hidangan",
+   "bn": "খাদ্য পরিবেশিত টেবিল",
+   "es": "La Mesa Servida",
+   "ru": "Трапеза"
+  },
+  "ayahCount": 120,
+  "revelation": "medinan"
+ },
+ {
+  "number": 6,
+  "nameAr": "الأنعام",
+  "nameEn": "Al-An'am",
+  "meaningEn": "The Cattle",
+  "meanings": {
+   "en": "The Cattle",
+   "ur": "مویشی",
+   "fr": "Les bestiaux",
+   "tr": "En'âm",
+   "id": "Binatang Ternak",
+   "ms": "Binatang Ternakan",
+   "bn": "গৃহপালিত পশু",
+   "es": "Los Rebaños",
+   "ru": "Скот"
+  },
+  "ayahCount": 165,
+  "revelation": "meccan"
+ },
+ {
+  "number": 7,
+  "nameAr": "الأعراف",
+  "nameEn": "Al-A'raf",
+  "meaningEn": "The Heights",
+  "meanings": {
+   "en": "The Heights",
+   "ur": "اونچی جگہ",
+   "fr": "Al-A'raf",
+   "tr": "A'râf",
+   "id": "Tempat-tempat Tinggi",
+   "ms": "Tempat Tertinggi",
+   "bn": "উচু স্থান",
+   "es": "Los Lugares Elevados",
+   "ru": "Ограды"
+  },
+  "ayahCount": 206,
+  "revelation": "meccan"
+ },
+ {
+  "number": 8,
+  "nameAr": "الأنفال",
+  "nameEn": "Al-Anfal",
+  "meaningEn": "The Spoils of War",
+  "meanings": {
+   "en": "The Spoils of War",
+   "ur": "مال غنیمت",
+   "fr": "Le butin",
+   "tr": "Enfâl",
+   "id": "Rampasan Perang",
+   "ms": "Rampasan Perang",
+   "bn": "যুদ্ধ-লব্ধ ধনসম্পদ",
+   "es": "Los Botines de Guerra",
+   "ru": "Трофеи"
+  },
+  "ayahCount": 75,
+  "revelation": "medinan"
+ },
+ {
+  "number": 9,
+  "nameAr": "التوبة",
+  "nameEn": "At-Tawbah",
+  "meaningEn": "The Repentance",
+  "meanings": {
+   "en": "The Repentance",
+   "ur": "توبہ",
+   "fr": "Le repentir",
+   "tr": "Tevbe",
+   "id": "Pengampunan",
+   "ms": "Pengampunan",
+   "bn": "অনুশোচনা",
+   "es": "El Arrepentimiento",
+   "ru": "Покаяние"
+  },
+  "ayahCount": 129,
+  "revelation": "medinan"
+ },
+ {
+  "number": 10,
+  "nameAr": "يونس",
+  "nameEn": "Yunus",
+  "meaningEn": "Jonah",
+  "meanings": {
+   "en": "Jonah",
+   "ur": "یونس",
+   "fr": "Jonas",
+   "tr": "Yûnus",
+   "id": "Yunus",
+   "ms": "Nabi Yunus a.s.",
+   "bn": "নবী ইউনুস",
+   "es": "Jonás",
+   "ru": "Йунус"
+  },
+  "ayahCount": 109,
+  "revelation": "meccan"
+ },
+ {
+  "number": 11,
+  "nameAr": "هود",
+  "nameEn": "Hud",
+  "meaningEn": "Hud",
+  "meanings": {
+   "en": "Hud",
+   "ur": "حود",
+   "fr": "Houd",
+   "tr": "Hûd",
+   "id": "Hud",
+   "ms": "Nabi Hud a.s.",
+   "bn": "নবী হুদ",
+   "es": "Hud",
+   "ru": "Худ"
+  },
+  "ayahCount": 123,
+  "revelation": "meccan"
+ },
+ {
+  "number": 12,
+  "nameAr": "يوسف",
+  "nameEn": "Yusuf",
+  "meaningEn": "Joseph",
+  "meanings": {
+   "en": "Joseph",
+   "ur": "یوسف",
+   "fr": "Joseph",
+   "tr": "Yûsuf",
+   "id": "Yusuf",
+   "ms": "Nabi Yusuf a.s.",
+   "bn": "নবী ইউসুফ",
+   "es": "José",
+   "ru": "Йусуф"
+  },
+  "ayahCount": 111,
+  "revelation": "meccan"
+ },
+ {
+  "number": 13,
+  "nameAr": "الرعد",
+  "nameEn": "Ar-Ra'd",
+  "meaningEn": "The Thunder",
+  "meanings": {
+   "en": "The Thunder",
+   "ur": "گرج",
+   "fr": "Le tonnerre",
+   "tr": "Ra'd",
+   "id": "Guruh (Petir)",
+   "ms": "Guruh",
+   "bn": "বজ্রপাত",
+   "es": "El Trueno",
+   "ru": "Гром"
+  },
+  "ayahCount": 43,
+  "revelation": "medinan"
+ },
+ {
+  "number": 14,
+  "nameAr": "ابراهيم",
+  "nameEn": "Ibrahim",
+  "meaningEn": "Abraham",
+  "meanings": {
+   "en": "Abraham",
+   "ur": "ابراہیم",
+   "fr": "Abraham",
+   "tr": "İbrâhîm",
+   "id": "Ibrahim",
+   "ms": "Nabi Ibrahim a.s.",
+   "bn": "নবী ইবরাহীম",
+   "es": "Abraham",
+   "ru": "Ибрахим"
+  },
+  "ayahCount": 52,
+  "revelation": "meccan"
+ },
+ {
+  "number": 15,
+  "nameAr": "الحجر",
+  "nameEn": "Al-Hijr",
+  "meaningEn": "The Rocky Tract",
+  "meanings": {
+   "en": "The Rocky Tract",
+   "ur": "پتھر",
+   "fr": "Al-Hijr",
+   "tr": "Hicr",
+   "id": "Bukit",
+   "ms": "Kawasan Berbatu",
+   "bn": "পাথুরে পাহাড়",
+   "es": "Al-Hiyr",
+   "ru": "Хиджр"
+  },
+  "ayahCount": 99,
+  "revelation": "meccan"
+ },
+ {
+  "number": 16,
+  "nameAr": "النحل",
+  "nameEn": "An-Nahl",
+  "meaningEn": "The Bee",
+  "meanings": {
+   "en": "The Bee",
+   "ur": "شہد کی مکھی",
+   "fr": "Les abeilles",
+   "tr": "Nahl",
+   "id": "Lebah Madu",
+   "ms": "Lebah",
+   "bn": "মৌমাছি",
+   "es": "Las Abejas",
+   "ru": "Пчелы"
+  },
+  "ayahCount": 128,
+  "revelation": "meccan"
+ },
+ {
+  "number": 17,
+  "nameAr": "الإسراء",
+  "nameEn": "Al-Isra",
+  "meaningEn": "The Night Journey",
+  "meanings": {
+   "en": "The Night Journey",
+   "ur": "رات کا صفر",
+   "fr": "Le voyage nocturne",
+   "tr": "İsrâ",
+   "id": "Perjalanan Malam",
+   "ms": "Perjalanan Malam",
+   "bn": "ইহুদি জাতি",
+   "es": "El Viaje Nocturno",
+   "ru": "Ночной перенос"
+  },
+  "ayahCount": 111,
+  "revelation": "meccan"
+ },
+ {
+  "number": 18,
+  "nameAr": "الكهف",
+  "nameEn": "Al-Kahf",
+  "meaningEn": "The Cave",
+  "meanings": {
+   "en": "The Cave",
+   "ur": "غار",
+   "fr": "La caverne",
+   "tr": "Kehf",
+   "id": "Para Penghuni Gua",
+   "ms": "Gua",
+   "bn": "গুহা",
+   "es": "La Caverna",
+   "ru": "Пещера"
+  },
+  "ayahCount": 110,
+  "revelation": "meccan"
+ },
+ {
+  "number": 19,
+  "nameAr": "مريم",
+  "nameEn": "Maryam",
+  "meaningEn": "Mary",
+  "meanings": {
+   "en": "Mary",
+   "ur": "مریم",
+   "fr": "Marie",
+   "tr": "Meryem",
+   "id": "Maryam",
+   "ms": "Siti Maryam",
+   "bn": "মারইয়াম (ঈসা নবীর মা)",
+   "es": "María",
+   "ru": "Марьям"
+  },
+  "ayahCount": 98,
+  "revelation": "meccan"
+ },
+ {
+  "number": 20,
+  "nameAr": "طه",
+  "nameEn": "Taha",
+  "meaningEn": "Ta-Ha",
+  "meanings": {
+   "en": "Ta-Ha",
+   "ur": "طٰہٰ",
+   "fr": "Ta-Ha",
+   "tr": "Tâhâ",
+   "id": "Tha-Ha",
+   "ms": "Taahaa",
+   "bn": "ত়া হা",
+   "es": "Ta-Ha",
+   "ru": "Та Ха"
+  },
+  "ayahCount": 135,
+  "revelation": "meccan"
+ },
+ {
+  "number": 21,
+  "nameAr": "الأنبياء",
+  "nameEn": "Al-Anbya",
+  "meaningEn": "The Prophets",
+  "meanings": {
+   "en": "The Prophets",
+   "ur": "پیغمبر",
+   "fr": "Les prophètes",
+   "tr": "Enbiyâ",
+   "id": "Para Nabi",
+   "ms": "Para Nabi",
+   "bn": "নবীগণ",
+   "es": "Los Profetas",
+   "ru": "Пророки"
+  },
+  "ayahCount": 112,
+  "revelation": "meccan"
+ },
+ {
+  "number": 22,
+  "nameAr": "الحج",
+  "nameEn": "Al-Hajj",
+  "meaningEn": "The Pilgrimage",
+  "meanings": {
+   "en": "The Pilgrimage",
+   "ur": "حج",
+   "fr": "Le pèlerinage",
+   "tr": "Hac",
+   "id": "Haji",
+   "ms": "Haji",
+   "bn": "হ়াজ্জ",
+   "es": "La Peregrinación",
+   "ru": "Паломничество"
+  },
+  "ayahCount": 78,
+  "revelation": "medinan"
+ },
+ {
+  "number": 23,
+  "nameAr": "المؤمنون",
+  "nameEn": "Al-Mu'minun",
+  "meaningEn": "The Believers",
+  "meanings": {
+   "en": "The Believers",
+   "ur": "مومنین",
+   "fr": "Les croyants",
+   "tr": "Mü'minûn",
+   "id": "Orang-orang Mukmin",
+   "ms": "Golongan yang Beriman",
+   "bn": "বিশ্বাসী",
+   "es": "Los Creyentes",
+   "ru": "Верующие"
+  },
+  "ayahCount": 118,
+  "revelation": "meccan"
+ },
+ {
+  "number": 24,
+  "nameAr": "النور",
+  "nameEn": "An-Nur",
+  "meaningEn": "The Light",
+  "meanings": {
+   "en": "The Light",
+   "ur": "نور",
+   "fr": "La lumière",
+   "tr": "Nûr",
+   "id": "Cahaya",
+   "ms": "Cahaya",
+   "bn": "আলো",
+   "es": "La Luz",
+   "ru": "Свет"
+  },
+  "ayahCount": 64,
+  "revelation": "medinan"
+ },
+ {
+  "number": 25,
+  "nameAr": "الفرقان",
+  "nameEn": "Al-Furqan",
+  "meaningEn": "The Criterion",
+  "meanings": {
+   "en": "The Criterion",
+   "ur": "صحیح اور غلط میں فرق کرنے والی کتاب",
+   "fr": "Le discernement",
+   "tr": "Furkân",
+   "id": "Pembeda",
+   "ms": "Pembeza Kebenaran dan Kebatilan",
+   "bn": "মানদণ্ড",
+   "es": "El Discernimiento",
+   "ru": "аль-Фуркан"
+  },
+  "ayahCount": 77,
+  "revelation": "meccan"
+ },
+ {
+  "number": 26,
+  "nameAr": "الشعراء",
+  "nameEn": "Ash-Shu'ara",
+  "meaningEn": "The Poets",
+  "meanings": {
+   "en": "The Poets",
+   "ur": "شعراٗ",
+   "fr": "Les poètes",
+   "tr": "Şuarâ",
+   "id": "Penyair",
+   "ms": "Para Penyair",
+   "bn": "কবি",
+   "es": "Los Poetas",
+   "ru": "Поэты"
+  },
+  "ayahCount": 227,
+  "revelation": "meccan"
+ },
+ {
+  "number": 27,
+  "nameAr": "النمل",
+  "nameEn": "An-Naml",
+  "meaningEn": "The Ant",
+  "meanings": {
+   "en": "The Ant",
+   "ur": "چیونٹی",
+   "fr": "Les fourmis",
+   "tr": "Neml",
+   "id": "Semut",
+   "ms": "Semut",
+   "bn": "পিঁপড়া",
+   "es": "Las Hormigas",
+   "ru": "Муравьи"
+  },
+  "ayahCount": 93,
+  "revelation": "meccan"
+ },
+ {
+  "number": 28,
+  "nameAr": "القصص",
+  "nameEn": "Al-Qasas",
+  "meaningEn": "The Stories",
+  "meanings": {
+   "en": "The Stories",
+   "ur": "قصے",
+   "fr": "Le récit",
+   "tr": "Kasas",
+   "id": "Kisah-kisah",
+   "ms": "Cerita-cerita",
+   "bn": "কাহিনি",
+   "es": "Los Relatos",
+   "ru": "Рассказ"
+  },
+  "ayahCount": 88,
+  "revelation": "meccan"
+ },
+ {
+  "number": 29,
+  "nameAr": "العنكبوت",
+  "nameEn": "Al-'Ankabut",
+  "meaningEn": "The Spider",
+  "meanings": {
+   "en": "The Spider",
+   "ur": "مکڑی",
+   "fr": "L'araignée",
+   "tr": "Ankebût",
+   "id": "Laba-laba",
+   "ms": "Labah-labah",
+   "bn": "মাকড়শা",
+   "es": "La Araña",
+   "ru": "Паук"
+  },
+  "ayahCount": 69,
+  "revelation": "meccan"
+ },
+ {
+  "number": 30,
+  "nameAr": "الروم",
+  "nameEn": "Ar-Rum",
+  "meaningEn": "The Romans",
+  "meanings": {
+   "en": "The Romans",
+   "ur": "روم",
+   "fr": "Les romains",
+   "tr": "Rûm",
+   "id": "Bangsa Romawi",
+   "ms": "Bangsa Rom",
+   "bn": "রোমান জাতি",
+   "es": "Los Romanos",
+   "ru": "Римляне"
+  },
+  "ayahCount": 60,
+  "revelation": "meccan"
+ },
+ {
+  "number": 31,
+  "nameAr": "لقمان",
+  "nameEn": "Luqman",
+  "meaningEn": "Luqman",
+  "meanings": {
+   "en": "Luqman",
+   "ur": "لقمان",
+   "fr": "Louqman",
+   "tr": "Lokmân",
+   "id": "Luqman",
+   "ms": "Luqman",
+   "bn": "এক জ্ঞানী ব্যাক্তি",
+   "es": "Luqmán",
+   "ru": "Лукман"
+  },
+  "ayahCount": 34,
+  "revelation": "meccan"
+ },
+ {
+  "number": 32,
+  "nameAr": "السجدة",
+  "nameEn": "As-Sajdah",
+  "meaningEn": "The Prostration",
+  "meanings": {
+   "en": "The Prostration",
+   "ur": "سجدہ",
+   "fr": "La prosternation",
+   "tr": "Secde",
+   "id": "Sujud",
+   "ms": "Sujud",
+   "bn": "সিজদা",
+   "es": "La Postración",
+   "ru": "Земной поклон"
+  },
+  "ayahCount": 30,
+  "revelation": "meccan"
+ },
+ {
+  "number": 33,
+  "nameAr": "الأحزاب",
+  "nameEn": "Al-Ahzab",
+  "meaningEn": "The Combined Forces",
+  "meanings": {
+   "en": "The Combined Forces",
+   "ur": "متحد گروہ",
+   "fr": "Les coalisés",
+   "tr": "Ahzâb",
+   "id": "Golongan yang Bersekutu",
+   "ms": "Golongan yang Bersekutu",
+   "bn": "জোট",
+   "es": "Los Coligados",
+   "ru": "Союзники"
+  },
+  "ayahCount": 73,
+  "revelation": "medinan"
+ },
+ {
+  "number": 34,
+  "nameAr": "سبإ",
+  "nameEn": "Saba",
+  "meaningEn": "Sheba",
+  "meanings": {
+   "en": "Sheba",
+   "ur": "سبا",
+   "fr": "Saba'",
+   "tr": "Sebe'",
+   "id": "Saba\\'",
+   "ms": "Kaum Saba’",
+   "bn": "রানী সাবা/শেবা",
+   "es": "Saba",
+   "ru": "Сава"
+  },
+  "ayahCount": 54,
+  "revelation": "meccan"
+ },
+ {
+  "number": 35,
+  "nameAr": "فاطر",
+  "nameEn": "Fatir",
+  "meaningEn": "Originator",
+  "meanings": {
+   "en": "Originator",
+   "ur": "پیدا کرنے والا",
+   "fr": "Le Créateur",
+   "tr": "Fâtır",
+   "id": "Pencipta",
+   "ms": "Pencipta",
+   "bn": "আদি স্রষ্টা",
+   "es": "El Originador",
+   "ru": "Творец"
+  },
+  "ayahCount": 45,
+  "revelation": "meccan"
+ },
+ {
+  "number": 36,
+  "nameAr": "يس",
+  "nameEn": "Ya-Sin",
+  "meaningEn": "Ya Sin",
+  "meanings": {
+   "en": "Ya Sin",
+   "ur": "یٰسٓ",
+   "fr": "Ya-Sin",
+   "tr": "Yâsîn",
+   "id": "Yas Sin",
+   "ms": "Yaasin",
+   "bn": "ইয়াসীন",
+   "es": "Ya Sin",
+   "ru": "Йа Син"
+  },
+  "ayahCount": 83,
+  "revelation": "meccan"
+ },
+ {
+  "number": 37,
+  "nameAr": "الصافات",
+  "nameEn": "As-Saffat",
+  "meaningEn": "Those who set the Ranks",
+  "meanings": {
+   "en": "Those who set the Ranks",
+   "ur": "صف باندھنے والے",
+   "fr": "Les rangés",
+   "tr": "Sâffât",
+   "id": "Barisan-barisan",
+   "ms": "Yang Teratur Berbaris",
+   "bn": "সারিবদ্ধভাবে দাঁড়ানো",
+   "es": "Los Que se Ponen en Filas",
+   "ru": "Выстроившиеся в ряды"
+  },
+  "ayahCount": 182,
+  "revelation": "meccan"
+ },
+ {
+  "number": 38,
+  "nameAr": "ص",
+  "nameEn": "Sad",
+  "meaningEn": "The Letter \"Saad\"",
+  "meanings": {
+   "en": "The Letter \"Saad\"",
+   "ur": "صٓ",
+   "fr": "Sad",
+   "tr": "Sâd",
+   "id": "Shad",
+   "ms": "Saad",
+   "bn": "আরবি বর্ণ সাদ",
+   "es": "Sad",
+   "ru": "Сод"
+  },
+  "ayahCount": 88,
+  "revelation": "meccan"
+ },
+ {
+  "number": 39,
+  "nameAr": "الزمر",
+  "nameEn": "Az-Zumar",
+  "meaningEn": "The Troops",
+  "meanings": {
+   "en": "The Troops",
+   "ur": "گروہ",
+   "fr": "Les groupes",
+   "tr": "Zümer",
+   "id": "Para Rombongan",
+   "ms": "Rombongan",
+   "bn": "দলবদ্ধ জনতা",
+   "es": "Los Grupos",
+   "ru": "Толпы"
+  },
+  "ayahCount": 75,
+  "revelation": "meccan"
+ },
+ {
+  "number": 40,
+  "nameAr": "غافر",
+  "nameEn": "Ghafir",
+  "meaningEn": "The Forgiver",
+  "meanings": {
+   "en": "The Forgiver",
+   "ur": "بخشنے والا",
+   "fr": "Le Pardonneur",
+   "tr": "Mü'min",
+   "id": "Sang Maha Pengampun",
+   "ms": "Orang yang Beriman",
+   "bn": "ক্ষমাকারী",
+   "es": "El Perdonador",
+   "ru": "Прощающий"
+  },
+  "ayahCount": 85,
+  "revelation": "meccan"
+ },
+ {
+  "number": 41,
+  "nameAr": "فصلت",
+  "nameEn": "Fussilat",
+  "meaningEn": "Explained in Detail",
+  "meanings": {
+   "en": "Explained in Detail",
+   "ur": "مفصل",
+   "fr": "Les versets explicites",
+   "tr": "Fussilet",
+   "id": "Yang Dijelaskan",
+   "ms": "Dijelaskan",
+   "bn": "সুস্পষ্ট বিবরণ",
+   "es": "Se Han Expresado Con Claridad",
+   "ru": "Разъяснены"
+  },
+  "ayahCount": 54,
+  "revelation": "meccan"
+ },
+ {
+  "number": 42,
+  "nameAr": "الشورى",
+  "nameEn": "Ash-Shuraa",
+  "meaningEn": "The Consultation",
+  "meanings": {
+   "en": "The Consultation",
+   "ur": "شورٰی",
+   "fr": "La concertation",
+   "tr": "Şûrâ",
+   "id": "Musyawarah",
+   "ms": "Permesyuaratan",
+   "bn": "পরামর্শ",
+   "es": "La Consulta",
+   "ru": "Совет"
+  },
+  "ayahCount": 53,
+  "revelation": "meccan"
+ },
+ {
+  "number": 43,
+  "nameAr": "الزخرف",
+  "nameEn": "Az-Zukhruf",
+  "meaningEn": "The Ornaments of Gold",
+  "meanings": {
+   "en": "The Ornaments of Gold",
+   "ur": "سونے کی چمک",
+   "fr": "L'ornement",
+   "tr": "Zuhruf",
+   "id": "Perhiasan",
+   "ms": "Perhiasan Emas",
+   "bn": "সোনাদানা",
+   "es": "Los Dorados",
+   "ru": "Украшения"
+  },
+  "ayahCount": 89,
+  "revelation": "meccan"
+ },
+ {
+  "number": 44,
+  "nameAr": "الدخان",
+  "nameEn": "Ad-Dukhan",
+  "meaningEn": "The Smoke",
+  "meanings": {
+   "en": "The Smoke",
+   "ur": "دھواں",
+   "fr": "La fumée",
+   "tr": "Duhân",
+   "id": "Kabut",
+   "ms": "Kabut / Asap",
+   "bn": "ধোঁয়া",
+   "es": "El Humo",
+   "ru": "Дым"
+  },
+  "ayahCount": 59,
+  "revelation": "meccan"
+ },
+ {
+  "number": 45,
+  "nameAr": "الجاثية",
+  "nameEn": "Al-Jathiyah",
+  "meaningEn": "The Crouching",
+  "meanings": {
+   "en": "The Crouching",
+   "ur": "زانوٗوں کے بل گری ہوئی",
+   "fr": "L'agenouillée",
+   "tr": "Câsiye",
+   "id": "Yang Bertekuk Lutut",
+   "ms": "Yang Berlutut",
+   "bn": "নতজানু",
+   "es": "La Arrodillada",
+   "ru": "Коленопреклоненные"
+  },
+  "ayahCount": 37,
+  "revelation": "meccan"
+ },
+ {
+  "number": 46,
+  "nameAr": "الأحقاف",
+  "nameEn": "Al-Ahqaf",
+  "meaningEn": "The Wind-Curved Sandhills",
+  "meanings": {
+   "en": "The Wind-Curved Sandhills",
+   "ur": "ریگستان",
+   "fr": "Al-Ahqaf",
+   "tr": "Ahkâf",
+   "id": "Bukit-bukir Pasir",
+   "ms": "Bukit-bukit Pasir",
+   "bn": "বালুর পাহাড়",
+   "es": "Las Dunas",
+   "ru": "Барханы"
+  },
+  "ayahCount": 35,
+  "revelation": "meccan"
+ },
+ {
+  "number": 47,
+  "nameAr": "محمد",
+  "nameEn": "Muhammad",
+  "meaningEn": "Muhammad",
+  "meanings": {
+   "en": "Muhammad",
+   "ur": "محمدﷺ",
+   "fr": "Mouhammad",
+   "tr": "Muhammed",
+   "id": "Muhammad",
+   "ms": "Nabi Muhammad SAW",
+   "bn": "নবী মুহাম্মদ",
+   "es": "Muhammad",
+   "ru": "Мухаммад"
+  },
+  "ayahCount": 38,
+  "revelation": "medinan"
+ },
+ {
+  "number": 48,
+  "nameAr": "الفتح",
+  "nameEn": "Al-Fath",
+  "meaningEn": "The Victory",
+  "meanings": {
+   "en": "The Victory",
+   "ur": "فتح",
+   "fr": "La victoire éclatante",
+   "tr": "Fetih",
+   "id": "Kemenangan",
+   "ms": "Kemenangan",
+   "bn": "বিজয়",
+   "es": "La Victoria",
+   "ru": "Победа"
+  },
+  "ayahCount": 29,
+  "revelation": "medinan"
+ },
+ {
+  "number": 49,
+  "nameAr": "الحجرات",
+  "nameEn": "Al-Hujurat",
+  "meaningEn": "The Rooms",
+  "meanings": {
+   "en": "The Rooms",
+   "ur": "حجرے",
+   "fr": "Les appartements",
+   "tr": "Hucurât",
+   "id": "Kamar-kamar",
+   "ms": "Bilik-bilik",
+   "bn": "আবাস",
+   "es": "Los Aposentos Privados",
+   "ru": "Комнаты"
+  },
+  "ayahCount": 18,
+  "revelation": "medinan"
+ },
+ {
+  "number": 50,
+  "nameAr": "ق",
+  "nameEn": "Qaf",
+  "meaningEn": "The Letter \"Qaf\"",
+  "meanings": {
+   "en": "The Letter \"Qaf\"",
+   "ur": "قٓ",
+   "fr": "Qaf",
+   "tr": "Kâf",
+   "id": "Qaf",
+   "ms": "Qaaf",
+   "bn": "কাফ",
+   "es": "Qaf",
+   "ru": "Каф"
+  },
+  "ayahCount": 45,
+  "revelation": "meccan"
+ },
+ {
+  "number": 51,
+  "nameAr": "الذاريات",
+  "nameEn": "Adh-Dhariyat",
+  "meaningEn": "The Winnowing Winds",
+  "meanings": {
+   "en": "The Winnowing Winds",
+   "ur": "بکھیرنے والیاں",
+   "fr": "Qui éparpillent",
+   "tr": "Zâriyât",
+   "id": "Angin yang Menerbangkan",
+   "ms": "Angin yang Menerbangkan",
+   "bn": "বিক্ষেপকারী বাতাস",
+   "es": "Los Que Levantan un Torbellino",
+   "ru": "Рассеивающие прах"
+  },
+  "ayahCount": 60,
+  "revelation": "meccan"
+ },
+ {
+  "number": 52,
+  "nameAr": "الطور",
+  "nameEn": "At-Tur",
+  "meaningEn": "The Mount",
+  "meanings": {
+   "en": "The Mount",
+   "ur": "طور پہاڑ",
+   "fr": "Le mont At-Tour",
+   "tr": "Tûr",
+   "id": "Bukit",
+   "ms": "Bukit",
+   "bn": "পাহাড়",
+   "es": "El Monte",
+   "ru": "Гора"
+  },
+  "ayahCount": 49,
+  "revelation": "meccan"
+ },
+ {
+  "number": 53,
+  "nameAr": "النجم",
+  "nameEn": "An-Najm",
+  "meaningEn": "The Star",
+  "meanings": {
+   "en": "The Star",
+   "ur": "ستارہ",
+   "fr": "L'étoile",
+   "tr": "Necm",
+   "id": "Bintang",
+   "ms": "Bintang",
+   "bn": "তারা",
+   "es": "El Astro",
+   "ru": "Звезда"
+  },
+  "ayahCount": 62,
+  "revelation": "meccan"
+ },
+ {
+  "number": 54,
+  "nameAr": "القمر",
+  "nameEn": "Al-Qamar",
+  "meaningEn": "The Moon",
+  "meanings": {
+   "en": "The Moon",
+   "ur": "چاند",
+   "fr": "La lune",
+   "tr": "Kamer",
+   "id": "Bulan",
+   "ms": "Bulan",
+   "bn": "চাঁদ",
+   "es": "La Luna",
+   "ru": "Месяц"
+  },
+  "ayahCount": 55,
+  "revelation": "meccan"
+ },
+ {
+  "number": 55,
+  "nameAr": "الرحمن",
+  "nameEn": "Ar-Rahman",
+  "meaningEn": "The Beneficent",
+  "meanings": {
+   "en": "The Beneficent",
+   "ur": "مہربان",
+   "fr": "Le Tout Miséricordieux",
+   "tr": "Rahmân",
+   "id": "Yang Maha Pemurah",
+   "ms": "Yang Maha Pemurah",
+   "bn": "পরম করুণাময়",
+   "es": "El Misericordioso",
+   "ru": "Милостивый"
+  },
+  "ayahCount": 78,
+  "revelation": "medinan"
+ },
+ {
+  "number": 56,
+  "nameAr": "الواقعة",
+  "nameEn": "Al-Waqi'ah",
+  "meaningEn": "The Inevitable",
+  "meanings": {
+   "en": "The Inevitable",
+   "ur": "واقعہ ہونے والی قیامت",
+   "fr": "L'inévitable",
+   "tr": "Vâkıa",
+   "id": "Hari Kiamat",
+   "ms": "Peristiwa yang Tidak Dapat Dielakkan",
+   "bn": "নিশ্চিত ঘটনা",
+   "es": "Lo Que ha de Ocurrir",
+   "ru": "Событие"
+  },
+  "ayahCount": 96,
+  "revelation": "meccan"
+ },
+ {
+  "number": 57,
+  "nameAr": "الحديد",
+  "nameEn": "Al-Hadid",
+  "meaningEn": "The Iron",
+  "meanings": {
+   "en": "The Iron",
+   "ur": "فولاد",
+   "fr": "Le fer",
+   "tr": "Hadîd",
+   "id": "Besi",
+   "ms": "Besi",
+   "bn": "লোহা",
+   "es": "El Hierro",
+   "ru": "Железо"
+  },
+  "ayahCount": 29,
+  "revelation": "medinan"
+ },
+ {
+  "number": 58,
+  "nameAr": "المجادلة",
+  "nameEn": "Al-Mujadila",
+  "meaningEn": "The Pleading Woman",
+  "meanings": {
+   "en": "The Pleading Woman",
+   "ur": "جھگڑنے والی",
+   "fr": "La discussion",
+   "tr": "Mücâdele",
+   "id": "Wanita yang Menggugat",
+   "ms": "Perempuan yang Merayu",
+   "bn": "অনুযোগকারিণী",
+   "es": "La Discusión",
+   "ru": "Препирающаяся"
+  },
+  "ayahCount": 22,
+  "revelation": "medinan"
+ },
+ {
+  "number": 59,
+  "nameAr": "الحشر",
+  "nameEn": "Al-Hashr",
+  "meaningEn": "The Exile",
+  "meanings": {
+   "en": "The Exile",
+   "ur": "حشر",
+   "fr": "L'exode",
+   "tr": "Haşr",
+   "id": "Pengusiran",
+   "ms": "Pengusiran",
+   "bn": "সমাবেশ",
+   "es": "La Concentración",
+   "ru": "Сбор"
+  },
+  "ayahCount": 24,
+  "revelation": "medinan"
+ },
+ {
+  "number": 60,
+  "nameAr": "الممتحنة",
+  "nameEn": "Al-Mumtahanah",
+  "meaningEn": "She that is to be examined",
+  "meanings": {
+   "en": "She that is to be examined",
+   "ur": "امتحان لی جانے والی",
+   "fr": "L'éprouvée",
+   "tr": "Mümtehine",
+   "id": "Wanita yang Diuji",
+   "ms": "Perempuan yang Diuji",
+   "bn": "নারী, যাকে পরীক্ষা করা হবে",
+   "es": "La Examinada",
+   "ru": "Испытуемая"
+  },
+  "ayahCount": 13,
+  "revelation": "medinan"
+ },
+ {
+  "number": 61,
+  "nameAr": "الصف",
+  "nameEn": "As-Saf",
+  "meaningEn": "The Ranks",
+  "meanings": {
+   "en": "The Ranks",
+   "ur": "صف",
+   "fr": "Le rang",
+   "tr": "Saf",
+   "id": "Barisan",
+   "ms": "Barisan",
+   "bn": "সারিবদ্ধ সৈন্যদল",
+   "es": "La Fila",
+   "ru": "Ряды"
+  },
+  "ayahCount": 14,
+  "revelation": "medinan"
+ },
+ {
+  "number": 62,
+  "nameAr": "الجمعة",
+  "nameEn": "Al-Jumu'ah",
+  "meaningEn": "The Congregation, Friday",
+  "meanings": {
+   "en": "The Congregation, Friday",
+   "ur": "جمعہ",
+   "fr": "Le vendredi",
+   "tr": "Cuma",
+   "id": "Hari Jum\\'at",
+   "ms": "Hari Jumaat",
+   "bn": "সম্মেলন/শুক্রবার",
+   "es": "El Viernes",
+   "ru": "Собрание"
+  },
+  "ayahCount": 11,
+  "revelation": "medinan"
+ },
+ {
+  "number": 63,
+  "nameAr": "المنافقون",
+  "nameEn": "Al-Munafiqun",
+  "meaningEn": "The Hypocrites",
+  "meanings": {
+   "en": "The Hypocrites",
+   "ur": "منافقین",
+   "fr": "Les hypocrites",
+   "tr": "Münâfikûn",
+   "id": "Kaum Munafik",
+   "ms": "Golongan Munafik",
+   "bn": "ভণ্ড বিশ্বাসী",
+   "es": "Los Hipócritas",
+   "ru": "Лицемеры"
+  },
+  "ayahCount": 11,
+  "revelation": "medinan"
+ },
+ {
+  "number": 64,
+  "nameAr": "التغابن",
+  "nameEn": "At-Taghabun",
+  "meaningEn": "The Mutual Disillusion",
+  "meanings": {
+   "en": "The Mutual Disillusion",
+   "ur": "ہار جیت",
+   "fr": "La grande perte",
+   "tr": "Tegâbün",
+   "id": "Hari Dinampakkan Kesalahan",
+   "ms": "Dinampakkan Kesalahan",
+   "bn": "মোহ অপসারণ",
+   "es": "El Desengaño",
+   "ru": "Взаимное обделение"
+  },
+  "ayahCount": 18,
+  "revelation": "medinan"
+ },
+ {
+  "number": 65,
+  "nameAr": "الطلاق",
+  "nameEn": "At-Talaq",
+  "meaningEn": "The Divorce",
+  "meanings": {
+   "en": "The Divorce",
+   "ur": "طلاق",
+   "fr": "Le divorce",
+   "tr": "Talâk",
+   "id": "Perceraian",
+   "ms": "Cerai / Talak",
+   "bn": "তালাক",
+   "es": "El Divorcio",
+   "ru": "Развод"
+  },
+  "ayahCount": 12,
+  "revelation": "medinan"
+ },
+ {
+  "number": 66,
+  "nameAr": "التحريم",
+  "nameEn": "At-Tahrim",
+  "meaningEn": "The Prohibition",
+  "meanings": {
+   "en": "The Prohibition",
+   "ur": "حرمت",
+   "fr": "L'interdiction",
+   "tr": "Tahrîm",
+   "id": "Mengharamkan",
+   "ms": "Mengharamkan",
+   "bn": "নিষিদ্ধকরণ",
+   "es": "La Prohibición",
+   "ru": "Запрещение"
+  },
+  "ayahCount": 12,
+  "revelation": "medinan"
+ },
+ {
+  "number": 67,
+  "nameAr": "الملك",
+  "nameEn": "Al-Mulk",
+  "meaningEn": "The Sovereignty",
+  "meanings": {
+   "en": "The Sovereignty",
+   "ur": "بادشاہ",
+   "fr": "La royauté",
+   "tr": "Mülk",
+   "id": "Kerajaan",
+   "ms": "Kerajaan",
+   "bn": "সার্বভৌম কর্তৃত্ব",
+   "es": "La Soberanía",
+   "ru": "Власть"
+  },
+  "ayahCount": 30,
+  "revelation": "meccan"
+ },
+ {
+  "number": 68,
+  "nameAr": "القلم",
+  "nameEn": "Al-Qalam",
+  "meaningEn": "The Pen",
+  "meanings": {
+   "en": "The Pen",
+   "ur": "قلم",
+   "fr": "La plume",
+   "tr": "Kalem",
+   "id": "Pena",
+   "ms": "Pena / Kalam",
+   "bn": "কলম",
+   "es": "El Cálamo",
+   "ru": "Письменная трость"
+  },
+  "ayahCount": 52,
+  "revelation": "meccan"
+ },
+ {
+  "number": 69,
+  "nameAr": "الحاقة",
+  "nameEn": "Al-Haqqah",
+  "meaningEn": "The Reality",
+  "meanings": {
+   "en": "The Reality",
+   "ur": "حق ہونے والی",
+   "fr": "L'inéluctable",
+   "tr": "Hâkka",
+   "id": "Kenyataan (Hari Kiamat)",
+   "ms": "Keadaan Sebenar / Hari Kiamat",
+   "bn": "নিশ্চিত সত্য",
+   "es": "La Verdad Indefectible",
+   "ru": "Неминуемое"
+  },
+  "ayahCount": 52,
+  "revelation": "meccan"
+ },
+ {
+  "number": 70,
+  "nameAr": "المعارج",
+  "nameEn": "Al-Ma'arij",
+  "meaningEn": "The Ascending Stairways",
+  "meanings": {
+   "en": "The Ascending Stairways",
+   "ur": "عروج",
+   "fr": "Les voies d'ascension",
+   "tr": "Meâric",
+   "id": "Tempat yang Naik",
+   "ms": "Tempat-tempat Naik",
+   "bn": "উন্নয়নের সোপান",
+   "es": "Los Grados de Elevación",
+   "ru": "Ступени"
+  },
+  "ayahCount": 44,
+  "revelation": "meccan"
+ },
+ {
+  "number": 71,
+  "nameAr": "نوح",
+  "nameEn": "Nuh",
+  "meaningEn": "Noah",
+  "meanings": {
+   "en": "Noah",
+   "ur": "نوح",
+   "fr": "Noé",
+   "tr": "Nûh",
+   "id": "Nuh",
+   "ms": "Nabi Nuh a.s.",
+   "bn": "নবী নূহ",
+   "es": "Noé",
+   "ru": "Нух"
+  },
+  "ayahCount": 28,
+  "revelation": "meccan"
+ },
+ {
+  "number": 72,
+  "nameAr": "الجن",
+  "nameEn": "Al-Jinn",
+  "meaningEn": "The Jinn",
+  "meanings": {
+   "en": "The Jinn",
+   "ur": "جن",
+   "fr": "Les djinns",
+   "tr": "Cin",
+   "id": "Jin",
+   "ms": "Jin",
+   "bn": "জিন সম্প্রদায়",
+   "es": "Los Genios",
+   "ru": "Джинны"
+  },
+  "ayahCount": 28,
+  "revelation": "meccan"
+ },
+ {
+  "number": 73,
+  "nameAr": "المزمل",
+  "nameEn": "Al-Muzzammil",
+  "meaningEn": "The Enshrouded One",
+  "meanings": {
+   "en": "The Enshrouded One",
+   "ur": "کپڑا لپیٹنے والا",
+   "fr": "L'enveloppé",
+   "tr": "Müzzemmil",
+   "id": "Orang yang Berselimut",
+   "ms": "Yang Berselimut",
+   "bn": "বস্ত্রাচ্ছাদনকারী",
+   "es": "El Envuelto en El Manto",
+   "ru": "Закутавшийся"
+  },
+  "ayahCount": 20,
+  "revelation": "meccan"
+ },
+ {
+  "number": 74,
+  "nameAr": "المدثر",
+  "nameEn": "Al-Muddaththir",
+  "meaningEn": "The Cloaked One",
+  "meanings": {
+   "en": "The Cloaked One",
+   "ur": "کپڑا اوڑھنے والا",
+   "fr": "Celui qui se couvre",
+   "tr": "Müddessir",
+   "id": "Orang yang Berkemul",
+   "ms": "Yang Berselubung",
+   "bn": "পোশাক পরিহিত",
+   "es": "El Arropado",
+   "ru": "Завернувшийся"
+  },
+  "ayahCount": 56,
+  "revelation": "meccan"
+ },
+ {
+  "number": 75,
+  "nameAr": "القيامة",
+  "nameEn": "Al-Qiyamah",
+  "meaningEn": "The Resurrection",
+  "meanings": {
+   "en": "The Resurrection",
+   "ur": "قیامۃ",
+   "fr": "La résurrection",
+   "tr": "Kıyâmet",
+   "id": "Hari Berbangkit",
+   "ms": "Hari Kebangkitan / Kiamat",
+   "bn": "পুনরুত্থান",
+   "es": "El Levantamiento",
+   "ru": "Воскресение"
+  },
+  "ayahCount": 40,
+  "revelation": "meccan"
+ },
+ {
+  "number": 76,
+  "nameAr": "الانسان",
+  "nameEn": "Al-Insan",
+  "meaningEn": "The Man",
+  "meanings": {
+   "en": "The Man",
+   "ur": "انسان",
+   "fr": "L'homme",
+   "tr": "İnsân",
+   "id": "Manusia",
+   "ms": "Manusia",
+   "bn": "মানবজাতি",
+   "es": "El Hombre",
+   "ru": "Человек"
+  },
+  "ayahCount": 31,
+  "revelation": "medinan"
+ },
+ {
+  "number": 77,
+  "nameAr": "المرسلات",
+  "nameEn": "Al-Mursalat",
+  "meaningEn": "The Emissaries",
+  "meanings": {
+   "en": "The Emissaries",
+   "ur": "بھیجی جانے والی ہوائیں",
+   "fr": "Les envoyés",
+   "tr": "Mürselât",
+   "id": "Malaikat-malaikan yang Diutus",
+   "ms": "Malaikat Yang Diutus",
+   "bn": "প্রেরিত পুরুষ",
+   "es": "Los Que Son Enviados",
+   "ru": "Посылаемые"
+  },
+  "ayahCount": 50,
+  "revelation": "meccan"
+ },
+ {
+  "number": 78,
+  "nameAr": "النبإ",
+  "nameEn": "An-Naba",
+  "meaningEn": "The Tidings",
+  "meanings": {
+   "en": "The Tidings",
+   "ur": "خبر",
+   "fr": "La nouvelle",
+   "tr": "Nebe",
+   "id": "Berita Besar",
+   "ms": "Berita Besar",
+   "bn": "মহাসংবাদ",
+   "es": "La Noticia",
+   "ru": "Весть"
+  },
+  "ayahCount": 40,
+  "revelation": "meccan"
+ },
+ {
+  "number": 79,
+  "nameAr": "النازعات",
+  "nameEn": "An-Nazi'at",
+  "meaningEn": "Those who drag forth",
+  "meanings": {
+   "en": "Those who drag forth",
+   "ur": "زور سے کھینچنے والے",
+   "fr": "Ceux qui arrachent",
+   "tr": "Naziât",
+   "id": "Malaikat yang Mencabut",
+   "ms": "Malaikat Yang Mencabut",
+   "bn": "প্রচেষ্টাকারী",
+   "es": "Los Que Arrancan",
+   "ru": "Исторгающие"
+  },
+  "ayahCount": 46,
+  "revelation": "meccan"
+ },
+ {
+  "number": 80,
+  "nameAr": "عبس",
+  "nameEn": "'Abasa",
+  "meaningEn": "He Frowned",
+  "meanings": {
+   "en": "He Frowned",
+   "ur": "تیوری چڑہائی",
+   "fr": "Il s'est renfrogné",
+   "tr": "Abese",
+   "id": "Ia Bermuka Masam",
+   "ms": "Dia Bermasam Muka",
+   "bn": "সে ভ্রু কুঁচকালো",
+   "es": "Frunció El Ceño",
+   "ru": "Нахмурился"
+  },
+  "ayahCount": 42,
+  "revelation": "meccan"
+ },
+ {
+  "number": 81,
+  "nameAr": "التكوير",
+  "nameEn": "At-Takwir",
+  "meaningEn": "The Overthrowing",
+  "meanings": {
+   "en": "The Overthrowing",
+   "ur": "لپیٹنا",
+   "fr": "L'obscurcissement",
+   "tr": "Tekvîr",
+   "id": "Menggulung",
+   "ms": "Menggulung",
+   "bn": "অন্ধকারাচ্ছন্ন",
+   "es": "El Arrollamiento",
+   "ru": "Скручивание"
+  },
+  "ayahCount": 29,
+  "revelation": "meccan"
+ },
+ {
+  "number": 82,
+  "nameAr": "الإنفطار",
+  "nameEn": "Al-Infitar",
+  "meaningEn": "The Cleaving",
+  "meanings": {
+   "en": "The Cleaving",
+   "ur": "ٹکڑے ہونا",
+   "fr": "La rupture",
+   "tr": "İnfitâr",
+   "id": "Terbelah",
+   "ms": "Terpecah & Terbelah",
+   "bn": "বিদীর্ণ করা",
+   "es": "La Hendidura",
+   "ru": "Раскалывание"
+  },
+  "ayahCount": 19,
+  "revelation": "meccan"
+ },
+ {
+  "number": 83,
+  "nameAr": "المطففين",
+  "nameEn": "Al-Mutaffifin",
+  "meaningEn": "The Defrauding",
+  "meanings": {
+   "en": "The Defrauding",
+   "ur": "ناپ تول میں کمی کرنے والے",
+   "fr": "Les fraudeurs",
+   "tr": "Mutaffifîn",
+   "id": "Orang-orang Curang",
+   "ms": "Golongan yang Curang",
+   "bn": "প্রতারণা করা",
+   "es": "Los Defraudadores",
+   "ru": "Обвешивающие"
+  },
+  "ayahCount": 36,
+  "revelation": "meccan"
+ },
+ {
+  "number": 84,
+  "nameAr": "الإنشقاق",
+  "nameEn": "Al-Inshiqaq",
+  "meaningEn": "The Sundering",
+  "meanings": {
+   "en": "The Sundering",
+   "ur": "پھٹنا",
+   "fr": "La déchirure",
+   "tr": "İnşikâk",
+   "id": "Terbelah",
+   "ms": "Terbelah",
+   "bn": "খণ্ড-বিখণ্ডকরণ",
+   "es": "El Resquebrajamiento",
+   "ru": "Разверзнется"
+  },
+  "ayahCount": 25,
+  "revelation": "meccan"
+ },
+ {
+  "number": 85,
+  "nameAr": "البروج",
+  "nameEn": "Al-Buruj",
+  "meaningEn": "The Mansions of the Stars",
+  "meanings": {
+   "en": "The Mansions of the Stars",
+   "ur": "برج",
+   "fr": "Les constellations",
+   "tr": "Burûc",
+   "id": "Gugusan Bintang",
+   "ms": "Gugusan Bintang",
+   "bn": "নক্ষত্রপুঞ্জ",
+   "es": "Las Constelaciones",
+   "ru": "Созвездия Зодиака"
+  },
+  "ayahCount": 22,
+  "revelation": "meccan"
+ },
+ {
+  "number": 86,
+  "nameAr": "الطارق",
+  "nameEn": "At-Tariq",
+  "meaningEn": "The Nightcommer",
+  "meanings": {
+   "en": "The Nightcommer",
+   "ur": "رات کو آنے والا",
+   "fr": "L'astre nocturne",
+   "tr": "Târık",
+   "id": "Yang Datang di Malam Hari",
+   "ms": "Pengunjung Malam",
+   "bn": "রাতের আগন্তুক",
+   "es": "El Que Viene de Noche",
+   "ru": "Ночной путник"
+  },
+  "ayahCount": 17,
+  "revelation": "meccan"
+ },
+ {
+  "number": 87,
+  "nameAr": "الأعلى",
+  "nameEn": "Al-A'la",
+  "meaningEn": "The Most High",
+  "meanings": {
+   "en": "The Most High",
+   "ur": "اعلی",
+   "fr": "Le Très-Haut",
+   "tr": "A'lâ",
+   "id": "Yang Paling Tinggi",
+   "ms": "Yang Tertinggi",
+   "bn": "সর্বোন্নত",
+   "es": "El Altísimo",
+   "ru": "Всевышний"
+  },
+  "ayahCount": 19,
+  "revelation": "meccan"
+ },
+ {
+  "number": 88,
+  "nameAr": "الغاشية",
+  "nameEn": "Al-Ghashiyah",
+  "meaningEn": "The Overwhelming",
+  "meanings": {
+   "en": "The Overwhelming",
+   "ur": "چھا جانے والی",
+   "fr": "L'enveloppante",
+   "tr": "Gâşiye",
+   "id": "Hari Pembalasan",
+   "ms": "Peristiwa Menggelisahkan/Hari Pembalasan",
+   "bn": "বিহ্বলকর ঘটনা",
+   "es": "El Envolvente",
+   "ru": "Покрывающее"
+  },
+  "ayahCount": 26,
+  "revelation": "meccan"
+ },
+ {
+  "number": 89,
+  "nameAr": "الفجر",
+  "nameEn": "Al-Fajr",
+  "meaningEn": "The Dawn",
+  "meanings": {
+   "en": "The Dawn",
+   "ur": "فجر",
+   "fr": "L'aube",
+   "tr": "Fecr",
+   "id": "Fajar",
+   "ms": "Fajar / Sinar Mentari",
+   "bn": "ভোরবেলা",
+   "es": "La Aurora",
+   "ru": "Заря"
+  },
+  "ayahCount": 30,
+  "revelation": "meccan"
+ },
+ {
+  "number": 90,
+  "nameAr": "البلد",
+  "nameEn": "Al-Balad",
+  "meaningEn": "The City",
+  "meanings": {
+   "en": "The City",
+   "ur": "شہر",
+   "fr": "La cité",
+   "tr": "Beled",
+   "id": "Negeri",
+   "ms": "Negeri",
+   "bn": "নগর",
+   "es": "El Territorio",
+   "ru": "Город"
+  },
+  "ayahCount": 20,
+  "revelation": "meccan"
+ },
+ {
+  "number": 91,
+  "nameAr": "الشمس",
+  "nameEn": "Ash-Shams",
+  "meaningEn": "The Sun",
+  "meanings": {
+   "en": "The Sun",
+   "ur": "آفتاب",
+   "fr": "Le soleil",
+   "tr": "Şems",
+   "id": "Matahari",
+   "ms": "Matahari",
+   "bn": "সূর্য",
+   "es": "El Sol",
+   "ru": "Солнце"
+  },
+  "ayahCount": 15,
+  "revelation": "meccan"
+ },
+ {
+  "number": 92,
+  "nameAr": "الليل",
+  "nameEn": "Al-Layl",
+  "meaningEn": "The Night",
+  "meanings": {
+   "en": "The Night",
+   "ur": "رات",
+   "fr": "La nuit",
+   "tr": "Leyl",
+   "id": "Malam",
+   "ms": "Malam",
+   "bn": "রাত",
+   "es": "La Noche",
+   "ru": "Ночь"
+  },
+  "ayahCount": 21,
+  "revelation": "meccan"
+ },
+ {
+  "number": 93,
+  "nameAr": "الضحى",
+  "nameEn": "Ad-Duhaa",
+  "meaningEn": "The Morning Hours",
+  "meanings": {
+   "en": "The Morning Hours",
+   "ur": "دن کا چڑھنا",
+   "fr": "Le jour montant",
+   "tr": "Duhâ",
+   "id": "Waktu Dhuha",
+   "ms": "Pagi yang Cemerlang / Matahari Meninggi",
+   "bn": "পূর্বাহ্নের সুর্যকিরণ",
+   "es": "La Claridad de La Mañana",
+   "ru": "Утро"
+  },
+  "ayahCount": 11,
+  "revelation": "meccan"
+ },
+ {
+  "number": 94,
+  "nameAr": "الشرح",
+  "nameEn": "Ash-Sharh",
+  "meaningEn": "The Relief",
+  "meanings": {
+   "en": "The Relief",
+   "ur": "تسکین",
+   "fr": "L'ouverture",
+   "tr": "İnşirâh",
+   "id": "Melapangkan",
+   "ms": "Melapangkan",
+   "bn": "বক্ষ প্রশস্তকরণ",
+   "es": "No Te Hemos Abierto",
+   "ru": "Раскрытие"
+  },
+  "ayahCount": 8,
+  "revelation": "meccan"
+ },
+ {
+  "number": 95,
+  "nameAr": "التين",
+  "nameEn": "At-Tin",
+  "meaningEn": "The Fig",
+  "meanings": {
+   "en": "The Fig",
+   "ur": "انجیر",
+   "fr": "Les figues",
+   "tr": "Tîn",
+   "id": "Buah Tin",
+   "ms": "Buah Tin / Buah Ara",
+   "bn": "ডুমুর",
+   "es": "Los Higos",
+   "ru": "Смоковница"
+  },
+  "ayahCount": 8,
+  "revelation": "meccan"
+ },
+ {
+  "number": 96,
+  "nameAr": "العلق",
+  "nameEn": "Al-'Alaq",
+  "meaningEn": "The Clot",
+  "meanings": {
+   "en": "The Clot",
+   "ur": "جما ہوا خون",
+   "fr": "L'adhérence",
+   "tr": "Alak",
+   "id": "Segumpal Darah",
+   "ms": "Segumpal Darah",
+   "bn": "রক্তপিণ্ড",
+   "es": "El Coágulo",
+   "ru": "Сгусток крови"
+  },
+  "ayahCount": 19,
+  "revelation": "meccan"
+ },
+ {
+  "number": 97,
+  "nameAr": "القدر",
+  "nameEn": "Al-Qadr",
+  "meaningEn": "The Power",
+  "meanings": {
+   "en": "The Power",
+   "ur": "شب قدر",
+   "fr": "La destinée",
+   "tr": "Kadir",
+   "id": "Kemuliaan",
+   "ms": "Kemuliaan",
+   "bn": "মহিমান্বিত",
+   "es": "El Decreto",
+   "ru": "Предопределение"
+  },
+  "ayahCount": 5,
+  "revelation": "meccan"
+ },
+ {
+  "number": 98,
+  "nameAr": "البينة",
+  "nameEn": "Al-Bayyinah",
+  "meaningEn": "The Clear Proof",
+  "meanings": {
+   "en": "The Clear Proof",
+   "ur": "ثبوت",
+   "fr": "La preuve",
+   "tr": "Beyyine",
+   "id": "Pembuktian",
+   "ms": "Bukti yang Nyata",
+   "bn": "প্রমাণ",
+   "es": "La Evidencia",
+   "ru": "Ясное знамение"
+  },
+  "ayahCount": 8,
+  "revelation": "medinan"
+ },
+ {
+  "number": 99,
+  "nameAr": "الزلزلة",
+  "nameEn": "Az-Zalzalah",
+  "meaningEn": "The Earthquake",
+  "meanings": {
+   "en": "The Earthquake",
+   "ur": "زلزلہ",
+   "fr": "Le séisme",
+   "tr": "Zilzâl",
+   "id": "Kegoncangan",
+   "ms": "Kegoncangan",
+   "bn": "ভূমিকম্প",
+   "es": "El Temblor",
+   "ru": "Сотрясение"
+  },
+  "ayahCount": 8,
+  "revelation": "medinan"
+ },
+ {
+  "number": 100,
+  "nameAr": "العاديات",
+  "nameEn": "Al-'Adiyat",
+  "meaningEn": "The Courser",
+  "meanings": {
+   "en": "The Courser",
+   "ur": "دوڑنے والے گھوڑے",
+   "fr": "Les coursiers",
+   "tr": "Âdiyât",
+   "id": "Berlari Kencang",
+   "ms": "Yang Berlari Kencang",
+   "bn": "অভিযানকারী",
+   "es": "Los Que Galopan",
+   "ru": "Скачущие"
+  },
+  "ayahCount": 11,
+  "revelation": "meccan"
+ },
+ {
+  "number": 101,
+  "nameAr": "القارعة",
+  "nameEn": "Al-Qari'ah",
+  "meaningEn": "The Calamity",
+  "meanings": {
+   "en": "The Calamity",
+   "ur": "کھڑکھڑاہٹ",
+   "fr": "Le fracas",
+   "tr": "Kâria",
+   "id": "Hari Kiamat",
+   "ms": "Hari Yang Hingar Bingar / Kiamat",
+   "bn": "মহাসংকট",
+   "es": "La Conmoción",
+   "ru": "Великое бедствие"
+  },
+  "ayahCount": 11,
+  "revelation": "meccan"
+ },
+ {
+  "number": 102,
+  "nameAr": "التكاثر",
+  "nameEn": "At-Takathur",
+  "meaningEn": "The Rivalry in world increase",
+  "meanings": {
+   "en": "The Rivalry in world increase",
+   "ur": "کثرت",
+   "fr": "La course aux richesses",
+   "tr": "Tekâsür",
+   "id": "Bermegah-megahan",
+   "ms": "Bermegah-megah",
+   "bn": "প্রাচুর্যের প্রতিযোগিতা",
+   "es": "La Rivalidad",
+   "ru": "Страсть к приумножению"
+  },
+  "ayahCount": 8,
+  "revelation": "meccan"
+ },
+ {
+  "number": 103,
+  "nameAr": "العصر",
+  "nameEn": "Al-'Asr",
+  "meaningEn": "The Declining Day",
+  "meanings": {
+   "en": "The Declining Day",
+   "ur": "زمانہ",
+   "fr": "Le temps",
+   "tr": "Asr",
+   "id": "Waktu Sore",
+   "ms": "Masa",
+   "bn": "সময়",
+   "es": "El Tiempo",
+   "ru": "Предвечернее время"
+  },
+  "ayahCount": 3,
+  "revelation": "meccan"
+ },
+ {
+  "number": 104,
+  "nameAr": "الهمزة",
+  "nameEn": "Al-Humazah",
+  "meaningEn": "The Traducer",
+  "meanings": {
+   "en": "The Traducer",
+   "ur": "عیب لگانے والا",
+   "fr": "Les calomniateurs",
+   "tr": "Hümeze",
+   "id": "Pengumpat",
+   "ms": "Pengumpat",
+   "bn": "পরনিন্দাকারী",
+   "es": "El Murmurador",
+   "ru": "Хулитель"
+  },
+  "ayahCount": 9,
+  "revelation": "meccan"
+ },
+ {
+  "number": 105,
+  "nameAr": "الفيل",
+  "nameEn": "Al-Fil",
+  "meaningEn": "The Elephant",
+  "meanings": {
+   "en": "The Elephant",
+   "ur": "ہاتھی",
+   "fr": "L'éléphant",
+   "tr": "Fîl",
+   "id": "Gajah",
+   "ms": "Gajah",
+   "bn": "হাতি",
+   "es": "El Elefante",
+   "ru": "Слон"
+  },
+  "ayahCount": 5,
+  "revelation": "meccan"
+ },
+ {
+  "number": 106,
+  "nameAr": "قريش",
+  "nameEn": "Quraysh",
+  "meaningEn": "Quraysh",
+  "meanings": {
+   "en": "Quraysh",
+   "ur": "قریش",
+   "fr": "Les Quraysh",
+   "tr": "Kureyş",
+   "id": "Suku Quraisy",
+   "ms": "Kaum Quraisy",
+   "bn": "কুরাইশ গোত্র",
+   "es": "Los Quraysh",
+   "ru": "Курейшиты"
+  },
+  "ayahCount": 4,
+  "revelation": "meccan"
+ },
+ {
+  "number": 107,
+  "nameAr": "الماعون",
+  "nameEn": "Al-Ma'un",
+  "meaningEn": "The Small kindnesses",
+  "meanings": {
+   "en": "The Small kindnesses",
+   "ur": "تھوڑی سی چیز",
+   "fr": "L'entraide",
+   "tr": "Maûn",
+   "id": "Barang yang Berguna",
+   "ms": "Barangan Berguna",
+   "bn": "সাহায্য সহায়তা",
+   "es": "La Ayuda Imprescindible",
+   "ru": "Мелочь"
+  },
+  "ayahCount": 7,
+  "revelation": "meccan"
+ },
+ {
+  "number": 108,
+  "nameAr": "الكوثر",
+  "nameEn": "Al-Kawthar",
+  "meaningEn": "The Abundance",
+  "meanings": {
+   "en": "The Abundance",
+   "ur": "جنت کی نہر",
+   "fr": "L'abondance",
+   "tr": "Kevser",
+   "id": "Nikmat Berlimpah",
+   "ms": "Sungai Di Syurga",
+   "bn": "কাউসার/প্রাচুর্য",
+   "es": "La Abundancia",
+   "ru": "Изобилие"
+  },
+  "ayahCount": 3,
+  "revelation": "meccan"
+ },
+ {
+  "number": 109,
+  "nameAr": "الكافرون",
+  "nameEn": "Al-Kafirun",
+  "meaningEn": "The Disbelievers",
+  "meanings": {
+   "en": "The Disbelievers",
+   "ur": "کافرین",
+   "fr": "Les mécréants",
+   "tr": "Kâfirûn",
+   "id": "Orang-orang Kafir",
+   "ms": "Golongan Kafir",
+   "bn": "অবিশ্বাসী",
+   "es": "Los Incrédulos",
+   "ru": "Неверующие"
+  },
+  "ayahCount": 6,
+  "revelation": "meccan"
+ },
+ {
+  "number": 110,
+  "nameAr": "النصر",
+  "nameEn": "An-Nasr",
+  "meaningEn": "The Divine Support",
+  "meanings": {
+   "en": "The Divine Support",
+   "ur": "نصرت",
+   "fr": "Le secours",
+   "tr": "Nasr",
+   "id": "Pertolongan",
+   "ms": "Pertolongan",
+   "bn": "সাহায্য",
+   "es": "La Victoria",
+   "ru": "Помощь"
+  },
+  "ayahCount": 3,
+  "revelation": "medinan"
+ },
+ {
+  "number": 111,
+  "nameAr": "المسد",
+  "nameEn": "Al-Masad",
+  "meaningEn": "The Palm Fiber",
+  "meanings": {
+   "en": "The Palm Fiber",
+   "ur": "خوب بٹی ہوئی",
+   "fr": "Les fibres",
+   "tr": "Tebbet",
+   "id": "Gejolak Api (Sabut)",
+   "ms": "Nyalaan Api",
+   "bn": "খেজুরের পাকানো (রশি)",
+   "es": "La Fibra",
+   "ru": "Пальмовые волокна"
+  },
+  "ayahCount": 5,
+  "revelation": "meccan"
+ },
+ {
+  "number": 112,
+  "nameAr": "الإخلاص",
+  "nameEn": "Al-Ikhlas",
+  "meaningEn": "The Sincerity",
+  "meanings": {
+   "en": "The Sincerity",
+   "ur": "اخلاص",
+   "fr": "La sincérité",
+   "tr": "İhlâs",
+   "id": "Ikhlash",
+   "ms": "Tulus Ikhlas / Memurnikan Keesaan Allah",
+   "bn": "আন্তরিকতা",
+   "es": "La Adoración Pura",
+   "ru": "Очищение веры"
+  },
+  "ayahCount": 4,
+  "revelation": "meccan"
+ },
+ {
+  "number": 113,
+  "nameAr": "الفلق",
+  "nameEn": "Al-Falaq",
+  "meaningEn": "The Daybreak",
+  "meanings": {
+   "en": "The Daybreak",
+   "ur": "صبح",
+   "fr": "L'aube naissante",
+   "tr": "Felak",
+   "id": "Waktu Shubuh",
+   "ms": "Waktu Subuh / Dinihari",
+   "bn": "নিশিভোর",
+   "es": "El Rayar del Alba",
+   "ru": "Рассвет"
+  },
+  "ayahCount": 5,
+  "revelation": "meccan"
+ },
+ {
+  "number": 114,
+  "nameAr": "الناس",
+  "nameEn": "An-Nas",
+  "meaningEn": "Mankind",
+  "meanings": {
+   "en": "Mankind",
+   "ur": "انسان",
+   "fr": "Les humains",
+   "tr": "Nâs",
+   "id": "Umat Manusia",
+   "ms": "Manusia",
+   "bn": "মানুষ জাতি",
+   "es": "Los Hombres",
+   "ru": "Люди"
+  },
+  "ayahCount": 6,
+  "revelation": "meccan"
+ }
+]

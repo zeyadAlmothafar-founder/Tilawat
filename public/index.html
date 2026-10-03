@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="app.name"></title>
+  <meta name="theme-color" content="#0c4a3e">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri+Quran&family=Scheherazade+New:wght@400;700&display=swap">
+  <link rel="stylesheet" href="/css/app.css">
+  <script>
+    // Apply saved theme and language direction before first paint (avoids a flash).
+    (function () {
+      try {
+        var theme = localStorage.getItem('qvs.theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+        var lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('qvs.lang');
+        if (lang && /^(ar|ur|fa)/.test(lang)) document.documentElement.dir = 'rtl';
+      } catch (e) {}
+    })();
+  </script>
+  <script type="module" src="/js/main.js"></script>
+</head>
+<body class="is-booting">
+  <a class="skip-link" href="#main" data-i18n="app.skipToContent"></a>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <a class="brand" href="#create">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <polygon class="logo-star" points="32,3.7 40.3,12 52,12 52,23.7 60.3,32 52,40.3 52,52 40.3,52 32,60.3 23.7,52 12,52 12,40.3 3.7,32 12,23.7 12,12 23.7,12"/>
+          <polygon class="logo-inner" points="32,10 38,16 48,16 48,26 54,32 48,38 48,48 38,48 32,54 26,48 16,48 16,38 10,32 16,26 16,16 26,16"/>
+          <path class="logo-play" d="M27 22.5v19l15.5-9.5z"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name" data-i18n="app.name"></span>
+          <span class="brand-tagline" data-i18n="app.tagline"></span>
+        </span>
+      </a>
+      <div class="header-tools">
+        <label class="lang-switch">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <span class="visually-hidden" data-i18n="header.language"></span>
+          <select id="lang-select"></select>
+        </label>
+        <button id="theme-toggle" class="icon-btn header-btn" type="button"></button>
+      </div>
+    </div>
+    <nav class="tabs" data-i18n-attr="aria-label:nav.label">
+      <a href="#create" data-route="create">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>
+        <span class="tab-label" data-i18n="nav.create"></span>
+      </a>
+      <a href="#videos" data-route="videos">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>
+        <span class="tab-label" data-i18n="nav.videos"></span>
+        <span id="jobs-badge" class="nav-badge" hidden></span>
+      </a>
+      <a href="#library" data-route="library">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>
+        <span class="tab-label" data-i18n="nav.library"></span>
+      </a>
+      <a href="#about" data-route="about">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        <span class="tab-label" data-i18n="nav.about"></span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="main" class="app-main" tabindex="-1">
+
+    <!-- ============ Create ============ -->
+    <section class="page page-create" data-page="create" aria-labelledby="create-title" hidden>
+      <div class="page-head">
+        <h1 id="create-title" tabindex="-1" data-i18n="create.title"></h1>
+        <p class="lead" data-i18n="create.subtitle"></p>
+      </div>
+
+      <div class="create-layout">
+        <form id="create-form" class="create-form" novalidate>
+
+          <section class="card form-section" aria-labelledby="sec-passages">
+            <h2 class="section-title" id="sec-passages"><span class="step">1</span><span data-i18n="create.passages.title"></span></h2>
+            <p class="section-hint" data-i18n="create.passages.hint"></p>
+            <div class="presets">
+              <span class="presets-label" id="presets-label" data-i18n="create.passages.presets"></span>
+              <div id="preset-chips" class="chip-row" role="group" aria-labelledby="presets-label"></div>
+            </div>
+            <ol id="selection-list" class="selection-list"></ol>
+            <button type="button" id="add-selection" class="btn btn-dashed btn-block">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <span data-i18n="create.passages.add"></span>
+            </button>
+
+            <div class="field">
+              <span class="field-label" id="mode-label" data-i18n="create.output.title"></span>
+              <div class="segmented segmented-rich" role="radiogroup" aria-labelledby="mode-label">
+                <label class="seg-option">
+                  <input type="radio" name="mode" value="combined">
+                  <span class="seg-body"><strong data-i18n="create.output.combined"></strong><small data-i18n="create.output.combinedHint"></small></span>
+                </label>
+                <label class="seg-option">
+                  <input type="radio" name="mode" value="perAyah">
+                  <span class="seg-body"><strong data-i18n="create.output.perAyah"></strong><small data-i18n="create.output.perAyahHint"></small></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section class="card form-section" aria-labelledby="sec-recitation">
+            <h2 class="section-title" id="sec-recitation"><span class="step">2</span><span data-i18n="create.recitation.title"></span></h2>
+            <div class="field">
+              <label class="field-label" for="reciter-select" data-i18n="create.reciter.label"></label>
+              <div class="input-with-button">
+                <select id="reciter-select" class="select"></select>
+                <button type="button" id="reciter-preview" class="icon-btn btn-outline" aria-pressed="false"></button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="translation-select" data-i18n="create.translation.label"></label>
+              <select id="translation-select" class="select"></select>
+              <p class="field-hint" data-i18n="create.translation.hint"></p>
+            </div>
+          </section>
+
+          <section class="card form-section" aria-labelledby="sec-backgrounds">
+            <h2 class="section-title" id="sec-backgrounds"><span class="step">3</span><span data-i18n="create.backgrounds.title"></span></h2>
+            <p class="section-hint" data-i18n="create.backgrounds.hint"></p>
+            <div id="category-chips" class="chip-row" role="group" aria-labelledby="sec-backgrounds"></div>
+            <label class="check-row">
+              <input type="checkbox" name="approvedOnly" id="approved-only">
+              <span>
+                <span data-i18n="create.backgrounds.approvedOnly"></span>
+                <a class="field-hint link-inline" href="#library" data-i18n="create.backgrounds.approvedOnlyHint"></a>
+              </span>
+            </label>
+            <p id="approved-note" class="callout callout-gold small" hidden>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+              <span data-i18n="create.backgrounds.noApproved"></span>
+            </p>
+          </section>
+
+          <section class="card form-section" aria-labelledby="sec-format">
+            <h2 class="section-title" id="sec-format"><span class="step">4</span><span data-i18n="create.format.title"></span></h2>
+            <div class="field">
+              <span class="field-label" id="aspect-label" data-i18n="create.format.aspect"></span>
+              <div class="option-cards" role="radiogroup" aria-labelledby="aspect-label">
+                <label class="option-card">
+                  <input type="radio" name="aspect" value="9:16">
+                  <span class="option-body"><span class="ratio-shape ratio-916" aria-hidden="true"></span><strong dir="ltr">9:16</strong><small data-i18n="create.format.portraitHint"></small></span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="aspect" value="16:9">
+                  <span class="option-body"><span class="ratio-shape ratio-169" aria-hidden="true"></span><strong dir="ltr">16:9</strong><small data-i18n="create.format.landscapeHint"></small></span>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="aspect" value="1:1">
+                  <span class="option-body"><span class="ratio-shape ratio-11" aria-hidden="true"></span><strong dir="ltr">1:1</strong><small data-i18n="create.format.squareHint"></small></span>
+                </label>
+              </div>
+            </div>
+            <div class="field">
+              <span class="field-label" id="quality-label" data-i18n="create.format.quality"></span>
+              <div class="segmented" role="radiogroup" aria-labelledby="quality-label">
+                <label class="seg-option"><input type="radio" name="quality" value="1080"><span class="seg-body" data-i18n="create.format.q1080"></span></label>
+                <label class="seg-option"><input type="radio" name="quality" value="720"><span class="seg-body" data-i18n="create.format.q720"></span></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="card form-section" aria-labelledby="sec-style">
+            <h2 class="section-title" id="sec-style"><span class="step">5</span><span data-i18n="create.style.title"></span></h2>
+            <div class="field-grid">
+              <div class="field">
+                <span class="field-label" id="font-label" data-i18n="create.style.font"></span>
+                <div class="segmented" role="radiogroup" aria-labelledby="font-label">
+                  <label class="seg-option"><input type="radio" name="font" value="amiri"><span class="seg-body font-sample-amiri">Amiri Quran</span></label>
+                  <label class="seg-option"><input type="radio" name="font" value="scheherazade"><span class="seg-body font-sample-scheherazade">Scheherazade New</span></label>
+                </div>
+              </div>
+              <div class="field">
+                <span class="field-label" id="position-label" data-i18n="create.style.position"></span>
+                <div class="segmented" role="radiogroup" aria-labelledby="position-label">
+                  <label class="seg-option"><input type="radio" name="position" value="center"><span class="seg-body" data-i18n="create.style.center"></span></label>
+                  <label class="seg-option"><input type="radio" name="position" value="lower"><span class="seg-body" data-i18n="create.style.lower"></span></label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="range-head">
+                  <label class="field-label" for="text-scale" data-i18n="create.style.size"></label>
+                  <output id="text-scale-value" for="text-scale" class="range-value"></output>
+                </div>
+                <input type="range" id="text-scale" min="0.7" max="1.5" step="0.05">
+              </div>
+              <div class="field">
+                <div class="range-head">
+                  <label class="field-label" for="overlay" data-i18n="create.style.darkness"></label>
+                  <output id="overlay-value" for="overlay" class="range-value"></output>
+                </div>
+                <input type="range" id="overlay" min="0" max="0.8" step="0.05">
+              </div>
+            </div>
+            <div class="switches">
+              <label class="switch-row"><input type="checkbox" class="switch" name="showSurahTitle" id="show-title"><span data-i18n="create.style.showTitle"></span></label>
+              <label class="switch-row"><input type="checkbox" class="switch" name="showReciter" id="show-reciter"><span data-i18n="create.style.showReciter"></span></label>
+              <label class="switch-row">
+                <input type="checkbox" class="switch" name="bismillah" id="bismillah">
+                <span><span data-i18n="create.style.bismillah"></span><small class="field-hint" data-i18n="create.style.bismillahHint"></small></span>
+              </label>
+            </div>
+          </section>
+        </form>
+
+        <aside class="create-aside" aria-labelledby="preview-title">
+          <section class="card preview-card">
+            <div class="card-head">
+              <h2 id="preview-title" class="card-title" data-i18n="create.preview.title"></h2>
+              <span class="muted small" data-i18n="create.preview.hint"></span>
+            </div>
+            <div class="preview-stage">
+              <div id="preview-frame" class="device-frame" data-aspect="9:16" data-position="center">
+                <div class="device-screen">
+                  <div class="pv-bg" data-cat="nature"></div>
+                  <div class="pv-overlay"></div>
+                  <div class="pv-content">
+                    <div class="pv-title"></div>
+                    <div class="pv-text">
+                      <p class="pv-placeholder"></p>
+                      <p class="pv-bismillah" lang="ar" dir="rtl" hidden></p>
+                      <p class="pv-arabic" lang="ar" dir="rtl"></p>
+                      <p class="pv-translation" dir="auto"></p>
+                    </div>
+                    <div class="pv-foot">
+                      <span class="pv-reciter"></span>
+                      <span class="pv-credit" dir="ltr">QuranEnc.com · EveryAyah.com</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card submit-card">
+            <p id="create-summary" class="summary" aria-live="polite"></p>
+            <ul id="create-errors" class="form-errors" aria-live="polite" hidden></ul>
+            <button type="submit" form="create-form" id="create-submit" class="btn btn-primary btn-lg btn-block">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>
+              <span class="btn-label"></span>
+            </button>
+          </section>
+
+          <section class="card text-check" aria-labelledby="text-check-title">
+            <div class="card-head">
+              <h2 id="text-check-title" class="card-title" data-i18n="create.preview.textTitle"></h2>
+              <span class="muted small" data-i18n="create.preview.textHint"></span>
+            </div>
+            <div id="ayah-list" class="ayah-list" tabindex="0" data-i18n-attr="aria-label:create.preview.textTitle"></div>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ My Videos ============ -->
+    <section class="page page-videos" data-page="videos" aria-labelledby="videos-title" hidden>
+      <div class="page-head page-head-row">
+        <div>
+          <h1 id="videos-title" tabindex="-1" data-i18n="videos.title"></h1>
+          <p class="lead" data-i18n="videos.subtitle"></p>
+        </div>
+        <a class="btn btn-primary" href="#create">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span data-i18n="videos.new"></span>
+        </a>
+      </div>
+      <div id="videos-root"></div>
+      <p id="videos-live" class="visually-hidden" aria-live="polite"></p>
+    </section>
+
+    <!-- ============ Background library ============ -->
+    <section class="page page-library" data-page="library" aria-labelledby="library-title" hidden>
+      <div class="page-head page-head-row">
+        <div>
+          <h1 id="library-title" tabindex="-1" data-i18n="library.title"></h1>
+          <p class="lead" data-i18n="library.subtitle"></p>
+        </div>
+        <div class="upload-action">
+          <button type="button" id="upload-btn" class="btn btn-primary">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>
+            <span data-i18n="library.upload.button"></span>
+          </button>
+          <input type="file" id="upload-input" accept="video/mp4,video/webm,video/quicktime,.mp4,.m4v,.webm,.mov" hidden>
+          <p class="field-hint" data-i18n="library.upload.hint"></p>
+        </div>
+      </div>
+      <div id="library-status" class="card library-status"></div>
+      <div id="upload-progress" aria-live="polite" hidden></div>
+      <div class="library-toolbar">
+        <div id="library-cats" class="cat-tabs" role="tablist" data-i18n-attr="aria-label:library.tabsLabel"></div>
+        <div class="library-subbar">
+          <div id="library-views" class="toggle-group" role="group">
+            <button type="button" class="toggle" data-view="approved" aria-pressed="true" data-i18n="library.approvedTab"></button>
+            <button type="button" class="toggle" data-view="find" aria-pressed="false" data-i18n="library.findTab"></button>
+          </div>
+          <label id="find-tools" class="inline-field" hidden>
+            <span class="field-label" data-i18n="library.orientation.label"></span>
+            <select id="orientation-select" class="select select-sm">
+              <option value="" data-i18n="library.orientation.any"></option>
+              <option value="portrait" data-i18n="library.orientation.portrait"></option>
+              <option value="landscape" data-i18n="library.orientation.landscape"></option>
+              <option value="square" data-i18n="library.orientation.square"></option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div id="library-panel" class="library-panel" role="tabpanel" tabindex="-1"></div>
+    </section>
+
+    <!-- ============ About ============ -->
+    <section class="page page-about" data-page="about" aria-labelledby="about-title" hidden>
+      <div class="page-head">
+        <h1 id="about-title" tabindex="-1" data-i18n="about.title"></h1>
+        <p class="lead" data-i18n="about.intro"></p>
+      </div>
+      <div class="about-grid">
+        <section class="card prose">
+          <h2 class="card-title" data-i18n="about.howTitle"></h2>
+          <ol class="steps">
+            <li data-i18n="about.how1"></li>
+            <li data-i18n="about.how2"></li>
+            <li data-i18n="about.how3"></li>
+          </ol>
+        </section>
+        <section class="card prose card-gold">
+          <h2 class="card-title" data-i18n="about.textTitle"></h2>
+          <p data-i18n="about.textBody"></p>
+        </section>
+        <section class="card prose about-sources">
+          <h2 class="card-title" data-i18n="about.sourcesTitle"></h2>
+          <ul class="source-list">
+            <li><a href="https://quranenc.com" target="_blank" rel="noopener noreferrer" dir="ltr">QuranEnc.com</a><span data-i18n="about.sourceQuranEnc"></span></li>
+            <li><a href="https://everyayah.com" target="_blank" rel="noopener noreferrer" dir="ltr">EveryAyah.com</a><span data-i18n="about.sourceEveryAyah"></span></li>
+            <li><a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer" dir="ltr">Pexels</a><span data-i18n="about.sourcePexels"></span></li>
+            <li><a href="https://pixabay.com" target="_blank" rel="noopener noreferrer" dir="ltr">Pixabay</a><span data-i18n="about.sourcePixabay"></span></li>
+            <li><a href="https://images.nasa.gov" target="_blank" rel="noopener noreferrer" dir="ltr">NASA</a><span data-i18n="about.sourceNasa"></span></li>
+          </ul>
+          <p class="muted small" data-i18n="about.footageNote"></p>
+        </section>
+        <section class="card prose">
+          <h2 class="card-title" data-i18n="about.phoneTitle"></h2>
+          <div id="about-phone"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      <span data-i18n="footer.text"></span>
+      <a href="https://quranenc.com" target="_blank" rel="noopener noreferrer" dir="ltr">QuranEnc.com</a> ·
+      <a href="https://everyayah.com" target="_blank" rel="noopener noreferrer" dir="ltr">EveryAyah.com</a> ·
+      <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer" dir="ltr">Pexels</a> ·
+      <a href="https://pixabay.com" target="_blank" rel="noopener noreferrer" dir="ltr">Pixabay</a> ·
+      <a href="https://images.nasa.gov" target="_blank" rel="noopener noreferrer" dir="ltr">NASA</a>
+    </p>
+  </footer>
+</body>
+</html>

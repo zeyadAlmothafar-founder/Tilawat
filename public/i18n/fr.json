@@ -1,0 +1,401 @@
+{
+  "app": {
+    "name": "Quran Video Studio",
+    "tagline": "Des vidéos de récitation pour méditer et partager",
+    "skipToContent": "Aller au contenu"
+  },
+  "nav": {
+    "label": "Principale",
+    "create": "Créer",
+    "videos": "Mes vidéos",
+    "library": "Arrière-plans",
+    "about": "À propos",
+    "activeJobs": {
+      "one": "{count} vidéo en cours",
+      "many": "{count} vidéos en cours",
+      "other": "{count} vidéos en cours"
+    }
+  },
+  "header": {
+    "language": "Langue",
+    "themeToLight": "Passer au thème clair",
+    "themeToDark": "Passer au thème sombre"
+  },
+  "common": {
+    "loading": "Chargement…",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "remove": "Retirer",
+    "download": "Télécharger",
+    "share": "Partager",
+    "qr": "Code QR",
+    "copy": "Copier",
+    "loadMore": "Charger plus",
+    "newTab": "(s'ouvre dans un nouvel onglet)"
+  },
+  "categories": {
+    "nature": "Nature",
+    "space": "Espace",
+    "mosque": "Mosquées",
+    "islamic": "Art islamique"
+  },
+  "providers": {
+    "pexels": "Pexels",
+    "pixabay": "Pixabay",
+    "nasa": "NASA",
+    "upload": "Votre import"
+  },
+  "create": {
+    "title": "Créer des vidéos",
+    "subtitle": "Choisissez les passages, un récitateur et un style, puis créez une seule vidéo ou toute une série d'un coup.",
+    "passages": {
+      "title": "Passages",
+      "hint": "Ajoutez autant de sélections que vous le souhaitez. Chacune devient une vidéo distincte.",
+      "presets": "Choix rapides",
+      "selection": "Sélection {n}",
+      "surah": "Sourate",
+      "from": "Du verset",
+      "to": "Au verset",
+      "remove": "Retirer la sélection {n}",
+      "add": "Ajouter une sélection",
+      "loadError": "Impossible de charger la liste des sourates.",
+      "meta": "{ayat} · {revelation}"
+    },
+    "presets": {
+      "fatiha": "Al-Fatiha",
+      "kursi": "Ayat al-Kursi",
+      "baqarahEnd": "Les 2 derniers versets d'Al-Baqarah",
+      "ikhlas": "Al-Ikhlas",
+      "falaq": "Al-Falaq",
+      "nas": "An-Nas",
+      "quls": "Les trois Qul"
+    },
+    "picker": {
+      "choose": "Choisir une sourate",
+      "search": "Rechercher par nom, numéro ou sens",
+      "noResults": "Aucune sourate ne correspond à « {query} »",
+      "meccan": "Mecquoise",
+      "medinan": "Médinoise"
+    },
+    "output": {
+      "title": "Vidéos à créer",
+      "combined": "Une vidéo par sélection",
+      "combinedHint": "Chaque sélection devient une vidéo",
+      "perAyah": "Une vidéo par verset",
+      "perAyahHint": "Chaque verset devient un court clip"
+    },
+    "summary": {
+      "text": "Cela créera {videos} · {ayat} · ~{duration}",
+      "videos": {
+        "one": "{count} vidéo",
+        "many": "{count} vidéos",
+        "other": "{count} vidéos"
+      },
+      "ayat": {
+        "one": "{count} verset",
+        "many": "{count} versets",
+        "other": "{count} versets"
+      }
+    },
+    "recitation": {
+      "title": "Récitation et traduction"
+    },
+    "reciter": {
+      "label": "Récitateur",
+      "preview": "Écouter un extrait",
+      "stop": "Arrêter l'extrait",
+      "loading": "Chargement des récitateurs…",
+      "unavailable": "Les récitateurs sont indisponibles pour le moment",
+      "style": {
+        "murattal": "Murattal",
+        "mujawwad": "Mujawwad",
+        "muallim": "Pédagogique"
+      }
+    },
+    "translation": {
+      "label": "Traduction",
+      "none": "Aucune (arabe seul)",
+      "loading": "Chargement des traductions…",
+      "unavailable": "Les traductions sont indisponibles pour le moment",
+      "hint": "Traductions des sens issues de QuranEnc.com."
+    },
+    "backgrounds": {
+      "title": "Vidéos d'arrière-plan",
+      "hint": "Choisissez un ou plusieurs thèmes. Les clips sont muets — aucune musique n'est jamais ajoutée.",
+      "approvedOnly": "Utiliser uniquement les clips que j'ai approuvés",
+      "approvedOnlyHint": "Gérez vos clips approuvés dans Arrière-plans",
+      "approvedCount": {
+        "one": "{count} clip approuvé",
+        "many": "{count} clips approuvés",
+        "other": "{count} clips approuvés"
+      },
+      "atLeastOne": "Gardez au moins un thème sélectionné.",
+      "noApproved": "Vous n'avez encore approuvé aucun clip dans ces thèmes : un arrière-plan sobre généré automatiquement sera utilisé."
+    },
+    "format": {
+      "title": "Format",
+      "aspect": "Format d'image",
+      "portraitHint": "Reels · TikTok · Shorts · Statut",
+      "landscapeHint": "YouTube",
+      "squareHint": "Publications du fil",
+      "quality": "Qualité",
+      "q1080": "1080p · Full HD",
+      "q720": "720p · plus rapide"
+    },
+    "style": {
+      "title": "Style",
+      "font": "Police arabe",
+      "size": "Taille du texte",
+      "position": "Position du texte",
+      "center": "Centre",
+      "lower": "Tiers inférieur",
+      "darkness": "Assombrissement du fond",
+      "showTitle": "Afficher le nom de la sourate",
+      "showReciter": "Afficher le nom du récitateur",
+      "bismillah": "Commencer par la Bismillah",
+      "bismillahHint": "Ajoutée quand un passage commence au verset 1 (sauf Al-Fatiha et At-Tawbah)."
+    },
+    "preview": {
+      "title": "Aperçu en direct",
+      "hint": "Une approximation de la vidéo finale",
+      "placeholder": "Choisissez un passage pour l'afficher ici",
+      "textTitle": "Vérifier le texte",
+      "textHint": "Les versets qui apparaîtront dans vos vidéos",
+      "loadingText": "Chargement du texte…",
+      "textError": "Impossible de charger le texte de cette sélection.",
+      "more": {
+        "one": "…et {count} autre verset",
+        "many": "…et {count} autres versets",
+        "other": "…et {count} autres versets"
+      }
+    },
+    "submit": {
+      "one": "Créer {count} vidéo",
+      "many": "Créer {count} vidéos",
+      "other": "Créer {count} vidéos"
+    },
+    "submitting": "Lancement…",
+    "queued": {
+      "one": "{count} vidéo ajoutée à la file d'attente",
+      "many": "{count} vidéos ajoutées à la file d'attente",
+      "other": "{count} vidéos ajoutées à la file d'attente"
+    },
+    "validation": {
+      "loading": "Chargement de la liste des sourates en cours…",
+      "noItems": "Ajoutez au moins une sélection.",
+      "range": "Sélection {n} : veuillez vérifier les numéros de versets.",
+      "tooManyAyat": "La sélection {n} compte {count} versets, mais une vidéo peut en contenir {max} au maximum. Raccourcissez-la, divisez-la en deux sélections ou choisissez « Une vidéo par verset ».",
+      "tooManyVideos": "Cela ferait {count} vidéos — {max} au maximum peuvent être créées à la fois.",
+      "noReciter": "Choisissez un récitateur.",
+      "noCategory": "Choisissez au moins un thème d'arrière-plan."
+    }
+  },
+  "videos": {
+    "title": "Mes vidéos",
+    "subtitle": "Vos vidéos — regardez-les, téléchargez-les et partagez-les.",
+    "new": "Nouvelle vidéo",
+    "count": {
+      "one": "{count} vidéo",
+      "many": "{count} vidéos",
+      "other": "{count} vidéos"
+    },
+    "loadError": "Impossible de charger vos vidéos.",
+    "empty": {
+      "title": "Aucune vidéo pour l'instant",
+      "text": "Créez votre première vidéo de récitation — elle apparaîtra ici pendant sa génération.",
+      "action": "Créer une vidéo"
+    },
+    "downloadAll": "Tout télécharger",
+    "status": {
+      "queued": "En file d'attente",
+      "running": "Génération en cours",
+      "done": "Prête",
+      "error": "Échec de la génération",
+      "canceled": "Annulée"
+    },
+    "stage": {
+      "queued": "En file d'attente…",
+      "audio": "Récupération de la récitation…",
+      "text": "Préparation du texte…",
+      "clips": "Choix des vidéos d'arrière-plan…",
+      "render": "Génération de la vidéo…",
+      "finalize": "Finalisation…",
+      "done": "Terminé"
+    },
+    "ayahSingle": "Verset {ayah}",
+    "ayahRange": "Versets {from}–{to}",
+    "play": "Lire {title}",
+    "progressLabel": "Progression de la génération",
+    "cancelJob": "Annuler",
+    "deleteTitle": "Supprimer la vidéo",
+    "deleteConfirm": "Supprimer cette vidéo ? Cette action est irréversible.",
+    "deleted": "Vidéo supprimée",
+    "canceled": "Génération annulée",
+    "readyLive": "Vidéo prête : {title}",
+    "failedLive": "Échec de la génération : {title}"
+  },
+  "share": {
+    "title": "Partager la vidéo",
+    "native": "Partager la vidéo…",
+    "nativeHint": "Ouvre le menu de partage de votre appareil pour envoyer le fichier vidéo vers WhatsApp, Instagram, TikTok, Telegram, Snapchat, etc.",
+    "preparing": "Préparation de la vidéo…",
+    "tapAgain": "Vidéo prête — touchez à nouveau pour partager",
+    "unsupported": "Ce navigateur ne peut pas partager directement des fichiers vidéo. Téléchargez la vidéo, ou scannez le code QR pour l'ouvrir sur votre téléphone et la partager depuis celui-ci.",
+    "linksTitle": "Partager un lien",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "x": "X",
+    "facebook": "Facebook",
+    "email": "E-mail",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié",
+    "copyFailed": "Impossible de copier automatiquement — sélectionnez le lien et copiez-le.",
+    "linkLabel": "Lien vers cette vidéo",
+    "socialNote": "Instagram, TikTok et Snapchat n'acceptent pas les liens partagés depuis un navigateur — utilisez « Partager la vidéo… » sur votre téléphone, ou téléchargez la vidéo et publiez-la depuis l'application.",
+    "textSingle": "{surah} {number}:{ayah} — récitation de {reciter}",
+    "textRange": "{surah} {number}:{from}–{to} — récitation de {reciter}",
+    "emailSubject": "{surah} — {app}",
+    "localhostWarning": "Aucune adresse réseau n'a été trouvée : ce lien ne fonctionne donc que sur cet ordinateur.",
+    "qr": {
+      "title": "Ouvrir sur votre téléphone",
+      "alt": "Code QR pour {url}",
+      "captionLan": "Scannez avec l'appareil photo de votre téléphone pour ouvrir la vidéo, puis enregistrez-la ou partagez-la depuis votre téléphone. Votre téléphone doit être connecté au même réseau Wi-Fi que cet ordinateur.",
+      "captionPublic": "Scannez avec l'appareil photo de votre téléphone pour ouvrir la vidéo, puis enregistrez-la ou partagez-la depuis votre téléphone."
+    }
+  },
+  "sharePage": {
+    "loading": "Chargement de la vidéo…",
+    "loadError": "Impossible de charger cette vidéo. Vérifiez votre connexion et réessayez.",
+    "notFound": {
+      "title": "Vidéo introuvable",
+      "text": "Cette vidéo a peut-être été supprimée, ou le lien est incomplet."
+    },
+    "rendering": {
+      "title": "Génération en cours…",
+      "text": "Cette page s'actualise automatiquement dès que la vidéo est prête."
+    },
+    "failed": {
+      "title": "Cette vidéo n'a pas pu être créée",
+      "text": "Un problème est survenu pendant la génération. Veuillez réessayer de la créer."
+    },
+    "canceled": {
+      "title": "Cette vidéo a été annulée",
+      "text": "Sa génération a été interrompue avant la fin."
+    },
+    "save": "Télécharger / Enregistrer",
+    "saveHint": "Sur iPhone : touchez Télécharger, ouvrez le fichier, puis choisissez Partager → Enregistrer la vidéo pour l'ajouter à Photos.",
+    "httpNote": "Le partage direct du fichier nécessite une connexion sécurisée (https). Téléchargez d'abord la vidéo, puis partagez-la depuis votre galerie ou l'app Fichiers.",
+    "credits": "Crédits",
+    "creditQuran": "Texte du Coran : {source}",
+    "creditTranslation": "Traduction : {title}",
+    "creditAudio": "Audio de la récitation : {source}",
+    "creditFootage": "Vidéos : {list}",
+    "openStudio": "Créez votre propre vidéo"
+  },
+  "library": {
+    "title": "Bibliothèque d'arrière-plans",
+    "subtitle": "Approuvez les clips qui vous plaisent — vos vidéos les utiliseront en priorité.",
+    "statusError": "Impossible de charger l'état de la bibliothèque.",
+    "loadError": "Impossible de charger les clips.",
+    "providers": {
+      "title": "Sources vidéo",
+      "enabled": "Connectée",
+      "disabled": "Pas de clé API",
+      "alwaysOn": "Toujours disponible"
+    },
+    "keys": {
+      "title": "Ajoutez des clés API gratuites pour trouver plus de vidéos",
+      "step1": "Obtenez une clé gratuite sur {pexels} et/ou {pixabay}.",
+      "step2": "Dans le dossier du projet, copiez {example} vers {file} et collez-y vos clés :",
+      "step3": "Redémarrez le serveur, puis revenez sur cette page.",
+      "nasaNote": "Les vidéos spatiales de la NASA et vos propres imports fonctionnent sans clé.",
+      "show": "Voir comment faire"
+    },
+    "tabsLabel": "Thèmes d'arrière-plan",
+    "approvedTab": "Approuvés",
+    "findTab": "Trouver plus",
+    "orientation": {
+      "label": "Forme",
+      "any": "Toutes formes",
+      "portrait": "Portrait",
+      "landscape": "Paysage",
+      "square": "Carré"
+    },
+    "approvedEmpty": {
+      "title": "Aucun clip approuvé pour l'instant",
+      "text": "Choisissez des vidéos qui vous plaisent dans « Trouver plus », ou importez votre propre clip."
+    },
+    "candidatesEmpty": "Aucun autre clip trouvé pour ce thème.",
+    "candidatesNoKeys": "Ajoutez une clé Pexels ou Pixabay pour chercher plus de vidéos.",
+    "candidatesNoKeysText": "Sans clé API, seules les vidéos spatiales de la NASA peuvent être recherchées. Les clés sont gratuites et se configurent en une minute.",
+    "warnings": "Certaines sources vidéo n'ont pas répondu :",
+    "preview": "Aperçu du clip",
+    "credit": "{author} · {provider}",
+    "approve": "Approuver",
+    "reject": "Masquer",
+    "approved": "Ajouté à vos clips approuvés",
+    "rejected": "Clip masqué",
+    "removed": "Clip retiré",
+    "removeConfirm": "Retirer ce clip de vos arrière-plans approuvés ?",
+    "upload": {
+      "button": "Importer un clip",
+      "hint": "MP4, WebM ou MOV, jusqu'à 500 Mo. Vos imports sont approuvés automatiquement.",
+      "uploading": "Import de {name} dans {category}…",
+      "done": "Clip importé",
+      "canceled": "Import annulé",
+      "tooLarge": "Ce fichier dépasse 500 Mo.",
+      "badType": "Veuillez choisir une vidéo MP4, WebM ou MOV."
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "intro": "Ce studio transforme des récitations du Coran en vidéos apaisantes et faciles à partager : le texte arabe et la traduction de votre choix s'affichent sur des images de nature, d'espace ou de mosquées, verset par verset, en synchronisation avec la récitation.",
+    "howTitle": "Comment ça marche",
+    "how1": "Choisissez un ou plusieurs passages, un récitateur et une traduction.",
+    "how2": "Choisissez des thèmes d'arrière-plan, un format et un style, puis créez vos vidéos.",
+    "how3": "Téléchargez-les, ou partagez-les directement sur WhatsApp, Instagram, TikTok et ailleurs.",
+    "textTitle": "À propos du texte coranique",
+    "textBody": "Le texte arabe et les traductions sont affichés exactement tels que publiés par QuranEnc.com — rien n'est ressaisi ni modifié. Une traduction rend les sens ; seul le texte arabe est le Coran.",
+    "sourcesTitle": "Sources et crédits",
+    "sourceQuranEnc": "Texte du Coran et traductions des sens",
+    "sourceEveryAyah": "Audio de récitation verset par verset",
+    "sourcePexels": "Vidéos libres de droits gratuites",
+    "sourcePixabay": "Vidéos libres de droits gratuites",
+    "sourceNasa": "Images spatiales",
+    "footageNote": "Les clips d'arrière-plan sont des vidéos muettes de nature, d'espace, de mosquées et d'art islamique. Chaque vidéo crédite les auteurs de ses images, et aucune musique n'est jamais ajoutée.",
+    "phoneTitle": "Utiliser sur votre téléphone",
+    "phoneText": "Scannez pour ouvrir le studio sur un téléphone connecté au même réseau Wi-Fi que cet ordinateur.",
+    "phonePublic": "Scannez pour ouvrir le studio sur votre téléphone.",
+    "phoneNone": "Aucune adresse réseau n'a été trouvée. Connectez cet ordinateur au Wi-Fi pour ouvrir le studio depuis votre téléphone."
+  },
+  "footer": {
+    "text": "Sources :"
+  },
+  "errors": {
+    "generic": "Un problème est survenu. Veuillez réessayer.",
+    "network": "Impossible de joindre le serveur. Est-il toujours en marche ?",
+    "not_found": "Introuvable — cette partie du serveur n'est peut-être pas encore disponible.",
+    "internal_error": "Un problème est survenu sur le serveur.",
+    "invalid_request": "Certains réglages ne sont pas valides. Vérifiez-les et réessayez.",
+    "invalid_range": "Cette plage de versets n'est pas valide.",
+    "surah_not_found": "Cette sourate est introuvable.",
+    "reciter_not_found": "Ce récitateur n'est pas disponible.",
+    "translation_not_found": "Cette traduction n'est pas disponible.",
+    "video_not_found": "Cette vidéo n'existe plus.",
+    "clip_not_found": "Ce clip n'existe plus.",
+    "too_many_videos": "Trop de vidéos dans un même lot.",
+    "too_many_ayat": "Trop de versets pour une seule vidéo.",
+    "invalid_category": "Thème d'arrière-plan inconnu.",
+    "invalid_text": "Ce lien ne peut pas être converti en code QR.",
+    "unsupported_type": "Ce type de fichier n'est pas pris en charge.",
+    "file_too_large": "Ce fichier est trop volumineux.",
+    "upload_failed": "L'import a échoué.",
+    "provider_error": "Le fournisseur de vidéos n'a pas répondu. Veuillez réessayer plus tard.",
+    "audio_failed": "Impossible de lire l'extrait de récitation.",
+    "share_failed": "Le partage n'a pas fonctionné. Essayez plutôt de télécharger la vidéo.",
+    "download_failed": "Impossible de télécharger la vidéo."
+  }
+}

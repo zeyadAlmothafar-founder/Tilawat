@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="app.name"></title>
+  <meta name="theme-color" content="#0c4a3e">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri+Quran&display=swap">
+  <link rel="stylesheet" href="/css/app.css">
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('qvs.theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+        var lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('qvs.lang');
+        if (lang && /^(ar|ur|fa)/.test(lang)) document.documentElement.dir = 'rtl';
+      } catch (e) {}
+    })();
+  </script>
+  <script type="module" src="/js/share-page.js"></script>
+</head>
+<body class="share-page is-booting">
+  <header class="app-header app-header-compact">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <polygon class="logo-star" points="32,3.7 40.3,12 52,12 52,23.7 60.3,32 52,40.3 52,52 40.3,52 32,60.3 23.7,52 12,52 12,40.3 3.7,32 12,23.7 12,12 23.7,12"/>
+          <polygon class="logo-inner" points="32,10 38,16 48,16 48,26 54,32 48,38 48,48 38,48 32,54 26,48 16,48 16,38 10,32 16,26 16,16 26,16"/>
+          <path class="logo-play" d="M27 22.5v19l15.5-9.5z"/>
+        </svg>
+        <span class="brand-text"><span class="brand-name" data-i18n="app.name"></span></span>
+      </a>
+      <div class="header-tools">
+        <label class="lang-switch">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <span class="visually-hidden" data-i18n="header.language"></span>
+          <select id="lang-select"></select>
+        </label>
+        <button id="theme-toggle" class="icon-btn header-btn" type="button"></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="app-main share-main" tabindex="-1">
+    <div id="share-root" aria-live="polite"></div>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      <span data-i18n="footer.text"></span>
+      <a href="https://quranenc.com" target="_blank" rel="noopener noreferrer" dir="ltr">QuranEnc.com</a> ·
+      <a href="https://everyayah.com" target="_blank" rel="noopener noreferrer" dir="ltr">EveryAyah.com</a>
+    </p>
+  </footer>
+</body>
+</html>

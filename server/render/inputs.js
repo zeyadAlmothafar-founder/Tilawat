@@ -96,6 +96,7 @@ export async function buildSpec(record, { signal, onProgress = () => {} } = {}) 
     aspect: req.aspect,
     seed: parseInt(record.id.slice(1), 36) || 0,
     style: req.style,
+    fileSize: req.fileSize,
     surah: record.surah,
     reciter: { nameEn: reciter.nameEn, nameAr: reciter.nameAr },
     translation: record.translation,

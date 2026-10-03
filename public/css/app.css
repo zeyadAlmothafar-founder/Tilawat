@@ -512,6 +512,8 @@ input[type="range"] { inline-size: 100%; accent-color: var(--primary); block-siz
   background: var(--surface-3);
   border: 1px solid var(--border);
 }
+/* Three short choices (file size, credits) stay on one row even on phones. */
+.segmented:has(> .seg-option:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .seg-option { position: relative; display: flex; min-inline-size: 0; }
 .seg-option input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
 .seg-body {

@@ -152,7 +152,12 @@
       "squareHint": "Feed posts",
       "quality": "Quality",
       "q1080": "1080p · Full HD",
-      "q720": "720p · faster"
+      "q720": "720p · faster",
+      "fileSize": "File size",
+      "fileSizeHint": "Smaller files share faster on WhatsApp and social apps. Small: about 7 MB per minute · Balanced: about 13 MB · High: about 27 MB.",
+      "sizeSmall": "Small",
+      "sizeBalanced": "Balanced",
+      "sizeHigh": "High quality"
     },
     "style": {
       "title": "Style",
@@ -164,6 +169,11 @@
       "darkness": "Background darkness",
       "showTitle": "Show the surah name",
       "showReciter": "Show the reciter's name",
+      "credits": "Credits in the video",
+      "creditsMinimal": "Minimal",
+      "creditsFull": "Full",
+      "creditsNone": "Off",
+      "creditsHint": "Minimal shows one small QuranEnc.com line, which its terms require. With Minimal or Off, the full sources are added to the text when you share.",
       "bismillah": "Begin with the Bismillah",
       "bismillahHint": "Added when a passage starts at ayah 1 (except Al-Fatiha and At-Tawbah)."
     },
@@ -267,6 +277,7 @@
     "socialNote": "Instagram, TikTok and Snapchat don't accept links shared from a browser — use “Share video…” on your phone, or download the video and post it from the app.",
     "textSingle": "{surah} {number}:{ayah} — recited by {reciter}",
     "textRange": "{surah} {number}:{from}–{to} — recited by {reciter}",
+    "sources": "Sources: {list}",
     "emailSubject": "{surah} — {app}",
     "localhostWarning": "No network address was found, so this link only works on this computer.",
     "qr": {

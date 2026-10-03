@@ -68,7 +68,7 @@ export function buildLayout({ width, height, aspect, style, fonts, showHeader, s
     size: Math.round(unit * 0.026),
     creditSize: Math.round(unit * 0.017),
   };
-  footer.height = Math.round((showFooter ? footer.size * 1.1 : 0) + footer.creditSize * 1.2 * Math.max(1, creditLines));
+  footer.height = Math.round((showFooter ? footer.size * 1.1 : 0) + footer.creditSize * 1.2 * creditLines);
 
   const gapAround = Math.round(unit * 0.035);
   const mainTop = safeTop + (showHeader ? header.height + gapAround : 0);

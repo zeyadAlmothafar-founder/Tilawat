@@ -148,7 +148,12 @@
       "squareHint": "Postingan feed",
       "quality": "Kualitas",
       "q1080": "1080p · Full HD",
-      "q720": "720p · lebih cepat"
+      "q720": "720p · lebih cepat",
+      "fileSize": "Ukuran file",
+      "fileSizeHint": "File yang lebih kecil lebih cepat dibagikan di WhatsApp dan media sosial. Kecil: sekitar 7 MB per menit · Seimbang: sekitar 13 MB · Kualitas tinggi: sekitar 27 MB.",
+      "sizeSmall": "Kecil",
+      "sizeBalanced": "Seimbang",
+      "sizeHigh": "Kualitas tinggi"
     },
     "style": {
       "title": "Gaya",
@@ -160,6 +165,11 @@
       "darkness": "Kegelapan latar",
       "showTitle": "Tampilkan nama surah",
       "showReciter": "Tampilkan nama qari",
+      "credits": "Sumber di video",
+      "creditsMinimal": "Ringkas",
+      "creditsFull": "Lengkap",
+      "creditsNone": "Mati",
+      "creditsHint": "Ringkas menampilkan satu baris kecil QuranEnc.com, sesuai ketentuannya. Dengan Ringkas atau Mati, sumber lengkap ditambahkan ke teks saat berbagi.",
       "bismillah": "Awali dengan basmalah",
       "bismillahHint": "Ditambahkan jika pilihan dimulai dari ayat pertama (kecuali Al-Fatihah dan At-Taubah)."
     },
@@ -259,6 +269,7 @@
     "socialNote": "Instagram, TikTok, dan Snapchat tidak menerima tautan yang dibagikan dari browser — gunakan “Bagikan video…” di ponsel Anda, atau unduh videonya lalu unggah dari aplikasinya.",
     "textSingle": "QS {surah} {number}:{ayah} — dilantunkan oleh {reciter}",
     "textRange": "QS {surah} {number}:{from}–{to} — dilantunkan oleh {reciter}",
+    "sources": "Sumber: {list}",
     "emailSubject": "{surah} — {app}",
     "localhostWarning": "Alamat jaringan tidak ditemukan, jadi tautan ini hanya berfungsi di komputer ini.",
     "qr": {

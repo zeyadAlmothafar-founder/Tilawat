@@ -7,6 +7,7 @@ export const MAX_VIDEOS = 50;
 export const MAX_AYAHS = 50;
 const ASPECTS = ['9:16', '16:9', '1:1'];
 const DEFAULT_CATEGORIES = ['nature', 'space'];
+const FILE_SIZES = ['small', 'balanced', 'high'];
 const FALLBACK_CATEGORY_IDS = ['nature', 'space', 'mosque', 'islamic'];
 export const DEFAULTS = {
   reciter: 'Alafasy_128kbps',
@@ -25,6 +26,9 @@ function normalizeStyle(style = {}) {
     overlay: Math.round(num(s.overlay, 0.45, 0, 0.8) * 100) / 100,
     showSurahTitle: s.showSurahTitle !== false,
     showReciter: s.showReciter !== false,
+    // Source credits in the footer: one short QuranEnc line (its terms require the source
+    // and translation version), every source, or none (credits then go in the share text).
+    credits: ['full', 'none'].includes(s.credits) ? s.credits : 'minimal',
   };
 }
 
@@ -119,6 +123,7 @@ export async function normalizeRequest(body) {
     categories: categories.length ? categories : DEFAULT_CATEGORIES,
     aspect: ASPECTS.includes(body.aspect) ? body.aspect : '9:16',
     quality,
+    fileSize: FILE_SIZES.includes(body.fileSize) ? body.fileSize : 'balanced',
     bismillah: body.bismillah !== false,
     approvedOnly: body.approvedOnly === true,
     style: normalizeStyle(body.style),

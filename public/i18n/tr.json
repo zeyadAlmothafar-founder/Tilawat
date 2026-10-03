@@ -152,7 +152,12 @@
       "squareHint": "Akış gönderileri",
       "quality": "Kalite",
       "q1080": "1080p · Full HD",
-      "q720": "720p · daha hızlı"
+      "q720": "720p · daha hızlı",
+      "fileSize": "Dosya boyutu",
+      "fileSizeHint": "Küçük dosyalar WhatsApp ve sosyal medyada daha hızlı paylaşılır. Küçük: dakikada yaklaşık 7 MB · Dengeli: yaklaşık 13 MB · Yüksek kalite: yaklaşık 27 MB.",
+      "sizeSmall": "Küçük",
+      "sizeBalanced": "Dengeli",
+      "sizeHigh": "Yüksek kalite"
     },
     "style": {
       "title": "Stil",
@@ -164,6 +169,11 @@
       "darkness": "Arka plan koyuluğu",
       "showTitle": "Sure adını göster",
       "showReciter": "Kârinin adını göster",
+      "credits": "Videodaki kaynaklar",
+      "creditsMinimal": "Kısa",
+      "creditsFull": "Tam",
+      "creditsNone": "Kapalı",
+      "creditsHint": "Kısa seçeneği, şartları gereği küçük bir QuranEnc.com satırı gösterir. Kısa veya Kapalı seçildiğinde tüm kaynaklar paylaşım metnine eklenir.",
       "bismillah": "Besmeleyle başla",
       "bismillahHint": "Bölüm ilk ayetten başladığında eklenir (Fâtiha ve Tevbe sureleri hariç)."
     },
@@ -267,6 +277,7 @@
     "socialNote": "Instagram, TikTok ve Snapchat tarayıcıdan paylaşılan bağlantıları kabul etmez — telefonunuzda “Videoyu paylaş…” seçeneğini kullanın ya da videoyu indirip uygulamadan paylaşın.",
     "textSingle": "{surah} Suresi {number}:{ayah} — Okuyan: {reciter}",
     "textRange": "{surah} Suresi {number}:{from}–{to} — Okuyan: {reciter}",
+    "sources": "Kaynaklar: {list}",
     "emailSubject": "{surah} Suresi — {app}",
     "localhostWarning": "Ağ adresi bulunamadı; bu bağlantı yalnızca bu bilgisayarda çalışır.",
     "qr": {

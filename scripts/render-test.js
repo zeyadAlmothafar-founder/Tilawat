@@ -2,7 +2,7 @@
 // POST /api/render. Example:
 //   node scripts/render-test.js --surah 1 --from 1 --to 7 --reciter Alafasy_128kbps \
 //     --translation english_saheeh --aspect 9:16 --categories space
-// Options: --mode perAyah, --quality 720, --translation none, --font scheherazade,
+// Options: --mode perAyah, --quality 720, --size small|balanced|high, --credits minimal|full|none, --translation none, --font scheherazade,
 //   --position lower, --overlay 0.6, --scale 1.2, --no-bismillah, --approved-only,
 //   --no-title, --no-reciter, --tafsir <key> (e.g. english_mokhtasar; tafsir cards between ayat),
 //   --out <dir> (default tmp/render-test), --keep (keep work dir)
@@ -27,6 +27,8 @@ const { values: o } = parseArgs({
     tafsir: { type: 'string' },
     aspect: { type: 'string', default: '9:16' },
     quality: { type: 'string', default: '1080' },
+    size: { type: 'string', default: 'balanced' },
+    credits: { type: 'string', default: 'minimal' },
     categories: { type: 'string', default: '' },
     font: { type: 'string', default: 'amiri' },
     position: { type: 'string', default: 'center' },
@@ -51,11 +53,12 @@ const body = {
   categories: o.categories.split(',').filter(Boolean),
   aspect: o.aspect,
   quality: o.quality,
+  fileSize: o.size,
   bismillah: !o['no-bismillah'],
   approvedOnly: o['approved-only'],
   style: {
     arabicFont: o.font, textScale: o.scale, position: o.position, overlay: o.overlay,
-    showSurahTitle: !o['no-title'], showReciter: !o['no-reciter'],
+    showSurahTitle: !o['no-title'], showReciter: !o['no-reciter'], credits: o.credits,
   },
 };
 const { common, videos } = await normalizeRequest(body);

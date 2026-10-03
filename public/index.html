@@ -181,6 +181,15 @@
                 <label class="seg-option"><input type="radio" name="quality" value="720"><span class="seg-body" data-i18n="create.format.q720"></span></label>
               </div>
             </div>
+            <div class="field">
+              <span class="field-label" id="filesize-label" data-i18n="create.format.fileSize"></span>
+              <div class="segmented" role="radiogroup" aria-labelledby="filesize-label" aria-describedby="filesize-hint">
+                <label class="seg-option"><input type="radio" name="fileSize" value="small"><span class="seg-body" data-i18n="create.format.sizeSmall"></span></label>
+                <label class="seg-option"><input type="radio" name="fileSize" value="balanced"><span class="seg-body" data-i18n="create.format.sizeBalanced"></span></label>
+                <label class="seg-option"><input type="radio" name="fileSize" value="high"><span class="seg-body" data-i18n="create.format.sizeHigh"></span></label>
+              </div>
+              <small class="field-hint" id="filesize-hint" data-i18n="create.format.fileSizeHint"></small>
+            </div>
           </section>
 
           <section class="card form-section" aria-labelledby="sec-style">
@@ -218,6 +227,15 @@
             <div class="switches">
               <label class="switch-row"><input type="checkbox" class="switch" name="showSurahTitle" id="show-title"><span data-i18n="create.style.showTitle"></span></label>
               <label class="switch-row"><input type="checkbox" class="switch" name="showReciter" id="show-reciter"><span data-i18n="create.style.showReciter"></span></label>
+              <div class="field">
+                <span class="field-label" id="credits-label" data-i18n="create.style.credits"></span>
+                <div class="segmented" role="radiogroup" aria-labelledby="credits-label" aria-describedby="credits-hint">
+                  <label class="seg-option"><input type="radio" name="credits" value="minimal"><span class="seg-body" data-i18n="create.style.creditsMinimal"></span></label>
+                  <label class="seg-option"><input type="radio" name="credits" value="full"><span class="seg-body" data-i18n="create.style.creditsFull"></span></label>
+                  <label class="seg-option"><input type="radio" name="credits" value="none"><span class="seg-body" data-i18n="create.style.creditsNone"></span></label>
+                </div>
+                <small class="field-hint" id="credits-hint" data-i18n="create.style.creditsHint"></small>
+              </div>
               <label class="switch-row">
                 <input type="checkbox" class="switch" name="bismillah" id="bismillah">
                 <span><span data-i18n="create.style.bismillah"></span><small class="field-hint" data-i18n="create.style.bismillahHint"></small></span>

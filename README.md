@@ -32,8 +32,8 @@ Arabic perfectly shaped and every ayah appearing exactly while it is recited.
 | ⏱️ **Exact timing** | Each ayah's text appears exactly while it is recited; long ayat (e.g. Ayat al-Kursi) are split into readable parts. |
 | 🎬 **Many videos at once** | Queue several passages, or turn a range into one video per ayah. |
 | 🏞️ **Halal footage** | Nature, space, mosques and Islamic scenes only: a starter library of 40 hand-reviewed clips (vertical and horizontal), NASA Earth-from-orbit footage, Pixabay/Pexels search with a content filter (no people, music, other-religion imagery or logos), and your own uploads. Clip audio is always removed. |
-| 📐 **Every format** | 9:16 (Reels, TikTok, Shorts, Status), 16:9 (YouTube), 1:1 (feed) in 1080p or 720p. |
-| 🎨 **Styling** | Amiri Quran or Scheherazade New, text size and position, background darkness, surah title, reciter name, Bismillah. Live preview before rendering. |
+| 📐 **Every format** | 9:16 (Reels, TikTok, Shorts, Status), 16:9 (YouTube), 1:1 (feed) in 1080p or 720p, with a file-size choice: Small (≈ 7 MB per minute, ideal for WhatsApp), Balanced (≈ 13 MB) or High quality (≈ 27 MB). |
+| 🎨 **Styling** | Amiri Quran or Scheherazade New, text size and position, background darkness, surah title, reciter name, Bismillah, and on-screen credits (minimal, full or off). Live preview before rendering. |
 | 📤 **Sharing** | Share the video file straight to WhatsApp, Instagram, TikTok… (Web Share), links for WhatsApp, Telegram, X, Facebook and email, download, and a **QR code** that opens the video on your phone. |
 | 🌐 **12 interface languages** | العربية · اردو · فارسی · English · Français · Türkçe · Bahasa Indonesia · Bahasa Melayu · বাংলা · Español · Deutsch · Русский — with proper right-to-left layouts. |
 | 🔒 **Private & local** | Everything runs on your computer. No account, no tracking. |
@@ -94,9 +94,11 @@ Open `.env`, paste your key after `PIXABAY_API_KEY=`, save, and restart with `np
    Switch on **Add tafsir cards to the video** to show it after each ayah (the video gets longer).
 5. **Backgrounds** — pick one or more themes: Nature, Space, Mosques, Islamic. Tick
    *Only use my approved clips* to use nothing but clips you have reviewed.
-6. **Format** — 9:16, 16:9 or 1:1, and 1080p or 720p.
-7. **Style** — font, text size, position, background darkness, surah title, reciter name and
-   Bismillah. The **live preview** updates as you go.
+6. **Format** — 9:16, 16:9 or 1:1, 1080p or 720p, and the file size (Small is best for WhatsApp).
+7. **Style** — font, text size, position, background darkness, surah title, reciter name,
+   Bismillah and **credits**: *Minimal* (default) shows one small QuranEnc.com line, which its
+   terms require; *Full* lists every source; *Off* shows none. With Minimal or Off, the sources are
+   added to the text when you share. The **live preview** updates as you go.
 8. Check the ayat in **Check the text**, then press **Create**.
 
 Videos render one after another under **My Videos**, with live progress. A one-minute 1080p video

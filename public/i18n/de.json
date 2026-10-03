@@ -152,7 +152,12 @@
       "squareHint": "Feed-Beiträge",
       "quality": "Qualität",
       "q1080": "1080p · Full HD",
-      "q720": "720p · schneller"
+      "q720": "720p · schneller",
+      "fileSize": "Dateigröße",
+      "fileSizeHint": "Kleinere Dateien lassen sich schneller über WhatsApp und soziale Netzwerke teilen. Klein: ca. 7 MB pro Minute · Ausgewogen: ca. 13 MB · Hohe Qualität: ca. 27 MB.",
+      "sizeSmall": "Klein",
+      "sizeBalanced": "Ausgewogen",
+      "sizeHigh": "Hohe Qualität"
     },
     "style": {
       "title": "Stil",
@@ -164,6 +169,11 @@
       "darkness": "Hintergrund abdunkeln",
       "showTitle": "Namen der Sure anzeigen",
       "showReciter": "Namen des Rezitators anzeigen",
+      "credits": "Quellenangaben im Video",
+      "creditsMinimal": "Minimal",
+      "creditsFull": "Vollständig",
+      "creditsNone": "Aus",
+      "creditsHint": "Minimal zeigt eine kleine Zeile QuranEnc.com, wie deren Bedingungen es verlangen. Bei Minimal oder Aus werden alle Quellen dem Text beim Teilen hinzugefügt.",
       "bismillah": "Mit der Basmala beginnen",
       "bismillahHint": "Wird ergänzt, wenn eine Passage mit Vers 1 beginnt (außer bei Al-Fatiha und At-Tawbah)."
     },
@@ -267,6 +277,7 @@
     "socialNote": "Instagram, TikTok und Snapchat akzeptieren keine aus dem Browser geteilten Links – nutze auf deinem Handy „Video teilen…“ oder lade das Video herunter und poste es aus der App.",
     "textSingle": "{surah} {number}:{ayah} – rezitiert von {reciter}",
     "textRange": "{surah} {number}:{from}–{to} – rezitiert von {reciter}",
+    "sources": "Quellen: {list}",
     "emailSubject": "{surah} – {app}",
     "localhostWarning": "Es wurde keine Netzwerkadresse gefunden, daher funktioniert dieser Link nur auf diesem Computer.",
     "qr": {

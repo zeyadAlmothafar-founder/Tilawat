@@ -41,14 +41,17 @@ const DEFAULT_STATE = {
   approvedOnly: false,
   aspect: '9:16',
   quality: '1080',
+  fileSize: 'balanced',
   bismillah: true,
-  style: { arabicFont: 'amiri', textScale: 1, position: 'center', overlay: 0.45, showSurahTitle: true, showReciter: true },
+  style: { arabicFont: 'amiri', textScale: 1, position: 'center', overlay: 0.45, showSurahTitle: true, showReciter: true, credits: 'minimal' },
 };
 
 const ENUMS = {
   mode: ['combined', 'perAyah'],
   aspect: ['9:16', '16:9', '1:1'],
   quality: ['1080', '720'],
+  fileSize: ['small', 'balanced', 'high'],
+  credits: ['minimal', 'full', 'none'],
   arabicFont: ['amiri', 'scheherazade'],
   position: ['center', 'lower'],
 };
@@ -86,6 +89,7 @@ function loadState() {
   s.mode = pick(saved.mode, ENUMS.mode, s.mode);
   s.aspect = pick(saved.aspect, ENUMS.aspect, s.aspect);
   s.quality = pick(saved.quality, ENUMS.quality, s.quality);
+  s.fileSize = pick(saved.fileSize, ENUMS.fileSize, s.fileSize);
   if (typeof saved.reciter === 'string' && saved.reciter) s.reciter = saved.reciter;
   if (saved.translationTouched) {
     s.translationTouched = true;
@@ -100,6 +104,7 @@ function loadState() {
   const st = saved.style || {};
   s.style.arabicFont = pick(st.arabicFont, ENUMS.arabicFont, s.style.arabicFont);
   s.style.position = pick(st.position, ENUMS.position, s.style.position);
+  s.style.credits = pick(st.credits, ENUMS.credits, s.style.credits);
   if (Number.isFinite(st.textScale)) s.style.textScale = clamp(st.textScale, 0.7, 1.5);
   if (Number.isFinite(st.overlay)) s.style.overlay = clamp(st.overlay, 0, 0.8);
   for (const k of ['showSurahTitle', 'showReciter']) if (typeof st[k] === 'boolean') s.style[k] = st[k];
@@ -350,6 +355,8 @@ function onFormChange(e) {
     case 'mode': state.mode = value; break;
     case 'aspect': state.aspect = value; break;
     case 'quality': state.quality = value; break;
+    case 'fileSize': state.fileSize = value; break;
+    case 'credits': state.style.credits = value; break;
     case 'font': state.style.arabicFont = value; break;
     case 'position': state.style.position = value; break;
     case 'approvedOnly': state.approvedOnly = checked; syncApprovedNote(); break;
@@ -371,6 +378,8 @@ function syncControls() {
   setRadio('mode', state.mode);
   setRadio('aspect', state.aspect);
   setRadio('quality', state.quality);
+  setRadio('fileSize', state.fileSize);
+  setRadio('credits', state.style.credits);
   setRadio('font', state.style.arabicFont);
   setRadio('position', state.style.position);
   els.approvedOnly.checked = state.approvedOnly;
@@ -959,6 +968,7 @@ function buildRequest() {
     categories: [...state.categories],
     aspect: state.aspect,
     quality: state.quality,
+    fileSize: state.fileSize,
     bismillah: state.bismillah,
     approvedOnly: state.approvedOnly,
     style: { ...state.style },

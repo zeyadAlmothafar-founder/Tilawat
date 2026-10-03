@@ -44,7 +44,19 @@ export function videoFileName(video) {
 export function shareText(video) {
   const { primary, number } = surahNames(video);
   const vars = { surah: primary, number: number ?? '', ayah: video.from, from: video.from, to: video.to, reciter: reciterName(video) };
-  return t(video.from === video.to ? 'share.textSingle' : 'share.textRange', vars);
+  const text = t(video.from === video.to ? 'share.textSingle' : 'share.textRange', vars);
+  // Videos without full on-screen credits carry their sources in the share text instead.
+  const credits = video.request?.style?.credits;
+  return credits && credits !== 'full' ? `${text}
+${t('share.sources', { list: sourceList(video) })}` : text;
+}
+
+const PROVIDER_NAMES = { pixabay: 'Pixabay', pexels: 'Pexels', nasa: 'NASA' };
+
+/** "QuranEnc.com · EveryAyah.com · Pixabay" for the sources a video used. */
+function sourceList(video) {
+  const footage = [...new Set((video.credits || []).map((c) => PROVIDER_NAMES[c.provider]).filter(Boolean))];
+  return ['QuranEnc.com', 'EveryAyah.com', ...footage].join(' · ');
 }
 
 /** Tafsir edition burned into the video ({ key, title, languageIso, direction }) or null. */

@@ -19,6 +19,26 @@ const WEIGHTS = { audio: 0.05, text: 0.02, clips: 0.38, render: 0.5, finalize: 0
 
 const PROVIDERS = { pexels: 'Pexels', pixabay: 'Pixabay', nasa: 'NASA' };
 
+// File-size presets. The footage is darkened and the text is static, so higher CRF values
+// stay clean; a light denoise on the background (before the text is drawn) and a bitrate cap
+// keep busy clips (waves, clouds) from ballooning.
+const ENCODE = {
+  small: { preset: 'medium', crf: 30, maxrate: ['1.5M', '1M'], audio: '96k', gop: 4, denoise: 'hqdn3d=3:3:8:8,' },
+  balanced: { preset: 'medium', crf: 26, maxrate: ['3M', '2M'], audio: '128k', gop: 4, denoise: 'hqdn3d=2:2:6:6,' },
+  high: { preset: 'veryfast', crf: 21, maxrate: ['8M', '5M'], audio: '192k', gop: 2, denoise: '' },
+};
+
+function encodeArgs(fileSize, hd) {
+  const e = ENCODE[fileSize] || ENCODE.balanced;
+  const maxrate = e.maxrate[hd ? 0 : 1];
+  return [
+    '-c:v', 'libx264', '-preset', e.preset, '-crf', String(e.crf), '-profile:v', 'high', '-pix_fmt', 'yuv420p',
+    '-maxrate', maxrate, '-bufsize', `${parseFloat(maxrate) * 2}M`,
+    '-r', String(FPS), '-g', String(FPS * e.gop),
+    '-c:a', 'aac', '-b:a', e.audio, '-ar', '44100',
+  ];
+}
+
 /** "Pexels – Jane Doe, John Roe · NASA" from the clips actually used (uploads need no credit). */
 export function footageCredit(clips) {
   const byProvider = new Map();
@@ -147,8 +167,8 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
     fonts: { arabic: arabicKey, translation: trFont?.key || null, tafsir: tafFont?.key || null, tafsirLabelArabic: labelArabic },
     showHeader: style.showSurahTitle,
     showFooter: showFooterReciter,
-    // The tafsir credit gets its own line; on narrow 9:16 the main credit usually wraps too.
-    creditLines: tafsirOn ? (spec.aspect === '9:16' ? 3 : 2) : 1,
+    // Full credits: the tafsir credit gets its own line; on narrow 9:16 the main credit usually wraps too.
+    creditLines: { none: 0, minimal: 1 }[style.credits] ?? (tafsirOn ? (spec.aspect === '9:16' ? 3 : 2) : 1),
   });
   for (const item of items) item.cards = tafsirOn && item.tafsir ? planCards(layout, item.tafsir.text) : [];
 
@@ -209,12 +229,21 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
   const footage = footageCredit(usedClips);
   // QuranEnc's terms ask for the source and the translation's version number.
   const translationCredit = trFont && spec.translation.version ? ` (translation v${spec.translation.version})` : '';
-  let credit = [
-    `Quran text${trFont ? ' & translation' : ''}: QuranEnc.com${translationCredit}`,
-    'Recitation: EveryAyah.com',
-    ...(footage ? [`Footage: ${footage}`] : []),
-  ].join('  ·  ');
-  if (tafsirOn) credit += `\nTafsir: ${spec.tafsir.title} (QuranEnc.com)`;
+  let credit = '';
+  if (style.credits === 'full') {
+    credit = [
+      `Quran text${trFont ? ' & translation' : ''}: QuranEnc.com${translationCredit}`,
+      'Recitation: EveryAyah.com',
+      ...(footage ? [`Footage: ${footage}`] : []),
+    ].join('  ·  ');
+    if (tafsirOn) credit += `\nTafsir: ${spec.tafsir.title} (QuranEnc.com)`;
+  } else if (style.credits === 'minimal') {
+    credit = [
+      'QuranEnc.com',
+      ...(trFont && spec.translation.version ? [`translation v${spec.translation.version}`] : []),
+      ...(tafsirOn ? [`tafsir: ${spec.tafsir.title.split(' — ')[0]}`] : []),
+    ].join('  ·  ');
+  }
   const header = style.showSurahTitle
     ? { nameAr: /^سورة/.test(spec.surah.nameAr) ? spec.surah.nameAr : `سورة ${spec.surah.nameAr}`, nameEn: spec.surah.nameEn }
     : null;
@@ -247,13 +276,9 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
     [
       ...bgArgs,
       '-i', path.basename(audio.file),
-      '-filter_complex', '[0:v]ass=subs.ass:fontsdir=fonts:shaping=complex,format=yuv420p[v]',
+      '-filter_complex', `[0:v]${(ENCODE[spec.fileSize] || ENCODE.balanced).denoise}ass=subs.ass:fontsdir=fonts:shaping=complex,format=yuv420p[v]`,
       '-map', '[v]', '-map', '1:a',
-      '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
-      // Capped CRF keeps busy footage share-friendly (≈ 8 Mb/s at 1080p, 5 Mb/s at 720p).
-      ...(Math.min(width, height) >= 1000 ? ['-maxrate', '8M', '-bufsize', '16M'] : ['-maxrate', '5M', '-bufsize', '10M']),
-      '-r', String(FPS), '-g', String(FPS * 2),
-      '-c:a', 'aac', '-b:a', '192k', '-ar', '44100',
+      ...encodeArgs(spec.fileSize, Math.min(width, height) >= 1000),
       '-t', audio.duration.toFixed(3), '-shortest', '-movflags', '+faststart',
       'out.mp4',
     ],

@@ -2,6 +2,8 @@
 
 <p align="center"><b>Turn Quran recitations into beautiful, share-ready videos — in minutes, on your own computer.</b></p>
 
+<p align="center"><b>▶ Try it online: <a href="https://tilawaat.netlify.app">tilawaat.netlify.app</a></b> — no install, videos are made in your browser.</p>
+
 Pick the ayat, a reciter and a look. Tilawat fetches the verified Arabic text, a
 translation and the recitation, lays them over calm nature, space or mosque footage, and renders
 finished MP4 videos for Reels, TikTok, YouTube Shorts, WhatsApp Status or YouTube — with the

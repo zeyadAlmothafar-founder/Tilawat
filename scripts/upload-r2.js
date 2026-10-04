@@ -185,9 +185,10 @@ async function writeWebManifest(manifest, cfg) {
   console.log(`Wrote ${path.relative(ROOT, WEB_MANIFEST)} (r2 mode, ${out.clips.length} clips, base ${cfg.publicUrl}).`);
   // Friendly check that the public address really serves the files.
   const probe = out.clips[0]?.thumb;
+    // R2 only adds CORS headers when the request carries an Origin header, as browsers do.
   if (!probe) return;
   try {
-    const res = await fetch(`${cfg.publicUrl}/${probe}`, { method: 'HEAD', signal: AbortSignal.timeout(15000) });
+    const res = await fetch(`${cfg.publicUrl}/${probe}`, { method: 'HEAD', headers: { Origin: 'https://example.netlify.app' }, signal: AbortSignal.timeout(15000) });
     const cors = res.headers.get('access-control-allow-origin');
     if (res.ok && cors === '*') console.log(`Check: ${cfg.publicUrl}/${probe} → ${res.status}, CORS ok.`);
     else console.warn(`Warning: ${cfg.publicUrl}/${probe} → HTTP ${res.status}${cors === '*' ? '' : ', no "Access-Control-Allow-Origin: *"'}. Browsers may not be able to load the clips yet.`);

@@ -125,6 +125,22 @@ Videos prefer clips that match their format, so vertical videos use vertical cli
 
 ---
 
+## Web version (no install)
+
+The same app can run as a static website where every video is made **in the visitor's browser**
+(WebCodecs + Canvas, MP4 via [Mediabunny](https://mediabunny.dev)) — nothing is uploaded or rendered
+on a server. Quran text, translations and tafsir come straight from QuranEnc, recitations from
+EveryAyah, and backgrounds from short pre-cut clips of the starter library.
+
+```bash
+npm run build:web     # builds dist/ (what Netlify publishes, see netlify.toml)
+npm run serve:web     # preview dist/ at http://localhost:4711
+```
+
+Works in Chrome, Edge and Samsung Internet (desktop and Android); other browsers get a clear
+message if they can't encode video. Limits: 20 ayat per video, 5 videos per batch. Details:
+[docs/WEB.md](docs/WEB.md).
+
 ## Configuration
 
 All settings are optional and live in `.env` (copy `.env.example`):
@@ -178,6 +194,8 @@ server/
   sources/          background footage: starter library, Pixabay, Pexels, NASA, uploads, filter
   render/           FFmpeg pipeline, subtitles, layout, fonts, job queue
   share.js          share links and QR codes
+shared/             pure logic shared by the server and the web version
+web/                web version: browser renderer, data adapter, build, clip tools
 public/             web interface (vanilla JS, no build step), i18n/*.json
 assets/fonts/       bundled OFL fonts
 docs/               architecture and API reference

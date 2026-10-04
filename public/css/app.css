@@ -155,6 +155,12 @@ a { color: var(--primary); text-underline-offset: 2px; }
 code, pre { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.9em; }
 code { background: var(--surface-3); padding: 0.1em 0.4em; border-radius: 6px; }
 [hidden] { display: none !important; }
+/* Web version (web/build.js sets <html data-mode="web">): features that need the server are hidden. */
+html[data-mode="web"] .server-only { display: none !important; }
+html:not([data-mode="web"]) .web-only { display: none !important; }
+.videos-web-note, .library-web-note { margin-block-end: 18px; }
+.share-caption { white-space: pre-line; margin-block-start: 12px; }
+#web-limits { margin-block: -8px 14px; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 ::selection { background: var(--gold-soft); }
 

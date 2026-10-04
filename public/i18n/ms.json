@@ -203,6 +203,10 @@
       "tooManyVideos": "Itu akan menjadi {count} video — maksimum {max} boleh dicipta sekali gus.",
       "noReciter": "Pilih qari.",
       "noCategory": "Pilih sekurang-kurangnya satu tema latar."
+    },
+    "web": {
+      "limits": "Versi web: sehingga {ayat} ayat bagi setiap video dan {videos} video pada satu masa. Video dihasilkan pada peranti ini.",
+      "unsupported": "Pelayar ini tidak dapat menghasilkan video. Sila gunakan Chrome, Edge atau Samsung Internet pada Android atau komputer."
     }
   },
   "videos": {
@@ -247,7 +251,9 @@
     "deleted": "Video dipadam",
     "canceled": "Penghasilan dibatalkan",
     "readyLive": "{title} sudah sedia",
-    "failedLive": "{title} tidak dapat dihasilkan"
+    "failedLive": "{title} tidak dapat dihasilkan",
+    "webNote": "Video anda dihasilkan dan disimpan dalam pelayar ini, pada peranti ini — tiada apa-apa dimuat naik. Muat turun video yang anda mahu simpan: mengosongkan data penyemakan imbas akan memadamkannya.",
+    "keepOpen": "Biarkan halaman ini terbuka semasa video anda dihasilkan."
   },
   "share": {
     "title": "Kongsi video",
@@ -277,7 +283,11 @@
       "alt": "Kod QR untuk {url}",
       "captionLan": "Imbas dengan kamera telefon anda untuk membuka video, kemudian simpan atau kongsikannya dari telefon. Telefon anda perlu berada pada rangkaian Wi-Fi yang sama dengan komputer ini.",
       "captionPublic": "Imbas dengan kamera telefon anda untuk membuka video, kemudian simpan atau kongsikannya dari telefon."
-    }
+    },
+    "unsupportedWeb": "Pelayar ini tidak dapat berkongsi fail video secara terus. Muat turun video, kemudian kongsi daripada galeri atau aplikasi anda.",
+    "copyCaption": "Salin kapsyen",
+    "captionCopied": "Kapsyen disalin",
+    "moreTitle": "Pilihan lain"
   },
   "sharePage": {
     "loading": "Memuatkan video…",
@@ -362,7 +372,9 @@
       "canceled": "Muat naik dibatalkan",
       "tooLarge": "Fail ini melebihi 500 MB.",
       "badType": "Sila pilih video MP4, WebM atau MOV."
-    }
+    },
+    "webSubtitle": "Rakaman latar pilihan — video anda menggunakan klip ini.",
+    "webNote": "Klip tanpa bunyi tentang alam, angkasa, masjid dan seni Islam daripada Pixabay, dipilih untuk video al-Quran. Pilih tema di halaman Cipta."
   },
   "about": {
     "title": "Perihal",
@@ -382,7 +394,9 @@
     "phoneTitle": "Guna pada telefon anda",
     "phoneText": "Imbas untuk membuka studio pada telefon yang disambungkan ke rangkaian Wi-Fi yang sama dengan komputer ini.",
     "phonePublic": "Imbas untuk membuka studio pada telefon anda.",
-    "phoneNone": "Tiada alamat rangkaian ditemui. Sambungkan komputer ini ke Wi-Fi untuk membuka studio dari telefon anda."
+    "phoneNone": "Tiada alamat rangkaian ditemui. Sambungkan komputer ini ke Wi-Fi untuk membuka studio dari telefon anda.",
+    "webTitle": "Dihasilkan pada peranti anda",
+    "webNote": "Video dihasilkan pada peranti anda — tiada apa-apa dimuat naik. Video kekal dalam pelayar ini sehingga anda memadamkannya."
   },
   "footer": {
     "text": "Sumber:"
@@ -410,6 +424,12 @@
     "provider_error": "Penyedia rakaman tidak memberi respons. Sila cuba lagi nanti.",
     "audio_failed": "Pratonton bacaan tidak dapat dimainkan.",
     "share_failed": "Perkongsian tidak berjaya. Cuba muat turun video sebagai gantinya.",
-    "download_failed": "Video tidak dapat dimuat turun."
+    "download_failed": "Video tidak dapat dimuat turun.",
+    "too_many_ayahs": "Terlalu banyak ayat untuk satu video.",
+    "upstream_unavailable": "QuranEnc.com atau EveryAyah.com tidak bertindak balas. Semak sambungan anda dan cuba lagi.",
+    "interrupted": "Halaman ditutup sebelum video ini siap. Sila hasilkan semula.",
+    "not_available_web": "Ciri ini tidak tersedia dalam versi web.",
+    "unsupported_browser": "Pelayar ini tidak dapat menghasilkan video. Sila gunakan Chrome, Edge atau Samsung Internet.",
+    "storage_full": "Ruang dalam pelayar ini tidak mencukupi untuk menyimpan video. Padamkan beberapa video dan cuba lagi."
   }
 }

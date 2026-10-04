@@ -25,6 +25,8 @@ Run: `npm start` → http://localhost:4700 (PORT env). Keys come from `.env` (se
 | `server/sources/**` | Background footage providers, content filter, clip library |
 | `server/render/**`, `assets/fonts/**` | FFmpeg render pipeline, job queue, fonts |
 | `server/share.js`, `public/**` | Sharing endpoints, frontend, UI translations |
+| `shared/**` | Pure logic used by both the server and the web version (translation cleanup, tafsir grouping, credits, render rules) |
+| `web/**`, `netlify.toml` | Web version (browser rendering) — see [WEB.md](WEB.md) |
 | `scripts/*.js` | Tests and maintenance scripts |
 | `data/`, `cache/`, `output/`, `tmp/` | Runtime state (git-ignored) |
 

@@ -1,0 +1,1088 @@
+{
+  "version": 1,
+  "mode": "pixabay-direct",
+  "base": null,
+  "generatedAt": "2026-10-04T03:09:12.801Z",
+  "clips": [
+    {
+      "id": "pixabay:40704",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "landscape",
+      "title": "Mosque, astana, religion",
+      "author": "doitboy",
+      "authorUrl": "https://pixabay.com/users/doitboy-16395490/",
+      "sourceUrl": "https://pixabay.com/videos/id-40704/",
+      "thumb": "https://cdn.pixabay.com/video/2020/05/31/40704-426189550_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2020/05/31/40704-426189550_small.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 15
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2020/05/31/40704-426189550_tiny.mp4",
+          "width": 960,
+          "height": 540,
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "id": "pixabay:257995",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "landscape",
+      "title": "Mosque, islamic-architecture, ramadan",
+      "author": "Kashif-Arif",
+      "authorUrl": "https://pixabay.com/users/Kashif-Arif-26511536/",
+      "sourceUrl": "https://pixabay.com/videos/id-257995/",
+      "thumb": "https://cdn.pixabay.com/video/2025/02/13/257995_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/02/13/257995_small.mp4",
+          "width": 1798,
+          "height": 1078,
+          "duration": 10
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/02/13/257995_tiny.mp4",
+          "width": 1198,
+          "height": 718,
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "id": "pixabay:334960",
+      "provider": "pixabay",
+      "category": "islamic",
+      "orientation": "landscape",
+      "title": "Mosque, architecture, islam",
+      "author": "C-STyLe",
+      "authorUrl": "https://pixabay.com/users/C-STyLe-30838458/",
+      "sourceUrl": "https://pixabay.com/videos/id-334960/",
+      "thumb": "https://cdn.pixabay.com/video/2026/02/17/334960_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2026/02/17/334960_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 40
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2026/02/17/334960_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 40
+        }
+      ]
+    },
+    {
+      "id": "pixabay:303406",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "landscape",
+      "title": "Mosque, aerial mosque, islamic architecture",
+      "author": "monirulislam_bd",
+      "authorUrl": "https://pixabay.com/users/monirulislam_bd-38152173/",
+      "sourceUrl": "https://pixabay.com/videos/id-303406/",
+      "thumb": "https://cdn.pixabay.com/video/2025/09/11/303406_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/09/11/303406_small.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 9
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/09/11/303406_tiny.mp4",
+          "width": 960,
+          "height": 540,
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "id": "pixabay:257992",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "landscape",
+      "title": "Mosque, islamic-architecture, ramadan",
+      "author": "Kashif-Arif",
+      "authorUrl": "https://pixabay.com/users/Kashif-Arif-26511536/",
+      "sourceUrl": "https://pixabay.com/videos/id-257992/",
+      "thumb": "https://cdn.pixabay.com/video/2025/02/13/257992_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/02/13/257992_small.mp4",
+          "width": 1798,
+          "height": 1078,
+          "duration": 10
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/02/13/257992_tiny.mp4",
+          "width": 1198,
+          "height": 718,
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "id": "pixabay:246856",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Waterfall, rainbow, river",
+      "author": "McPix22",
+      "authorUrl": "https://pixabay.com/users/McPix22-26289376/",
+      "sourceUrl": "https://pixabay.com/videos/id-246856/",
+      "thumb": "https://cdn.pixabay.com/video/2024/12/15/246856_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/12/15/246856_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 30
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/12/15/246856_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": "pixabay:358693",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Water, falls, waterfall",
+      "author": "McPix22",
+      "authorUrl": "https://pixabay.com/users/McPix22-26289376/",
+      "sourceUrl": "https://pixabay.com/videos/id-358693/",
+      "thumb": "https://cdn.pixabay.com/video/2026/06/16/358693_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2026/06/16/358693_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 35
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2026/06/16/358693_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 35
+        }
+      ]
+    },
+    {
+      "id": "pixabay:305657",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Mountain, nature, landscape",
+      "author": "tham_ms",
+      "authorUrl": "https://pixabay.com/users/tham_ms-51941956/",
+      "sourceUrl": "https://pixabay.com/videos/id-305657/",
+      "thumb": "https://cdn.pixabay.com/video/2025/09/22/305657_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/09/22/305657_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 14
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/09/22/305657_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 14
+        }
+      ]
+    },
+    {
+      "id": "pixabay:289855",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Mountains, morning, cloud",
+      "author": "Kanenori",
+      "authorUrl": "https://pixabay.com/users/Kanenori-4749850/",
+      "sourceUrl": "https://pixabay.com/videos/id-289855/",
+      "thumb": "https://cdn.pixabay.com/video/2025/07/06/289855_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/07/06/289855_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 28
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/07/06/289855_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 28
+        }
+      ]
+    },
+    {
+      "id": "pixabay:201308",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Beach, ocean, sunset",
+      "author": "SerajKaram",
+      "authorUrl": "https://pixabay.com/users/SerajKaram-36369115/",
+      "sourceUrl": "https://pixabay.com/videos/id-201308/",
+      "thumb": "https://cdn.pixabay.com/video/2024/02/21/201308-915375262_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/02/21/201308-915375262_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 59
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/02/21/201308-915375262_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 59
+        }
+      ]
+    },
+    {
+      "id": "pixabay:206272",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Beach, sunset, sky",
+      "author": "TonyDias7",
+      "authorUrl": "https://pixabay.com/users/TonyDias7-26930749/",
+      "sourceUrl": "https://pixabay.com/videos/id-206272/",
+      "thumb": "https://cdn.pixabay.com/video/2024/03/30/206272_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/03/30/206272_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 35
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/03/30/206272_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 35
+        }
+      ]
+    },
+    {
+      "id": "pixabay:108420",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Desert, sand, beautiful wallpaper",
+      "author": "bellergy",
+      "authorUrl": "https://pixabay.com/users/bellergy-1846871/",
+      "sourceUrl": "https://pixabay.com/videos/id-108420/",
+      "thumb": "https://cdn.pixabay.com/video/2022/02/21/108420-680178323_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2022/02/21/108420-680178323_small.mp4",
+          "width": 960,
+          "height": 540,
+          "duration": 9
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2022/02/21/108420-680178323_tiny.mp4",
+          "width": 640,
+          "height": 360,
+          "duration": 9
+        }
+      ]
+    },
+    {
+      "id": "pixabay:235859",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Fog, foggy, trees",
+      "author": "nuwaus",
+      "authorUrl": "https://pixabay.com/users/nuwaus-2323355/",
+      "sourceUrl": "https://pixabay.com/videos/id-235859/",
+      "thumb": "https://cdn.pixabay.com/video/2024/10/11/235859_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/10/11/235859_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 18
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/10/11/235859_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 18
+        }
+      ]
+    },
+    {
+      "id": "pixabay:317408",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Misty, forest, trees",
+      "author": "doktorkleinmusic",
+      "authorUrl": "https://pixabay.com/users/doktorkleinmusic-5871510/",
+      "sourceUrl": "https://pixabay.com/videos/id-317408/",
+      "thumb": "https://cdn.pixabay.com/video/2025/11/21/317408_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/11/21/317408_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 15
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/11/21/317408_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "id": "pixabay:200449",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "landscape",
+      "title": "Mountain, hiking trails, snow",
+      "author": "Frabull",
+      "authorUrl": "https://pixabay.com/users/Frabull-29526226/",
+      "sourceUrl": "https://pixabay.com/videos/id-200449/",
+      "thumb": "https://cdn.pixabay.com/video/2024/02/13/200449-912702438_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/02/13/200449-912702438_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 33
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/02/13/200449-912702438_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 33
+        }
+      ]
+    },
+    {
+      "id": "pixabay:43027",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "landscape",
+      "title": "Stars, universe, galaxy",
+      "author": "ChristianBodhi",
+      "authorUrl": "https://pixabay.com/users/ChristianBodhi-9869182/",
+      "sourceUrl": "https://pixabay.com/videos/id-43027/",
+      "thumb": "https://cdn.pixabay.com/video/2020/06/24/43027-434334088_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2020/06/24/43027-434334088_small.mp4",
+          "width": 960,
+          "height": 540,
+          "duration": 20
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2020/06/24/43027-434334088_tiny.mp4",
+          "width": 640,
+          "height": 360,
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "id": "pixabay:1099",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "landscape",
+      "title": "Night, sky, stars",
+      "author": "Vimeo-Free-Videos",
+      "authorUrl": "https://pixabay.com/users/Vimeo-Free-Videos-1283884/",
+      "sourceUrl": "https://pixabay.com/videos/id-1099/",
+      "thumb": "https://cdn.pixabay.com/video/2015/10/19/1099-143052470_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2015/10/19/1099-143052470_small.mp4",
+          "width": 640,
+          "height": 360,
+          "duration": 21
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2015/10/19/1099-143052470_tiny.mp4",
+          "width": 480,
+          "height": 270,
+          "duration": 21
+        }
+      ]
+    },
+    {
+      "id": "pixabay:732",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "landscape",
+      "title": "Earth, universe, space",
+      "author": "Vimeo-Free-Videos",
+      "authorUrl": "https://pixabay.com/users/Vimeo-Free-Videos-1283884/",
+      "sourceUrl": "https://pixabay.com/videos/id-732/",
+      "thumb": "https://cdn.pixabay.com/video/2015/09/08/732-138678113_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2015/09/08/732-138678113_small.mp4",
+          "width": 640,
+          "height": 360,
+          "duration": 20
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2015/09/08/732-138678113_tiny.mp4",
+          "width": 480,
+          "height": 270,
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "id": "pixabay:308799",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "landscape",
+      "title": "Earth limb, atmosphere arc, blue atmosphere",
+      "author": "Solarselle77",
+      "authorUrl": "https://pixabay.com/users/Solarselle77-52253391/",
+      "sourceUrl": "https://pixabay.com/videos/id-308799/",
+      "thumb": "https://cdn.pixabay.com/video/2025/10/09/308799_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/10/09/308799_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 20
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/10/09/308799_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "id": "pixabay:120769",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "landscape",
+      "title": "Stars, space, snow",
+      "author": "tommyvideo",
+      "authorUrl": "https://pixabay.com/users/tommyvideo-3092371/",
+      "sourceUrl": "https://pixabay.com/videos/id-120769/",
+      "thumb": "https://cdn.pixabay.com/video/2022/06/19/120769-724673353_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2022/06/19/120769-724673353_small.mp4",
+          "width": 1920,
+          "height": 1080,
+          "duration": 29
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2022/06/19/120769-724673353_tiny.mp4",
+          "width": 1280,
+          "height": 720,
+          "duration": 29
+        }
+      ]
+    },
+    {
+      "id": "pixabay:280994",
+      "provider": "pixabay",
+      "category": "islamic",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-280994/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/23/280994_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/23/280994_small.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 8
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/23/280994_tiny.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "id": "pixabay:280842",
+      "provider": "pixabay",
+      "category": "islamic",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-280842/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/22/280842_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/22/280842_small.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 15
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/22/280842_tiny.mp4",
+          "width": 360,
+          "height": 640,
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "id": "pixabay:280897",
+      "provider": "pixabay",
+      "category": "islamic",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-280897/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/22/280897_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/22/280897_small.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 8
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/22/280897_tiny.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "id": "pixabay:281204",
+      "provider": "pixabay",
+      "category": "islamic",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-281204/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/24/281204_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/24/281204_small.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 8
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/24/281204_tiny.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "id": "pixabay:34260",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "portrait",
+      "title": "Islam, muslim, islamic",
+      "author": "DesignwithRiyas",
+      "authorUrl": "https://pixabay.com/users/DesignwithRiyas-15454545/",
+      "sourceUrl": "https://pixabay.com/videos/id-34260/",
+      "thumb": "https://cdn.pixabay.com/video/2020/03/25/34260-400974076_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2020/03/25/34260-400974076_small.mp4",
+          "width": 720,
+          "height": 1024,
+          "duration": 16
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2020/03/25/34260-400974076_tiny.mp4",
+          "width": 540,
+          "height": 768,
+          "duration": 16
+        }
+      ]
+    },
+    {
+      "id": "pixabay:281205",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-281205/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/24/281205_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/24/281205_small.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 8
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/24/281205_tiny.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "id": "pixabay:282336",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-282336/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/29/282336_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/29/282336_small.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 8
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/29/282336_tiny.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "id": "pixabay:281563",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-281563/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/25/281563_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/25/281563_small.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 8
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/25/281563_tiny.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "id": "pixabay:282040",
+      "provider": "pixabay",
+      "category": "mosque",
+      "orientation": "portrait",
+      "title": "Islam, mosque, muslim",
+      "author": "Mosque_Ai",
+      "authorUrl": "https://pixabay.com/users/Mosque_Ai-50397212/",
+      "sourceUrl": "https://pixabay.com/videos/id-282040/",
+      "thumb": "https://cdn.pixabay.com/video/2025/05/27/282040_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/05/27/282040_small.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 8
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/05/27/282040_tiny.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 8
+        }
+      ]
+    },
+    {
+      "id": "pixabay:228847",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "portrait",
+      "title": "Waterfall, mountain stream, flow",
+      "author": "Kanenori",
+      "authorUrl": "https://pixabay.com/users/Kanenori-4749850/",
+      "sourceUrl": "https://pixabay.com/videos/id-228847/",
+      "thumb": "https://cdn.pixabay.com/video/2024/08/30/228847_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/08/30/228847_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 20
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/08/30/228847_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "id": "pixabay:226955",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "portrait",
+      "title": "Waterfall, stream, rocks",
+      "author": "Pradipsingh00",
+      "authorUrl": "https://pixabay.com/users/Pradipsingh00-43142016/",
+      "sourceUrl": "https://pixabay.com/videos/id-226955/",
+      "thumb": "https://cdn.pixabay.com/video/2024/08/17/226955_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/08/17/226955_small.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 10
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/08/17/226955_tiny.mp4",
+          "width": 360,
+          "height": 640,
+          "duration": 10
+        }
+      ]
+    },
+    {
+      "id": "pixabay:203511",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "portrait",
+      "title": "Sunset, sky, sun",
+      "author": "MustaKor",
+      "authorUrl": "https://pixabay.com/users/MustaKor-42273067/",
+      "sourceUrl": "https://pixabay.com/videos/id-203511/",
+      "thumb": "https://cdn.pixabay.com/video/2024/03/09/203511-921637015_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/03/09/203511-921637015_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 18
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/03/09/203511-921637015_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 18
+        }
+      ]
+    },
+    {
+      "id": "pixabay:290297",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "portrait",
+      "title": "Ai generated, desert, dune",
+      "author": "doktorkleinmusic",
+      "authorUrl": "https://pixabay.com/users/doktorkleinmusic-5871510/",
+      "sourceUrl": "https://pixabay.com/videos/id-290297/",
+      "thumb": "https://cdn.pixabay.com/video/2025/07/09/290297_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/07/09/290297_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 15
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/07/09/290297_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "id": "pixabay:332531",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "portrait",
+      "title": "Sunrise, nature, misty",
+      "author": "doktorkleinmusic",
+      "authorUrl": "https://pixabay.com/users/doktorkleinmusic-5871510/",
+      "sourceUrl": "https://pixabay.com/videos/id-332531/",
+      "thumb": "https://cdn.pixabay.com/video/2026/02/03/332531_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2026/02/03/332531_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 20
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2026/02/03/332531_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 20
+        }
+      ]
+    },
+    {
+      "id": "pixabay:325098",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "portrait",
+      "title": "Landscape, trees, sunrise",
+      "author": "doktorkleinmusic",
+      "authorUrl": "https://pixabay.com/users/doktorkleinmusic-5871510/",
+      "sourceUrl": "https://pixabay.com/videos/id-325098/",
+      "thumb": "https://cdn.pixabay.com/video/2025/12/30/325098_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/12/30/325098_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 19
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/12/30/325098_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 19
+        }
+      ]
+    },
+    {
+      "id": "pixabay:236235",
+      "provider": "pixabay",
+      "category": "nature",
+      "orientation": "portrait",
+      "title": "Mountain, snow, winter",
+      "author": "SkyScapeDrone",
+      "authorUrl": "https://pixabay.com/users/SkyScapeDrone-39033001/",
+      "sourceUrl": "https://pixabay.com/videos/id-236235/",
+      "thumb": "https://cdn.pixabay.com/video/2024/10/13/236235_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/10/13/236235_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 18
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/10/13/236235_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 18
+        }
+      ]
+    },
+    {
+      "id": "pixabay:150907",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "portrait",
+      "title": "Planet, space, galaxy",
+      "author": "Mohamed_hassan",
+      "authorUrl": "https://pixabay.com/users/Mohamed_hassan-5229782/",
+      "sourceUrl": "https://pixabay.com/videos/id-150907/",
+      "thumb": "https://cdn.pixabay.com/video/2023/02/16/150907-799711579_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2023/02/16/150907-799711579_small.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 18
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2023/02/16/150907-799711579_tiny.mp4",
+          "width": 360,
+          "height": 640,
+          "duration": 18
+        }
+      ]
+    },
+    {
+      "id": "pixabay:283666",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "portrait",
+      "title": "Space, stars, milky way",
+      "author": "ZT_OSCAR",
+      "authorUrl": "https://pixabay.com/users/ZT_OSCAR-5239946/",
+      "sourceUrl": "https://pixabay.com/videos/id-283666/",
+      "thumb": "https://cdn.pixabay.com/video/2025/06/04/283666_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/06/04/283666_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 15
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/06/04/283666_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "id": "pixabay:283664",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "portrait",
+      "title": "Space, stars, milky way",
+      "author": "ZT_OSCAR",
+      "authorUrl": "https://pixabay.com/users/ZT_OSCAR-5239946/",
+      "sourceUrl": "https://pixabay.com/videos/id-283664/",
+      "thumb": "https://cdn.pixabay.com/video/2025/06/04/283664_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2025/06/04/283664_small.mp4",
+          "width": 1080,
+          "height": 1920,
+          "duration": 15
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2025/06/04/283664_tiny.mp4",
+          "width": 720,
+          "height": 1280,
+          "duration": 15
+        }
+      ]
+    },
+    {
+      "id": "pixabay:204273",
+      "provider": "pixabay",
+      "category": "space",
+      "orientation": "portrait",
+      "title": "Ai generated, space, universe",
+      "author": "FREE24h",
+      "authorUrl": "https://pixabay.com/users/FREE24h-42809302/",
+      "sourceUrl": "https://pixabay.com/videos/id-204273/",
+      "thumb": "https://cdn.pixabay.com/video/2024/03/15/204273-923909605_medium.jpg",
+      "segments": [
+        {
+          "res": "1080",
+          "url": "https://cdn.pixabay.com/video/2024/03/15/204273-923909605_small.mp4",
+          "width": 540,
+          "height": 960,
+          "duration": 16
+        },
+        {
+          "res": "720",
+          "url": "https://cdn.pixabay.com/video/2024/03/15/204273-923909605_tiny.mp4",
+          "width": 360,
+          "height": 640,
+          "duration": 16
+        }
+      ]
+    }
+  ]
+}

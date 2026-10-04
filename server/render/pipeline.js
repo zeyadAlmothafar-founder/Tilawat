@@ -9,6 +9,9 @@ import {
 import { buildLayout, chunkAyah, estimateBlockHeight, tafsirCardHeight, wrapTafsirText, wrapTranslationText } from './layout.js';
 import { buildAss, quranDisplayText } from './subtitles.js';
 import { planCards, gapSeconds, placeCards } from './cards.js';
+import { minimalCredit, footageCredit, creditLine, clipCredits } from '../../shared/credits.js';
+
+export { minimalCredit, footageCredit };
 
 // Fonts tried (in order) for translation characters the main translation font lacks.
 const TRANSLATION_FALLBACKS = ['notoSans', 'naskh', 'amiri'];
@@ -16,8 +19,6 @@ const TRANSLATION_FALLBACKS = ['notoSans', 'naskh', 'amiri'];
 // Share of overall progress per stage (background weight moves to "render" when there
 // are no clips to prepare).
 const WEIGHTS = { audio: 0.05, text: 0.02, clips: 0.38, render: 0.5, finalize: 0.05 };
-
-const PROVIDERS = { pexels: 'Pexels', pixabay: 'Pixabay', nasa: 'NASA' };
 
 // File-size presets. The footage is darkened and the text is static, so higher CRF values
 // stay clean; a light denoise on the background (before the text is drawn) and a bitrate cap
@@ -37,34 +38,6 @@ function encodeArgs(fileSize, hd) {
     '-r', String(FPS), '-g', String(FPS * e.gop),
     '-c:a', 'aac', '-b:a', e.audio, '-ar', '44100',
   ];
-}
-
-/**
- * The one credit QuranEnc's terms ask for: the source, plus the translation's version.
- * "Translation & tafsir: QuranEnc.com (v1.1.2)", "Translation: …", "Tafsir: …" or "Quran text: …".
- * Mirrored in public/js/create.js (minimalCredit) for the live preview.
- */
-export function minimalCredit(translation, tafsirOn) {
-  const label = translation && tafsirOn ? 'Translation & tafsir' : translation ? 'Translation' : tafsirOn ? 'Tafsir' : 'Quran text';
-  const version = translation?.version ? ` (v${translation.version})` : '';
-  return `${label}: QuranEnc.com${version}`;
-}
-
-/** "Pexels – Jane Doe, John Roe · NASA" from the clips actually used (uploads need no credit). */
-export function footageCredit(clips) {
-  const byProvider = new Map();
-  for (const c of clips) {
-    const label = PROVIDERS[c.provider];
-    if (!label) continue;
-    if (!byProvider.has(label)) byProvider.set(label, new Set());
-    if (c.author) byProvider.get(label).add(c.author);
-  }
-  const parts = [...byProvider].map(([label, authors]) => {
-    const list = [...authors];
-    const names = list.slice(0, 3).join(', ') + (list.length > 3 ? ` +${list.length - 3}` : '');
-    return names ? `${label} – ${names}` : label;
-  });
-  return parts.join(' · ');
 }
 
 function buildCues(items, timeline, layout, duration, withTranslation, endsWithCard = false) {
@@ -237,20 +210,13 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
     bgArgs = gradientInput({ width, height, duration: audio.duration + 0.5, seed: spec.seed, overlay: style.overlay });
   }
 
-  const footage = footageCredit(usedClips);
-  // QuranEnc's terms ask for the source and the translation's version number.
-  const translationCredit = trFont && spec.translation.version ? ` (translation v${spec.translation.version})` : '';
-  let credit = '';
-  if (style.credits === 'full') {
-    credit = [
-      `Quran text${trFont ? ' & translation' : ''}: QuranEnc.com${translationCredit}`,
-      'Recitation: EveryAyah.com',
-      ...(footage ? [`Footage: ${footage}`] : []),
-    ].join('  ·  ');
-    if (tafsirOn) credit += `\nTafsir: ${spec.tafsir.title} (QuranEnc.com)`;
-  } else if (style.credits === 'minimal') {
-    credit = minimalCredit(trFont ? spec.translation : null, tafsirOn);
-  }
+  // Footer credit (shared/credits.js): QuranEnc's terms ask for the source and the translation's version.
+  const credit = creditLine({
+    credits: style.credits,
+    translation: trFont ? spec.translation : null,
+    tafsir: tafsirOn ? spec.tafsir : null,
+    clips: usedClips,
+  });
   const header = style.showSurahTitle
     ? { nameAr: /^سورة/.test(spec.surah.nameAr) ? spec.surah.nameAr : `سورة ${spec.surah.nameAr}`, nameEn: spec.surah.nameEn }
     : null;
@@ -312,15 +278,7 @@ export async function renderVideo(spec, { signal, onProgress = () => {} } = {}) 
   stage('done');
   if (!spec.keepWorkDir) await fsp.rm(workDir, { recursive: true, force: true }).catch(() => {});
 
-  const credits = [];
-  const seen = new Set();
-  for (const c of usedClips) {
-    if (c.provider === 'upload') continue; // the user's own footage needs no credit
-    const key = `${c.provider}|${c.author}|${c.sourceUrl}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    credits.push({ provider: c.provider, author: c.author || null, sourceUrl: c.sourceUrl || null });
-  }
+  const credits = clipCredits(usedClips);
   return { duration: info.duration, sizeBytes: size, credits, timings, cues, cards };
 }
 

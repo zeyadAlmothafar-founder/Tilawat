@@ -1,36 +1,16 @@
 // Validation and normalization of POST /api/render bodies.
 import { httpError } from '../lib/errors.js';
 import { quranModule, recitersModule, sourcesModule, tafsirModule } from './inputs.js';
-import { clamp } from './util.js';
+import {
+  LIMITS, ASPECTS, FILE_SIZES, CATEGORY_IDS, DEFAULT_CATEGORIES, DEFAULTS, normalizeStyle,
+} from '../../shared/render-rules.js';
 
-export const MAX_VIDEOS = 50;
-export const MAX_AYAHS = 50;
-const ASPECTS = ['9:16', '16:9', '1:1'];
-const DEFAULT_CATEGORIES = ['nature', 'space'];
-const FILE_SIZES = ['small', 'balanced', 'high'];
-const FALLBACK_CATEGORY_IDS = ['nature', 'space', 'mosque', 'islamic'];
-export const DEFAULTS = {
-  reciter: 'Alafasy_128kbps',
-  translation: 'english_saheeh',
-};
+export const MAX_VIDEOS = LIMITS.server.maxVideos;
+export const MAX_AYAHS = LIMITS.server.maxAyahs;
+const FALLBACK_CATEGORY_IDS = CATEGORY_IDS;
+export { DEFAULTS };
 
 const toInt = (v) => (v === undefined || v === null || v === '' ? NaN : Number(v));
-const num = (v, def, min, max) => (Number.isFinite(Number(v)) && v !== null && v !== '' ? clamp(Number(v), min, max) : def);
-
-function normalizeStyle(style = {}) {
-  const s = style && typeof style === 'object' ? style : {};
-  return {
-    arabicFont: s.arabicFont === 'scheherazade' ? 'scheherazade' : 'amiri',
-    textScale: Math.round(num(s.textScale, 1, 0.7, 1.5) * 100) / 100,
-    position: s.position === 'lower' ? 'lower' : 'center',
-    overlay: Math.round(num(s.overlay, 0.45, 0, 0.8) * 100) / 100,
-    showSurahTitle: s.showSurahTitle !== false,
-    showReciter: s.showReciter !== false,
-    // Source credits in the footer: one short QuranEnc line (its terms require the source
-    // and translation version), every source, or none (credits then go in the share text).
-    credits: ['full', 'none'].includes(s.credits) ? s.credits : 'minimal',
-  };
-}
 
 async function categoryIds() {
   try {

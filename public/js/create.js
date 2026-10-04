@@ -5,9 +5,13 @@ import { h, debounce, clamp, toast, showError, errorBlock, loadingBlock, nextId 
 import { icon } from './icons.js';
 import { createSurahPicker } from './surah-picker.js';
 import { renderDevicePreview, renderAyahList, indexTafsir } from './preview.js';
+import { WEB_MODE } from './mode.js';
 
-const MAX_VIDEOS = 50;
-const MAX_AYAT_PER_VIDEO = 50;
+// The web version (videos rendered in the browser) exports smaller limits from its api.js.
+const MAX_VIDEOS = api.limits?.maxVideos ?? 50;
+const MAX_AYAT_PER_VIDEO = api.limits?.maxAyahs ?? 50;
+// Phones render 720p much faster in the web version.
+const IS_PHONE = WEB_MODE && (matchMedia('(max-width: 700px)').matches || /Android|iPhone|iPod|Mobile/i.test(navigator.userAgent));
 const SECONDS_PER_AYAH = 6;
 const MAX_LISTED_AYAT = 300;
 const CATEGORIES = ['nature', 'space', 'mosque', 'islamic'];
@@ -40,7 +44,7 @@ const DEFAULT_STATE = {
   categories: ['nature'],
   approvedOnly: false,
   aspect: '9:16',
-  quality: '1080',
+  quality: IS_PHONE ? '720' : '1080',
   fileSize: 'balanced',
   bismillah: true,
   style: { arabicFont: 'amiri', textScale: 1, position: 'center', overlay: 0.45, showSurahTitle: true, showReciter: true, credits: 'minimal' },
@@ -59,6 +63,7 @@ const ENUMS = {
 let els = {};
 let state;
 let submitting = false;
+let renderSupport = null; // web version: { ok, reason?, maxQuality } from the in-browser renderer
 let rows = []; // [{ item, li, from, to, msg, meta }]
 let ayahGroups = [];
 let textToken = 0;
@@ -224,6 +229,8 @@ export function init(section) {
     errors: $('#create-errors'),
     submit: $('#create-submit'),
     ayahList: $('#ayah-list'),
+    webLimits: $('#web-limits'),
+    webUnsupported: $('#web-unsupported'),
   };
   state = loadState();
 
@@ -238,8 +245,10 @@ export function init(section) {
   renderTafsirs();
   onChange();
   loadData();
+  if (WEB_MODE) checkRenderSupport();
 
   onLanguageChange(() => {
+    syncWebLimits();
     const before = state.translation;
     buildPresets();
     syncCategories();
@@ -264,6 +273,35 @@ export function show() {
 export function hide() {
   stopAudio();
 }
+
+// ---------- web version ----------
+
+function syncWebLimits() {
+  if (!WEB_MODE || !els.webLimits) return;
+  els.webLimits.textContent = t('create.web.limits', { ayat: MAX_AYAT_PER_VIDEO, videos: MAX_VIDEOS });
+}
+
+/** Can this browser render videos? If not, explain and keep Create disabled. */
+function checkRenderSupport() {
+  syncWebLimits();
+  Promise.resolve(api.renderSupport?.())
+    .catch(() => ({ ok: false }))
+    .then((support) => {
+      renderSupport = support || { ok: false };
+      if (els.webUnsupported) els.webUnsupported.hidden = renderSupport.ok;
+      if (renderSupport.ok && renderSupport.maxQuality === '720') {
+        const hd = els.form.querySelector('input[name="quality"][value="1080"]');
+        if (hd) hd.disabled = true;
+        if (state.quality !== '720') {
+          state.quality = '720';
+          syncControls();
+        }
+      }
+      onChange();
+    });
+}
+
+const renderBlocked = () => WEB_MODE && renderSupport !== null && !renderSupport.ok;
 
 function loadData() {
   if (!data.surahs) loadSurahs();
@@ -868,7 +906,7 @@ function validateAndShow() {
   });
   els.errors.replaceChildren(...errors.map((e) => h('li', {}, icon('alert'), h('span', { text: e.message }))));
   els.errors.hidden = errors.length === 0;
-  els.submit.disabled = submitting || errors.length > 0;
+  els.submit.disabled = submitting || errors.length > 0 || renderBlocked();
   return errors;
 }
 

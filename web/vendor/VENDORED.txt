@@ -1,0 +1,8 @@
+Vendored third-party files (browser renderer, web/js/render/):
+
+mediabunny.mjs              mediabunny 1.61.1, dist/bundles/mediabunny.min.mjs (npm), MPL-2.0
+mediabunny-aac-encoder.mjs  @mediabunny/aac-encoder 1.61.1, dist/bundles/mediabunny-aac-encoder.min.mjs (npm), MPL-2.0;
+                            only change: `from"mediabunny"` -> `from"./mediabunny.mjs"`.
+                            Contains a WASM build of FFmpeg's AAC encoder (LGPL-2.1+), loaded only when the
+                            browser has no native AAC encoder (Firefox, some Safari versions).
+mediabunny.LICENSE.txt      MPL-2.0 text (same for both packages). Source: https://github.com/Vanilagy/mediabunny

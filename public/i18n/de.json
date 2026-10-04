@@ -210,6 +210,10 @@
       "tooManyVideos": "Das wären {count} Videos – höchstens {max} können auf einmal erstellt werden.",
       "noReciter": "Wähle einen Rezitator.",
       "noCategory": "Wähle mindestens ein Hintergrundthema."
+    },
+    "web": {
+      "limits": "Webversion: bis zu {ayat} Verse pro Video und {videos} Videos auf einmal. Die Videos entstehen auf diesem Gerät.",
+      "unsupported": "Dieser Browser kann keine Videos erstellen. Bitte nutze Chrome, Edge oder Samsung Internet auf Android oder einem Computer."
     }
   },
   "videos": {
@@ -255,7 +259,9 @@
     "deleted": "Video gelöscht",
     "canceled": "Rendern abgebrochen",
     "readyLive": "{title} ist fertig",
-    "failedLive": "{title} konnte nicht gerendert werden"
+    "failedLive": "{title} konnte nicht gerendert werden",
+    "webNote": "Deine Videos werden in diesem Browser auf diesem Gerät erstellt und gespeichert – nichts wird hochgeladen. Lade die Videos herunter, die du behalten möchtest: Beim Löschen der Browserdaten werden sie entfernt.",
+    "keepOpen": "Lass diese Seite geöffnet, während deine Videos erstellt werden."
   },
   "share": {
     "title": "Video teilen",
@@ -285,7 +291,11 @@
       "alt": "QR-Code für {url}",
       "captionLan": "Scanne den Code mit der Kamera deines Handys, um das Video zu öffnen, und speichere oder teile es dann von dort. Dein Handy muss im selben WLAN sein wie dieser Computer.",
       "captionPublic": "Scanne den Code mit der Kamera deines Handys, um das Video zu öffnen, und speichere oder teile es dann von dort."
-    }
+    },
+    "unsupportedWeb": "Dieser Browser kann Videodateien nicht direkt teilen. Lade das Video herunter und teile es dann aus deiner Galerie oder App.",
+    "copyCaption": "Begleittext kopieren",
+    "captionCopied": "Begleittext kopiert",
+    "moreTitle": "Weitere Optionen"
   },
   "sharePage": {
     "loading": "Video wird geladen…",
@@ -370,7 +380,9 @@
       "canceled": "Upload abgebrochen",
       "tooLarge": "Diese Datei ist größer als 500 MB.",
       "badType": "Bitte wähle ein MP4-, WebM- oder MOV-Video."
-    }
+    },
+    "webSubtitle": "Sorgfältig ausgewählte Hintergrundclips – deine Videos verwenden diese Clips.",
+    "webNote": "Stumme Clips von Natur, Weltall, Moscheen und islamischer Kunst von Pixabay, ausgewählt für Koranvideos. Wähle die Themen auf der Seite „Erstellen“."
   },
   "about": {
     "title": "Info",
@@ -390,7 +402,9 @@
     "phoneTitle": "Auf dem Handy nutzen",
     "phoneText": "Scanne den Code, um das Studio auf einem Handy im selben WLAN wie dieser Computer zu öffnen.",
     "phonePublic": "Scanne den Code, um das Studio auf deinem Handy zu öffnen.",
-    "phoneNone": "Es wurde keine Netzwerkadresse gefunden. Verbinde diesen Computer mit einem WLAN, um das Studio auf deinem Handy zu öffnen."
+    "phoneNone": "Es wurde keine Netzwerkadresse gefunden. Verbinde diesen Computer mit einem WLAN, um das Studio auf deinem Handy zu öffnen.",
+    "webTitle": "Auf deinem Gerät erstellt",
+    "webNote": "Videos entstehen auf deinem Gerät – nichts wird hochgeladen. Sie bleiben in diesem Browser, bis du sie löschst."
   },
   "footer": {
     "text": "Quellen:"
@@ -418,6 +432,12 @@
     "provider_error": "Der Videoanbieter hat nicht geantwortet. Bitte versuche es später erneut.",
     "audio_failed": "Die Hörprobe konnte nicht abgespielt werden.",
     "share_failed": "Teilen hat nicht funktioniert. Lade das Video stattdessen herunter.",
-    "download_failed": "Das Video konnte nicht heruntergeladen werden."
+    "download_failed": "Das Video konnte nicht heruntergeladen werden.",
+    "too_many_ayahs": "Zu viele Verse für ein Video.",
+    "upstream_unavailable": "QuranEnc.com oder EveryAyah.com hat nicht geantwortet. Prüfe deine Verbindung und versuche es erneut.",
+    "interrupted": "Die Seite wurde geschlossen, bevor dieses Video fertig war. Bitte erstelle es erneut.",
+    "not_available_web": "Das ist in der Webversion nicht verfügbar.",
+    "unsupported_browser": "Dieser Browser kann keine Videos erstellen. Bitte nutze Chrome, Edge oder Samsung Internet.",
+    "storage_full": "In diesem Browser ist nicht genug Speicherplatz, um das Video zu speichern. Lösche einige Videos und versuche es erneut."
   }
 }

@@ -1,0 +1,9 @@
+# Cloudflare Worker that serves the Tilawat clip bucket publicly (see README.md).
+name = "tilawat-clips"
+main = "clips-worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[[r2_buckets]]
+binding = "CLIPS"              # name used in clips-worker.js — don't change
+bucket_name = "tilawat-clips"  # must match R2_BUCKET in .env

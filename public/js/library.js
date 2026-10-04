@@ -5,6 +5,7 @@ import { t, tNodes, fmtNumber, fmtDuration, fmtPercent, isRtl, onLanguageChange 
 import { h, fill, toast, showError, confirmDialog, stateBlock, loadingBlock, errorBlock, externalLink } from './ui.js';
 import { icon } from './icons.js';
 import { currentAspect } from './create.js';
+import { WEB_MODE } from './mode.js';
 
 const CATEGORIES = ['nature', 'space', 'mosque', 'islamic'];
 const PROVIDERS = ['pexels', 'pixabay', 'nasa', 'upload'];
@@ -247,8 +248,8 @@ function renderApproved() {
       stateBlock({
         iconName: 'image',
         title: t('library.approvedEmpty.title'),
-        text: t('library.approvedEmpty.text'),
-        action: h(
+        text: WEB_MODE ? null : t('library.approvedEmpty.text'),
+        action: !WEB_MODE && h(
           'div',
           { class: 'state-actions' },
           h('button', { type: 'button', class: 'btn btn-primary', onclick: () => setView('find') }, icon('search'), t('library.findTab')),
@@ -333,6 +334,8 @@ function clipCard(clip, kind) {
     : null;
 
   const card = h('article', { class: 'clip-card' }, media, h('div', { class: 'clip-body' }, h('p', { class: 'clip-title', dir: 'auto', text: title }), credit));
+  // The web version's library is curated and read-only.
+  if (WEB_MODE) return card;
   const actions =
     kind === 'approved'
       ? [h('button', { type: 'button', class: 'btn btn-sm btn-danger', onclick: () => removeApproved(clip) }, icon('trash'), t('common.remove'))]

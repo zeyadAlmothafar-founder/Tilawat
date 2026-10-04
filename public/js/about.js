@@ -4,6 +4,7 @@ import { t, onLanguageChange } from './i18n.js';
 import { h } from './ui.js';
 import { icon } from './icons.js';
 import { qrBlock } from './qr.js';
+import { WEB_MODE } from './mode.js';
 
 let slot;
 let info;
@@ -14,6 +15,7 @@ export function init(section) {
 }
 
 export function show() {
+  if (WEB_MODE) return; // no LAN / QR in the web version (index.html shows a privacy note instead)
   getServerInfo()
     .then((i) => { info = i; })
     .catch(() => { info = null; })

@@ -1,10 +1,11 @@
 // Share modal and QR modal for a finished video.
 import { getServerInfo } from './api.js';
 import { t } from './i18n.js';
-import { h, openModal, showError } from './ui.js';
+import { h, openModal, showError, toast } from './ui.js';
 import { icon } from './icons.js';
-import { linkTargets, targetTile, canShareFiles, wireNativeShare, copyLinkWithToast } from './share-links.js';
+import { linkTargets, targetTile, canShareFiles, wireNativeShare, copyLinkWithToast, copyText } from './share-links.js';
 import { qrBlock, qrCaption } from './qr.js';
+import { WEB_MODE } from './mode.js';
 import { surahNames, rangeLabel, reciterName, videoFileName, shareText, videoFileUrl } from './video-meta.js';
 
 async function serverInfo() {
@@ -33,6 +34,7 @@ function videoHeader(video) {
 }
 
 export async function openShareModal(video) {
+  if (WEB_MODE) return openWebShareModal(video);
   const info = await serverInfo();
   const url = sharePageUrl(info, video);
   const text = shareText(video);
@@ -78,6 +80,58 @@ export async function openShareModal(video) {
 
   if (nativeSupported) {
     cleanup = wireNativeShare(nativeBtn, { url: fileUrl, fileName, title: subject, text: `${text}\n${url}`, onError: showError });
+  }
+}
+
+/**
+ * Web version: the video only exists in this browser, so there are no links or QR codes —
+ * share the file itself, download it, or copy the caption to paste next to it.
+ */
+function openWebShareModal(video) {
+  const text = shareText(video);
+  const fileName = videoFileName(video);
+  const fileUrl = videoFileUrl(video);
+  const subject = t('share.emailSubject', { surah: surahNames(video).primary, app: t('app.name') });
+  const nativeSupported = canShareFiles();
+  const nativeBtn = h('button', { type: 'button', class: 'btn btn-primary btn-lg btn-block' }, icon('share'), h('span', { class: 'btn-label', text: t('share.native') }));
+  const nativeSection = nativeSupported
+    ? h('div', { class: 'share-native' }, nativeBtn, h('p', { class: 'muted small', text: t('share.nativeHint') }))
+    : h('p', { class: 'callout' }, icon('info'), h('span', { text: t('share.unsupportedWeb') }));
+  const downloadTile = h(
+    'a',
+    { class: 'share-target share-download', href: fileUrl, download: fileName },
+    h('span', { class: 'share-target-icon' }, icon('download')),
+    h('span', { class: 'share-target-label', text: t('common.download') }),
+  );
+  const captionTile = h(
+    'button',
+    {
+      type: 'button',
+      class: 'share-target share-copy',
+      onclick: async () => {
+        const ok = await copyText(text);
+        toast(ok ? t('share.captionCopied') : t('share.copyFailed'), { type: ok ? 'success' : 'error' });
+      },
+    },
+    h('span', { class: 'share-target-icon' }, icon('copy')),
+    h('span', { class: 'share-target-label', text: t('share.copyCaption') }),
+  );
+
+  let cleanup = () => {};
+  openModal({
+    title: t('share.title'),
+    className: 'share-modal',
+    onClose: () => cleanup(),
+    content: [
+      videoHeader(video),
+      nativeSection,
+      h('h3', { class: 'subhead', text: t('share.moreTitle') }),
+      h('div', { class: 'share-grid' }, downloadTile, captionTile),
+      h('p', { class: 'share-caption muted small', dir: 'auto', text }),
+    ],
+  });
+  if (nativeSupported) {
+    cleanup = wireNativeShare(nativeBtn, { url: fileUrl, fileName, title: subject, text, onError: showError });
   }
 }
 

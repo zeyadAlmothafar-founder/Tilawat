@@ -13,38 +13,29 @@ import path from 'node:path';
 import { QURAN_CACHE_DIR } from './paths.js';
 import { fetchJson } from './lib/http.js';
 import { httpError } from './lib/errors.js';
-import { getSurah, cleanTranslation } from './quran.js';
+import { getSurah } from './quran.js';
+import { QURANENC_API } from '../shared/translations.js';
+import { withLabels, shortLabel, defaultTafsirFor as sharedDefaultTafsirFor, tafsirDefaults, buildEntries, completeTafsirRows } from '../shared/tafsir.js';
 
-const API = 'https://quranenc.com/api/v1';
+export { shortLabel };
+
+const API = QURANENC_API;
 const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
 const MAX_AYAHS_PER_REQUEST = 300;
 const MEMO_LIMIT = 40;
-const BOOK_ORDER = ['mokhtasar', 'moyassar', 'saadi'];
-const UI_LANGS = ['ar', 'en', 'ur', 'fa', 'fr', 'tr', 'id', 'ms', 'bn', 'es', 'de', 'ru'];
 
 function loadList() {
   try {
     const list = JSON.parse(fs.readFileSync(new URL('./data/tafsirs.json', import.meta.url), 'utf8'));
-    return Object.freeze(list.filter((t) => t?.key && t.title).map((t) => Object.freeze({ ...t, label: shortLabel(t) })));
+    return withLabels(list);
   } catch (err) {
     console.warn(`[tafsir] no tafsir list (run scripts/check-tafsirs.js): ${err.message}`);
     return Object.freeze([]);
   }
 }
 
-// Short book name shown above the commentary in videos, in the edition's script.
-const LABELS = {
-  ar: { mokhtasar: 'المختصر في التفسير', moyassar: 'التفسير الميسر', saadi: 'تفسير السعدي' },
-  // Persian / Urdu / Pashto / Kurdish ... (Arabic script, Persian spelling)
-  arabicScript: { mokhtasar: 'تفسیر المختصر', moyassar: 'تفسیر میسر', saadi: 'تفسیر سعدی' },
-  latin: { mokhtasar: 'Al-Mukhtasar', moyassar: 'At-Tafsir al-Muyassar', saadi: "Tafsir As-Sa'di" },
-};
-const ARABIC_SCRIPT_LANGS = new Set(['fa', 'ur', 'ps', 'ku', 'prs', 'ug', 'kmr']);
-
-export function shortLabel(edition) {
-  const set = edition.languageIso === 'ar' ? LABELS.ar : ARABIC_SCRIPT_LANGS.has(edition.languageIso) ? LABELS.arabicScript : LABELS.latin;
-  return set[edition.book] || edition.title;
-}
+// Short book labels (shortLabel), defaults and grouping live in shared/tafsir.js (also used
+// by the web build).
 
 const TAFSIRS = loadList();
 
@@ -61,79 +52,17 @@ export function getTafsirEdition(key) {
 
 /** Best tafsir for a UI language (Al-Mukhtasar first, then Al-Muyassar, then As-Sa'di), or null. */
 export function defaultTafsirFor(uiLang) {
-  const lang = String(uiLang ?? '').toLowerCase().split(/[-_]/)[0];
-  const options = TAFSIRS.filter((t) => t.languageIso === lang);
-  options.sort((a, b) => BOOK_ORDER.indexOf(a.book) - BOOK_ORDER.indexOf(b.book));
-  return options[0]?.key ?? null;
+  return sharedDefaultTafsirFor(TAFSIRS, uiLang);
 }
 
 function defaultsByLanguage() {
-  return Object.fromEntries(UI_LANGS.map((lang) => [lang, defaultTafsirFor(lang)]));
+  return tafsirDefaults(TAFSIRS);
 }
 
 // ---------------------------------------------------------------------------
 // Surah texts
 
 const memo = new Map(); // `${key}/${surah}` → Promise<entries[]> (index = ayah - 1)
-
-const DIGIT = '0-9٠-٩۰-۹०-९০-৯';
-const DIGIT_ZEROS = [0x30, 0x660, 0x6f0, 0x966, 0x9e6];
-// "255. ", "3 - 4 - ", "(5) ", "3-4: ", "1、" at the start of the commentary.
-const LEADING_RANGE = new RegExp(
-  String.raw`^\s*\(?([${DIGIT}]+)\)?\s*(?:[-–]\s*\(?([${DIGIT}]+)\)?\s*)?(?:[.:\-–)、，．]\s*|\s+)`,
-  'u',
-);
-
-function digitsValue(text) {
-  let value = 0;
-  for (const ch of text) {
-    const code = ch.codePointAt(0);
-    value = value * 10 + (code - DIGIT_ZEROS.find((z) => code >= z && code <= z + 9));
-  }
-  return value;
-}
-
-/** Display text: the ayah number(s) prefixed by some editions and footnote markers removed. */
-function cleanTafsir(raw, footnotes, start, end, surah) {
-  let text = String(raw ?? '');
-  const m = text.match(LEADING_RANGE);
-  if (m) {
-    const a = digitsValue(m[1]);
-    const b = m[2] === undefined ? a : digitsValue(m[2]);
-    if (a >= start - 1 && a <= end && b >= a && b <= end + 1 && m[0].length < text.length) text = text.slice(m[0].length);
-  }
-  return cleanTranslation(text, footnotes, end, surah) || '';
-}
-
-const sameText = (a, b) => a.replace(/\s+/g, ' ').trim() === b.replace(/\s+/g, ' ').trim();
-
-/** QuranEnc rows → per-ayah entries with groups merged. */
-function buildEntries(rows, ayahCount, surah) {
-  const groups = [];
-  let pendingStart = null; // empty entries before the first text join the next group
-  for (let ayah = 1; ayah <= ayahCount; ayah++) {
-    const row = rows.get(ayah);
-    const raw = String(row.translation ?? '');
-    const last = groups[groups.length - 1];
-    if (!raw.trim()) {
-      if (last) last.end = ayah;
-      else pendingStart ??= ayah;
-    } else if (last && sameText(last.raw, raw)) {
-      last.end = ayah;
-    } else {
-      groups.push({ start: pendingStart ?? ayah, end: ayah, raw, footnotes: row.footnotes ? String(row.footnotes) : null });
-      pendingStart = null;
-    }
-  }
-  const entries = [];
-  for (const g of groups) {
-    const text = cleanTafsir(g.raw, g.footnotes, g.start, g.end, surah);
-    for (let ayah = g.start; ayah <= g.end; ayah++) {
-      entries.push({ ayah, text, textRaw: g.raw, groupStart: g.start, groupEnd: g.end });
-    }
-  }
-  return entries;
-}
 
 async function fetchSurah(key, surah) {
   const { ayahCount } = await getSurah(surah);
@@ -144,11 +73,8 @@ async function fetchSurah(key, surah) {
   } catch (err) {
     throw httpError(502, 'upstream_unavailable', `Could not load the tafsir of surah ${surah} (${key}) from QuranEnc (${err.message})`);
   }
-  const rows = new Map((Array.isArray(data?.result) ? data.result : []).map((row) => [Number(row.aya), row]));
-  let complete = rows.size === ayahCount;
-  for (let a = 1; complete && a <= ayahCount; a++) if (!rows.has(a)) complete = false;
-  const filled = [...rows.values()].filter((r) => String(r.translation ?? '').trim()).length;
-  if (!complete || !filled) {
+  const rows = completeTafsirRows(data, ayahCount);
+  if (!rows) {
     await fsp.rm(cacheFile, { force: true }); // never keep a bad response cached
     throw httpError(502, 'upstream_unavailable', `QuranEnc returned incomplete tafsir data for surah ${surah} (${key})`);
   }

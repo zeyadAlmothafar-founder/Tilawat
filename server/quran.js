@@ -7,36 +7,20 @@ import path from 'node:path';
 import { QURAN_CACHE_DIR } from './paths.js';
 import { fetchJson } from './lib/http.js';
 import { httpError } from './lib/errors.js';
+import {
+  QURANENC_API, ARABIC_SOURCE, DEFAULT_TRANSLATIONS, filterTranslations, cleanTranslation,
+  defaultTranslationFor as sharedDefaultTranslationFor,
+} from '../shared/translations.js';
 
-const API = 'https://quranenc.com/api/v1';
+export { cleanTranslation };
+
+const API = QURANENC_API;
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 const MAX_AYAHS_PER_REQUEST = 300;
 const MEMO_LIMIT = 60; // parsed surah texts kept in memory
 
-// Arabic always comes from one canonical translation so it never varies with the chosen
-// translation (QuranEnc's arabic_text was verified identical across all translation keys).
-const ARABIC_SOURCE = 'english_saheeh';
-
-// Default translation per UI language (all verified to exist on QuranEnc).
-const DEFAULT_TRANSLATIONS = Object.freeze({
-  en: 'english_saheeh', // Saheeh International (Noor International Center)
-  ar: null,
-  ur: 'urdu_junagarhi', // Muhammad Junagarhi
-  fa: 'persian_ih', // Rowwad Translation Center
-  fr: 'french_hameedullah', // Muhammad Hamidullah
-  tr: 'turkish_shahin', // Ali Özek et al.
-  id: 'indonesian_affairs', // Indonesian Ministry of Religious Affairs
-  ms: 'malay_basumayyah', // Abdullah Basumayyah
-  bn: 'bengali_zakaria', // Abu Bakr Zakaria
-  es: 'spanish_garcia', // Isa Garcia
-  de: 'german_bubenheim', // Bubenheim & Elyas
-  ru: 'russian_rwwad', // Rowwad Translation Center (Kuliev is not on QuranEnc)
-});
-
-// Listed by QuranEnc but unsuitable for short videos: tafsir (commentary) editions, editions
-// that are unfinished (mostly empty ayat) and one that mixes in commentary and Arabic verses.
-const TAFSIR_KEY = /_(saadi|moyassar|mokhtasar)$/;
-const UNSUITABLE = new Set(['english_waleed', 'circassian_rwwad', 'kurdish_salahuddin']);
+// ARABIC_SOURCE, the default translation per UI language and the list filtering live in
+// shared/translations.js (also used by the web build).
 
 const SURAHS = deepFreeze(JSON.parse(fs.readFileSync(new URL('./data/surahs.json', import.meta.url), 'utf8')));
 
@@ -64,17 +48,6 @@ export async function getSurah(number) {
 let translationsMemo = null; // { at, promise }
 let translationsLoaded = null; // last successfully loaded list (for sync lookups)
 
-function toTranslation(t) {
-  return {
-    key: t.key,
-    languageIso: t.language_iso_code,
-    title: t.title,
-    description: typeof t.description === 'string' ? t.description : '',
-    version: t.version,
-    direction: t.direction === 'rtl' ? 'rtl' : 'ltr',
-  };
-}
-
 async function loadTranslations() {
   let data;
   try {
@@ -86,11 +59,8 @@ async function loadTranslations() {
   } catch (err) {
     throw httpError(502, 'upstream_unavailable', `Could not load translations from QuranEnc (${err.message})`);
   }
-  if (!Array.isArray(data?.translations)) throw httpError(502, 'upstream_unavailable', 'Unexpected QuranEnc response');
-  const list = data.translations
-    .filter((t) => typeof t.key === 'string' && typeof t.title === 'string' && t.title.trim())
-    .filter((t) => !TAFSIR_KEY.test(t.key) && !UNSUITABLE.has(t.key) && !/in progress/i.test(t.title))
-    .map(toTranslation);
+  const list = filterTranslations(data);
+  if (!list) throw httpError(502, 'upstream_unavailable', 'Unexpected QuranEnc response');
   translationsLoaded = list;
   return list;
 }
@@ -113,14 +83,8 @@ async function findTranslation(key) {
 }
 
 export function defaultTranslationFor(uiLang) {
-  const lang = String(uiLang ?? '').toLowerCase().split(/[-_]/)[0];
-  if (!Object.hasOwn(DEFAULT_TRANSLATIONS, lang)) return null;
-  const key = DEFAULT_TRANSLATIONS[lang];
   // If QuranEnc ever drops a default, fall back to another translation in that language.
-  if (key && translationsLoaded && !translationsLoaded.some((t) => t.key === key)) {
-    return translationsLoaded.find((t) => t.languageIso === lang)?.key ?? null;
-  }
-  return key;
+  return sharedDefaultTranslationFor(uiLang, translationsLoaded);
 }
 
 function defaultsByLanguage() {
@@ -169,57 +133,7 @@ function loadSurahText(key, surah) {
   return surahMemo.get(id);
 }
 
-// ---------------------------------------------------------------------------
-// Translation clean-up
-
-// Decimal digits used by QuranEnc translations: ASCII, Arabic-Indic, Persian, Devanagari, Bengali.
-const DIGIT = '0-9\u0660-\u0669\u06F0-\u06F9\u0966-\u096F\u09E6-\u09EF';
-const DIGIT_ZEROS = [0x30, 0x660, 0x6f0, 0x966, 0x9e6];
-// "[4]" / "[১]" (always a footnote reference) or "(১)" (only when the footnotes use that label).
-const MARKER = new RegExp(String.raw`\s*(?:\[\s*([${DIGIT}]+)\s*\]|\(\s*([${DIGIT}]+)\s*\))\s*`, 'gu');
-const FOOTNOTE_LABEL = new RegExp(String.raw`[\[(]\s*([${DIGIT}]+)\s*[\])]|(?:^|\n)\s*([${DIGIT}]+)[\s.)]`, 'gu');
-// "3. ", "3-", "(3) ", "3 " or "2-3 " (surah-ayah) at the start of the text.
-const LEADING_NUMBER = new RegExp(String.raw`^\s*\(?(?:([${DIGIT}]+)\s*[-:]\s*)?([${DIGIT}]+)\s*[.:)\-–]?\s*`, 'u');
-const TRAILING_NUMBER = new RegExp(String.raw`\s*\(\s*([${DIGIT}]+)\s*\)(?=[\s.]*$)`, 'u');
-const CLOSING_PUNCT = /[,.;:!?…)\]}»”’،؛؟۔।。、，；：！？」』）]/u;
-
-function digitsValue(text) {
-  let value = 0;
-  for (const ch of text) {
-    const code = ch.codePointAt(0);
-    const zero = DIGIT_ZEROS.find((z) => code >= z && code <= z + 9);
-    value = value * 10 + (code - zero);
-  }
-  return value;
-}
-
-function footnoteLabels(footnotes) {
-  const labels = new Set();
-  for (const [, bracketed, bare] of (footnotes || '').matchAll(FOOTNOTE_LABEL)) labels.add(digitsValue(bracketed ?? bare));
-  return labels;
-}
-
-/**
- * Display text for a translation: footnote reference markers removed ("Lord[4] of" → "Lord of";
- * editorial brackets like "[All] praise" are kept), the ayah number some translations prefix
- * ("3. Who believe…", "2-3 …") or suffix ("…(3)") removed, and whitespace collapsed.
- */
-export function cleanTranslation(raw, footnotes, ayah, surah) {
-  if (typeof raw !== 'string') return null;
-  const labels = footnoteLabels(footnotes);
-  let text = raw.replace(MARKER, (match, square, paren, offset, whole) => {
-    if (paren !== undefined && !labels.has(digitsValue(paren))) return match;
-    const next = whole.charAt(offset + match.length);
-    if (!next || CLOSING_PUNCT.test(next)) return '';
-    return /\s/.test(match) ? ' ' : ''; // keep word spacing; glued CJK markers vanish
-  });
-  const lead = text.match(LEADING_NUMBER);
-  const leadMatches = lead && digitsValue(lead[2]) === ayah && (lead[1] === undefined || digitsValue(lead[1]) === surah);
-  if (leadMatches && lead[0].length < text.length) text = text.slice(lead[0].length);
-  const trail = text.match(TRAILING_NUMBER);
-  if (trail && digitsValue(trail[1]) === ayah) text = text.slice(0, trail.index) + text.slice(trail.index + trail[0].length);
-  return text.replace(/\s+/g, ' ').trim();
-}
+// Translation clean-up: cleanTranslation() lives in shared/translations.js (re-exported above).
 
 // ---------------------------------------------------------------------------
 // Ayahs

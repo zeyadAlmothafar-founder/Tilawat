@@ -4,20 +4,8 @@
 // in "Fontsize units": average advance per base character (marks excluded) measured
 // with a libass bounding-box calibration, line advance = 1.0.
 
-export const OUTPUT_SIZES = {
-  '9:16': { 1080: [1080, 1920], 720: [720, 1280] },
-  '16:9': { 1080: [1920, 1080], 720: [1280, 720] },
-  '1:1': { 1080: [1080, 1080], 720: [720, 720] },
-};
-
-export function outputSize(aspect, quality) {
-  const [width, height] = OUTPUT_SIZES[aspect][quality];
-  return { width, height };
-}
-
-export function orientationOf(aspect) {
-  return aspect === '9:16' ? 'portrait' : aspect === '16:9' ? 'landscape' : 'square';
-}
+// Output sizes and orientation are shared with the web build.
+export { OUTPUT_SIZES, outputSize, orientationOf } from '../../shared/render-rules.js';
 
 // em per base char (calibrated) and a size factor that makes fonts look equally large.
 const METRICS = {

@@ -8,9 +8,11 @@
   "scripts": {
     "start": "node --env-file-if-exists=.env server/index.js",
     "dev": "node --watch --env-file-if-exists=.env server/index.js",
-    "test": "node scripts/test-filter.js && node scripts/test-provider-shapes.js && node scripts/check-i18n.js --strict",
+    "test": "node scripts/test-filter.js && node scripts/test-provider-shapes.js && node scripts/test-web-api.js && node scripts/check-i18n.js --strict",
     "test:online": "node scripts/test-quran.js && node scripts/test-pick-clips.js",
-    "smoke": "node scripts/smoke-test.js"
+    "smoke": "node scripts/smoke-test.js",
+    "build:web": "node web/build.js",
+    "serve:web": "node web/serve.js"
   },
   "engines": {
     "node": ">=22.9"

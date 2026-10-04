@@ -210,6 +210,10 @@
       "tooManyVideos": "That would be {count} videos — up to {max} can be created at once.",
       "noReciter": "Choose a reciter.",
       "noCategory": "Choose at least one background theme."
+    },
+    "web": {
+      "limits": "Web version: up to {ayat} ayat per video and {videos} videos at a time. Videos are made on this device.",
+      "unsupported": "This browser can't make videos. Please use Chrome, Edge or Samsung Internet on Android or a computer."
     }
   },
   "videos": {
@@ -255,7 +259,9 @@
     "deleted": "Video deleted",
     "canceled": "Rendering canceled",
     "readyLive": "{title} is ready",
-    "failedLive": "{title} could not be rendered"
+    "failedLive": "{title} could not be rendered",
+    "webNote": "Your videos are made and saved in this browser, on this device — nothing is uploaded. Download the ones you want to keep: clearing your browsing data deletes them.",
+    "keepOpen": "Keep this page open while your videos are being made."
   },
   "share": {
     "title": "Share video",
@@ -285,7 +291,11 @@
       "alt": "QR code for {url}",
       "captionLan": "Scan with your phone's camera to open the video, then save or share it from your phone. Your phone needs to be on the same Wi-Fi network as this computer.",
       "captionPublic": "Scan with your phone's camera to open the video, then save or share it from your phone."
-    }
+    },
+    "unsupportedWeb": "This browser can't share video files directly. Download the video, then share it from your gallery or app.",
+    "copyCaption": "Copy caption",
+    "captionCopied": "Caption copied",
+    "moreTitle": "More options"
   },
   "sharePage": {
     "loading": "Loading video…",
@@ -370,7 +380,9 @@
       "canceled": "Upload canceled",
       "tooLarge": "This file is larger than 500 MB.",
       "badType": "Please choose an MP4, WebM or MOV video."
-    }
+    },
+    "webSubtitle": "Hand-picked background footage — your videos use these clips.",
+    "webNote": "Silent clips of nature, space, mosques and Islamic art from Pixabay, chosen for Quran videos. Pick the themes on the Create page."
   },
   "about": {
     "title": "About",
@@ -390,7 +402,9 @@
     "phoneTitle": "Use it on your phone",
     "phoneText": "Scan to open the studio on a phone connected to the same Wi-Fi network as this computer.",
     "phonePublic": "Scan to open the studio on your phone.",
-    "phoneNone": "No network address was found. Connect this computer to Wi-Fi to open the studio from your phone."
+    "phoneNone": "No network address was found. Connect this computer to Wi-Fi to open the studio from your phone.",
+    "webTitle": "Made on your device",
+    "webNote": "Videos are made on your device — nothing is uploaded. They stay in this browser until you delete them."
   },
   "footer": {
     "text": "Sources:"
@@ -418,6 +432,12 @@
     "provider_error": "The footage provider didn't respond. Please try again later.",
     "audio_failed": "Couldn't play the recitation preview.",
     "share_failed": "Sharing didn't work. Try downloading the video instead.",
-    "download_failed": "Couldn't download the video."
+    "download_failed": "Couldn't download the video.",
+    "too_many_ayahs": "Too many ayat for one video.",
+    "upstream_unavailable": "QuranEnc.com or EveryAyah.com didn't respond. Check your connection and try again.",
+    "interrupted": "The page was closed before this video was finished. Please create it again.",
+    "not_available_web": "This isn't available in the web version.",
+    "unsupported_browser": "This browser can't make videos. Please use Chrome, Edge or Samsung Internet.",
+    "storage_full": "There isn't enough space in this browser to save the video. Delete some videos and try again."
   }
 }

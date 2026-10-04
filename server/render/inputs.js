@@ -4,6 +4,8 @@
 import path from 'node:path';
 import { OUTPUT_DIR, TMP_DIR } from '../paths.js';
 import { outputSize, orientationOf } from './layout.js';
+import { wantsBismillah } from '../../shared/render-rules.js';
+import { tafsirCardsFor } from '../../shared/tafsir.js';
 import { LEAD_IN, TAIL } from './audio.js';
 import { mapLimit } from './util.js';
 import { estimateTafsirSeconds } from './cards.js';
@@ -18,7 +20,7 @@ export const sourcesModule = lazy('../sources/index.js');
 export const tafsirModule = lazy('../tafsir.js');
 
 /** Bismillah is recited before ayah 1 of every surah except Al-Fatihah (where it is ayah 1) and At-Tawbah. */
-export const wantsBismillah = (req) => req.bismillah && req.from === 1 && req.surah !== 1 && req.surah !== 9;
+export { wantsBismillah };
 
 /**
  * record → pipeline spec (see renderVideo). `onProgress(stage, fraction)` reports the
@@ -51,10 +53,9 @@ export async function buildSpec(record, { signal, onProgress = () => {} } = {}) 
   if (tafsirRows) {
     const edition = (await tafsirModule()).getTafsirEdition(req.tafsir);
     tafsir = { key: edition.key, title: edition.title, languageIso: edition.languageIso, direction: edition.direction, book: edition.book, label: edition.label };
+    const cards = tafsirCardsFor(tafsirRows, req.from, req.to);
     tafsirRows.forEach((row, i) => {
-      if (row.text && (row.ayah === row.groupEnd || row.ayah === req.to)) {
-        ayahs[i].tafsir = { text: row.text, groupStart: Math.max(row.groupStart, req.from), groupEnd: Math.min(row.groupEnd, req.to) };
-      }
+      if (cards.has(row.ayah)) ayahs[i].tafsir = cards.get(row.ayah);
     });
   }
 

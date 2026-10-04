@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Render test</title>
+<style>
+  :root { color-scheme: dark; }
+  body { background: #111; color: #eee; font: 14px/1.4 system-ui, sans-serif; margin: 12px; }
+  pre { white-space: pre-wrap; font-size: 12px; }
+  progress { width: 100%; }
+  video, img { max-width: 320px; max-height: 480px; border: 1px solid #444; margin: 4px; vertical-align: top; }
+  code { color: #e2c27a; }
+</style>
+<h1 style="font-size:16px">Browser renderer test</h1>
+<p>Query: <code>surah, from, to, aspect (9:16|16:9|1:1), q (1080|720), size (small|balanced|high), tr (key|none), taf (key),
+reciter, font (amiri|scheherazade), pos (center|lower), scale, overlay, bism=1, clips (N|none), rend (tiny|small|medium),
+credits (minimal|full|none), cancelAt (seconds of wall time), name, auto=0</code></p>
+<button id="go">Render</button> <button id="cancel">Cancel</button>
+<progress id="bar" max="1" value="0"></progress>
+<div id="stage"></div>
+<pre id="log"></pre>
+<div id="out"></div>
+<script type="module">
+import { canRender, renderVideo } from '/js/web/render/index.js';
+
+const qs = new URLSearchParams(location.search);
+const P = (k, d) => (qs.has(k) ? qs.get(k) : d);
+const logEl = document.getElementById('log');
+const t0 = performance.now();
+const log = (m) => {
+  const line = `[${((performance.now() - t0) / 1000).toFixed(1)}s] ${m}`;
+  logEl.textContent += line + '\n';
+  console.log(line);
+};
+window.__result = { status: 'idle' };
+
+const OPEN_TANWEEN = { 'ٗ': 'ࣰ', 'ٞ': 'ࣱ', 'ٖ': 'ࣲ' };
+const display = (t) => String(t ?? '').replace(/[ٖٗٞ]/g, (c) => OPEN_TANWEEN[c]);
+const cleanTr = (t) => String(t ?? '').replace(/\[\d+\]/g, '').replace(/^\s*[\(\[]?\d+[\)\].]\s*/, '').replace(/\s+/g, ' ').trim();
+const LABELS = { mokhtasar: 'Al-Mukhtasar', moyassar: 'التفسير الميسر', saadi: 'تفسير السعدي' };
+
+async function json(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
+  return r.json();
+}
+const sura = (key, s) => json(`https://quranenc.com/api/v1/translation/sura/${key}/${s}`).then((d) => d.result);
+
+async function buildJob() {
+  const surahN = +P('surah', 1);
+  const from = +P('from', 1);
+  const to = +P('to', 7);
+  const aspect = P('aspect', '9:16');
+  const q = P('q', '1080');
+  const sizes = { '9:16': { 1080: [1080, 1920], 720: [720, 1280] }, '16:9': { 1080: [1920, 1080], 720: [1280, 720] }, '1:1': { 1080: [1080, 1080], 720: [720, 720] } };
+  const [width, height] = sizes[aspect][q];
+  const trKey = P('tr', 'english_saheeh');
+  const tafKey = P('taf', '');
+  const reciterId = P('reciter', 'Alafasy_128kbps');
+  const [surahs, reciters, tafsirs, library] = await Promise.all([
+    json('/data/surahs.json'), json('/data/reciters.json'), json('/data/tafsirs.json'), json('/data/starter-library.json'),
+  ]);
+  const surah = surahs.find((s) => s.number === surahN);
+  const reciter = reciters.find((r) => r.id === reciterId);
+  const rows = await sura(trKey === 'none' ? 'english_saheeh' : trKey, surahN);
+  const tafRows = tafKey ? await sura(tafKey, surahN) : null;
+  const pad = (n) => String(n).padStart(3, '0');
+  const items = [];
+  if (P('bism', '0') === '1' && from === 1 && surahN !== 1 && surahN !== 9) {
+    const f = await sura(trKey === 'none' ? 'english_saheeh' : trKey, 1);
+    items.push({ kind: 'bismillah', ayah: null, arabic: display(f[0].arabic_text), translation: trKey === 'none' ? null : cleanTr(f[0].translation), audioUrl: `https://everyayah.com/data/${reciterId}/001001.mp3`, tafsirText: null });
+  }
+  for (const r of rows.filter((r) => +r.aya >= from && +r.aya <= to)) {
+    const taf = tafRows?.find((t) => +t.aya === +r.aya);
+    items.push({
+      kind: 'ayah', ayah: +r.aya, arabic: display(r.arabic_text),
+      translation: trKey === 'none' ? null : cleanTr(r.translation),
+      audioUrl: `https://everyayah.com/data/${reciterId}/${pad(surahN)}${pad(+r.aya)}.mp3`,
+      tafsirText: taf ? cleanTr(taf.translation) || null : null,
+    });
+  }
+  const orientation = aspect === '9:16' ? 'portrait' : 'landscape';
+  const rend = P('rend', q === '1080' ? 'small' : 'tiny');
+  const nClips = P('clips', '3') === 'none' ? 0 : +P('clips', '3');
+  const offset = +P('clipOffset', 0);
+  const src = P('src', 'starter'); // starter (Pixabay CDN renditions) | r2 (W3 local segments) | manifest (web/clips.json via /data? no: pixabay-direct)
+  let clips;
+  if (src === 'r2') {
+    const man = await json('/clips/clips.r2.json');
+    const pool = man.clips.filter((c) => c.orientation === orientation);
+    clips = Array.from({ length: Math.min(nClips, pool.length) }, (_, i) => pool[(i + offset) % pool.length]).map((c) => {
+      const seg = c.segments.find((s) => s.res === q) || c.segments[0];
+      return { url: new URL(seg.url, `${location.origin}/clips/`).href, width: seg.width, height: seg.height, duration: seg.duration, provider: c.provider, author: c.author };
+    });
+  } else {
+    const pool = library.clips.filter((c) => c.orientation === orientation);
+    clips = Array.from({ length: Math.min(nClips, pool.length) }, (_, i) => pool[(i + offset) % pool.length]).map((c) => ({
+      url: c.downloadUrl.replace('_medium.mp4', `_${rend}.mp4`), width: c.width, height: c.height, duration: c.duration, provider: c.provider, author: c.author,
+    }));
+  }
+  const trInfo = trKey === 'none' ? null : { key: trKey, languageIso: P('lang', trKey.startsWith('urdu') ? 'ur' : trKey.startsWith('chinese') ? 'zh' : trKey.split('_')[0].slice(0, 2)), direction: trKey.startsWith('urdu') ? 'rtl' : 'ltr', version: '1.0', title: trKey };
+  const tafMeta = tafKey ? tafsirs.find((t) => t.key === tafKey) : null;
+  const tafInfo = tafMeta ? { key: tafMeta.key, languageIso: tafMeta.languageIso, direction: tafMeta.direction, title: tafMeta.title, label: LABELS[tafMeta.book] || tafMeta.book } : null;
+  const credits = P('credits', 'minimal');
+  const label = trInfo && tafInfo ? 'Translation & tafsir' : trInfo ? 'Translation' : tafInfo ? 'Tafsir' : 'Quran text';
+  let credit = credits === 'none' ? '' : `${label}: QuranEnc.com${trInfo ? ' (v1.0)' : ''}`;
+  if (credits === 'full') {
+    credit = [`Quran text${trInfo ? ' & translation' : ''}: QuranEnc.com`, 'Recitation: EveryAyah.com', clips.length ? `Footage: Pixabay – ${[...new Set(clips.map((c) => c.author))].slice(0, 3).join(', ')}` : null].filter(Boolean).join('  ·  ');
+    if (tafInfo) credit += `\nTafsir: ${tafInfo.title} (QuranEnc.com)`;
+  }
+  return {
+    id: P('name', 'test'), aspect, width, height, fps: 30, fileSize: P('size', 'balanced'),
+    style: {
+      arabicFont: P('font', 'amiri'), textScale: +P('scale', 1), position: P('pos', 'center'), overlay: +P('overlay', 0.45),
+      showSurahTitle: P('title', '1') === '1', showReciter: P('showReciter', '1') === '1', credits,
+    },
+    surah: { number: surah.number, nameAr: surah.nameAr, nameEn: surah.nameEn },
+    reciter: { id: reciter.id, nameEn: reciter.nameEn, nameAr: reciter.nameAr },
+    translation: trInfo, tafsir: tafInfo, items, clips, credit,
+    debug: { forceWasmAac: P('wasmAac', '0') === '1', canvasMode: P('canvas', '') || undefined },
+  };
+}
+
+async function save(name, blob) {
+  const r = await fetch(`/__save?name=${encodeURIComponent(name)}`, { method: 'POST', body: blob });
+  return r.json();
+}
+
+let controller = null;
+async function run() {
+  controller = new AbortController();
+  window.__result = { status: 'running' };
+  const name = P('name', 'test');
+  try {
+    const caps = await canRender();
+    log(`canRender: ${JSON.stringify(caps)}`);
+    const job = await buildJob();
+    log(`job: ${job.items.length} items, ${job.clips.length} clips, ${job.width}x${job.height}, ${job.fileSize}`);
+    const cancelAt = P('cancelAt', '');
+    if (cancelAt) setTimeout(() => { log('>>> cancel'); controller.abort(); }, +cancelAt * 1000);
+    let lastStage = '';
+    const stages = {};
+    const started = performance.now();
+    const res = await renderVideo(job, {
+      signal: controller.signal,
+      forceMainThread: P('main', '0') === '1',
+      onProgress: (stage, f) => {
+        document.getElementById('bar').value = f;
+        document.getElementById('stage').textContent = `${stage} ${(f * 100).toFixed(1)}%`;
+        window.__progress = { stage, f, at: (performance.now() - started) / 1000, hidden: document.hidden };
+        if (stage !== lastStage) { stages[stage] = ((performance.now() - started) / 1000).toFixed(1); log(`stage ${stage}`); lastStage = stage; }
+      },
+    });
+    const { blob, thumbBlob, ...info } = res;
+    log(`done: ${info.duration.toFixed(2)} s video, ${(info.sizeBytes / 1e6).toFixed(2)} MB, ${info.wallSeconds.toFixed(1)} s wall → ${info.speed.toFixed(2)}x realtime (${info.mode}, aac ${info.aac})`);
+    const saved = await save(`${name}.mp4`, blob);
+    if (thumbBlob) await save(`${name}.jpg`, thumbBlob);
+    await save(`${name}.json`, new Blob([JSON.stringify({ ...info, stages, job: { ...job, items: job.items.length } }, null, 1)]));
+    const v = Object.assign(document.createElement('video'), { src: URL.createObjectURL(blob), controls: true, muted: true });
+    const img = Object.assign(document.createElement('img'), { src: thumbBlob ? URL.createObjectURL(thumbBlob) : '' });
+    document.getElementById('out').append(v, img);
+    window.__result = { status: 'done', file: saved.file, duration: info.duration, mb: +(info.sizeBytes / 1e6).toFixed(2), speed: +info.speed.toFixed(2), wall: +info.wallSeconds.toFixed(1), mode: info.mode, aac: info.aac, timings: info.timings, stages, failedFonts: info.failedFonts };
+  } catch (err) {
+    log(`ERROR ${err.name}: ${err.message}\n${err.workerStack || err.stack || ''}`);
+    window.__result = { status: err.name === 'AbortError' ? 'canceled' : 'error', name: err.name, message: err.message, stack: err.workerStack || err.stack };
+  }
+}
+document.getElementById('go').onclick = run;
+document.getElementById('cancel').onclick = () => controller?.abort();
+if (P('auto', '1') === '1') run();
+</script>
+</html>

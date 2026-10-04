@@ -210,6 +210,10 @@
       "tooManyVideos": "Bu, {count} video demek — tek seferde en fazla {max} video oluşturulabilir.",
       "noReciter": "Bir kâri seçin.",
       "noCategory": "En az bir arka plan teması seçin."
+    },
+    "web": {
+      "limits": "Web sürümü: video başına en fazla {ayat} ayet ve tek seferde {videos} video. Videolar bu cihazda oluşturulur.",
+      "unsupported": "Bu tarayıcı video oluşturamıyor. Lütfen Android'de ya da bilgisayarda Chrome, Edge veya Samsung Internet kullanın."
     }
   },
   "videos": {
@@ -255,7 +259,9 @@
     "deleted": "Video silindi",
     "canceled": "Oluşturma iptal edildi",
     "readyLive": "{title} hazır",
-    "failedLive": "{title} oluşturulamadı"
+    "failedLive": "{title} oluşturulamadı",
+    "webNote": "Videolarınız bu tarayıcıda, bu cihazda oluşturulur ve saklanır — hiçbir şey yüklenmez. Saklamak istediklerinizi indirin: tarama verilerini temizlemek onları siler.",
+    "keepOpen": "Videolarınız oluşturulurken bu sayfayı açık tutun."
   },
   "share": {
     "title": "Videoyu paylaş",
@@ -285,7 +291,11 @@
       "alt": "{url} için QR kodu",
       "captionLan": "Videoyu açmak için telefonunuzun kamerasıyla tarayın, ardından telefonunuzdan kaydedin veya paylaşın. Telefonunuz bu bilgisayarla aynı Wi-Fi ağına bağlı olmalıdır.",
       "captionPublic": "Videoyu açmak için telefonunuzun kamerasıyla tarayın, ardından telefonunuzdan kaydedin veya paylaşın."
-    }
+    },
+    "unsupportedWeb": "Bu tarayıcı video dosyalarını doğrudan paylaşamıyor. Videoyu indirin, ardından galerinizden veya uygulamadan paylaşın.",
+    "copyCaption": "Açıklamayı kopyala",
+    "captionCopied": "Açıklama kopyalandı",
+    "moreTitle": "Diğer seçenekler"
   },
   "sharePage": {
     "loading": "Video yükleniyor…",
@@ -370,7 +380,9 @@
       "canceled": "Yükleme iptal edildi",
       "tooLarge": "Bu dosya 500 MB'tan büyük.",
       "badType": "Lütfen MP4, WebM veya MOV biçiminde bir video seçin."
-    }
+    },
+    "webSubtitle": "Özenle seçilmiş arka plan görüntüleri — videolarınız bu klipleri kullanır.",
+    "webNote": "Kur'an videoları için seçilmiş, Pixabay'den doğa, uzay, cami ve İslam sanatına ait sessiz klipler. Temaları Oluştur sayfasında seçin."
   },
   "about": {
     "title": "Hakkında",
@@ -390,7 +402,9 @@
     "phoneTitle": "Telefonunuzda kullanın",
     "phoneText": "Stüdyoyu bu bilgisayarla aynı Wi-Fi ağına bağlı bir telefonda açmak için tarayın.",
     "phonePublic": "Stüdyoyu telefonunuzda açmak için tarayın.",
-    "phoneNone": "Ağ adresi bulunamadı. Stüdyoyu telefonunuzdan açmak için bu bilgisayarı Wi-Fi ağına bağlayın."
+    "phoneNone": "Ağ adresi bulunamadı. Stüdyoyu telefonunuzdan açmak için bu bilgisayarı Wi-Fi ağına bağlayın.",
+    "webTitle": "Cihazınızda oluşturulur",
+    "webNote": "Videolar cihazınızda oluşturulur — hiçbir şey yüklenmez. Siz silene kadar bu tarayıcıda kalırlar."
   },
   "footer": {
     "text": "Kaynaklar:"
@@ -418,6 +432,12 @@
     "provider_error": "Görüntü sağlayıcısı yanıt vermedi. Lütfen daha sonra tekrar deneyin.",
     "audio_failed": "Tilavet önizlemesi oynatılamadı.",
     "share_failed": "Paylaşım başarısız oldu. Bunun yerine videoyu indirmeyi deneyin.",
-    "download_failed": "Video indirilemedi."
+    "download_failed": "Video indirilemedi.",
+    "too_many_ayahs": "Bir video için çok fazla ayet var.",
+    "upstream_unavailable": "QuranEnc.com veya EveryAyah.com yanıt vermedi. Bağlantınızı kontrol edip tekrar deneyin.",
+    "interrupted": "Bu video tamamlanmadan sayfa kapatıldı. Lütfen videoyu yeniden oluşturun.",
+    "not_available_web": "Bu özellik web sürümünde kullanılamıyor.",
+    "unsupported_browser": "Bu tarayıcı video oluşturamıyor. Lütfen Chrome, Edge veya Samsung Internet kullanın.",
+    "storage_full": "Videoyu kaydetmek için bu tarayıcıda yeterli alan yok. Birkaç videoyu silip tekrar deneyin."
   }
 }

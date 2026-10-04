@@ -217,6 +217,10 @@
       "tooManyVideos": "Cela ferait {count} vidéos — {max} au maximum peuvent être créées à la fois.",
       "noReciter": "Choisissez un récitateur.",
       "noCategory": "Choisissez au moins un thème d'arrière-plan."
+    },
+    "web": {
+      "limits": "Version web : jusqu'à {ayat} versets par vidéo et {videos} vidéos à la fois. Les vidéos sont créées sur cet appareil.",
+      "unsupported": "Ce navigateur ne peut pas créer de vidéos. Utilisez Chrome, Edge ou Samsung Internet sur Android ou sur un ordinateur."
     }
   },
   "videos": {
@@ -263,7 +267,9 @@
     "deleted": "Vidéo supprimée",
     "canceled": "Génération annulée",
     "readyLive": "Vidéo prête : {title}",
-    "failedLive": "Échec de la génération : {title}"
+    "failedLive": "Échec de la génération : {title}",
+    "webNote": "Vos vidéos sont créées et enregistrées dans ce navigateur, sur cet appareil — rien n'est envoyé en ligne. Téléchargez celles que vous voulez garder : effacer les données de navigation les supprime.",
+    "keepOpen": "Gardez cette page ouverte pendant la création de vos vidéos."
   },
   "share": {
     "title": "Partager la vidéo",
@@ -293,7 +299,11 @@
       "alt": "Code QR pour {url}",
       "captionLan": "Scannez avec l'appareil photo de votre téléphone pour ouvrir la vidéo, puis enregistrez-la ou partagez-la depuis votre téléphone. Votre téléphone doit être connecté au même réseau Wi-Fi que cet ordinateur.",
       "captionPublic": "Scannez avec l'appareil photo de votre téléphone pour ouvrir la vidéo, puis enregistrez-la ou partagez-la depuis votre téléphone."
-    }
+    },
+    "unsupportedWeb": "Ce navigateur ne peut pas partager directement des fichiers vidéo. Téléchargez la vidéo, puis partagez-la depuis votre galerie ou l'application.",
+    "copyCaption": "Copier la légende",
+    "captionCopied": "Légende copiée",
+    "moreTitle": "Autres options"
   },
   "sharePage": {
     "loading": "Chargement de la vidéo…",
@@ -378,7 +388,9 @@
       "canceled": "Import annulé",
       "tooLarge": "Ce fichier dépasse 500 Mo.",
       "badType": "Veuillez choisir une vidéo MP4, WebM ou MOV."
-    }
+    },
+    "webSubtitle": "Des images d'arrière-plan sélectionnées avec soin — vos vidéos utilisent ces clips.",
+    "webNote": "Des clips muets de nature, d'espace, de mosquées et d'art islamique issus de Pixabay, choisis pour les vidéos du Coran. Choisissez les thèmes sur la page Créer."
   },
   "about": {
     "title": "À propos",
@@ -398,7 +410,9 @@
     "phoneTitle": "Utiliser sur votre téléphone",
     "phoneText": "Scannez pour ouvrir le studio sur un téléphone connecté au même réseau Wi-Fi que cet ordinateur.",
     "phonePublic": "Scannez pour ouvrir le studio sur votre téléphone.",
-    "phoneNone": "Aucune adresse réseau n'a été trouvée. Connectez cet ordinateur au Wi-Fi pour ouvrir le studio depuis votre téléphone."
+    "phoneNone": "Aucune adresse réseau n'a été trouvée. Connectez cet ordinateur au Wi-Fi pour ouvrir le studio depuis votre téléphone.",
+    "webTitle": "Créé sur votre appareil",
+    "webNote": "Les vidéos sont créées sur votre appareil — rien n'est envoyé en ligne. Elles restent dans ce navigateur jusqu'à ce que vous les supprimiez."
   },
   "footer": {
     "text": "Sources :"
@@ -426,6 +440,12 @@
     "provider_error": "Le fournisseur de vidéos n'a pas répondu. Veuillez réessayer plus tard.",
     "audio_failed": "Impossible de lire l'extrait de récitation.",
     "share_failed": "Le partage n'a pas fonctionné. Essayez plutôt de télécharger la vidéo.",
-    "download_failed": "Impossible de télécharger la vidéo."
+    "download_failed": "Impossible de télécharger la vidéo.",
+    "too_many_ayahs": "Trop de versets pour une seule vidéo.",
+    "upstream_unavailable": "QuranEnc.com ou EveryAyah.com n'a pas répondu. Vérifiez votre connexion et réessayez.",
+    "interrupted": "La page a été fermée avant la fin de cette vidéo. Veuillez la créer à nouveau.",
+    "not_available_web": "Cette fonction n'est pas disponible dans la version web.",
+    "unsupported_browser": "Ce navigateur ne peut pas créer de vidéos. Utilisez Chrome, Edge ou Samsung Internet.",
+    "storage_full": "Il n'y a pas assez d'espace dans ce navigateur pour enregistrer la vidéo. Supprimez quelques vidéos et réessayez."
   }
 }

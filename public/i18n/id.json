@@ -203,6 +203,10 @@
       "tooManyVideos": "Itu berarti {count} video — maksimal {max} video dapat dibuat sekaligus.",
       "noReciter": "Pilih qari.",
       "noCategory": "Pilih minimal satu tema latar."
+    },
+    "web": {
+      "limits": "Versi web: maksimal {ayat} ayat per video dan {videos} video sekaligus. Video dibuat di perangkat ini.",
+      "unsupported": "Browser ini tidak dapat membuat video. Gunakan Chrome, Edge, atau Samsung Internet di Android atau komputer."
     }
   },
   "videos": {
@@ -247,7 +251,9 @@
     "deleted": "Video dihapus",
     "canceled": "Pembuatan dibatalkan",
     "readyLive": "{title} sudah siap",
-    "failedLive": "{title} gagal dibuat"
+    "failedLive": "{title} gagal dibuat",
+    "webNote": "Video Anda dibuat dan disimpan di browser ini, di perangkat ini — tidak ada yang diunggah. Unduh video yang ingin Anda simpan: menghapus data penjelajahan akan menghapusnya.",
+    "keepOpen": "Biarkan halaman ini tetap terbuka selama video dibuat."
   },
   "share": {
     "title": "Bagikan video",
@@ -277,7 +283,11 @@
       "alt": "Kode QR untuk {url}",
       "captionLan": "Pindai dengan kamera ponsel untuk membuka video, lalu simpan atau bagikan dari ponsel. Ponsel Anda harus terhubung ke jaringan Wi-Fi yang sama dengan komputer ini.",
       "captionPublic": "Pindai dengan kamera ponsel untuk membuka video, lalu simpan atau bagikan dari ponsel."
-    }
+    },
+    "unsupportedWeb": "Browser ini tidak dapat membagikan file video secara langsung. Unduh videonya, lalu bagikan dari galeri atau aplikasi Anda.",
+    "copyCaption": "Salin keterangan",
+    "captionCopied": "Keterangan disalin",
+    "moreTitle": "Opsi lainnya"
   },
   "sharePage": {
     "loading": "Memuat video…",
@@ -362,7 +372,9 @@
       "canceled": "Unggahan dibatalkan",
       "tooLarge": "File ini lebih dari 500 MB.",
       "badType": "Pilih video MP4, WebM, atau MOV."
-    }
+    },
+    "webSubtitle": "Rekaman latar pilihan — video Anda menggunakan klip-klip ini.",
+    "webNote": "Klip tanpa suara tentang alam, luar angkasa, masjid, dan seni Islami dari Pixabay, dipilih untuk video Al-Qur'an. Pilih temanya di halaman Buat."
   },
   "about": {
     "title": "Tentang",
@@ -382,7 +394,9 @@
     "phoneTitle": "Gunakan di ponsel",
     "phoneText": "Pindai untuk membuka studio di ponsel yang terhubung ke jaringan Wi-Fi yang sama dengan komputer ini.",
     "phonePublic": "Pindai untuk membuka studio di ponsel Anda.",
-    "phoneNone": "Alamat jaringan tidak ditemukan. Hubungkan komputer ini ke Wi-Fi untuk membuka studio dari ponsel."
+    "phoneNone": "Alamat jaringan tidak ditemukan. Hubungkan komputer ini ke Wi-Fi untuk membuka studio dari ponsel.",
+    "webTitle": "Dibuat di perangkat Anda",
+    "webNote": "Video dibuat di perangkat Anda — tidak ada yang diunggah. Video tetap tersimpan di browser ini sampai Anda menghapusnya."
   },
   "footer": {
     "text": "Sumber:"
@@ -410,6 +424,12 @@
     "provider_error": "Penyedia video tidak merespons. Silakan coba lagi nanti.",
     "audio_failed": "Cuplikan tilawah tidak dapat diputar.",
     "share_failed": "Gagal membagikan. Coba unduh videonya saja.",
-    "download_failed": "Video tidak dapat diunduh."
+    "download_failed": "Video tidak dapat diunduh.",
+    "too_many_ayahs": "Terlalu banyak ayat untuk satu video.",
+    "upstream_unavailable": "QuranEnc.com atau EveryAyah.com tidak merespons. Periksa koneksi Anda lalu coba lagi.",
+    "interrupted": "Halaman ditutup sebelum video ini selesai. Silakan buat lagi.",
+    "not_available_web": "Fitur ini tidak tersedia di versi web.",
+    "unsupported_browser": "Browser ini tidak dapat membuat video. Gunakan Chrome, Edge, atau Samsung Internet.",
+    "storage_full": "Ruang penyimpanan di browser ini tidak cukup untuk menyimpan video. Hapus beberapa video lalu coba lagi."
   }
 }

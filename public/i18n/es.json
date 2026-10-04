@@ -217,6 +217,10 @@
       "tooManyVideos": "Serían {count} videos; se pueden crear hasta {max} a la vez.",
       "noReciter": "Elige un recitador.",
       "noCategory": "Elige al menos un tema de fondo."
+    },
+    "web": {
+      "limits": "Versión web: hasta {ayat} aleyas por video y {videos} videos a la vez. Los videos se crean en este dispositivo.",
+      "unsupported": "Este navegador no puede crear videos. Usa Chrome, Edge o Samsung Internet en Android o en un ordenador."
     }
   },
   "videos": {
@@ -263,7 +267,9 @@
     "deleted": "Video eliminado",
     "canceled": "Generación cancelada",
     "readyLive": "Video listo: {title}",
-    "failedLive": "No se pudo generar: {title}"
+    "failedLive": "No se pudo generar: {title}",
+    "webNote": "Tus videos se crean y se guardan en este navegador, en este dispositivo: no se sube nada. Descarga los que quieras conservar, porque al borrar los datos de navegación se eliminan.",
+    "keepOpen": "Mantén esta página abierta mientras se crean tus videos."
   },
   "share": {
     "title": "Compartir video",
@@ -293,7 +299,11 @@
       "alt": "Código QR de {url}",
       "captionLan": "Escanea con la cámara de tu teléfono para abrir el video y luego guárdalo o compártelo desde el teléfono. Tu teléfono debe estar en la misma red Wi-Fi que este equipo.",
       "captionPublic": "Escanea con la cámara de tu teléfono para abrir el video y luego guárdalo o compártelo desde el teléfono."
-    }
+    },
+    "unsupportedWeb": "Este navegador no puede compartir archivos de video directamente. Descarga el video y compártelo desde tu galería o desde la aplicación.",
+    "copyCaption": "Copiar descripción",
+    "captionCopied": "Descripción copiada",
+    "moreTitle": "Más opciones"
   },
   "sharePage": {
     "loading": "Cargando el video…",
@@ -378,7 +388,9 @@
       "canceled": "Subida cancelada",
       "tooLarge": "Este archivo supera los 500 MB.",
       "badType": "Elige un video MP4, WebM o MOV."
-    }
+    },
+    "webSubtitle": "Imágenes de fondo seleccionadas a mano: tus videos usan estos clips.",
+    "webNote": "Clips sin sonido de naturaleza, espacio, mezquitas y arte islámico de Pixabay, elegidos para videos del Corán. Elige los temas en la página Crear."
   },
   "about": {
     "title": "Acerca de",
@@ -398,7 +410,9 @@
     "phoneTitle": "Úsalo en tu teléfono",
     "phoneText": "Escanea para abrir el estudio en un teléfono conectado a la misma red Wi-Fi que este equipo.",
     "phonePublic": "Escanea para abrir el estudio en tu teléfono.",
-    "phoneNone": "No se encontró ninguna dirección de red. Conecta este equipo a la Wi-Fi para abrir el estudio desde tu teléfono."
+    "phoneNone": "No se encontró ninguna dirección de red. Conecta este equipo a la Wi-Fi para abrir el estudio desde tu teléfono.",
+    "webTitle": "Hecho en tu dispositivo",
+    "webNote": "Los videos se crean en tu dispositivo: no se sube nada. Se quedan en este navegador hasta que los borres."
   },
   "footer": {
     "text": "Fuentes:"
@@ -426,6 +440,12 @@
     "provider_error": "El proveedor de videos no respondió. Inténtalo de nuevo más tarde.",
     "audio_failed": "No se pudo reproducir la muestra de la recitación.",
     "share_failed": "No se pudo compartir. Prueba a descargar el video.",
-    "download_failed": "No se pudo descargar el video."
+    "download_failed": "No se pudo descargar el video.",
+    "too_many_ayahs": "Demasiadas aleyas para un solo video.",
+    "upstream_unavailable": "QuranEnc.com o EveryAyah.com no respondió. Comprueba tu conexión e inténtalo de nuevo.",
+    "interrupted": "La página se cerró antes de terminar este video. Vuelve a crearlo.",
+    "not_available_web": "Esta función no está disponible en la versión web.",
+    "unsupported_browser": "Este navegador no puede crear videos. Usa Chrome, Edge o Samsung Internet.",
+    "storage_full": "No hay espacio suficiente en este navegador para guardar el video. Borra algunos videos e inténtalo de nuevo."
   }
 }

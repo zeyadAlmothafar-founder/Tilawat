@@ -16,8 +16,10 @@ export const toArabicDigits = (n) => String(n).replace(/\d/g, (d) => ARABIC_DIGI
 // open fathatan / dammatan / kasratan. OFL fonts draw those code points as other marks
 // (inverted damma, subscript alef) or not at all, so for display only we map them to the
 // standard Unicode open-tanween characters. The words and letters are untouched.
-const OPEN_TANWEEN = { '\u0657': '\u08F0', '\u065E': '\u08F1', '\u0656': '\u08F2' };
-export const quranDisplayText = (text) => text.replace(/[\u0656\u0657\u065E]/g, (c) => OPEN_TANWEEN[c]);
+// (shared/quran-text.js \u2014 the web build uses the same mapping.)
+import { quranDisplayText } from '../../shared/quran-text.js';
+
+export { quranDisplayText };
 
 /** Ornamental ayah number (Amiri / Scheherazade draw the digits inside U+06DD). */
 export const ayahMarker = (n) => `${END_OF_AYAH}${toArabicDigits(n)}`;

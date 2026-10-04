@@ -1,9 +1,10 @@
 // "My Videos": batches of rendered videos, live progress polling, player, share, delete.
 import * as api from './api.js';
 import { t, fmtDuration, fmtBytes, fmtDate, fmtPercent, fmtNumber, onLanguageChange } from './i18n.js';
-import { h, toast, showError, confirmDialog, openModal, stateBlock, loadingBlock, errorBlock } from './ui.js';
+import { h, toast, showError, confirmDialog, openModal, stateBlock, loadingBlock, errorBlock, errorMessage } from './ui.js';
 import { icon } from './icons.js';
 import { openShareModal, openQrModal } from './share.js';
+import { WEB_MODE } from './mode.js';
 import { isActive, surahNames, rangeLabel, reciterName, videoTitle, videoFileName, videoFileUrl, tafsirBadge } from './video-meta.js';
 
 const POLL_MS = 1500;
@@ -207,7 +208,7 @@ function createCard(video) {
       { class: `vc-media vc-ended ${failed ? 'is-error' : ''}` },
       icon(failed ? 'alert' : 'x'),
       h('p', { class: 'vc-stage', text: t(`videos.status.${v.status}`) }),
-      failed && v.error && h('p', { class: 'vc-error-text', text: typeof v.error === 'string' ? v.error : v.error.message || '' }),
+      failed && v.error && h('p', { class: 'vc-error-text', text: errorText(v.error) }),
     );
   }
 
@@ -246,7 +247,7 @@ function createCard(video) {
       { class: 'vc-actions' },
       h('button', { type: 'button', class: 'btn btn-sm btn-primary', onclick: () => openShareModal(video).catch(showError) }, icon('share'), h('span', { class: 'btn-text', text: t('common.share') })),
       h('a', { class: 'icon-btn', href: videoFileUrl(v), download: videoFileName(v), 'aria-label': t('common.download'), title: t('common.download') }, icon('download')),
-      h('button', { type: 'button', class: 'icon-btn', 'aria-label': t('common.qr'), title: t('common.qr'), onclick: () => openQrModal(video).catch(showError) }, icon('qr')),
+      !WEB_MODE && h('button', { type: 'button', class: 'icon-btn', 'aria-label': t('common.qr'), title: t('common.qr'), onclick: () => openQrModal(video).catch(showError) }, icon('qr')),
       h('span', { class: 'vc-spacer' }),
       del,
     );
@@ -254,6 +255,12 @@ function createCard(video) {
 
   update(video);
   return { el, update };
+}
+
+/** Failure text on a card. The web version's errors have translated codes (e.g. "interrupted"). */
+function errorText(error) {
+  if (typeof error === 'string') return error;
+  return WEB_MODE ? errorMessage(error) : error.message || '';
 }
 
 function updateProgress(parts, v) {
@@ -289,7 +296,7 @@ function openPlayer(video) {
         'div',
         { class: 'modal-actions' },
         h('a', { class: 'btn', href: videoFileUrl(video), download: videoFileName(video) }, icon('download'), t('common.download')),
-        h('button', { type: 'button', class: 'btn', onclick: () => { modal.close(); openQrModal(video).catch(showError); } }, icon('qr'), t('common.qr')),
+        !WEB_MODE && h('button', { type: 'button', class: 'btn', onclick: () => { modal.close(); openQrModal(video).catch(showError); } }, icon('qr'), t('common.qr')),
         h('button', { type: 'button', class: 'btn btn-primary', onclick: () => { modal.close(); openShareModal(video).catch(showError); } }, icon('share'), t('common.share')),
       ),
     ],

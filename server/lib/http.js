@@ -4,7 +4,7 @@ import path from 'node:path';
 import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
 
-const USER_AGENT = 'QuranVideoStudio/0.1 (+local)';
+const USER_AGENT = 'Tilawat/0.1 (+local)';
 
 async function fetchWithTimeout(url, { headers = {}, timeoutMs = 20000 } = {}) {
   const res = await fetch(url, {

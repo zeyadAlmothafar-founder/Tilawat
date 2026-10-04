@@ -56,7 +56,7 @@ async function getJson(url) {
   for (let attempt = 0; attempt < 3; attempt++) {
     await sleep(DELAY_MS * (attempt + 1));
     try {
-      const res = await fetch(url, { headers: { 'User-Agent': 'QuranVideoStudio/0.1 (+local)' }, signal: AbortSignal.timeout(60000) });
+      const res = await fetch(url, { headers: { 'User-Agent': 'Tilawat/0.1 (+local)' }, signal: AbortSignal.timeout(60000) });
       if (res.status === 404) return null;
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const text = await res.text();

@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Quran Video Studio",
+    "name": "Tilawat",
     "tagline": "Rezitationsvideos zum Nachdenken und Teilen",
     "skipToContent": "Zum Inhalt springen"
   },
@@ -384,7 +384,6 @@
     "sourcesTitle": "Quellen & Danksagungen",
     "sourceQuranEnc": "Korantext und Übersetzungen der Bedeutungen",
     "sourceEveryAyah": "Rezitationsaudio Vers für Vers",
-    "sourcePexels": "Kostenloses Stockmaterial",
     "sourcePixabay": "Kostenloses Stockmaterial",
     "sourceNasa": "Weltraumbilder",
     "footageNote": "Die Hintergrundclips sind stumme Aufnahmen von Natur, Weltall, Moscheen und islamischer Kunst. Jedes Video nennt die Urheber seines Videomaterials, und Musik wird nie hinzugefügt.",

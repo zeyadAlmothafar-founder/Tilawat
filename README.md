@@ -1,8 +1,8 @@
-# Quran Video Studio
+<h1 align="center">Tilawat · تلاوات</h1>
 
-**Turn Quran recitations into beautiful, share-ready videos — in minutes, on your own computer.**
+<p align="center"><b>Turn Quran recitations into beautiful, share-ready videos — in minutes, on your own computer.</b></p>
 
-Pick the ayat, a reciter and a look. Quran Video Studio fetches the verified Arabic text, a
+Pick the ayat, a reciter and a look. Tilawat fetches the verified Arabic text, a
 translation and the recitation, lays them over calm nature, space or mosque footage, and renders
 finished MP4 videos for Reels, TikTok, YouTube Shorts, WhatsApp Status or YouTube — with the
 Arabic perfectly shaped and every ayah appearing exactly while it is recited.
@@ -15,9 +15,6 @@ Arabic perfectly shaped and every ayah appearing exactly while it is recited.
 <p align="center">
   <img src="docs/images/app-create.png" width="80%" alt="The Create page">
 </p>
-
-> *(“Quran Video Studio” is a working title — the name lives in `public/i18n/*.json` → `app.name`
-> and `server/lib/brand.js`.)*
 
 ---
 

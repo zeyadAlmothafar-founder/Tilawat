@@ -3,6 +3,7 @@ import path from 'node:path';
 import { PUBLIC_DIR, OUTPUT_DIR, FONTS_DIR, ensureDirs } from './paths.js';
 import { errorHandler } from './lib/errors.js';
 import { lanAddresses } from './lib/net.js';
+import { APP_NAME } from './lib/brand.js';
 
 ensureDirs();
 
@@ -34,7 +35,7 @@ app.use(errorHandler);
 const PORT = Number(process.env.PORT) || 4700;
 const HOST = process.env.HOST || '0.0.0.0';
 app.listen(PORT, HOST, () => {
-  console.log(`Quran Video Studio running:`);
+  console.log(`${APP_NAME} running:`);
   console.log(`  Local:   http://localhost:${PORT}`);
   for (const ip of lanAddresses()) console.log(`  Network: http://${ip}:${PORT}`);
 });

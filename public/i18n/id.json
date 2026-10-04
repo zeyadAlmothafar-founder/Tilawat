@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Quran Video Studio",
+    "name": "Tilawat",
     "tagline": "Video tilawah untuk direnungkan dan dibagikan",
     "skipToContent": "Langsung ke konten"
   },
@@ -376,7 +376,6 @@
     "sourcesTitle": "Sumber & kredit",
     "sourceQuranEnc": "Teks Al-Qur'an dan terjemahan maknanya",
     "sourceEveryAyah": "Audio tilawah per ayat",
-    "sourcePexels": "Video stok gratis",
     "sourcePixabay": "Video stok gratis",
     "sourceNasa": "Citra luar angkasa",
     "footageNote": "Klip latar berupa rekaman tanpa suara tentang alam, luar angkasa, masjid, dan seni Islami. Setiap video mencantumkan pembuat rekamannya, dan musik tidak pernah ditambahkan.",

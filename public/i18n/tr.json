@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Quran Video Studio",
+    "name": "Tilawat",
     "tagline": "Tefekkür etmek ve paylaşmak için tilavet videoları",
     "skipToContent": "İçeriğe atla"
   },
@@ -384,7 +384,6 @@
     "sourcesTitle": "Kaynaklar ve teşekkür",
     "sourceQuranEnc": "Kur'an metni ve mealleri",
     "sourceEveryAyah": "Ayet ayet tilavet kayıtları",
-    "sourcePexels": "Ücretsiz stok görüntüler",
     "sourcePixabay": "Ücretsiz stok görüntüler",
     "sourceNasa": "Uzay görüntüleri",
     "footageNote": "Arka plan klipleri doğa, uzay, cami ve İslam sanatına ait sessiz görüntülerdir. Her videoda görüntülerin sahipleri belirtilir ve asla müzik eklenmez.",

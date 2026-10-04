@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Quran Video Studio",
+    "name": "Tilawat",
     "tagline": "Des vidéos de récitation pour méditer et partager",
     "skipToContent": "Aller au contenu"
   },
@@ -392,7 +392,6 @@
     "sourcesTitle": "Sources et crédits",
     "sourceQuranEnc": "Texte du Coran et traductions des sens",
     "sourceEveryAyah": "Audio de récitation verset par verset",
-    "sourcePexels": "Vidéos libres de droits gratuites",
     "sourcePixabay": "Vidéos libres de droits gratuites",
     "sourceNasa": "Images spatiales",
     "footageNote": "Les clips d'arrière-plan sont des vidéos muettes de nature, d'espace, de mosquées et d'art islamique. Chaque vidéo crédite les auteurs de ses images, et aucune musique n'est jamais ajoutée.",

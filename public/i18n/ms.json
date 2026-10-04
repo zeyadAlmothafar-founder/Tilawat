@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Quran Video Studio",
+    "name": "Tilawat",
     "tagline": "Video bacaan al-Quran untuk direnungi dan dikongsi",
     "skipToContent": "Langkau ke kandungan"
   },
@@ -376,7 +376,6 @@
     "sourcesTitle": "Sumber & penghargaan",
     "sourceQuranEnc": "Teks al-Quran dan terjemahan makna",
     "sourceEveryAyah": "Audio bacaan ayat demi ayat",
-    "sourcePexels": "Rakaman stok percuma",
     "sourcePixabay": "Rakaman stok percuma",
     "sourceNasa": "Imej angkasa",
     "footageNote": "Klip latar ialah rakaman tanpa bunyi tentang alam, angkasa, masjid dan seni Islam. Setiap video menyatakan penghargaan kepada pembuat rakamannya, dan muzik tidak akan ditambah.",

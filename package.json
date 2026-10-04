@@ -1,6 +1,6 @@
 {
-  "name": "quran-video-studio",
-  "version": "0.1.0",
+  "name": "tilawat",
+  "version": "1.0.0",
   "private": true,
   "description": "Create short Quran recitation videos with Arabic text and translations over nature, space and mosque footage.",
   "type": "module",

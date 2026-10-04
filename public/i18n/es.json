@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Quran Video Studio",
+    "name": "Tilawat",
     "tagline": "Videos de recitación para reflexionar y compartir",
     "skipToContent": "Saltar al contenido"
   },
@@ -392,7 +392,6 @@
     "sourcesTitle": "Fuentes y créditos",
     "sourceQuranEnc": "Texto del Corán y traducciones de los significados",
     "sourceEveryAyah": "Audio de recitación aleya por aleya",
-    "sourcePexels": "Videos de archivo gratuitos",
     "sourcePixabay": "Videos de archivo gratuitos",
     "sourceNasa": "Imágenes del espacio",
     "footageNote": "Los clips de fondo son videos sin sonido de naturaleza, espacio, mezquitas y arte islámico. Cada video acredita a los autores de sus imágenes y nunca se añade música.",
